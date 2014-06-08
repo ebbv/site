@@ -1,0 +1,58 @@
+@media only screen {
+
+/* Global styles
+=================================================*/
+
+    html, body {
+        height: 100%;
+    }
+
+    #wrapper {
+        min-height: 100%;
+    }
+
+    #main {
+        overflow: auto;
+        padding-bottom: 60px;
+    }
+
+    header {
+        background: #13a7c7;
+        min-width: 100%;
+    }
+
+    header .row {
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    header h1 {
+        color: #fff;
+        font-size: 1.8em;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    #content {
+        padding-top: 1.5em;
+    }
+
+    #content p {
+        text-indent: 20px;
+    }
+
+    footer {
+        background: #13a7c7;
+        height: 60px;
+        margin-top: -60px;
+        padding: 1.3em 0;
+        text-align: center;
+        min-width: 100%;
+    }
+
+    #copyright {
+        font-size: 0.9rem;
+        margin: 0;
+    }
+}

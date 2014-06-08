@@ -1,5 +1,8 @@
 @import 'normalize.css';
 @import 'foundation.min.css';
+@import 'small.css';
+@import 'medium.css'; /* min-width 641px, medium screens */
+@import 'large.css'; /* min-width 1025px, large screens */
 
 #browsehappy {
     display: none;

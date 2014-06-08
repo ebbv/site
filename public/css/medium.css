@@ -1,0 +1,13 @@
+@media only screen and (min-width: 40.063em) { /* min-width 641px, medium screens */
+
+/* Global styles
+=================================================*/
+
+    header h1 {
+        font-size: 3rem;
+    }
+
+    #copyright {
+        font-size: 1rem;
+    }
+}

@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('main');
 });
 
 View::creator(Config::get('app.theme'), function($view)
