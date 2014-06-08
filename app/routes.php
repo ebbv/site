@@ -15,3 +15,8 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+View::creator(Config::get('app.theme'), function($view)
+{
+    $view->with('theme', str_replace('master', '', Config::get('app.theme')));
+});

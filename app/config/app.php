@@ -2,6 +2,8 @@
 
 return array(
 
+	'theme' => 'layouts.master',
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode
