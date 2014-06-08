@@ -27,7 +27,7 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(function()
 {
 
-	switch ($_SERVER['SERVER_NAME']) {
+	switch (getenv('SERVER_NAME')) {
 		case 'test.ebbv.fr':
 			$env = 'staging';
 			break;

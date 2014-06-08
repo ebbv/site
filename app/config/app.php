@@ -67,7 +67,7 @@ return array(
 	|
 	*/
 
-	'key' => $_ENV['ENCRYPTION_KEY'],
+	'key' => getenv('ENCRYPTION_KEY'),
 
 	/*
 	|--------------------------------------------------------------------------
