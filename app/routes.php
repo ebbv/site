@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('main');
-});
+Route::get('/', 'MessagesController@index');
+
+
+Route::get('messages.html', array(
+    'as'    => 'messages.index',
+    'uses'  => 'MessagesController@index'
+));
 
 View::creator(Config::get('app.theme'), function($view)
 {
