@@ -1,4 +1,5 @@
 <!doctype html>
+<!--[if lt IE 9]><html class="oldie" lang="fr"><![endif]-->
 <html class="no-js" lang="fr">
     <head>
         <meta charset="utf-8">
@@ -9,9 +10,7 @@
         <script src="js/vendor/modernizr-2.8.2.min.js"></script>
     </head>
     <body>
-        <!--[if lt IE 9]>
-            <p class="browsehappy">Vous utilisez un navigateur <strong>ancien</strong>. Veuillez le <a href="http://browsehappy.com/">mettre à jour</a> pour une expérience améliorée.</p>
-        <![endif]-->
+        <p id="browsehappy">Vous utilisez un navigateur <strong>ancien</strong>. Veuillez le <a href="http://browsehappy.com/">mettre à jour</a> pour une expérience améliorée.</p>
 
         <p>Hello world! This is HTML5 Boilerplate.</p>
 

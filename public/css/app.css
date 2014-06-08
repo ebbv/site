@@ -1,2 +1,20 @@
 @import 'normalize.css';
 @import 'foundation.min.css';
+
+#browsehappy {
+    display: none;
+}
+
+.oldie #wrapper, .no-csstransforms3d #wrapper {
+    display: none;
+}
+
+.oldie #browsehappy, .no-csstransforms3d #browsehappy {
+    background: white;
+    display: block;
+    min-height: 100%;
+    position: fixed;
+    text-align: center;
+    min-width: 100%;
+    z-index: 100;
+}
