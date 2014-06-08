@@ -8,11 +8,11 @@
     display: none;
 }
 
-.oldie #wrapper, .no-csstransforms3d #wrapper {
+.oldie #wrapper {
     display: none;
 }
 
-.oldie #browsehappy, .no-csstransforms3d #browsehappy {
+.oldie #browsehappy {
     background: white;
     display: block;
     min-height: 100%;
