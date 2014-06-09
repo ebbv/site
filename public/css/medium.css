@@ -10,4 +10,12 @@
     #copyright {
         font-size: 1rem;
     }
+
+
+/* Messages styles
+=================================================*/
+
+    #messages-table .player {
+        margin: 0;
+    }
 }
