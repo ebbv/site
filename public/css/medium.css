@@ -15,6 +15,10 @@
 /* Messages styles
 =================================================*/
 
+    #messages-table div:first-child {
+        margin-top: 0;
+    }
+
     #messages-table .player {
         margin: 0;
     }

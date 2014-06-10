@@ -34,7 +34,7 @@
         text-align: center;
     }
 
-    #content {
+    #main {
         padding-top: 1.5em;
     }
 
@@ -60,24 +60,30 @@
 /* Messages styles
 =================================================*/
 
-    #messages-table {
-        /*font-size: 0.7em;*/
-    }
-
     #messages-table p {
         text-indent: 0;
+    }
+
+    #messages-table .message-info {
+        margin: 75px 0 15px 0;
     }
 
     #messages-table .full-name {
         text-transform: capitalize;
     }
 
+    #messages-table p {
+        margin-bottom: 3px;
+        margin-top: 3px;
+    }
+
     #messages-table span.last-name {
         text-transform: uppercase;
     }
 
-    #messages-table .message-date {
-        text-align: center;
+    #messages-table .message-title p {
+        font-style: italic;
+        font-weight: bold;
     }
 
     #messages-table .player {

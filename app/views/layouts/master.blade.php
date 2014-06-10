@@ -19,7 +19,15 @@
 
             <div id="main" class="row">
                 <aside id="sidebar" class="medium-4 columns">
-
+                    <div class="row">
+                        <p class="small-12 columns">
+                            Ici nous vous proposons l'écoute des messages de notre église. Il vous
+                            suffit de cliquer sur le titre du message pour démarrer la lecture. Notre
+                            désir est d'édifier l'Eglise de Christ, et ce par un enseignement fidèle
+                            à Dieu et sa Parole. Si vous rencontrez des problèmes, n'hésitez pas à
+                            {{ link_to('contact.html', 'nous contacter.')."\n" }}
+                        </p>
+                    </div>
                 </aside>
 
                 <div id="content" class="medium-8 columns">
