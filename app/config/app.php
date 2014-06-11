@@ -2,6 +2,7 @@
 
 return array(
 
+	'ga_key'=> '47913637-1',
 	'theme' => 'layouts.master',
 
 	/*
