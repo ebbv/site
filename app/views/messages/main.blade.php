@@ -5,7 +5,7 @@
                         <div class="small-12 columns" id="messages-table">
 @foreach($messages as $message)
                             <div class="row message-info">
-                                <div class="small-12 medium-6 columns full-name">
+                                <div class="small-12 medium-5 columns full-name">
                                     <p>
                                         <span class="last-name">{{ $message->speaker->last_name }}</span>,
                                         {{ $message->speaker->first_name."\n" }}
@@ -14,7 +14,7 @@
                                         {{ $message->date }}
                                     </p>
                                 </div>
-                                <div class="medium-6 columns message-title">
+                                <div class="medium-7 columns message-title">
                                     <p>{{ $message->title }}</p>
                                 </div>
                             </div>
