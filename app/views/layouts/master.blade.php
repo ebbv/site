@@ -21,11 +21,7 @@
                 <aside id="sidebar" class="medium-4 columns">
                     <div class="row">
                         <p class="small-12 columns">
-                            Ici nous vous proposons l'écoute des messages de notre église. Il vous
-                            suffit de cliquer sur le titre du message pour démarrer la lecture. Notre
-                            désir est d'édifier l'Eglise de Christ, et ce par un enseignement fidèle
-                            à Dieu et sa Parole. Si vous rencontrez des problèmes, n'hésitez pas à
-                            {{ link_to('contact.html', 'nous contacter.')."\n" }}
+                            Bienvenue sur le site de notre église. Nous sommes heureux de votre visite et de l'intéret que vous manifestez pour l'œuvre de Dieu. Ici nous vous proposons l'écoute des prédications qui sont apportées le dimanche matin. Notre désir est d'édifier l'Eglise de Christ, et ce par un enseignement fidèle à Dieu et sa Parole.
                         </p>
                     </div>
                 </aside>
