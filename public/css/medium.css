@@ -3,6 +3,10 @@
 /* Global styles
 =================================================*/
 
+    body {
+        overflow-y: scroll;
+    }
+
     header h1 {
         font-size: 3rem;
     }
