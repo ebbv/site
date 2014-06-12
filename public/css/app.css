@@ -1,0 +1,23 @@
+@import 'normalize.css';
+@import 'foundation.min.css';
+@import 'small.css';
+@import 'medium.css'; /* min-width 641px, medium screens */
+@import 'large.css'; /* min-width 1025px, large screens */
+
+#browsehappy {
+    display: none;
+}
+
+.oldie #wrapper {
+    display: none;
+}
+
+.oldie #browsehappy {
+    background: white;
+    display: block;
+    min-height: 100%;
+    position: fixed;
+    text-align: center;
+    min-width: 100%;
+    z-index: 100;
+}

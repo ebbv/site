@@ -24,11 +24,25 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
+$env = $app->detectEnvironment(function()
+{
 
-	'local' => array('your-machine-name'),
+	switch (getenv('SERVER_NAME')) {
+		case 'test.ebbv.fr':
+			$env = 'staging';
+			break;
 
-));
+		case 'ebbv.fr':
+			$env = 'production';
+			break;
+
+		default:
+			$env = 'local';
+			break;
+	}
+	return $env;
+
+});
 
 /*
 |--------------------------------------------------------------------------
