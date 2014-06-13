@@ -15,7 +15,7 @@
                                     </p>
                                 </div>
                                 <div class="medium-7 columns message-title">
-                                    <p>{{ $message->title }}</p>
+                                    <p><a download="{{ $message->title }}" href="audio/{{ $message->url.'.mp3' }}">{{ $message->title }}</a></p>
                                 </div>
                             </div>
                             <div class="row player">
