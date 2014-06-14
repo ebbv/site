@@ -22,10 +22,6 @@
     #messages-table div:first-child {
         margin-top: 0;
     }
-    
-    #messages-table .message-title p {
-        text-align: right;
-    }
 
     #messages-table .player {
         margin: 0;
