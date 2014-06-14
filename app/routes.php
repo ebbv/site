@@ -86,7 +86,7 @@ Route::group(array('before'=>'auth'), function()
 });
 
 Route::get('/', function() {
-    return View::make('messages.main')->with('messages', Message::with('speaker')->get());
+    return View::make('messages.main')->with('messages', Message::with('speaker')->orderBy('date', 'desc')->get());
 });
 
 
