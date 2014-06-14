@@ -69,8 +69,9 @@ Route::group(array('before'=>'auth'), function()
         $message = new Message;
         $message->member_id = Input::get('speaker');
         $message->title     = Input::get('title');
+        $message->passage   = Input::get('message-passage');
         $message->url       = $filename;
-        $message->date      = Input::get('message-date');
+        $message->date      = Input::get('message-file');
         $message->created_by= Auth::user()->id;
         $message->updated_by= Auth::user()->id;
         if($message->save())

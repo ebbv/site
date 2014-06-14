@@ -19,11 +19,11 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="large-3 columns">
-                                    <label for="message-date">Date :</label>
-                                    <input id="message-date" name="message-date" type="text" value="">
-                                </div>
                                 <div class="large-6 columns">
+                                    <label for="message-passage">Passage :</label>
+                                    <input id="message-passage" name="message-passage" type="text" value="">
+                                </div>
+                                <div class="large-3 columns">
                                     <label for="message-file">Fichier :</label>
                                     <select id="message-file" name="message-file">
 @foreach($files as $file)

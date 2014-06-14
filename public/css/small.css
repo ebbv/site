@@ -81,13 +81,17 @@
         text-transform: uppercase;
     }
 
-    #messages-table .message-title p {
+    #messages-table .message-title {
         font-style: italic;
         font-weight: bold;
     }
     
     #messages-table .message-title a {
         color: #222;
+    }
+    
+    #messages-table .message-passage {
+        font-weight: bold;
     }
 
     #messages-table .player {

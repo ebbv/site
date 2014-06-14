@@ -7,15 +7,17 @@
                             <div class="row message-info">
                                 <div class="small-12 medium-5 columns full-name">
                                     <p>
-                                        <span class="last-name">{{ $message->speaker->last_name }}</span>,
-                                        {{ $message->speaker->first_name."\n" }}
+                                        <span class="last-name">{{ $message->speaker->last_name }}</span>, {{ $message->speaker->first_name."\n" }}
                                     </p>
                                     <p class="message-date">
                                         {{ $message->date }}
                                     </p>
                                 </div>
-                                <div class="medium-7 columns message-title">
-                                    <p><a download="{{ $message->title }}" href="audio/{{ $message->url.'.mp3' }}">{{ $message->title }}</a></p>
+                                <div class="medium-7 columns">
+                                    <p class="message-title">
+                                        <a download="{{ $message->title }}" href="audio/{{ $message->url.'.mp3' }}">{{ $message->title }}</a>
+                                    </p>
+                                    <p class="message-passage">{{ $message->passage }}</p>
                                 </div>
                             </div>
                             <div class="row player">
