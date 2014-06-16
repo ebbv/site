@@ -27,12 +27,12 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(function()
 {
 
-	switch (getenv('SERVER_NAME')) {
-		case 'test.ebbv.fr':
+	switch (substr(__DIR__, -14, 4)) {
+		case 'test':
 			$env = 'staging';
 			break;
 
-		case 'ebbv.fr':
+		case 'html':
 			$env = 'production';
 			break;
 
