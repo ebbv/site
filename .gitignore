@@ -9,3 +9,4 @@ composer.lock
 Thumbs.db
 /tmp
 /public/audio
+/build/config/project.properties
