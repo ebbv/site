@@ -543,7 +543,7 @@
     <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
     <!-- Filter out byte order marks (see http://stackoverflow.com/questions/2742735/get-ant-concat-to-ignore-boms) -->
         <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.min.js" overwrite="no">
-          <filelist dir="./${dir.intermediate}/" files="${scriptsToConcat}" />
+          <filelist dir="./${dir.intermediate}/public/" files="${scriptsToConcat}" />
           <filterchain>
             <deletecharacters chars="&#xFEFF;" />
           </filterchain>
