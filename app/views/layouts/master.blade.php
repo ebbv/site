@@ -39,6 +39,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.1.min.js"><\/script>')</script>
         <!-- //-beg- concat_js -->
+        <script src="js/vendor/jquery-ui-1.10.4.min.js"></script>
         <script src="js/foundation.min.js"></script>
         <script src="js/app.js"></script>
         <!-- //-end- concat_js -->
