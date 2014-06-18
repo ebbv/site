@@ -34,7 +34,7 @@ var $,
                     $(parent).find('.timeleft').text(lefttime + ' / ' + '-' + righttime);
 
                     if (!manualSeek) {
-                        $(parent).find('.handle').css({left: pos + '%'});
+                        $(parent).find('.handle').css({left: pos + '%'}).next().css({width: pos + '%'});
                     }
                     if (!loaded) {
                         loaded = true;

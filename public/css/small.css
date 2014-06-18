@@ -115,6 +115,7 @@
 
     #messages-table .player .gutter {
         background: #516070;
+        border: 0;
         border-radius: 5px;
         height: 6px;
         left: 40px;
@@ -126,13 +127,19 @@
 
     #messages-table .player .handle {
         background: url('../img/player.png') no-repeat scroll -65px -5px;
+        border: 0;
         cursor: pointer;
         height: 20px;
         left: 0;
-        margin-left: -3px;
+        margin-left: -5px;
         position: absolute;
         top: -6px;
         width: 20px;
+    }
+    
+    #messages-table .player .ui-slider-range {
+        background: #13a7c7;
+        border-radius: 5px;
     }
 
     #messages-table .player .timeleft {
