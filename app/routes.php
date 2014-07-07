@@ -86,11 +86,9 @@ Route::group(array('before'=>'auth'), function()
     }));
 });
 
-Route::get('/{page?}', function($page = 1) {
-    $limit    = 4;
-    $pages    = ceil(Message::all()->count() / $limit);
-    $messages = Message::with('speaker')->skip(($page-1) * $limit)->take($limit)->orderBy('date', 'desc')->get();
-    return View::make('messages.main')->withMessages($messages)->withCurpage($page)->withPages($pages);
+Route::get('/', function() {
+    $messages = Message::with('speaker')->orderBy('date', 'desc')->paginate(4);
+    return View::make('messages.main')->withMessages($messages);
 });
 
 

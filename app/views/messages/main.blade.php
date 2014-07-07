@@ -44,24 +44,6 @@
                     </div>
 
                     <div class="pagination-centered">
-                        <ul class="pagination">
-@if($curpage == 1)
-                            <li class="unavailable"><a>&laquo;</a></li>
-@else
-                            <li><a href="{{ $curpage - 1 }}">&laquo;</a></li>
-@endif
-@for($i = 1; $i <= $pages; $i++)
-@if($curpage == $i)
-                            <li class="current"><a>{{ $i }}</a></li>
-@else
-                            <li><a href="{{ $i }}">{{ $i }}</a></li>
-@endif
-@endfor
-@if($curpage == $pages)
-                            <li class="unavailable"><a>&raquo;</a></li>
-@else
-                            <li><a href="{{ $curpage + 1 }}">&raquo;</a></li>
-@endif
-                        </ul>
+                        {{ $messages->links() }}
                     </div>
 @stop
