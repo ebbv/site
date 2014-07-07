@@ -60,6 +60,10 @@
 /* Messages styles
 =================================================*/
 
+    #messages-table {
+        padding-bottom: 75px;
+    }
+
     #messages-table p {
         text-indent: 0;
     }
