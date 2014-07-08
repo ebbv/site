@@ -4,7 +4,7 @@ class ZurbPresenter extends \Illuminate\Pagination\Presenter {
 
 	public function getActivePageWrapper($text)
 	{
-		return '<li class="current"><a href="">'.$text.'</a></li>'."\n";
+		return '<li class="current"><a>'.$text.'</a></li>'."\n";
 	}
 
 	public function getDisabledTextWrapper($text)
