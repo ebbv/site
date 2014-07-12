@@ -1,3 +1,9 @@
-<ul class="pagination">
-    <?php echo with(new EBBV\Pagination\ZurbPresenter($paginator))->render(); ?>
-</ul>
+<?php
+    $presenter = new EBBV\Pagination\ZurbPresenter($paginator);
+?>
+
+<?php if ($paginator->getLastPage() > 1): ?>
+    <ul class="pagination">
+            <?php echo $presenter->render(); ?>
+    </ul>
+<?php endif; ?>
