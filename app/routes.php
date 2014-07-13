@@ -58,7 +58,7 @@ Route::group(array('before'=>'auth'), function()
         $files = array();
         foreach((File::glob('../tmp/*.mp3')) ? : array() as $file)
         {
-            $files[]= trim($file, '\.\.\/tmp\.mp3');
+            $files[]= str_replace(array('../tmp/', '.mp3'), '', $file);
         }
         return View::make('messages.create')->with('speakers', Member::has('speaker')->get())->withFiles($files);
     }));
