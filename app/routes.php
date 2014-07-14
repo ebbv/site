@@ -21,7 +21,7 @@ Route::get('connexion.html', array('before'=>'guest', function()
         $goto = Input::get('goto');
     }
 
-    return View::make('login')->with('goto', $goto);
+    return View::make('login')->withGoto($goto);
 }));
 
 Route::post('connexion.html', function()
@@ -60,7 +60,7 @@ Route::group(array('before'=>'auth'), function()
         {
             $files[]= str_replace(array('../tmp/', '.mp3'), '', $file);
         }
-        return View::make('messages.create')->with('speakers', Member::has('speaker')->get())->withFiles($files);
+        return View::make('messages.create')->withSpeakers(Member::has('speaker')->get())->withFiles($files);
     }));
 
     Route::post('messages.html', array('as' => 'message.store', function()
