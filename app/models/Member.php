@@ -11,7 +11,7 @@ class Member extends Eloquent implements UserInterface {
 
     public function messages()
     {
-        return $this->belongsToMany('Message')->withTimestamps();
+        return $this->hasMany('Message')->withTimestamps();
     }
 
     public function speaker()
