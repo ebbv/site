@@ -6,7 +6,7 @@ class Member extends Eloquent implements UserInterface {
 
     public function roles()
     {
-        return $this->belongsToMany('Role')->withTimestamps()->withPivot('created_by', 'updated_by');
+        return $this->hasMany('Role')->withTimestamps()->withPivot('created_by', 'updated_by');
     }
 
     public function messages()
