@@ -66,15 +66,16 @@ Route::group(array('before'=>'auth'), function()
     Route::post('messages.html', array('as' => 'message.store', function()
     {
         $filename = Str::random(15);
-        $message = new Message;
-        $message->member_id = Input::get('speaker');
-        $message->title     = Input::get('title');
-        $message->passage   = Input::get('message-passage');
-        $message->url       = $filename;
-        $message->date      = Input::get('message-file');
-        $message->created_by= Auth::user()->id;
-        $message->updated_by= Auth::user()->id;
-        if($message->save())
+        $data = array(
+            'member_id' => Input::get('speaker'),
+            'title'     => Input::get('title'),
+            'passage'   => Input::get('message-passage'),
+            'url'       => $filename,
+            'date'      => Input::get('message-file'),
+            'created_by'=> Auth::user()->id,
+            'updated_by'=> Auth::user()->id
+        );
+        if(Message::create($data))
         {
             foreach(array('mp3', 'ogg', 'wav') as $ext)
             {
