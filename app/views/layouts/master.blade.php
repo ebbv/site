@@ -49,7 +49,7 @@
             e=o.createElement(i);r=o.getElementsByTagName(i)[0];
             e.src='//www.google-analytics.com/analytics.js';
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-{{ Config::get('app.ga_key') }}');ga('send','pageview');
+            ga('create','UA-{{ Config::get('app.ga_key') }}','auto');ga('send','pageview');
         </script>
 
     </body>
