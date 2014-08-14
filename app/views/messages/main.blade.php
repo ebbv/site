@@ -15,7 +15,7 @@
                                 </div>
                                 <div class="medium-7 columns">
                                     <p class="message-title">
-                                        <a download="{{ $message->title }}" href="audio/{{ $message->url.'.mp3' }}">{{ $message->title }}</a>
+                                        <a download="{{ $message->title }}" href="audio/{{ $message->url }}.mp3">{{ $message->title }}</a>
                                     </p>
                                     <p class="message-passage">{{ $message->passage }}</p>
                                 </div>
@@ -33,9 +33,9 @@
                                 <div class="small-5 medium-4 large-3 columns text-center">
                                     <span class="timeleft"></span>
                                     <audio preload="metadata" buffered>
-                                        <source src="audio/{{ $message->url.'.ogg' }}" type="audio/ogg">
-                                        <source src="audio/{{ $message->url.'.mp3' }}" type="audio/mpeg">
-                                        <source src="audio/{{ $message->url.'.wav' }}" type="audio/x-wav">
+                                        <source src="audio/{{ $message->url }}.ogg" type="audio/ogg">
+                                        <source src="audio/{{ $message->url }}.mp3" type="audio/mpeg">
+                                        <source src="audio/{{ $message->url }}.wav" type="audio/x-wav">
                                     </audio>
                                 </div>
                             </div>
