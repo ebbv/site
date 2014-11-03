@@ -60,7 +60,7 @@ Route::group(array('before'=>'auth'), function()
         {
             $files[]= str_replace(array('../tmp/', '.mp3'), '', $file);
         }
-        return View::make('messages.create')->withSpeakers(Member::has('speaker')->get())->withFiles($files);
+        return View::make('messages.create')->withSpeakers(Member::has('speaker')->orderBy('last_name', 'desc')->get())->withFiles($files);
     }));
 
     Route::post('messages.html', array('as' => 'message.store', function()
@@ -88,7 +88,7 @@ Route::group(array('before'=>'auth'), function()
 });
 
 Route::get('/', function() {
-    $messages = Message::with('speaker')->orderBy('date', 'desc')->paginate(4);
+    $messages = Message::with('speaker')->orderBy('date', 'desc')->orderBy('created_at', 'desc')->paginate(4);
     return View::make('messages.main')->withMessages($messages);
 });
 
