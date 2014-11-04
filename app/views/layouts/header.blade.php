@@ -5,10 +5,10 @@
                     </div>
                 </div>
                 <div class="contain-to-grid">
-                    <nav class="top-bar" data-topbar>
+                    <nav class="top-bar" data-topbar role="navigation">
                         <ul class="title-area">
                             <li class="name"><a href=""></a></li>
-                            <li class="toggle-topbar menu-icon"><a href="">Menu</a></li>
+                            <li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>
                         </ul>
                         <section class="top-bar-section">
                             <ul class="left">
