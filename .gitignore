@@ -6,6 +6,7 @@ composer.lock
 .env.staging.php
 .env.php
 .DS_Store
+.c9
 Thumbs.db
 /tmp
 /public/audio
