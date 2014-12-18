@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <base href="{{ Request::root().'/' }}">
-        <title>EBBV</title>
+        <title>{{ Config::get('app.site_prefix').'EBBV' }}</title>
         <meta name="description" content="Le site de l'Eglise Biblique Baptiste de Vernon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/app.css">
