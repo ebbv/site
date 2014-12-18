@@ -9,11 +9,11 @@
     display: none;
 }
 
-.oldie #wrapper {
+.oldie #wrapper, .no-csstransforms3d #browsehappy {
     display: none;
 }
 
-.oldie #browsehappy {
+.oldie #browsehappy, .no-csstransforms3d #browsehappy {
     background: white;
     display: block;
     min-height: 100%;
