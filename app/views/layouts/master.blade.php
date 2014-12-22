@@ -36,8 +36,8 @@
         @include($theme.'footer')
 
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.1.min.js"><\/script>')</script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.3.min.js"><\/script>')</script>
         <!-- //-beg- concat_js -->
         <script src="js/vendor/jquery-ui-1.11.2.min.js"></script>
         <script src="js/foundation.min.js"></script>
