@@ -9,7 +9,7 @@
     display: none;
 }
 
-.oldie #wrapper, .no-csstransforms3d #browsehappy {
+.oldie #wrapper, .no-csstransforms3d #wrapper {
     display: none;
 }
 
