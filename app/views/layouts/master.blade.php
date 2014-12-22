@@ -8,7 +8,6 @@
         <meta name="description" content="Le site de l'Eglise Biblique Baptiste de Vernon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/app.css">
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
         <p id="browsehappy">Vous utilisez un navigateur <strong>ancien</strong>. Veuillez le <a href="http://browsehappy.com/">mettre à jour</a> pour une expérience améliorée.</p>
@@ -36,6 +35,7 @@
 
         @include($theme.'footer')
 
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.1.min.js"><\/script>')</script>
         <!-- //-beg- concat_js -->
