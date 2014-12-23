@@ -37,12 +37,10 @@
 
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.3.min.js"><\/script>')</script>
-        <!-- //-beg- concat_js -->
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
         <script src="js/vendor/jquery-ui-1.11.2.min.js"></script>
         <script src="js/foundation.min.js"></script>
         <script src="js/app.js"></script>
-        <!-- //-end- concat_js -->
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
             function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
