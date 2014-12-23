@@ -10,5 +10,6 @@ composer.lock
 Thumbs.db
 /tmp
 /public/audio
-intermediate
-publish
+/public/css/normalize.css
+/public/js/vendor/jquery.min.js
+/node_modules
