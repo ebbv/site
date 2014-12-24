@@ -32,7 +32,7 @@ gulp.task('minify', function () {
 
 gulp.task('imgs', function () {
   return gulp.src('public/img/**')
-  .pipe(plugins.imagemin({optimizationLevel:7, progressive:true, interlaced:true}))
+  .pipe(plugins.imagemin({optimizationLevel:3, progressive:true, interlaced:true}))
   .pipe(gulp.dest('public/img'));
 });
 
