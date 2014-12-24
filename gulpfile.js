@@ -30,6 +30,12 @@ gulp.task('minify', function () {
   .pipe(gulp.dest('public/css'));
 });
 
+gulp.task('imgs', function () {
+  return gulp.src('public/img/**')
+  .pipe(plugins.imagemin({optimizationLevel:7, progressive:true, interlaced:true}))
+  .pipe(gulp.dest('public/img'));
+});
+
 gulp.task('prep', function (done) {
   del([
     'public/**',
@@ -51,6 +57,7 @@ gulp.task('build', function (done) {
     'normalize.css',
     'jquery',
     'minify',
+    'imgs',
     'clean',
   done)
 });
