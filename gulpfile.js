@@ -38,8 +38,8 @@ gulp.task('imgs', function () {
 
 gulp.task('prep', function (done) {
   del([
-    'public/**',
-    '!audio'
+    'public/*',
+    '!public/audio'
   ], done);
 });
 
