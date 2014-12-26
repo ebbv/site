@@ -10,7 +10,7 @@ var runSequence = require('run-sequence');
 
 
 gulp.task('copy', function () {
-  return gulp.src('src/**', {dot:true})
+  return gulp.src(['src/**', '!src/app/views/layouts/master.blade.php'], {dot:true})
   .pipe(gulp.dest('./'));
 });
 
@@ -22,6 +22,12 @@ gulp.task('normalize.css', function () {
 gulp.task('jquery', function () {
   return gulp.src('node_modules/jquery/dist/jquery.min.js')
   .pipe(gulp.dest('public/js/vendor'));
+});
+
+gulp.task('template', function () {
+  return gulp.src('src/app/views/layouts/master.blade.php')
+  .pipe(plugins.replace(/{{JQUERY_VERSION}}/g, pkg.devDependencies.jquery))
+  .pipe(gulp.dest('app/views/layouts'));
 });
 
 gulp.task('minify', function () {
@@ -58,6 +64,7 @@ gulp.task('build', function (done) {
     'copy',
     'normalize.css',
     'jquery',
+    'template',
     'minify',
     'imgs',
     'clean',
