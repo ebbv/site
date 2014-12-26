@@ -44,7 +44,8 @@ gulp.task('imgs', function () {
 
 gulp.task('prep', function (done) {
   del([
-    'app',
+    'app/*',
+    '!app/storage',
     'bootstrap',
     'public/*',
     '!public/audio'
