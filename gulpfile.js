@@ -11,7 +11,7 @@ var runSequence = require('run-sequence');
 
 gulp.task('copy', function () {
   return gulp.src('src/**', {dot:true})
-  .pipe(gulp.dest('public'));
+  .pipe(gulp.dest('./'));
 });
 
 gulp.task('normalize.css', function () {
@@ -38,6 +38,8 @@ gulp.task('imgs', function () {
 
 gulp.task('prep', function (done) {
   del([
+    'app',
+    'bootstrap',
     'public/*',
     '!public/audio'
   ], done);
