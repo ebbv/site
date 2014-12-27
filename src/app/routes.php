@@ -11,8 +11,7 @@
 |
 */
 
-Route::get('connexion.html', array('before'=>'guest', function()
-{
+Route::get('connexion.html', array('before'=>'guest', function() {
     if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] !== Request::root().'/connexion.html')
     {
         $goto = $_SERVER['HTTP_REFERER'];
@@ -24,8 +23,7 @@ Route::get('connexion.html', array('before'=>'guest', function()
     return View::make('login')->withGoto($goto);
 }));
 
-Route::post('connexion.html', function()
-{
+Route::post('connexion.html', function() {
     $rules = array('username'=>'required', 'password'=>'required');
     $v = Validator::make(Input::all(), $rules);
     if ($v->passes())
@@ -44,17 +42,14 @@ Route::post('connexion.html', function()
     return Redirect::to('connexion.html')->withInput(Input::except('password'))->withErrors($v);
 });
 
-Route::get('déconnexion.html', function()
-{
+Route::get('déconnexion.html', function() {
     Auth::logout();
     return Redirect::to('/');
 });
 
 
-Route::group(array('before'=>'auth'), function()
-{
-    Route::get('messages/ajouter.html', array('as' => 'message.create', function()
-    {
+Route::group(array('before'=>'auth'), function() {
+    Route::get('messages/ajouter.html', array('as' => 'message.create', function() {
         $files = array();
         foreach((File::glob('../tmp/*.mp3')) ? : array() as $file)
         {
@@ -63,8 +58,7 @@ Route::group(array('before'=>'auth'), function()
         return View::make('messages.create')->withSpeakers(Member::has('speaker')->orderBy('last_name', 'asc')->get())->withFiles($files);
     }));
 
-    Route::post('messages.html', array('as' => 'message.store', function()
-    {
+    Route::post('messages.html', array('as' => 'message.store', function() {
         $filename = Str::random(15);
         $data = array(
             'member_id' => Input::get('speaker'),
@@ -93,7 +87,6 @@ Route::get('/', function() {
 });
 
 
-View::creator(Config::get('app.theme'), function($view)
-{
+View::creator(Config::get('app.theme'), function($view) {
     $view->with('theme', str_replace('master', '', Config::get('app.theme')));
 });
