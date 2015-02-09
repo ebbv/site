@@ -35,7 +35,6 @@
                                     <audio preload="metadata" buffered>
                                         <source src="audio/{{ $message->url }}.ogg" type="audio/ogg">
                                         <source src="audio/{{ $message->url }}.mp3" type="audio/mpeg">
-                                        <source src="audio/{{ $message->url }}.wav" type="audio/x-wav">
                                     </audio>
                                 </div>
                             </div>

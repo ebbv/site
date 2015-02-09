@@ -71,7 +71,7 @@ Route::group(array('before'=>'auth'), function() {
         );
         if(Message::create($data))
         {
-            foreach(array('mp3', 'ogg', 'wav') as $ext)
+            foreach(array('mp3', 'ogg') as $ext)
             {
                 File::move('../tmp/'.Input::get('message-file').'.'.$ext, public_path().'/audio/'.$filename.'.'.$ext);
             }
