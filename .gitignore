@@ -4,8 +4,7 @@
 /public
 /tmp
 /vendor
-.env.local.php
-.env.staging.php
+.env.c9.php
 .env.php
 .DS_Store
 .c9

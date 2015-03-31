@@ -28,16 +28,13 @@ $env = $app->detectEnvironment(function()
 {
 
 	switch (substr(__DIR__, -14, 4)) {
-		case 'test':
-			$env = 'staging';
-			break;
 
 		case 'html':
 			$env = 'production';
 			break;
 
 		default:
-			$env = 'local';
+			$env = 'c9';
 			break;
 	}
 	return $env;
