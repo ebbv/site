@@ -1,7 +1,7 @@
 @extends(Config::get('app.theme'))
 
 @section('content')
-                <div>
+                <div id="content" class="small-12 medium-4 medium-centered columns">
                     <span>{{ Session::get('login_error') }}</span>
                     {{ Form::open(array('url' => 'connexion.html'))."\n" }}
                         <strong>{{ $errors->first('username') }}</strong>
@@ -13,5 +13,4 @@
                         <input name="goto" type="hidden" value="{{ Input::old('goto', $goto) }}">
                         <input type="submit" value="Se connecter">
                     {{ Form::close()."\n" }}
-                </div>
 @stop

@@ -1,6 +1,17 @@
 @extends(Config::get('app.theme'))
 
+@section('aside')
+                <aside id="sidebar" class="medium-4 columns">
+                    <div class="row">
+                        <p class="small-12 columns">
+                            Bienvenue sur le site de notre église. Nous sommes heureux de votre visite et de l'intéret que vous manifestez pour l'œuvre de Dieu. Ici nous vous proposons l'écoute des prédications qui sont apportées le dimanche matin. Notre désir est d'édifier l'Eglise de Christ, et ce par un enseignement fidèle à Dieu et sa Parole.
+                        </p>
+                    </div>
+                </aside>
+@stop
+
 @section('content')
+                <div id="content" class="medium-8 columns">
                     <div class="row">
                         <div class="small-12 columns" id="messages-table">
 @foreach($messages as $message)
