@@ -12,7 +12,7 @@
                         </ul>
                         <section class="top-bar-section">
                             <ul class="left">
-                                <li>{{ link_to('/', 'Accueil') }}</li>
+                                <li>{{ link_to('/', Lang::get('nav.home')) }}</li>
                             </ul>
                         </section>
                     </nav>
