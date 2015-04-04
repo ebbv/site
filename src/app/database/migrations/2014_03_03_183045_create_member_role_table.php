@@ -19,6 +19,7 @@ class CreateMemberRoleTable extends Migration {
             $table->integer('created_by')->unsigned();
             $table->integer('updated_by')->unsigned();
             $table->timestamps();
+            $table->primary(array('member_id', 'role_id'));
             $table->foreign('member_id')->references('id')->on('members');
             $table->foreign('role_id')->references('id')->on('roles');
             $table->foreign('created_by')->references('id')->on('members');

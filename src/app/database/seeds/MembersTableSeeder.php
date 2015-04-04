@@ -4,14 +4,31 @@ class MembersTableSeeder extends Seeder {
 
     public function run()
     {
-        $member = new Member;
-        $member->first_name = 'Robert';
-        $member->last_name  = 'Doucette';
-        $member->email      = 'pasteur@ebbv.fr';
-        $member->password   = Hash::make('password');
-        $member->created_by = 1;
-        $member->updated_by = 1;
-        $member->save();
+        $members = array(
+            array(
+                'first' => 'Robert',
+                'last'  => 'Doucette',
+                'email' => 'pasteur@ebbv.fr',
+                'pass'  => 'password'
+            ),
+            array(
+                'first' => 'Philip',
+                'last'  => 'Bell',
+                'email' => '',
+                'pass'  => ''
+            )
+        );
+        foreach($members as $key => $value)
+        {
+            $m = new Member;
+            $m->first_name = $value['first'];
+            $m->last_name  = $value['last'];
+            $m->email      = $value['email'];
+            $m->password   = Hash::make($value['pass']);
+            $m->created_by = 1;
+            $m->updated_by = 1;
+            $m->save();
+        }
     }
 
 }
