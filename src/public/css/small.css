@@ -57,6 +57,22 @@
     }
 
 
+/* Contact styles
+=================================================*/
+
+    #contact iframe {
+        margin-bottom: 30px;
+    }
+
+    #telephone {
+        margin-bottom: 20px;
+    }
+
+    #contact form #email {
+        height:100px;
+    }
+
+
 /* Messages styles
 =================================================*/
 

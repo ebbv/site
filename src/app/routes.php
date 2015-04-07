@@ -86,6 +86,21 @@ Route::get('/', function() {
     return View::make('messages.main')->withMessages($messages);
 });
 
+Route::get('contact.html', function() {
+    return View::make('contact');
+});
+
+Route::post('contact.html', function() {
+    $data = array(
+        'email' => Input::get('email'),
+        'body'  => Input::get('body')
+    );
+    Mail::send('emails.contact', $data, function($message) {
+        $message->to('pasteur@ebbv.fr')->subject('Message du site de l\'église');
+    });
+    return View::make('emails.sent');
+});
+
 
 View::creator(Config::get('app.theme'), function($view) {
     $view->with('theme', str_replace('master', '', Config::get('app.theme')));

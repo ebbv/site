@@ -1,5 +1,6 @@
 <?php
 
 return array(
-    'home'  => 'Accueil',
+    'home'      => 'Accueil',
+    'contact'   => 'Contact',
 );
