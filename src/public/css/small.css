@@ -55,6 +55,14 @@
         font-size: 0.9rem;
         margin: 0;
     }
+    
+    #contact div {
+        height: 50px;
+    }
+    
+    #contact input {
+        margin-bottom: 0;
+    }
 
 
 /* Messages styles

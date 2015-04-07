@@ -17,7 +17,6 @@
             @include($theme.'header')
 
             <div id="main" class="row">
-
 @yield('aside')
 
 @yield('content')
