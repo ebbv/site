@@ -2,7 +2,7 @@
 
 @section('content')
                 <div id="content" class="small-12 medium-4 medium-centered columns">
-                    {{ Form::open(array('url' => 'connexion.html', 'id' => 'contact')) }}
+                    {{ Form::open(array('url' => 'connexion.html', 'id' => 'login')) }}
                         <div>
                             <small <?php if(Session::get('login_error')) echo 'class="error"'; ?>>{{ Session::get('login_error') }}</small>
                         </div>
