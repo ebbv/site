@@ -76,6 +76,9 @@ $(document).foundation({
     topbar : {
         custom_back_text: false,
         is_hover: true
+    },
+    abide : {
+        live_validate: false
     }
 });
 

@@ -13,16 +13,16 @@
                             {{ Form::open(array('url' => 'contact.html', 'data-abide')) }}
                                 <div id="email">
                                     <label>E-mail
-                                        <input id="" name="email" type="email" placeholder="exemple@exemple.com" required />
+                                        <input autocapitalize="none" id="" name="email" type="email" placeholder="exemple@exemple.com" required />
                                     </label>
-                                    <small class="error">Veuillez entrer une adresse email valide</small>
+                                    <small class="error">{{ Lang::get('validation.email') }}</small>
                                 </div>
                                 <div>
                                     <label>Question ou commentaire
                                         <textarea name="body" rows="5"></textarea>
                                     </label>
                                 </div>
-                                <input class="button small right" type="submit" value="Envoyer" />
+                                <input class="button small right" type="submit" value="{{ Lang::get('forms.send_button') }}" />
                             {{ Form::close() }}
                         </div>
                     </div>

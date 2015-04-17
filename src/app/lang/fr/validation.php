@@ -13,7 +13,8 @@ return array(
 	|
 	*/
 
-	"required"         => "Le champ :attribute ne doit pas être vide.",
+	"email"            => "Le format de l'adresse mail n'est pas valide.",
+	"required"         => "Obligatoire",
 
 	/*
 	|--------------------------------------------------------------------------

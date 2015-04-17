@@ -9,18 +9,18 @@
 @endif
                     {{ Form::open(array('url' => 'connexion.html', 'id' => 'login', 'data-abide')) }}
                         <div>
-                            <label>Nom d'utilisateur
-                                <input autofocus id="username" name="username" type="text" value="{{ Input::old('username') }}" required />
+                            <label>{{ Lang::get('forms.username') }}
+                                <input autofocus autocapitalize="none" id="username" name="username" type="email" value="{{ Input::old('username') }}" required />
                             </label>
-                            <small class="error">Obligatoire</small>
+                            <small class="error">{{ Lang::get('validation.email') }}</small>
                         </div>
                         <div>
-                            <label>Mot de passe
+                            <label>{{ Lang::get('forms.password') }}
                                 <input id="password" name="password" type="password" required />
                             </label>
-                            <small class="error">Obligatoire</small>
+                            <small class="error">{{ Lang::get('validation.required') }}</small>
                         </div>
                         <input name="goto" type="hidden" value="{{ Input::old('goto', $goto) }}" />
-                        <input type="submit" value="Se connecter" />
+                        <input class="button right" type="submit" value="{{ Lang::get('forms.login_button') }}" />
                     {{ Form::close() }}
 @stop

@@ -91,14 +91,18 @@ Route::get('contact.html', function() {
 });
 
 Route::post('contact.html', function() {
-    $data = array(
-        'email' => Input::get('email'),
-        'body'  => Input::get('body')
+    $rules = array(
+        'email' => 'required|email'
     );
-    Mail::send('emails.contact', $data, function($message) {
-        $message->to('pasteur@ebbv.fr')->subject('Message du site de l\'église');
-    });
-    return View::make('emails.sent');
+    $v = Validator::make(Input::all(), $rules);
+    if($v->passes())
+    {
+        Mail::send('emails.contact', Input::all(), function($message) {
+            $message->to('pasteur@ebbv.fr')->subject('Message du site de l\'église');
+        });
+        return View::make('emails.sent');
+    }
+    return Redirect::to('contact.html')->withErrors($v);
 });
 
 
