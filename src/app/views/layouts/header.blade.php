@@ -14,7 +14,7 @@
                             <ul class="left">
                                 <li>{{ link_to('/', Lang::get('nav.home')) }}</li>
                                 <li class="divider"></li>
-                                <li>{{ link_to('contact.html', Lang::get('nav.contact')) }}</li>
+                                <li>{{ link_to('contact', Lang::get('nav.contact')) }}</li>
                             </ul>
                         </section>
                     </nav>

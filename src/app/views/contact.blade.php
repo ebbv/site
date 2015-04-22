@@ -10,7 +10,7 @@
                         <div class="medium-5 columns">
                             <h3 id="telephone">Nous téléphoner <small>02.32.51.24.37</small></h3>
                             <h3>Nous écrire</h3>
-                            {{ Form::open(array('url' => 'contact.html', 'data-abide')) }}
+                            {{ Form::open(array('url' => 'contact', 'data-abide')) }}
                                 <div id="email">
                                     <label>E-mail
                                         <input autocapitalize="none" id="" name="email" type="email" placeholder="exemple@exemple.com" required />

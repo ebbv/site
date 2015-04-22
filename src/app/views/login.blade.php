@@ -7,7 +7,7 @@
                         <small class="error">{{ Session::get('login_error') }}</small>
                     </div>
 @endif
-                    {{ Form::open(array('url' => 'connexion.html', 'id' => 'login', 'data-abide')) }}
+                    {{ Form::open(array('url' => 'connexion', 'id' => 'login', 'data-abide')) }}
                         <div>
                             <label>{{ Lang::get('forms.username') }}
                                 <input autofocus autocapitalize="none" id="username" name="username" type="email" value="{{ Input::old('username') }}" required />

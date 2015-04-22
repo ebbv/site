@@ -73,6 +73,18 @@
     }
 
 
+/* Members styles
+=================================================*/
+
+    .fn .last-name {
+        text-transform: uppercase;
+    }
+
+    #content ul .vcard {
+        width: 100%;
+    }
+
+
 /* Messages styles
 =================================================*/
 

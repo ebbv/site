@@ -18,8 +18,8 @@ class CreateMembersTable extends Migration {
             $table->string('first_name');
             $table->string('last_name');
             $table->string('remember_token', 100)->nullable();
-            $table->integer('created_by');
-            $table->integer('updated_by');
+            $table->integer('created_by')->unsigned();
+            $table->integer('updated_by')->unsigned();
             $table->timestamps();
         });
     }

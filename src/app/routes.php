@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('connexion.html', array('before'=>'guest', function() {
-    if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] !== Request::root().'/connexion.html')
+Route::get('connexion', array('before'=>'guest', function() {
+    if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] !== Request::root().'/connexion')
     {
         $goto = $_SERVER['HTTP_REFERER'];
     }
@@ -23,7 +23,7 @@ Route::get('connexion.html', array('before'=>'guest', function() {
     return View::make('login')->withGoto($goto);
 }));
 
-Route::post('connexion.html', function() {
+Route::post('connexion', function() {
     $rules = array('username'=>'required', 'password'=>'required');
     $v = Validator::make(Input::all(), $rules);
     if ($v->passes())
@@ -39,17 +39,17 @@ Route::post('connexion.html', function() {
         }
         Session::flash('login_error', 'Mauvaise combinaison, veuillez réessayer.');
     }
-    return Redirect::to('connexion.html')->withInput(Input::except('password'))->withErrors($v);
+    return Redirect::to('connexion')->withInput(Input::except('password'))->withErrors($v);
 });
 
-Route::get('déconnexion.html', function() {
+Route::get('déconnexion', function() {
     Auth::logout();
     return Redirect::to('/');
 });
 
 
 Route::group(array('before'=>'auth'), function() {
-    Route::get('messages/ajouter.html', array('as' => 'message.create', function() {
+    Route::get('messages/ajouter', array('as' => 'message.create', function() {
         $files = array();
         foreach((File::glob('../tmp/*.mp3')) ? : array() as $file)
         {
@@ -58,7 +58,7 @@ Route::group(array('before'=>'auth'), function() {
         return View::make('messages.create')->withSpeakers(Member::has('speaker')->orderBy('last_name', 'asc')->get())->withFiles($files);
     }));
 
-    Route::post('messages.html', array('as' => 'message.store', function() {
+    Route::post('messages', array('as' => 'message.store', function() {
         $filename = Str::random(15);
         $data = array(
             'member_id' => Input::get('speaker'),
@@ -79,6 +79,64 @@ Route::group(array('before'=>'auth'), function() {
 
         return Redirect::route('message.create');
     }));
+
+    Route::get('annuaire', function() {
+        return View::make('members.main')->withMembers(Member::with(array('address', 'phones' => function($q) {
+            $q->orderBy('type', 'asc');
+        }))->whereHas('roles', function($q) {
+            $q->where('name', '=', 'membre');
+        })->orderBy('last_name', 'asc')->orderBy('first_name', 'asc')->get());
+    });
+
+    Route::get('members/ajouter', array('as' => 'members.create', function() {
+        return View::make('members.create');
+    }));
+
+    Route::post('members', array('as' => 'members.store', function() {
+        $m = new Member;
+        $m->first_name  = Input::get('first_name');
+        $m->last_name   = Input::get('last_name');
+        $m->password    = '';
+        $m->email       = Input::get('email');
+        $m->created_by  = Auth::user()->id;
+        $m->updated_by  = Auth::user()->id;
+        $m->save();
+        $insertedId = $m->id;
+        $m->roles()->attach(2, array(
+            'created_by' => Auth::user()->id,
+            'updated_by' => Auth::user()->id
+        ));
+        
+        $a = new Address;
+        $a->member_id        = $insertedId;
+        $a->street_number    = Input::get('street_number');
+        $a->street_type      = Input::get('street_type');
+        $a->street_name      = Input::get('street_name');
+        $a->street_complement= Input::get('street_complement');
+        $a->zip              = Input::get('zip');
+        $a->city             = Input::get('city');
+        $a->created_by       = Auth::user()->id;
+        $a->updated_by       = Auth::user()->id;
+        $a->save();
+
+        $p1 = new Phone;
+        $p1->member_id  = $insertedId;
+        $p1->number     = Input::get('fixe');
+        $p1->type       = 'Fixe';
+        $p1->created_by = Auth::user()->id;
+        $p1->updated_by = Auth::user()->id;
+        $p1->save();
+
+        $p2 = new Phone;
+        $p2->member_id  = $insertedId;
+        $p2->number     = Input::get('port');
+        $p2->type       = 'Port';
+        $p2->created_by = Auth::user()->id;
+        $p2->updated_by = Auth::user()->id;
+        $p2->save();
+
+        return Redirect::route('members.create');
+    }));
 });
 
 Route::get('/', function() {
@@ -86,11 +144,11 @@ Route::get('/', function() {
     return View::make('messages.main')->withMessages($messages);
 });
 
-Route::get('contact.html', function() {
+Route::get('contact', function() {
     return View::make('contact');
 });
 
-Route::post('contact.html', function() {
+Route::post('contact', function() {
     $rules = array(
         'email' => 'required|email'
     );
@@ -102,7 +160,7 @@ Route::post('contact.html', function() {
         });
         return View::make('emails.sent');
     }
-    return Redirect::to('contact.html')->withErrors($v);
+    return Redirect::to('contact')->withErrors($v);
 });
 
 

@@ -14,6 +14,16 @@ class Member extends Eloquent implements UserInterface {
         return $this->hasMany('Message');
     }
 
+    public function phones()
+    {
+        return $this->hasMany('Phone');
+    }
+
+    public function address()
+    {
+        return $this->hasOne('Address');
+    }
+
     public function speaker()
     {
         return $this->roles()->where('name', '=', 'orateur');

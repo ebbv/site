@@ -1,0 +1,25 @@
+@extends(Config::get('app.theme'))
+
+@section('content')
+                <div id="content" class="small-12 columns">
+                    <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+@foreach($members as $m)
+                        <li>
+                            <ul class="vcard">
+                              <li class="fn"><span class="last-name">{{ $m->last_name }}</span>, {{ $m->first_name }}</li>
+                              <li class="street-address">
+                                  {{ ($m->address->street_number != 0) ? $m->address->street_number : '' }}
+                                  {{ $m->address->street_type }}
+                                  {{ $m->address->street_name }}
+                              </li>
+                              <li class="">{{ $m->address->street_complement }}</li>
+                              <li><span class="zip">{{ $m->address->zip }}</span> <span class="locality">{{ $m->address->city }}</span></li>
+@foreach($m->phones as $p)
+                              <li class="telephone">{{ $p->type }} : {{ $p->number }}</li>
+@endforeach
+                              <li class="email">Mail : {{ $m->email }}</li>
+                            </ul>
+                        </li>
+@endforeach
+                    </ul>
+@stop
