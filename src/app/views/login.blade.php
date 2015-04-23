@@ -10,9 +10,9 @@
                     {{ Form::open(array('url' => 'connexion', 'id' => 'login', 'data-abide')) }}
                         <div>
                             <label>{{ Lang::get('forms.username') }}
-                                <input autofocus autocapitalize="none" id="username" name="username" type="email" value="{{ Input::old('username') }}" required />
+                                <input autofocus autocapitalize="none" id="username" name="username" type="text" value="{{ Input::old('username') }}" required />
                             </label>
-                            <small class="error">{{ Lang::get('validation.email') }}</small>
+                            <small class="error">{{ Lang::get('validation.required') }}</small>
                         </div>
                         <div>
                             <label>{{ Lang::get('forms.password') }}
