@@ -24,6 +24,11 @@ class Member extends Eloquent implements UserInterface {
         return $this->hasOne('Address');
     }
 
+    public function emails()
+    {
+        return $this->hasMany('Email');
+    }
+
     public function speaker()
     {
         return $this->roles()->where('name', '=', 'orateur');

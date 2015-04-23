@@ -28,7 +28,7 @@ Route::post('connexion', function() {
     $v = Validator::make(Input::all(), $rules);
     if ($v->passes())
     {
-        if (Auth::attempt(array('email'=>Input::get('username'), 'password'=>Input::get('password'))))
+        if (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'))))
         {
             $user = Member::find(Auth::user()->id);
             $user->updated_by   = Auth::user()->id;
@@ -81,7 +81,7 @@ Route::group(array('before'=>'auth'), function() {
     }));
 
     Route::get('annuaire', function() {
-        return View::make('members.main')->withMembers(Member::with(array('address', 'phones' => function($q) {
+        return View::make('members.main')->withMembers(Member::with(array('address', 'emails', 'phones' => function($q) {
             $q->orderBy('type', 'asc');
         }))->whereHas('roles', function($q) {
             $q->where('name', '=', 'membre');
@@ -96,8 +96,8 @@ Route::group(array('before'=>'auth'), function() {
         $m = new Member;
         $m->first_name  = Input::get('first_name');
         $m->last_name   = Input::get('last_name');
+        $m->username    = '';
         $m->password    = '';
-        $m->email       = Input::get('email');
         $m->created_by  = Auth::user()->id;
         $m->updated_by  = Auth::user()->id;
         $m->save();
@@ -134,6 +134,17 @@ Route::group(array('before'=>'auth'), function() {
         $p2->created_by = Auth::user()->id;
         $p2->updated_by = Auth::user()->id;
         $p2->save();
+
+        foreach(Input::get('email') as $address)
+        {
+            $e = new Email;
+            $e->member_id   = $insertedId;
+            $e->address     = $address;
+            $e->type        = '';
+            $e->created_by  = Auth::user()->id;
+            $e->updated_by  = Auth::user()->id;
+            $e->save();
+        }
 
         return Redirect::route('members.create');
     }));
