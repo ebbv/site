@@ -137,13 +137,16 @@ Route::group(array('before'=>'auth'), function() {
 
         foreach(Input::get('email') as $address)
         {
-            $e = new Email;
-            $e->member_id   = $insertedId;
-            $e->address     = $address;
-            $e->type        = '';
-            $e->created_by  = Auth::user()->id;
-            $e->updated_by  = Auth::user()->id;
-            $e->save();
+            if($address != '')
+            {
+                $e = new Email;
+                $e->member_id   = $insertedId;
+                $e->address     = $address;
+                $e->type        = '';
+                $e->created_by  = Auth::user()->id;
+                $e->updated_by  = Auth::user()->id;
+                $e->save();
+            }
         }
 
         return Redirect::route('members.create');
