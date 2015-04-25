@@ -162,33 +162,40 @@ Route::group(array('before'=>'auth'), function() {
             $m = Member::find($id);
             $m->first_name  = Input::get('first_name');
             $m->last_name   = Input::get('last_name');
-            $m->username    = '';
-            $m->password    = '';
             $m->updated_by  = Auth::user()->id;
             $m->save();
 
-            $a = Address::where('member_id', $id)->first();
-            $a->street_number     = Input::get('street_number');
-            $a->street_type       = Input::get('street_type');
-            $a->street_name       = Input::get('street_name');
-            $a->street_complement = Input::get('street_complement');
-            $a->zip               = Input::get('zip');
-            $a->city              = Input::get('city');
-            $a->updated_by        = Auth::user()->id;
-            $a->save();
+            Address::where('member_id', $id)->update(array(
+                'street_number'     => Input::get('street_number'),
+                'street_type'       => Input::get('street_type'),
+                'street_name'       => Input::get('street_name'),
+                'street_complement' => Input::get('street_complement'),
+                'zip'               => Input::get('zip'),
+                'city'              => Input::get('city'),
+                'updated_by'        => Auth::user()->id
+            ));
 
             foreach(Input::get('telephone') as $type => $number)
             {
+                $type = ucfirst($type);
                 if($number != '')
                 {
-                    $p = Phone::firstOrNew(array('member_id' => $id, 'type' => ucfirst($type)));
-                    $p->number      = $number;
-                    $p->updated_by  = Auth::user()->id;
-                    $p->save();
+                    if( ! Phone::where('member_id', $id)->where('type', $type)->update(array(
+                            'number'      => $number,
+                            'updated_by'  => Auth::user()->id
+                    )))
+                    {
+                        $m->phones()->save(new Phone(array(
+                            'number'        => $number,
+                            'type'          => $type,
+                            'created_by'    => Auth::user()->id,
+                            'updated_by'    => Auth::user()->id
+                        )));
+                    }
                 }
                 elseif($number == '')
                 {
-                    Phone::where('member_id', $id)->where('type', ucfirst($type))->delete();
+                    Phone::where('member_id', $id)->where('type', $type)->delete();
                 }
             }
 
@@ -196,10 +203,18 @@ Route::group(array('before'=>'auth'), function() {
             {
                 if($address != '')
                 {
-                    $e = Email::firstOrNew(array('member_id' => $id, 'type' => $key));
-                    $e->address     = $address;
-                    $e->updated_by  = Auth::user()->id;
-                    $e->save();
+                    if( ! Email::where('member_id', $id)->where('type', $key)->update(array(
+                        'address'   => $address,
+                        'updated_by'=> Auth::user()->id
+                    )))
+                    {
+                        $m->emails()->save(new Email(array(
+                            'address'   => $address,
+                            'type'      => $key,
+                            'created_by'=> Auth::user()->id,
+                            'updated_by'=> Auth::user()->id
+                        )));
+                    }
                 }
                 elseif($address == '')
                 {
