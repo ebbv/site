@@ -30,8 +30,8 @@ Route::post('connexion', function() {
     {
         if (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'))))
         {
-            $user = Member::find(Auth::user()->id);
-            $user->updated_by   = Auth::user()->id;
+            $user = Member::find(Auth::id());
+            $user->updated_by   = Auth::id();
             $user->last_login   = Auth::user()->current_login;
             $user->current_login= date('Y-m-d H:i:s');
             $user->save();
@@ -66,8 +66,8 @@ Route::group(array('before'=>'auth'), function() {
             'passage'   => Input::get('message-passage'),
             'url'       => $filename,
             'date'      => Input::get('message-file'),
-            'created_by'=> Auth::user()->id,
-            'updated_by'=> Auth::user()->id
+            'created_by'=> Auth::id(),
+            'updated_by'=> Auth::id()
         );
         if(Message::create($data))
         {
@@ -93,7 +93,7 @@ Route::group(array('before'=>'auth'), function() {
     }));
 
     Route::get('annuaire/modifier/{id}', array('as' => 'directory.edit', function($id) {
-        if(Auth::user()->id == $id OR Auth::user()->id == 1)
+        if(Auth::id() == $id OR Auth::id() == 1)
         {
             return View::make('directory.edit')->withM(Member::find($id));
         }
@@ -111,13 +111,13 @@ Route::group(array('before'=>'auth'), function() {
             $m->last_name   = Input::get('last_name');
             $m->username    = '';
             $m->password    = '';
-            $m->created_by  = Auth::user()->id;
-            $m->updated_by  = Auth::user()->id;
+            $m->created_by  = Auth::id();
+            $m->updated_by  = Auth::id();
             $m->save();
     
             $m->roles()->attach(2, array(
-                'created_by' => Auth::user()->id,
-                'updated_by' => Auth::user()->id
+                'created_by' => Auth::id(),
+                'updated_by' => Auth::id()
             ));
     
             $m->address()->save(new Address(array(
@@ -127,8 +127,8 @@ Route::group(array('before'=>'auth'), function() {
                 'street_complement' => Input::get('street_complement'),
                 'zip'               => Input::get('zip'),
                 'city'              => Input::get('city'),
-                'created_by'        => Auth::user()->id,
-                'updated_by'        => Auth::user()->id
+                'created_by'        => Auth::id(),
+                'updated_by'        => Auth::id()
             )));
     
             foreach(Input::get('telephone') as $type => $number)
@@ -138,8 +138,8 @@ Route::group(array('before'=>'auth'), function() {
                     $m->phones()->save(new Phone(array(
                         'number'        => $number,
                         'type'          => ucfirst($type),
-                        'created_by'    => Auth::user()->id,
-                        'updated_by'    => Auth::user()->id
+                        'created_by'    => Auth::id(),
+                        'updated_by'    => Auth::id()
                     )));
                 }
             }
@@ -151,8 +151,8 @@ Route::group(array('before'=>'auth'), function() {
                     $m->emails()->save(new Email(array(
                         'address'       => $address,
                         'type'          => $key,
-                        'created_by'    => Auth::user()->id,
-                        'updated_by'    => Auth::user()->id
+                        'created_by'    => Auth::id(),
+                        'updated_by'    => Auth::id()
                     )));
                 }
             }
@@ -162,7 +162,7 @@ Route::group(array('before'=>'auth'), function() {
             $m = Member::find($id);
             $m->first_name  = Input::get('first_name');
             $m->last_name   = Input::get('last_name');
-            $m->updated_by  = Auth::user()->id;
+            $m->updated_by  = Auth::id();
             $m->save();
 
             Address::where('member_id', $id)->update(array(
@@ -172,7 +172,7 @@ Route::group(array('before'=>'auth'), function() {
                 'street_complement' => Input::get('street_complement'),
                 'zip'               => Input::get('zip'),
                 'city'              => Input::get('city'),
-                'updated_by'        => Auth::user()->id
+                'updated_by'        => Auth::id()
             ));
 
             foreach(Input::get('telephone') as $type => $number)
@@ -182,14 +182,14 @@ Route::group(array('before'=>'auth'), function() {
                 {
                     if( ! Phone::where('member_id', $id)->where('type', $type)->update(array(
                             'number'      => $number,
-                            'updated_by'  => Auth::user()->id
+                            'updated_by'  => Auth::id()
                     )))
                     {
                         $m->phones()->save(new Phone(array(
                             'number'        => $number,
                             'type'          => $type,
-                            'created_by'    => Auth::user()->id,
-                            'updated_by'    => Auth::user()->id
+                            'created_by'    => Auth::id(),
+                            'updated_by'    => Auth::id()
                         )));
                     }
                 }
@@ -205,14 +205,14 @@ Route::group(array('before'=>'auth'), function() {
                 {
                     if( ! Email::where('member_id', $id)->where('type', $key)->update(array(
                         'address'   => $address,
-                        'updated_by'=> Auth::user()->id
+                        'updated_by'=> Auth::id()
                     )))
                     {
                         $m->emails()->save(new Email(array(
                             'address'   => $address,
                             'type'      => $key,
-                            'created_by'=> Auth::user()->id,
-                            'updated_by'=> Auth::user()->id
+                            'created_by'=> Auth::id(),
+                            'updated_by'=> Auth::id()
                         )));
                     }
                 }
