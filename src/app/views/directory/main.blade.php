@@ -6,7 +6,7 @@
 @foreach($members as $m)
                         <li>
                             <ul class="vcard">
-                                <li class="fn"><span class="last-name">{{ $m->last_name }}</span>, {{ $m->first_name }}</li>
+                                <li class="fn"><a href="annuaire/modifier/{{ $m->id }}"><span class="last-name">{{ $m->last_name }}</span>, {{ $m->first_name }}</a></li>
                                 <li class="street-address">
                                     {{ ($m->address->street_number != 0) ? $m->address->street_number.',' : '' }}
                                     {{ $m->address->street_type }}

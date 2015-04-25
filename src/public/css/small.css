@@ -85,10 +85,12 @@
     }
 
     #street_number {
+        -moz-appearance: textfield;
         width: 45%;
     }
 
     #zipcode {
+        -moz-appearance: textfield;
         width: 65%;
     }
 

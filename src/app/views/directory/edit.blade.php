@@ -22,7 +22,7 @@
                                     <div class="row">
                                         <div class="small-6 medium-5 columns">
                                             <label>Numéro de rue :
-                                                <input id="street_number" maxlength="4" name="street_number" type="text" value="{{ $m->address->street_number or '' }}" />
+                                                <input id="street_number" maxlength="4" name="street_number" type="number" value="{{ $m->address->street_number or '' }}" />
                                             </label>
                                         </div>
                                         <div class=" small-6 medium-7 columns">
@@ -45,7 +45,7 @@
                                     <div class="row">
                                         <div class="small-5 medium-4 columns">
                                             <label>Code postal :
-                                                <input id="zipcode" maxlength="5" name="zip" type="text" value="{{ $m->address->zip or '' }}" />
+                                                <input id="zipcode" maxlength="5" name="zip" type="number" value="{{ $m->address->zip or '' }}" />
                                             </label>
                                         </div>
                                         <div class="small-7 medium-8 columns">
@@ -60,8 +60,9 @@
                                 <fieldset>
                                     <legend>Contact</legend>
 @foreach(array('fixe', 'portable') as $type)
-<?php foreach($m->phones as $p) {
+<?php 
     $value = '';
+    foreach($m->phones as $p) {
     if($p->type == ucfirst(substr($type, 0, 4)))
     {
         $value = $p->number;

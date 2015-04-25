@@ -22,7 +22,7 @@
                                     <div class="row">
                                         <div class="small-6 medium-5 columns">
                                             <label>Numéro de rue :
-                                                <input id="street_number" maxlength="4" name="street_number" type="text" />
+                                                <input id="street_number" maxlength="4" name="street_number" type="number" />
                                             </label>
                                         </div>
                                         <div class=" small-6 medium-7 columns">
@@ -45,7 +45,7 @@
                                     <div class="row">
                                         <div class="small-5 medium-4 columns">
                                             <label>Code postal :
-                                                <input id="zipcode" maxlength="5" name="zip" type="text" />
+                                                <input id="zipcode" maxlength="5" name="zip" type="number" />
                                             </label>
                                         </div>
                                         <div class="small-7 medium-8 columns">
