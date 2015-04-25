@@ -84,6 +84,14 @@
         width: 100%;
     }
 
+    #street_number {
+        width: 45%;
+    }
+
+    #zipcode {
+        width: 65%;
+    }
+
 
 /* Messages styles
 =================================================*/

@@ -2,5 +2,6 @@
 
 return array(
     'home'      => 'Home',
-    'contact'   => 'Contact'
+    'contact'   => 'Contact',
+    'directory' => 'Directory'
 );

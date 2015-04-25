@@ -2,17 +2,17 @@
 
 @section('content')
                 <div id="content" class="small-12 columns">
-                    {{ Form::open(array('route' => 'members.store')) }}
+                    {{ Form::open(array('route' => 'directory.store')) }}
                         <div class="row">
                             <div class="medium-3 columns">
                                 <fieldset>
                                     <legend>Identification</legend>
                                     <label>Nom :
-                                        <input name="last_name" type="text" />
+                                        <input name="last_name" type="text" value="{{ $m->last_name or '' }}" />
                                     </label>
                                     
                                     <label>Prénom :
-                                        <input name="first_name" type="text" />
+                                        <input name="first_name" type="text" value="{{ $m->first_name or '' }}" />
                                     </label>
                                 </fieldset>
                             </div>
@@ -20,39 +20,37 @@
                                 <fieldset>
                                     <legend>Adresse</legend>
                                     <div class="row">
-                                        <div class="small-6 medium-4 columns">
+                                        <div class="small-6 medium-5 columns">
                                             <label>Numéro de rue :
-                                                <input name="street_number" type="text" />
+                                                <input id="street_number" maxlength="4" name="street_number" type="text" value="{{ $m->address->street_number or '' }}" />
                                             </label>
                                         </div>
-                                        <div class=" small-6 medium-8 columns">
+                                        <div class=" small-6 medium-7 columns">
                                             <label>Type de rue :
                                                 <select name="street_type">
                                                     <option></option>
-                                                    <option>rue</option>
-                                                    <option>allée</option>
-                                                    <option>boulevard</option>
-                                                    <option>chemin</option>
-                                                    <option>route</option>
+@foreach(array('rue', 'allée', 'boulevard', 'chemin', 'route') as $value)
+                                                    <option<?php if($value == $m->address->street_type) echo ' selected'; ?>>{{ $value }}</option>
+@endforeach
                                                 </select>
                                             </label>
                                         </div>
                                     </div>
                                     <label>Nom de la rue :
-                                        <input name="street_name" type="text" />
+                                        <input name="street_name" type="text" value="{{ $m->address->street_name or '' }}" />
                                     </label>
                                     <label>Complément :
-                                        <input name="street_complement" type="text" />
+                                        <input name="street_complement" type="text" value="{{ $m->address->street_complement or '' }}" />
                                     </label>
                                     <div class="row">
                                         <div class="small-5 medium-4 columns">
                                             <label>Code postal :
-                                                <input name="zip" type="text" />
+                                                <input id="zipcode" maxlength="5" name="zip" type="text" value="{{ $m->address->zip or '' }}" />
                                             </label>
                                         </div>
                                         <div class="small-7 medium-8 columns">
                                             <label>Ville :
-                                                <input name="city" type="text" />
+                                                <input name="city" type="text" value="{{ $m->address->city or '' }}" />
                                             </label>
                                         </div>
                                     </div>
@@ -61,21 +59,29 @@
                             <div class="medium-3 columns">
                                 <fieldset>
                                     <legend>Contact</legend>
-                                    <label>Téléphone fixe :
-                                        <input name="fixe" type="text" />
+@foreach(array('fixe', 'portable') as $type)
+<?php foreach($m->phones as $p) {
+    $value = '';
+    if($p->type == ucfirst(substr($type, 0, 4)))
+    {
+        $value = $p->number;
+        break;
+    }
+}
+?>
+                                    <label>Téléphone {{ $type }} :
+                                        <input name="telephone[{{ substr($type, 0, 4) }}]" type="tel" value="{{ $value }}" />
                                     </label>
-                                    <label>Téléphone portable :
-                                        <input name="port" type="text" />
+@endforeach
+@foreach(array('principal', 'secondaire') as $key => $type)
+                                    <label>Mail ({{ $type }}) :
+                                        <input name="emails[]" type="email" value="<?php if(isset($m->emails[$key])) echo $m->emails[$key]->address; ?>" />
                                     </label>
-                                    <label>Mail (principal) :
-                                        <input name="email[]" type="email" />
-                                    </label>
-                                    <label>Mail (secondaire) :
-                                        <input name="email[]" type="email" />
-                                    </label>
+@endforeach
                                 </fieldset>
                             </div>
                         </div>
-                        <input class="button right" type="submit" value="Ajouter" />
+                        <input name="id" type="hidden" value="{{ $m->id }}" />
+                        <input class="button right" name="submit" type="submit" value="Modifier" />
                     {{ Form::close() }}
 @stop
