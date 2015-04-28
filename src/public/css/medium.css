@@ -19,6 +19,14 @@
 /* Messages styles
 =================================================*/
 
+    ul .vcard {
+        font-size: 1em;
+    }
+
+
+/* Messages styles
+=================================================*/
+
     #messages-table div:first-child {
         margin-top: 0;
     }
