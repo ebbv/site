@@ -38,6 +38,32 @@ class MembersandRolesTableSeeder extends Seeder {
         $m->created_by = 1;
         $m->updated_by = 1;
         $m->save();
+        $m->roles()->attach(3, array(
+            'created_by' => 1,
+            'updated_by' => 1
+        ));
+
+        $m = new Member;
+        $m->first_name = '';
+        $m->last_name  = '';
+        $m->username   = 'membre';
+        $m->password   = Hash::make('Vernon');
+        $m->created_by = 1;
+        $m->updated_by = 1;
+        $m->save();
+
+        $m = new Member;
+        $m->first_name = '';
+        $m->last_name  = '';
+        $m->username   = 'test_user';
+        $m->password   = '';
+        $m->created_by = 1;
+        $m->updated_by = 1;
+        $m->save();
+        $m->roles()->attach(1, array(
+            'created_by' => 1,
+            'updated_by' => 1
+        ));
     }
 
 }

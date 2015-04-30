@@ -84,7 +84,7 @@ Route::group(array('before'=>'auth'), function() {
         return View::make('directory.main')->withMembers(Member::with(array('address', 'emails', 'phones' => function($q) {
             $q->orderBy('type', 'asc');
         }))->whereHas('roles', function($q) {
-            $q->where('name', '=', 'membre');
+            $q->where('name', 'membre');
         })->orderBy('last_name', 'asc')->orderBy('first_name', 'asc')->get());
     });
 
@@ -93,13 +93,13 @@ Route::group(array('before'=>'auth'), function() {
     }));
 
     Route::get('annuaire/modifier/{id}', array('as' => 'directory.edit', function($id) {
-        if(Auth::id() == $id OR Auth::id() == 1)
+        if(Auth::id() == $id OR Member::has('admin')->find(Auth::id()))
         {
             return View::make('directory.edit')->withM(Member::find($id));
         }
         else
         {
-            return "Vous n'êtes pas autorisé à voir cette page.";
+            return "Vous n'avez pas l'autorisation nécessaire pour voir cette page.";
         }
     }))->where('id', '[0-9]+');
 

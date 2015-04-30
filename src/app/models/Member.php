@@ -31,7 +31,12 @@ class Member extends Eloquent implements UserInterface {
 
     public function speaker()
     {
-        return $this->roles()->where('name', '=', 'orateur');
+        return $this->roles()->where('name', 'orateur');
+    }
+
+    public function admin()
+    {
+        return $this->roles()->where('name', 'administrator');
     }
 
     /**
