@@ -36,7 +36,7 @@ class Member extends Eloquent implements UserInterface {
 
     public function admin()
     {
-        return $this->roles()->where('name', 'administrator');
+        return $this->roles()->where('name', 'administrateur');
     }
 
     /**

@@ -13,7 +13,7 @@ class MembersandRolesTableSeeder extends Seeder {
         $m->updated_by = 1;
         $m->save();
 
-        foreach(array('administrator', 'membre', 'orateur') as $key => $value)
+        foreach(array('administrateur', 'membre', 'orateur') as $key => $value)
         {
             $r = new Role;
             $r->name      = $value;
