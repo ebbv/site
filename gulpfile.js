@@ -15,7 +15,7 @@ gulp.task('copy', function () {
 });
 
 gulp.task('css', function () {
-  return gulp.src(['node_modules/normalize.css/normalize.css', 'node_modules/foundation-sites/css/foundation.min.js'])
+  return gulp.src(['node_modules/normalize.css/normalize.css', 'node_modules/foundation-sites/css/foundation.min.css'])
   .pipe(gulp.dest('public/css'));
 });
 
