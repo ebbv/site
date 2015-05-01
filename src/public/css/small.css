@@ -76,13 +76,20 @@
 /* Members styles
 =================================================*/
 
-    .fn .last-name {
-        text-transform: uppercase;
+    ul .vcard {
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 320px;
+        width: 100%;
     }
 
-    ul .vcard {
-        font-size: 0.8em;
-        width: 100%;
+    ul .vcard .fn {
+        text-align: center;
+    }
+
+    ul .vcard .fn .last-name {
+        text-transform: uppercase;
     }
 
     #street_number {
