@@ -18,7 +18,7 @@ gulp.task('css', function () {
   return gulp.src([
     'bower_components/jquery-ui/themes/ui-lightness/jquery-ui.min.css',
     'bower_components/jquery-ui/themes/ui-lightness/**',
-    'node_modules/normalize.css/normalize.css',
+    'bower_components/normalize.css/normalize.css',
     'node_modules/foundation-sites/css/foundation.min.css'
   ])
   .pipe(gulp.dest('public/css'));
