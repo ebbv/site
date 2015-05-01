@@ -16,20 +16,20 @@ gulp.task('copy', function () {
 
 gulp.task('css', function () {
   return gulp.src([
+    'bower_components/foundation/css/foundation.min.css',
     'bower_components/jquery-ui/themes/ui-lightness/jquery-ui.min.css',
     'bower_components/jquery-ui/themes/ui-lightness/**',
-    'bower_components/normalize.css/normalize.css',
-    'node_modules/foundation-sites/css/foundation.min.css'
+    'bower_components/normalize.css/normalize.css'
   ])
   .pipe(gulp.dest('public/css'));
 });
 
 gulp.task('js', function () {
   return gulp.src([
-    'bower_components/modernizr/modernizr.js',
+    'bower_components/foundation/js/foundation.js',
     'bower_components/jquery-ui/jquery-ui.js',
-    'node_modules/jquery/dist/jquery.js',
-    'node_modules/foundation-sites/js/foundation.js'
+    'bower_components/modernizr/modernizr.js',
+    'node_modules/jquery/dist/jquery.js'
   ])
   .pipe(plugins.rename(function (path) {
     path.basename += ".min";
