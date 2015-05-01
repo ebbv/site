@@ -15,12 +15,26 @@ gulp.task('copy', function () {
 });
 
 gulp.task('css', function () {
-  return gulp.src(['node_modules/normalize.css/normalize.css', 'node_modules/foundation-sites/css/foundation.min.css'])
+  return gulp.src([
+    'bower_components/jquery-ui/themes/ui-lightness/jquery-ui.min.css',
+    'bower_components/jquery-ui/themes/ui-lightness/**',
+    'node_modules/normalize.css/normalize.css',
+    'node_modules/foundation-sites/css/foundation.min.css'
+  ])
   .pipe(gulp.dest('public/css'));
 });
 
 gulp.task('js', function () {
-  return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/foundation-sites/js/foundation.min.js'])
+  return gulp.src([
+    'bower_components/modernizr/modernizr.js',
+    'bower_components/jquery-ui/jquery-ui.js',
+    'node_modules/jquery/dist/jquery.js',
+    'node_modules/foundation-sites/js/foundation.js'
+  ])
+  .pipe(plugins.rename(function (path) {
+    path.basename += ".min";
+  }))
+  .pipe(plugins.uglify())
   .pipe(gulp.dest('public/js/vendor'));
 });
 

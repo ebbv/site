@@ -1,0 +1,13 @@
+{
+  "name": "EBBV",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ebbv/site",
+  "authors": [
+    "Robert Doucette <rice8204@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery-ui": "~1.11.4",
+    "modernizr": "~2.8.3"
+  }
+}
