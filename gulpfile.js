@@ -2,7 +2,7 @@ var del = require('del');
 
 var gulp = require('gulp');
 
-var pkg = require('./package.json');
+var pkg = require('./bower.json');
 
 var plugins = require('gulp-load-plugins')();
 
@@ -27,9 +27,9 @@ gulp.task('css', function () {
 gulp.task('js', function () {
   return gulp.src([
     'bower_components/foundation/js/foundation.js',
+    'bower_components/jquery/dist/jquery.js',
     'bower_components/jquery-ui/jquery-ui.js',
     'bower_components/modernizr/modernizr.js',
-    'node_modules/jquery/dist/jquery.js'
   ])
   .pipe(plugins.rename(function (path) {
     path.basename += ".min";
@@ -46,7 +46,7 @@ gulp.task('ga', function() {
 
 gulp.task('template', function () {
   return gulp.src('src/app/views/layouts/master.blade.php')
-  .pipe(plugins.replace(/{{JQUERY_VERSION}}/g, pkg.devDependencies.jquery))
+  .pipe(plugins.replace(/{{JQUERY_VERSION}}/g, pkg.dependencies.jquery))
   .pipe(gulp.dest('app/views/layouts'));
 });
 
