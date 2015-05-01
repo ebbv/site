@@ -1,5 +1,6 @@
 /app
 /bootstrap
+/bower_components
 /node_modules
 /public
 /tmp
