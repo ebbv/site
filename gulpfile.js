@@ -38,6 +38,12 @@ gulp.task('js', function () {
   .pipe(gulp.dest('public/js/vendor'));
 });
 
+gulp.task('ga', function() {
+  return gulp.src('bower_components/analytics/index.js')
+  .pipe(plugins.rename('analytics.js'))
+  .pipe(gulp.dest('public/js/vendor'));
+})
+
 gulp.task('template', function () {
   return gulp.src('src/app/views/layouts/master.blade.php')
   .pipe(plugins.replace(/{{JQUERY_VERSION}}/g, pkg.devDependencies.jquery))
@@ -79,6 +85,7 @@ gulp.task('build', function (done) {
     'copy',
     'css',
     'js',
+    'ga',
     'template',
     'minify',
     'imgs',
