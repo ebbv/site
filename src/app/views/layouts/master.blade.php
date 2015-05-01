@@ -30,7 +30,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/{{JQUERY_VERSION}}/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
         <script src="js/vendor/jquery-ui-1.11.4.min.js"></script>
-        <script src="js/foundation.min.js"></script>
+        <script src="js/vendor/foundation.min.js"></script>
         <script src="js/app.js"></script>
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
