@@ -19,10 +19,10 @@ class ZurbPresenter extends \Illuminate\Pagination\Presenter {
 
 	public function render()
 	{
-		// The hard-coded five represents the minimum number of pages we need to
+		// The hard-coded six represents the minimum number of pages we need to
 		// be able to create a sliding page window. If we have less than that, we
 		// will just render a simple range of page links insteadof the sliding.
-		if ($this->lastPage < 5)
+		if ($this->lastPage < 6)
 		{
 			$content = $this->getPageRange(1, $this->lastPage);
 		}
