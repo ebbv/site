@@ -89,7 +89,13 @@ Route::group(array('before'=>'auth'), function() {
     });
 
     Route::get('annuaire/ajouter', array('as' => 'directory.create', function() {
-        return View::make('directory.create');
+        if(Member::has('admin')->find(Auth::id()))
+        {
+            return View::make('directory.create');
+        }
+        else {
+            return "Vous n'avez pas l'autorisation nécessaire pour voir cette page.";
+        }
     }));
 
     Route::get('annuaire/modifier/{id}', array('as' => 'directory.edit', function($id) {
@@ -97,133 +103,138 @@ Route::group(array('before'=>'auth'), function() {
         {
             return View::make('directory.edit')->withM(Member::find($id));
         }
-        else
-        {
+        else {
             return "Vous n'avez pas l'autorisation nécessaire pour voir cette page.";
         }
     }))->where('id', '[0-9]+');
 
     Route::post('annuaire', array('as' => 'directory.store', function() {
-        if(Input::get('submit') == 'Ajouter')
+        if(Member::has('admin')->find(Auth::id()))
         {
-            $m = new Member;
-            $m->first_name  = Input::get('first_name');
-            $m->last_name   = Input::get('last_name');
-            $m->username    = '';
-            $m->password    = '';
-            $m->created_by  = Auth::id();
-            $m->updated_by  = Auth::id();
-            $m->save();
-    
-            $m->roles()->attach(2, array(
-                'created_by' => Auth::id(),
-                'updated_by' => Auth::id()
-            ));
-    
-            $m->address()->save(new Address(array(
-                'street_number'     => Input::get('street_number'),
-                'street_type'       => Input::get('street_type'),
-                'street_name'       => Input::get('street_name'),
-                'street_complement' => Input::get('street_complement'),
-                'zip'               => Input::get('zip'),
-                'city'              => Input::get('city'),
-                'created_by'        => Auth::id(),
-                'updated_by'        => Auth::id()
-            )));
-    
-            foreach(Input::get('telephone') as $type => $number)
+            if(Input::get('submit') == 'Ajouter')
             {
-                if($number != '')
+                $m = new Member;
+                $m->first_name  = Input::get('first_name');
+                $m->last_name   = Input::get('last_name');
+                $m->username    = '';
+                $m->password    = '';
+                $m->created_by  = Auth::id();
+                $m->updated_by  = Auth::id();
+                $m->save();
+        
+                $m->roles()->attach(2, array(
+                    'created_by' => Auth::id(),
+                    'updated_by' => Auth::id()
+                ));
+        
+                $m->address()->save(new Address(array(
+                    'street_number'     => Input::get('street_number'),
+                    'street_type'       => Input::get('street_type'),
+                    'street_name'       => Input::get('street_name'),
+                    'street_complement' => Input::get('street_complement'),
+                    'zip'               => Input::get('zip'),
+                    'city'              => Input::get('city'),
+                    'created_by'        => Auth::id(),
+                    'updated_by'        => Auth::id()
+                )));
+        
+                foreach(Input::get('telephone') as $type => $number)
                 {
-                    $m->phones()->save(new Phone(array(
-                        'number'        => $number,
-                        'type'          => ucfirst($type),
-                        'created_by'    => Auth::id(),
-                        'updated_by'    => Auth::id()
-                    )));
-                }
-            }
-    
-            foreach(Input::get('emails') as $key => $address)
-            {
-                if($address != '')
-                {
-                    $m->emails()->save(new Email(array(
-                        'address'       => $address,
-                        'type'          => $key,
-                        'created_by'    => Auth::id(),
-                        'updated_by'    => Auth::id()
-                    )));
-                }
-            }
-        }
-        else {
-            $id = Input::get('id');
-            $m = Member::find($id);
-            $m->first_name  = Input::get('first_name');
-            $m->last_name   = Input::get('last_name');
-            $m->updated_by  = Auth::id();
-            $m->save();
-
-            Address::where('member_id', $id)->update(array(
-                'street_number'     => Input::get('street_number'),
-                'street_type'       => Input::get('street_type'),
-                'street_name'       => Input::get('street_name'),
-                'street_complement' => Input::get('street_complement'),
-                'zip'               => Input::get('zip'),
-                'city'              => Input::get('city'),
-                'updated_by'        => Auth::id()
-            ));
-
-            foreach(Input::get('telephone') as $type => $number)
-            {
-                $type = ucfirst($type);
-                if($number != '')
-                {
-                    if( ! Phone::where('member_id', $id)->where('type', $type)->update(array(
-                            'number'      => $number,
-                            'updated_by'  => Auth::id()
-                    )))
+                    if($number != '')
                     {
                         $m->phones()->save(new Phone(array(
                             'number'        => $number,
-                            'type'          => $type,
+                            'type'          => ucfirst($type),
                             'created_by'    => Auth::id(),
                             'updated_by'    => Auth::id()
                         )));
                     }
                 }
-                elseif($number == '')
+        
+                foreach(Input::get('emails') as $key => $address)
                 {
-                    Phone::where('member_id', $id)->where('type', $type)->delete();
-                }
-            }
-
-            foreach(Input::get('emails') as $key => $address)
-            {
-                if($address != '')
-                {
-                    if( ! Email::where('member_id', $id)->where('type', $key)->update(array(
-                        'address'   => $address,
-                        'updated_by'=> Auth::id()
-                    )))
+                    if($address != '')
                     {
                         $m->emails()->save(new Email(array(
-                            'address'   => $address,
-                            'type'      => $key,
-                            'created_by'=> Auth::id(),
-                            'updated_by'=> Auth::id()
+                            'address'       => $address,
+                            'type'          => $key,
+                            'created_by'    => Auth::id(),
+                            'updated_by'    => Auth::id()
                         )));
                     }
                 }
-                elseif($address == '')
+            }
+            else {
+                $id = Input::get('id');
+                $m = Member::find($id);
+                $m->first_name  = Input::get('first_name');
+                $m->last_name   = Input::get('last_name');
+                $m->updated_by  = Auth::id();
+                $m->save();
+    
+                Address::where('member_id', $id)->update(array(
+                    'street_number'     => Input::get('street_number'),
+                    'street_type'       => Input::get('street_type'),
+                    'street_name'       => Input::get('street_name'),
+                    'street_complement' => Input::get('street_complement'),
+                    'zip'               => Input::get('zip'),
+                    'city'              => Input::get('city'),
+                    'updated_by'        => Auth::id()
+                ));
+    
+                foreach(Input::get('telephone') as $type => $number)
                 {
-                    Email::where('member_id', $id)->where('type', $key)->delete();
+                    $type = ucfirst($type);
+                    if($number != '')
+                    {
+                        if( ! Phone::where('member_id', $id)->where('type', $type)->update(array(
+                                'number'      => $number,
+                                'updated_by'  => Auth::id()
+                        )))
+                        {
+                            $m->phones()->save(new Phone(array(
+                                'number'        => $number,
+                                'type'          => $type,
+                                'created_by'    => Auth::id(),
+                                'updated_by'    => Auth::id()
+                            )));
+                        }
+                    }
+                    elseif($number == '')
+                    {
+                        Phone::where('member_id', $id)->where('type', $type)->delete();
+                    }
+                }
+    
+                foreach(Input::get('emails') as $key => $address)
+                {
+                    if($address != '')
+                    {
+                        if( ! Email::where('member_id', $id)->where('type', $key)->update(array(
+                            'address'   => $address,
+                            'updated_by'=> Auth::id()
+                        )))
+                        {
+                            $m->emails()->save(new Email(array(
+                                'address'   => $address,
+                                'type'      => $key,
+                                'created_by'=> Auth::id(),
+                                'updated_by'=> Auth::id()
+                            )));
+                        }
+                    }
+                    elseif($address == '')
+                    {
+                        Email::where('member_id', $id)->where('type', $key)->delete();
+                    }
                 }
             }
+    
+            return Redirect::route('directory.create');
         }
-
-        return Redirect::route('directory.create');
+        else {
+            return "Vous n'avez pas l'autorisation nécessaire pour voir cette page.";
+        }
     }));
 });
 
