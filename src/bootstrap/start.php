@@ -35,8 +35,12 @@ $env = $app->detectEnvironment(function()
 			$env = 'production';
 			break;
 
-		default:
+		case 'pace':
 			$env = 'c9';
+			break;
+
+		case 'site':
+			$env = 'local';
 			break;
 	}
 	return $env;

@@ -5,8 +5,9 @@
 /public
 /tmp
 /vendor
-.env.c9.php
 .env.php
+.env.c9.php
+.env.local.php
 .DS_Store
 .c9
 composer.lock
