@@ -78,3 +78,12 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+Route::filter('admin', function()
+{
+	if(! Member::has('admin')->find(Auth::id()))
+	{
+		return "Vous n'avez pas l'autorisation nécessaire pour voir cette page.";
+	}
+});
