@@ -1,34 +1,34 @@
 @extends(Config::get('app.theme'))
 
 @section('content')
-                <div id="content" class="small-12 columns">
-                    <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+        <div id="content" class="small-12 columns">
+          <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
 @foreach($members as $m)
-                        <li>
-                            <ul class="vcard">
-                                <li class="fn"><h4><a href="annuaire/modifier/{{ $m->id }}"><span class="last-name">{{ $m->last_name }}</span>, {{ $m->first_name }}</a></h4></li>
-                                <li class="street-address">
-                                    {{ ($m->address->street_number != 0) ? $m->address->street_number.',' : '' }}
-                                    {{ $m->address->street_type }}
-                                    {{ $m->address->street_name }}
-                                </li>
-                                <li class="">{{ $m->address->street_complement }}</li>
-                                <li><span class="zip">{{ $m->address->zip }}</span> <span class="locality">{{ $m->address->city }}</span></li>
+            <li>
+              <ul class="vcard">
+                <li class="fn"><h4><a href="annuaire/modifier/{{ $m->id }}"><span class="last-name">{{ $m->last_name }}</span>, {{ $m->first_name }}</a></h4></li>
+                <li class="street-address">
+                  {{ ($m->address->street_number != 0) ? $m->address->street_number.',' : '' }}
+                  {{ $m->address->street_type }}
+                  {{ $m->address->street_name }}
+                </li>
+                <li class="">{{ $m->address->street_complement }}</li>
+                <li><span class="zip">{{ $m->address->zip }}</span> <span class="locality">{{ $m->address->city }}</span></li>
 @foreach($m->phones as $p)
-                                <li class="telephone">{{ $p->type }} : {{ $p->number }}</li>
+                <li class="telephone">{{ $p->type }} : {{ $p->number }}</li>
 @endforeach
 @foreach($m->emails as $key => $e)
-                                <li class="email">
+                <li class="email">
 @if($key == 0)
-                                    Mail :
+                  Mail :
 @else
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 @endif
-                                    {{ $e->address }}
-                                </li>
+                  {{ $e->address }}
+                </li>
 @endforeach
-                            </ul>
-                        </li>
+              </ul>
+            </li>
 @endforeach
-                    </ul>
+          </ul>
 @stop
