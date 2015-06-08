@@ -16,12 +16,10 @@
     </p>
 
     <div id="wrapper">
-
       @include($theme.'header')
 
       <div id="main" class="row">
 @yield('aside')
-
 @yield('content')
         </div> <!-- end of the content div -->
       </div> <!-- end of the main div -->

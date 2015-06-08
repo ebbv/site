@@ -100,7 +100,7 @@ Route::group(array('before' => 'auth'), function() {
       return View::make('directory.edit')->withM(Member::find($id));
     }
     else {
-      return "Vous n'avez pas l'autorisation nécessaire pour voir cette page.";
+      return View::make('errors.no_admin');
     }
   }))->where('id', '[0-9]+');
 

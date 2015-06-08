@@ -8,6 +8,7 @@
             </p>
           </div>
         </aside>
+
 @stop
 
 @section('content')
