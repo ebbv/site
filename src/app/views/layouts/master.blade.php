@@ -10,7 +10,10 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
-    <p id="browsehappy">Vous utilisez un navigateur <strong>ancien</strong>. Veuillez le <a href="http://browsehappy.com/">mettre à jour</a> pour une expérience améliorée.</p>
+    <p id="browsehappy">
+      Vous utilisez un navigateur <strong>ancien</strong>.
+      Veuillez le <a href="http://browsehappy.com/">mettre à jour</a> pour une expérience améliorée.
+    </p>
 
     <div id="wrapper">
 

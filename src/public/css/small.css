@@ -73,7 +73,7 @@
     }
 
 
-/* Members styles
+/* Directory styles
 =================================================*/
 
     ul .vcard {
@@ -94,12 +94,14 @@
 
     #street_number {
         -moz-appearance: textfield;
-        width: 45%;
+        text-align: center;
+        width: 60px;
     }
 
     #zipcode {
         -moz-appearance: textfield;
-        width: 65%;
+        text-align: center;
+        width: 70px;
     }
 
 
