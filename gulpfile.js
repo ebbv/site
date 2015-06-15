@@ -10,7 +10,7 @@ var runSequence = require('run-sequence');
 
 
 gulp.task('copy', function () {
-  return gulp.src(['src/**', '!src/app/views/layouts/master.blade.php'], {dot:true})
+  return gulp.src(['src/**', '!src/resources/views/layouts/master.blade.php'], {dot:true})
   .pipe(gulp.dest('./'));
 });
 
@@ -45,9 +45,9 @@ gulp.task('ga', function() {
 })
 
 gulp.task('template', function () {
-  return gulp.src('src/app/views/layouts/master.blade.php')
+  return gulp.src('src/resources/views/layouts/master.blade.php')
   .pipe(plugins.replace(/{{JQUERY_VERSION}}/g, pkg.dependencies.jquery))
-  .pipe(gulp.dest('app/views/layouts'));
+  .pipe(gulp.dest('resources/views/layouts'));
 });
 
 gulp.task('minify', function () {
@@ -64,11 +64,14 @@ gulp.task('imgs', function () {
 
 gulp.task('prep', function (done) {
   del([
-    'app/*',
-    '!app/storage',
+    'app',
     'bootstrap',
+    'config',
+    'database',
     'public/*',
-    '!public/audio'
+    '!public/audio',
+    'resources',
+    'tests'
   ], done);
 });
 

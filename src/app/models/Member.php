@@ -1,32 +1,38 @@
 <?php
 
-use Illuminate\Auth\UserInterface;
+namespace App\Models;
 
-class Member extends Eloquent implements UserInterface {
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+
+class Member extends Model implements AuthenticatableContract {
+
+    use Authenticatable;
 
     public function roles()
     {
-        return $this->belongsToMany('Role')->withTimestamps()->withPivot('created_by', 'updated_by');
+        return $this->belongsToMany('App\Models\Role')->withTimestamps()->withPivot('created_by', 'updated_by');
     }
 
     public function messages()
     {
-        return $this->hasMany('Message');
+        return $this->hasMany('App\Models\Message');
     }
 
     public function phones()
     {
-        return $this->hasMany('Phone');
+        return $this->hasMany('App\Models\Phone');
     }
 
     public function address()
     {
-        return $this->hasOne('Address');
+        return $this->hasOne('App\Models\Address');
     }
 
     public function emails()
     {
-        return $this->hasMany('Email');
+        return $this->hasMany('App\Models\Email');
     }
 
     public function speaker()
