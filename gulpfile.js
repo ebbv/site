@@ -10,7 +10,7 @@ var runSequence = require('run-sequence');
 
 
 gulp.task('copy', function () {
-  return gulp.src(['src/**', '!src/resources/views/layouts/master.blade.php'], {dot:true})
+  return gulp.src(['src/**', '!src/bootstrap/cache', '!src/resources/views/layouts/master.blade.php'], {dot:true})
   .pipe(gulp.dest('./'));
 });
 
@@ -65,7 +65,8 @@ gulp.task('imgs', function () {
 gulp.task('prep', function (done) {
   del([
     'app',
-    'bootstrap',
+    'bootstrap/*',
+    '!bootstrap/cache',
     'config',
     'database',
     'public/*',
