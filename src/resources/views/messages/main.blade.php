@@ -55,6 +55,6 @@
           </div>
 
           <div class="pagination-centered">
-            {!! $messages->render() !!}
+            {!! (new App\Pagination($messages))->render() !!}
           </div>
 @stop
