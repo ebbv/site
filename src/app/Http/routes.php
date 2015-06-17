@@ -252,6 +252,17 @@ Route::post('contact', function() {
   return Redirect::to('contact')->withErrors($v);
 });
 
+Route::post('deploy', function() {
+  $local = 'sha1='.hash_hmac('sha1', file_get_contents('php://input'), env('APP_WEBHOOK_KEY'));
+  if($local === $_SERVER['HTTP_X_HUB_SIGNATURE'])
+  {
+    shell_exec('git pull');
+  }
+  else {
+    return 'Signatures do not match';
+  }
+});
+
 
 View::creator(Config::get('app.theme'), function($view) {
   $view->with('theme', str_replace('master', '', Config::get('app.theme')));
