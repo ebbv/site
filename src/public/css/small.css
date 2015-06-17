@@ -94,12 +94,14 @@
 
     #street_number {
         -moz-appearance: textfield;
+        padding-right: 10px;
         text-align: center;
         width: 60px;
     }
 
     #zipcode {
         -moz-appearance: textfield;
+        padding-right: 9px;
         text-align: center;
         width: 70px;
     }
