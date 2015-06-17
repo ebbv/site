@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="refresh" content="5; {{ Request::root() }}/contact">
+        <meta http-equiv="refresh" content="5; {{ url('contact') }}">
     </head>
     <body>
         Votre message nous a été communiqué et nous vous répondrons
