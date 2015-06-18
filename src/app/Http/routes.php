@@ -256,7 +256,7 @@ Route::post('deploy', function() {
   $local = 'sha1='.hash_hmac('sha1', file_get_contents('php://input'), env('APP_WEBHOOK_KEY'));
   if($local === $_SERVER['HTTP_X_HUB_SIGNATURE'])
   {
-    return shell_exec('git pull');
+    return shell_exec('git pull 2>&1');
   }
   else {
     return 'Signatures do not match';
