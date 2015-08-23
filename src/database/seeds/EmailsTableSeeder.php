@@ -1,10 +1,10 @@
 <?php
 
-class EmailsTableSeeder extends Seeder {
+class EmailsTableSeeder extends DatabaseSeeder {
 
     public function run()
     {
-        $e = new Email;
+        $e = new App\Models\Email;
         $e->member_id   = 1;
         $e->address     = 'pasteur@ebbv.fr';
         $e->type        = 0;

@@ -1,21 +1,21 @@
 <?php
 
-class MembersandRolesTableSeeder extends Seeder {
+class MembersandRolesTableSeeder extends DatabaseSeeder {
 
     public function run()
     {
-        $m = new Member;
+        $m = new App\Models\Member;
         $m->first_name = 'Robert';
         $m->last_name  = 'Doucette';
         $m->username   = 'pasteur';
-        $m->password   = Hash::make(getenv('password'));
+        $m->password   = Hash::make(env('DB_PASSWORD'));
         $m->created_by = 1;
         $m->updated_by = 1;
         $m->save();
 
         foreach(array('administrateur', 'membre', 'orateur') as $key => $value)
         {
-            $r = new Role;
+            $r = new App\Models\Role;
             $r->name      = $value;
             $r->created_by= 1;
             $r->updated_by= 1;
@@ -30,7 +30,7 @@ class MembersandRolesTableSeeder extends Seeder {
             ));
         }
 
-        $m = new Member;
+        $m = new App\Models\Member;
         $m->first_name = 'Philip';
         $m->last_name  = 'Bell';
         $m->username   = '';
@@ -43,7 +43,7 @@ class MembersandRolesTableSeeder extends Seeder {
             'updated_by' => 1
         ));
 
-        $m = new Member;
+        $m = new App\Models\Member;
         $m->first_name = '';
         $m->last_name  = '';
         $m->username   = 'membre';
@@ -52,7 +52,7 @@ class MembersandRolesTableSeeder extends Seeder {
         $m->updated_by = 1;
         $m->save();
 
-        $m = new Member;
+        $m = new App\Models\Member;
         $m->first_name = '';
         $m->last_name  = '';
         $m->username   = 'test_user';

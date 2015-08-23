@@ -1,6 +1,6 @@
 <?php
 
-class AddressesTableSeeder extends Seeder {
+class AddressesTableSeeder extends DatabaseSeeder {
 
     public function run()
     {
@@ -17,7 +17,7 @@ class AddressesTableSeeder extends Seeder {
         );
         foreach($addresses as $key => $value)
         {
-            $a = new Address;
+            $a = new App\Models\Address;
             $a->member_id       = $value['id'];
             $a->street_number   = $value['num'];
             $a->street_type     = $value['type'];

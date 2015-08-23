@@ -60,7 +60,7 @@ Route::group(array('middleware' => 'auth'), function() {
     }));
 
     Route::post('messages', array('as' => 'message.store', function() {
-      $filename = Str::random(15);
+      $filename = str_random(15);
       $data = array(
         'member_id' => Input::get('speaker'),
         'title'     => Input::get('title'),
@@ -131,7 +131,7 @@ Route::group(array('middleware' => 'auth'), function() {
         'created_by'        => Auth::id(),
         'updated_by'        => Auth::id()
       )));
-  
+
       foreach(Input::get('telephone') as $type => $number)
       {
         if($number != '')

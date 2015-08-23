@@ -1,6 +1,6 @@
 <?php
 
-class MessagesTableSeeder extends Seeder {
+class MessagesTableSeeder extends DatabaseSeeder {
 
     public function run()
     {
@@ -62,7 +62,7 @@ class MessagesTableSeeder extends Seeder {
         );
         foreach($messages as $key => $value)
         {
-            $m = new Message;
+            $m = new App\Models\Message;
             $m->member_id  = 1;
             $m->title      = $value['title'];
             $m->passage    = $value['passage'];

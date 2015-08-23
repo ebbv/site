@@ -1,6 +1,6 @@
 <?php
 
-class PhonesTableSeeder extends Seeder {
+class PhonesTableSeeder extends DatabaseSeeder {
 
     public function run()
     {
@@ -18,7 +18,7 @@ class PhonesTableSeeder extends Seeder {
         );
         foreach($phones as $key => $value)
         {
-            $p = new Phone;
+            $p = new App\Models\Phone;
             $p->member_id  = $value['id'];
             $p->number     = $value['number'];
             $p->type       = $value['type'];
