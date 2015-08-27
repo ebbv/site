@@ -17,12 +17,13 @@
             <div class="small-12 columns" id="messages-table">
 @foreach($messages as $message)
               <div class="row message-info">
-                <div class="small-12 medium-5 columns full-name">
-                  <p>
+                <div class="small-12 medium-5 columns">
+                  <p class="full-name">
                     <span class="last-name">{{ $message->speaker->last_name }}</span>, {{ $message->speaker->first_name }}
                   </p>
                   <p class="message-date">
-                    {{ $message->date }}
+                    <?php list($year, $month, $day) = explode('-', $message->date); ?>
+                    Apporté le {{ ltrim($day, '0') }} {{ trans('date.month_names')[$month - 1] }}, {{ $year }}
                   </p>
                 </div>
                 <div class="medium-7 columns">
