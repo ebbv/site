@@ -19,7 +19,7 @@ gulp.task('css', function () {
     'bower_components/foundation/css/foundation.min.css',
     'bower_components/jquery-ui/themes/ui-lightness/jquery-ui.min.css',
     'bower_components/jquery-ui/themes/ui-lightness/**',
-    'bower_components/normalize.css/normalize.css'
+    'node_modules/normalize.css/normalize.css'
   ])
   .pipe(gulp.dest('public/css'));
 });
@@ -27,7 +27,7 @@ gulp.task('css', function () {
 gulp.task('js', function () {
   return gulp.src([
     'bower_components/foundation/js/foundation.js',
-    'bower_components/jquery/dist/jquery.js',
+    'node_modules/jquery/dist/jquery.js',
     'bower_components/jquery-ui/jquery-ui.js',
     'bower_components/modernizr/modernizr.js',
   ])
