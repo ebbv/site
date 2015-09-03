@@ -18,11 +18,12 @@
     "run-sequence": "^1.0.2"
   },
   "homepage": "https://github.com/ebbv/site",
+  "license": "GPL-3.0",
   "name": "EBBV",
   "repository": {
     "type": "git",
     "url": "https://github.com/ebbv/site.git"
   },
   "scripts": {},
-  "version": "1.0.9"
+  "version": "1.1"
 }
