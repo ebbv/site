@@ -13,8 +13,6 @@
     "gulp-rename": "^1.2.0",
     "gulp-replace": "^0.5.0",
     "gulp-uglify": "^1.0.2",
-    "jquery": "2.1.4",
-    "normalize.css": "3.0.3",
     "run-sequence": "^1.0.2"
   },
   "homepage": "https://github.com/ebbv/site",
@@ -25,5 +23,5 @@
     "url": "https://github.com/ebbv/site.git"
   },
   "scripts": {},
-  "version": "1.1.0"
+  "version": "1.1.3"
 }

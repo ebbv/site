@@ -19,7 +19,7 @@ gulp.task('css', function () {
     'bower_components/foundation/css/foundation.min.css',
     'bower_components/jquery-ui/themes/ui-lightness/jquery-ui.min.css',
     'bower_components/jquery-ui/themes/ui-lightness/**',
-    'node_modules/normalize.css/normalize.css'
+    'bower_components/normalize.css/normalize.css'
   ])
   .pipe(gulp.dest('public/css'));
 });
@@ -27,7 +27,7 @@ gulp.task('css', function () {
 gulp.task('js', function () {
   return gulp.src([
     'bower_components/foundation/js/foundation.js',
-    'node_modules/jquery/dist/jquery.js',
+    'bower_components/jquery/dist/jquery.js',
     'bower_components/jquery-ui/jquery-ui.js',
     'bower_components/modernizr/modernizr.js',
   ])
@@ -37,12 +37,6 @@ gulp.task('js', function () {
   .pipe(plugins.uglify())
   .pipe(gulp.dest('public/js/vendor'));
 });
-
-gulp.task('ga', function() {
-  return gulp.src('bower_components/analytics/index.js')
-  .pipe(plugins.rename('analytics.js'))
-  .pipe(gulp.dest('public/js/vendor'));
-})
 
 gulp.task('template', function () {
   return gulp.src('src/resources/views/layouts/master.blade.php')
@@ -89,7 +83,6 @@ gulp.task('build', function (done) {
     'copy',
     'css',
     'js',
-    'ga',
     'template',
     'minify',
     'imgs',
