@@ -25,14 +25,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        Route::filter('admin', function()
-        {
-            if(! \App\Models\Member::has('admin')->find(\Auth::id()))
-            {
-                return \View::make('errors.no_admin');
-            }
-        });
-
         parent::boot($router);
     }
 

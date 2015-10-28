@@ -12,12 +12,11 @@
 */
 
 Route::get('connexion', array('middleware' => 'guest', function() {
+  $goto = Input::get('goto');
+
   if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] !== Request::root().'/connexion')
   {
     $goto = $_SERVER['HTTP_REFERER'];
-  }
-  else {
-    $goto = Input::get('goto');
   }
 
   return View::make('login')->withGoto($goto);
@@ -49,7 +48,7 @@ Route::get('déconnexion', function() {
 
 
 Route::group(array('middleware' => 'auth'), function() {
-  Route::group(array('before' => 'admin'), function() {
+  Route::group(array('middleware' => 'verifyrole:admin'), function() {
     Route::get('messages/ajouter', array('as' => 'message.create', function() {
       $files = array();
       foreach((File::glob('../tmp/*.mp3')) ? : array() as $file)
@@ -90,7 +89,7 @@ Route::group(array('middleware' => 'auth'), function() {
     })->orderBy('last_name', 'asc')->orderBy('first_name', 'asc')->get());
   });
 
-  Route::get('annuaire/ajouter', array('as' => 'directory.create', 'before' => 'admin', function() {
+  Route::get('annuaire/ajouter', array('as' => 'directory.create', 'middleware' => 'verifyrole:admin', function() {
     return View::make('directory.create');
   }));
 
@@ -104,7 +103,7 @@ Route::group(array('middleware' => 'auth'), function() {
     }
   }))->where('id', '[0-9]+');
 
-  Route::post('annuaire', array('as' => 'directory.store', 'before' => 'admin', function() {
+  Route::post('annuaire', array('as' => 'directory.store', 'middleware' => 'verifyrole:admin', function() {
     if(Input::get('submit') == 'Ajouter')
     {
       $m = new App\Models\Member;
