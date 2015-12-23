@@ -14,6 +14,7 @@
     #main {
         overflow: auto;
         padding-bottom: 60px;
+        padding-top: 1.5em;
     }
 
     header {
@@ -21,7 +22,7 @@
         min-width: 100%;
     }
 
-    header .row {
+    #site-title {
         padding-top: 0.5em;
         padding-bottom: 0.5em;
     }
@@ -32,10 +33,6 @@
         margin: 0;
         padding: 0;
         text-align: center;
-    }
-
-    #main {
-        padding-top: 1.5em;
     }
 
     #content p {
@@ -76,19 +73,25 @@
 /* Directory styles
 =================================================*/
 
-    ul .vcard {
+    ul.directory-list, ul.vcard {
+      list-style-type: none;
+    }
+
+    ul.vcard {
+        border: 1px solid #DDD;
         display: block;
         margin-right: auto;
         margin-left: auto;
         max-width: 320px;
+        padding: 15px;
         width: 100%;
     }
 
-    ul .vcard .fn {
+    ul.vcard .fn {
         text-align: center;
     }
 
-    ul .vcard .fn .last-name {
+    ul.vcard .fn .last-name {
         text-transform: uppercase;
     }
 
@@ -151,6 +154,11 @@
     #messages-table .player {
         background: lightgray;
         height: 48px;
+        position: relative;
+    }
+
+    #messages-table .player > div {
+      position: relative;
     }
 
     #messages-table .player .playtoggle {

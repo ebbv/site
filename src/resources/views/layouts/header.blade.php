@@ -1,24 +1,22 @@
       <header>
-        <div class="row">
+        <div class="row" id="site-title">
           <div class="small-12 columns">
             <h1>Eglise Biblique Baptiste de Vernon</h1>
           </div>
         </div>
-        <div class="contain-to-grid">
-          <nav class="top-bar" data-topbar role="navigation">
-            <ul class="title-area">
-              <li class="name"><a href=""></a></li>
-              <li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>
-            </ul>
-            <section class="top-bar-section">
-              <ul class="left">
+        <div class="title-bar" data-responsive-toggle="nav" data-hide-for="medium">
+          <button class="menu-icon" type="button" data-toggle></button>
+          <div class="title-bar-title">MENU</div>
+        </div>
+        <div class="top-bar" id="nav">
+          <div class="row collapse">
+            <div class="top-bar-left small-12 columns">
+              <ul class="vertical medium-horizontal menu">
                 <li><a href="">{{ Lang::get('nav.home') }}</a></li>
-                <li class="divider"></li>
                 <li><a href="contact">{{ Lang::get('nav.contact') }}</a></li>
-                <li class="divider"></li>
                 <li><a href="annuaire">{{ Lang::get('nav.directory') }}</a></li>
               </ul>
-            </section>
-          </nav>
+            </div>
+          </div>
         </div>
       </header>

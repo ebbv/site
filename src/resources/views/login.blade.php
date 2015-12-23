@@ -7,21 +7,21 @@
             <small class="error">{{ Session::get('login_error') }}</small>
           </div>
 @endif
-          <form method="POST" action="connexion" accept-charset="utf-8" id="login" data-abide="data-abide">
+          <form method="POST" action="connexion" accept-charset="utf-8" id="login" data-abide>
             {!! csrf_field() !!}
             <div>
               <label>{{ Lang::get('forms.username') }}
                 <input autofocus autocapitalize="none" id="username" name="username" type="text" value="{{ Input::old('username') }}" required />
+                <small class="form-error">{{ Lang::get('validation.required') }}</small>
               </label>
-              <small class="error">{{ Lang::get('validation.required') }}</small>
             </div>
             <div>
               <label>{{ Lang::get('forms.password') }}
                 <input id="password" name="password" type="password" required />
+                <small class="form-error">{{ Lang::get('validation.required') }}</small>
               </label>
-              <small class="error">{{ Lang::get('validation.required') }}</small>
             </div>
             <input name="goto" type="hidden" value="{{ Input::old('goto', $goto) }}" />
-            <input class="button right" type="submit" value="{{ Lang::get('forms.login_button') }}" />
+            <button class="button float-right" type="submit" value="{{ Lang::get('forms.login_button') }}">{{ Lang::get('forms.login_button') }}</button>
           </form>
 @stop

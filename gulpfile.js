@@ -16,7 +16,7 @@ gulp.task('copy', function () {
 
 gulp.task('css', function () {
   return gulp.src([
-    'bower_components/foundation/css/foundation.min.css',
+    'bower_components/foundation-sites/dist/foundation.min.css',
     'bower_components/jquery-ui/themes/ui-lightness/jquery-ui.min.css',
     'bower_components/jquery-ui/themes/ui-lightness/**',
     'bower_components/normalize.css/normalize.css'
@@ -26,7 +26,7 @@ gulp.task('css', function () {
 
 gulp.task('js', function () {
   return gulp.src([
-    'bower_components/foundation/js/foundation.js',
+    'bower_components/foundation-sites/dist/foundation.js',
     'bower_components/jquery/dist/jquery.js',
     'bower_components/jquery-ui/jquery-ui.js',
     'bower_components/modernizr/modernizr.js',

@@ -10,20 +10,20 @@
             <div class="medium-5 columns">
               <h3 id="telephone">Nous téléphoner <small>02.32.51.24.37</small></h3>
               <h3>Nous écrire</h3>
-              <form method="POST" action="contact" accept-charset="utf-8" data-abide="data-abide">
+              <form method="POST" action="contact" accept-charset="utf-8" data-abide>
                 {!! csrf_field() !!}
                 <div id="email">
                   <label>E-mail
                     <input autocapitalize="none" id="" name="email" type="email" placeholder="exemple@exemple.com" required />
+                    <small class="form-error">{{ Lang::get('validation.email') }}</small>
                   </label>
-                  <small class="error">{{ Lang::get('validation.email') }}</small>
                 </div>
                 <div>
                   <label>Question ou commentaire
                     <textarea name="body" rows="5"></textarea>
                   </label>
                 </div>
-                <input class="button small right" type="submit" value="{{ Lang::get('forms.send_button') }}" />
+                <button class="button small float-right" type="submit">{{ Lang::get('forms.send_button') }}</button>
               </form>
             </div>
           </div>

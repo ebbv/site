@@ -2,7 +2,7 @@
 
 @section('content')
         <div id="content" class="small-12 columns">
-          <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+          <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 directory-list">
 @foreach($members as $m)
             <li>
               <ul class="vcard">

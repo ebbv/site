@@ -60,7 +60,7 @@ var $,
                 }).on('pause ended', function () {
                     button.removeClass('playing');
                 });
-                
+
                 button.on('click', function () {
                     if (audio.paused) {
                         audio.play();
@@ -72,14 +72,6 @@ var $,
         }
     };
 
-$(document).foundation({
-    topbar : {
-        custom_back_text: false,
-        is_hover: true
-    },
-    abide : {
-        live_validate: false
-    }
-});
+$(document).foundation();
 
 player.init();
