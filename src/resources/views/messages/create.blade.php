@@ -34,7 +34,7 @@
                   </select>
                 </div>
                 <div class="medium-3 columns">
-                  <input class="button tiny right" type="submit" value="Ajouter">
+                  <input class="button float-right" type="submit" value="Ajouter">
                 </div>
               </div>
             </form>
