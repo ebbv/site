@@ -11,7 +11,7 @@
                   <label>Nom :
                     <input name="last_name" type="text" value="{{ $m->last_name or '' }}" />
                   </label>
-                  
+
                   <label>Prénom :
                     <input name="first_name" type="text" value="{{ $m->first_name or '' }}" />
                   </label>
@@ -63,7 +63,7 @@
                 <fieldset>
                   <legend>Contact</legend>
 @foreach(array('fixe', 'portable') as $type)
-<?php 
+<?php
     $value = '';
     foreach($m->phones as $p) {
     if($p->type == ucfirst(substr($type, 0, 4)))
@@ -86,6 +86,6 @@
               </div>
             </div>
             <input name="id" type="hidden" value="{{ $m->id }}" />
-            <input class="button right" name="submit" type="submit" value="Modifier" />
+            <input class="button float-right" name="submit" type="submit" value="Modifier" />
           </form>
 @stop

@@ -2,9 +2,9 @@
 
 @section('content')
         <div id="content" class="small-12 columns">
-          <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 directory-list">
+          <ul class="row small-up-1 medium-up-2 large-up-3 directory-list">
 @foreach($members as $m)
-            <li>
+            <li class="column">
               <ul class="vcard">
                 <li class="fn"><h4><a href="annuaire/modifier/{{ $m->id }}"><span class="last-name">{{ $m->last_name }}</span>, {{ $m->first_name }}</a></h4></li>
                 <li class="street-address">
