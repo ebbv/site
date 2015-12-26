@@ -3,7 +3,7 @@
 @section('content')
         <div id="content" class="medium-10 medium-centered columns">
           <div class="row" id="add-message">
-            <form method="POST" action="messages" accept-charset="utf-8" class="small-12 columns">
+            <form method="POST" action="message" accept-charset="utf-8" class="small-12 columns">
               {!! csrf_field() !!}
               <div class="row">
                 <div class="medium-8 columns">

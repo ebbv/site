@@ -2,16 +2,16 @@
 
 @section('content')
         <div id="content" class="small-12 medium-4 medium-centered columns">
-@if(Session::get('login_error'))
+@if(session('login_error'))
           <div>
-            <small class="error">{{ Session::get('login_error') }}</small>
+            <small class="error">{{ session('login_error') }}</small>
           </div>
 @endif
           <form method="POST" action="connexion" accept-charset="utf-8" id="login" data-abide>
             {!! csrf_field() !!}
             <div>
               <label>{{ Lang::get('forms.username') }}
-                <input autofocus autocapitalize="none" id="username" name="username" type="text" value="{{ Input::old('username') }}" required />
+                <input autofocus autocapitalize="none" id="username" name="username" type="text" value="{{ old('username') }}" required />
                 <small class="form-error">{{ Lang::get('validation.required') }}</small>
               </label>
             </div>
