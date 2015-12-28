@@ -29,7 +29,7 @@ class MessageController extends Controller
     $files = array();
     foreach((Storage::files('tmp')) ? : array() as $file)
     {
-      if(strpos($file, '.mp3'))
+      if(strpos($file, '.mp3') !== false)
       {
         $files[]= str_replace(array('tmp/', '.mp3'), '', $file);
       }
