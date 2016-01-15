@@ -37,23 +37,23 @@ class MessageController extends Controller
     return view('messages.create')->withSpeakers(Member::has('speaker')->orderBy('last_name', 'asc')->get())->withFiles($files);
   }
 
-  public function store(Request $request)
+  public function store(Request $r)
   {
     $filename = str_random(15);
     $data = array(
-      'member_id' => $request->speaker,
-      'title'     => $request->title,
-      'passage'   => $request->input('message-passage'),
+      'member_id' => $r->speaker,
+      'title'     => $r->title,
+      'passage'   => $r->input('message-passage'),
       'url'       => $filename,
-      'date'      => $request->input('message-file'),
-      'created_by'=> $request->user()->id,
-      'updated_by'=> $request->user()->id
+      'date'      => $r->input('message-file'),
+      'created_by'=> $r->user()->id,
+      'updated_by'=> $r->user()->id
     );
     if(Message::create($data))
     {
       foreach(array('mp3', 'ogg') as $ext)
       {
-        Storage::move('tmp/'.$request->input('message-file').'.'.$ext, 'public/audio/'.$filename.'.'.$ext);
+        Storage::move('tmp/'.$r->input('message-file').'.'.$ext, 'public/audio/'.$filename.'.'.$ext);
       }
     }
 

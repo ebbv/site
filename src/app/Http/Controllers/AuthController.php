@@ -17,9 +17,9 @@ class AuthController extends Controller
     $this->middleware('guest', ['only' => 'login']);
   }
 
-  public function login(Request $request)
+  public function login(Request $r)
   {
-    $goto = $request->goto;
+    $goto = $r->goto;
 
     if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] !== url('connexion'))
     {
@@ -29,24 +29,24 @@ class AuthController extends Controller
     return view('login')->withGoto($goto);
   }
 
-  public function verify(Request $request)
+  public function verify(Request $r)
   {
     $rules = array('username'=>'required', 'password'=>'required');
-    $v = Validator::make($request->all(), $rules);
+    $v = Validator::make($r->all(), $rules);
     if ($v->passes())
     {
-      if (Auth::attempt(array('username'=>$request->username, 'password'=>$request->password)))
+      if (Auth::attempt(array('username'=>$r->username, 'password'=>$r->password)))
       {
-        $user = Member::find(Auth::id());
-        $user->updated_by   = Auth::id();
-        $user->last_login   = Auth::user()->current_login;
-        $user->current_login= date('Y-m-d H:i:s');
-        $user->save();
-        return redirect()->intended($request->goto);
+        $u = Member::find(Auth::id());
+        $u->updated_by   = Auth::id();
+        $u->last_login   = Auth::user()->current_login;
+        $u->current_login= date('Y-m-d H:i:s');
+        $u->save();
+        return redirect()->intended($r->goto);
       }
-      $request->session()->flash('login_error', 'Mauvaise combinaison, veuillez réessayer.');
+      $r->session()->flash('login_error', 'Mauvaise combinaison, veuillez réessayer.');
     }
-    return redirect('connexion')->withInput($request->except('password'))->withErrors($v);
+    return redirect('connexion')->withInput($r->except('password'))->withErrors($v);
   }
 
   public function logout()
