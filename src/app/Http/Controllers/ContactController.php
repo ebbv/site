@@ -16,15 +16,15 @@ class ContactController extends Controller
     return view('contact');
   }
 
-  public function send(Request $request)
+  public function send(Request $r)
   {
     $rules = array(
       'email' => 'required|email'
     );
-    $v = Validator::make($request->all(), $rules);
+    $v = Validator::make($r->all(), $rules);
     if($v->passes())
     {
-      Mail::send('emails.contact', $request->all(), function($message) {
+      Mail::send('emails.contact', $r->all(), function($message) {
         $message->to('pasteur@ebbv.fr')->subject('Message du site de l\'église');
       });
       return view('emails.sent');

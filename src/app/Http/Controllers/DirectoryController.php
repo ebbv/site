@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -34,94 +33,94 @@ class DirectoryController extends Controller
     return view('directory.create');
   }
 
-  public function store(Request $request)
+  public function store(Request $r)
   {
-    if($request->submit == 'Ajouter')
+    if($r->submit == 'Ajouter')
     {
       $m = new Member;
-      $m->first_name  = $request->first_name;
-      $m->last_name   = $request->last_name;
+      $m->first_name  = $r->first_name;
+      $m->last_name   = $r->last_name;
       $m->username    = '';
       $m->password    = '';
-      $m->created_by  = Auth::id();
-      $m->updated_by  = Auth::id();
+      $m->created_by  = $r->user()->id;
+      $m->updated_by  = $r->user()->id;
       $m->save();
 
       $m->roles()->attach(2, array(
-        'created_by' => Auth::id(),
-        'updated_by' => Auth::id()
+        'created_by' => $r->user()->id,
+        'updated_by' => $r->user()->id
       ));
 
       $m->address()->save(new Address(array(
-        'street_number'     => $request->street_number,
-        'street_type'       => $request->street_type,
-        'street_name'       => $request->street_name,
-        'street_complement' => $request->street_complement,
-        'zip'               => $request->zip,
-        'city'              => $request->city,
-        'created_by'        => Auth::id(),
-        'updated_by'        => Auth::id()
+        'street_number'     => $r->street_number,
+        'street_type'       => $r->street_type,
+        'street_name'       => $r->street_name,
+        'street_complement' => $r->street_complement,
+        'zip'               => $r->zip,
+        'city'              => $r->city,
+        'created_by'        => $r->user()->id,
+        'updated_by'        => $r->user()->id
       )));
 
-      foreach($request->telephone as $type => $number)
+      foreach($r->telephone as $type => $number)
       {
         if($number != '')
         {
           $m->phones()->save(new Phone(array(
             'number'        => $number,
             'type'          => ucfirst($type),
-            'created_by'    => Auth::id(),
-            'updated_by'    => Auth::id()
+            'created_by'    => $r->user()->id,
+            'updated_by'    => $r->user()->id
           )));
         }
       }
 
-      foreach($request->emails as $key => $address)
+      foreach($r->emails as $key => $address)
       {
         if($address != '')
         {
           $m->emails()->save(new Email(array(
             'address'       => $address,
             'type'          => $key,
-            'created_by'    => Auth::id(),
-            'updated_by'    => Auth::id()
+            'created_by'    => $r->user()->id,
+            'updated_by'    => $r->user()->id
           )));
         }
       }
     }
     else {
-      $id = $request->id;
+      $id = $r->id;
       $m = Member::find($id);
-      $m->first_name  = $request->first_name;
-      $m->last_name   = $request->last_name;
-      $m->updated_by  = Auth::id();
+      $m->first_name  = $r->first_name;
+      $m->last_name   = $r->last_name;
+      $m->updated_by  = $r->user()->id;
       $m->save();
 
       Address::where('member_id', $id)->update(array(
-        'street_number'     => $request->street_number,
-        'street_type'       => $request->street_type,
-        'street_name'       => $request->street_name,
-        'street_complement' => $request->street_complement,
-        'zip'               => $request->zip,
-        'city'              => $request->city,
-        'updated_by'        => Auth::id()
+        'street_number'     => $r->street_number,
+        'street_type'       => $r->street_type,
+        'street_name'       => $r->street_name,
+        'street_complement' => $r->street_complement,
+        'zip'               => $r->zip,
+        'city'              => $r->city,
+        'updated_by'        => $r->user()->id
       ));
 
-      foreach($request->telephone as $type => $number)
+      foreach($r->telephone as $type => $number)
       {
         $type = ucfirst($type);
         if($number != '')
         {
           if( ! Phone::where('member_id', $id)->where('type', $type)->update(array(
             'number'      => $number,
-            'updated_by'  => Auth::id()
+            'updated_by'  => $r->user()->id
           )))
           {
             $m->phones()->save(new Phone(array(
               'number'        => $number,
               'type'          => $type,
-              'created_by'    => Auth::id(),
-              'updated_by'    => Auth::id()
+              'created_by'    => $r->user()->id,
+              'updated_by'    => $r->user()->id
             )));
           }
         }
@@ -131,20 +130,20 @@ class DirectoryController extends Controller
         }
       }
 
-      foreach($request->emails as $key => $address)
+      foreach($r->emails as $key => $address)
       {
         if($address != '')
         {
           if( ! Email::where('member_id', $id)->where('type', $key)->update(array(
             'address'   => $address,
-            'updated_by'=> Auth::id()
+            'updated_by'=> $r->user()->id
           )))
           {
             $m->emails()->save(new Email(array(
               'address'   => $address,
               'type'      => $key,
-              'created_by'=> Auth::id(),
-              'updated_by'=> Auth::id()
+              'created_by'=> $r->user()->id,
+              'updated_by'=> $r->user()->id
             )));
           }
         }
@@ -158,9 +157,9 @@ class DirectoryController extends Controller
     return $this->create();
   }
 
-  public function edit(Request $request, $id)
+  public function edit(Request $r, $id)
   {
-    if(Auth::id() == $id OR Member::has('admin')->find(Auth::id()))
+    if($r->user()->id == $id OR Member::has('admin')->find($r->user()->id))
     {
       return view('directory.edit')->withM(Member::find($id));
     }
