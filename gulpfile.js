@@ -40,7 +40,6 @@ gulp.task('js', function () {
 gulp.task('template', function () {
   return gulp.src('src/resources/views/layouts/master.blade.php')
   .pipe(plugins.replace(/{{JQUERY_VERSION}}/g, pkg.dependencies.jquery))
-  .pipe(plugins.replace(/~/, ''))
   .pipe(gulp.dest('resources/views/layouts'));
 });
 
