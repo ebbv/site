@@ -28,8 +28,7 @@ gulp.task('js', function () {
   return gulp.src([
     'bower_components/foundation-sites/dist/foundation.js',
     'bower_components/jquery/dist/jquery.js',
-    'bower_components/jquery-ui/jquery-ui.js',
-    'bower_components/modernizr/modernizr.js',
+    'bower_components/jquery-ui/jquery-ui.js'
   ])
   .pipe(plugins.rename(function (path) {
     path.basename += ".min";

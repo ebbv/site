@@ -10,7 +10,6 @@
     "foundation-sites": "~6.2.0",
     "jquery": "~2.2.0",
     "jquery-ui": "~1.11.4",
-    "modernizr": "~3.3.0",
     "normalize.css": "~4.0.0"
   }
 }
