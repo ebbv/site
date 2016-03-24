@@ -31,7 +31,7 @@ class MessageController extends Controller
     {
       if(strpos($file, '.mp3') !== false)
       {
-        $files[]= str_replace(array('tmp/', '.mp3'), '', $file);
+        $files[] = str_replace(array('tmp/', '.mp3'), '', $file);
       }
     }
     return view('messages.create')->withSpeakers(Member::has('speaker')->orderBy('last_name', 'asc')->get())->withFiles($files);
