@@ -45,7 +45,7 @@ gulp.task('template', function () {
 
 gulp.task('minify', function () {
   return gulp.src('public/css/*.css')
-  .pipe(plugins.minifyCss({keepSpecialComments:0}))
+  .pipe(plugins.cleanCss({keepSpecialComments:0}))
   .pipe(gulp.dest('public/css'));
 });
 
