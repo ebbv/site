@@ -71,7 +71,7 @@ gulp.task('prep', (done) => {
   });
 });
 
-gulp.task('clean', (done) {
+gulp.task('clean', (done) => {
   del([
     'public/css/*.css',
     '!public/css/app.css'
