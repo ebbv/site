@@ -55,7 +55,7 @@ gulp.task('imgs', function () {
   .pipe(gulp.dest('public/img'));
 });
 
-gulp.task('prep', function (done) {
+gulp.task('prep', (done) => {
   del([
     'app',
     'bootstrap/*',
@@ -66,14 +66,18 @@ gulp.task('prep', function (done) {
     '!public/audio',
     'resources',
     'tests'
-  ], done);
+  ]).then( () => {
+      done();
+  });
 });
 
-gulp.task('clean', function (done) {
+gulp.task('clean', (done) {
   del([
     'public/css/*.css',
     '!public/css/app.css'
-  ], done);
+  ]).then( () => {
+      done();
+  });
 });
 
 gulp.task('build', function (done) {
