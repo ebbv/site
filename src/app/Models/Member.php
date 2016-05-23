@@ -12,27 +12,27 @@ class Member extends Model implements AuthenticatableContract {
 
     public function roles()
     {
-        return $this->belongsToMany('App\Models\Role')->withTimestamps()->withPivot('created_by', 'updated_by');
+        return $this->belongsToMany(Role::class)->withTimestamps()->withPivot('created_by', 'updated_by');
     }
 
     public function messages()
     {
-        return $this->hasMany('App\Models\Message');
+        return $this->hasMany(Message::class);
     }
 
     public function phones()
     {
-        return $this->hasMany('App\Models\Phone');
+        return $this->hasMany(Phone::class);
     }
 
     public function address()
     {
-        return $this->hasOne('App\Models\Address');
+        return $this->hasOne(Address::class);
     }
 
     public function emails()
     {
-        return $this->hasMany('App\Models\Email');
+        return $this->hasMany(Email::class);
     }
 
     public function speaker()

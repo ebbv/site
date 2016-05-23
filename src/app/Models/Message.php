@@ -10,6 +10,6 @@ class Message extends Model {
 
     public function speaker()
     {
-        return $this->belongsTo('App\Models\Member', 'member_id');
+        return $this->belongsTo(Member::class, 'member_id');
     }
 }
