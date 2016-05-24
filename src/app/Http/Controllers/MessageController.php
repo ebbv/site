@@ -26,8 +26,8 @@ class MessageController extends Controller
 
   public function create()
   {
-    $files = array();
-    foreach((Storage::files('tmp')) ? : array() as $file)
+    $files = [];
+    foreach((Storage::files('tmp')) ? : [] as $file)
     {
       if(strpos($file, '.mp3') !== false)
       {
