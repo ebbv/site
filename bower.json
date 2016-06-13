@@ -7,9 +7,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "foundation-sites": "~6.2.0",
     "jquery": "2.2.4",
-    "jquery-ui": "~1.11.4",
-    "normalize.css": "~4.0.0"
+    "jquery-ui": "~1.11.4"
   }
 }
