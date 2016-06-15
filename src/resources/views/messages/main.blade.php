@@ -15,22 +15,22 @@
         <div id="content" class="medium-8 columns">
           <div class="row">
             <div class="small-12 columns" id="messages-table">
-@foreach($messages as $message)
+@foreach($messages as $m)
               <div class="row message-info">
                 <div class="small-12 medium-5 columns">
                   <p class="full-name">
-                    <span class="last-name">{{ $message->speaker->last_name }}</span>, {{ $message->speaker->first_name }}
+                    <span class="last-name">{{ $m->speaker->last_name }}</span>, {{ $m->speaker->first_name }}
                   </p>
                   <p class="message-date">
-<?php list($year, $month, $day) = explode('-', $message->date); ?>
+<?php list($year, $month, $day) = explode('-', $m->date); ?>
                     Apporté le {{ ltrim($day, '0').' '.trans('date.month_names')[$month - 1].', '.$year }}
                   </p>
                 </div>
                 <div class="medium-7 columns">
                   <p class="message-title">
-                    <a download="{{ $message->title }}" href="audio/{{ $message->url }}.mp3">{{ $message->title }}</a>
+                    <a download="{{ $m->title }}" href="audio/{{ $m->url }}.mp3">{{ $m->title }}</a>
                   </p>
-                  <p class="message-passage">{{ $message->passage }}</p>
+                  <p class="message-passage">{{ $m->passage }}</p>
                 </div>
               </div>
               <div class="row player">
@@ -46,8 +46,8 @@
                 <div class="small-5 medium-4 large-3 columns text-center">
                   <span class="timeleft"></span>
                   <audio preload="metadata" buffered>
-                    <source src="audio/{{ $message->url }}.ogg" type="audio/ogg">
-                    <source src="audio/{{ $message->url }}.mp3" type="audio/mpeg">
+                    <source src="audio/{{ $m->url }}.ogg" type="audio/ogg">
+                    <source src="audio/{{ $m->url }}.mp3" type="audio/mpeg">
                   </audio>
                 </div>
               </div>

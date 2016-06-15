@@ -14,8 +14,8 @@
                   <label for="speaker">Orateur :</label>
                   <select id="speaker" name="speaker">
                     <!-- <option></option> -->
-@foreach($speakers as $speaker)
-                    <option value="{{ $speaker->id }}">{{ $speaker->last_name }}, {{ $speaker->first_name }}</option>
+@foreach($speakers as $s)
+                    <option value="{{ $s->id }}">{{ $s->last_name }}, {{ $s->first_name }}</option>
 @endforeach
                   </select>
                 </div>
@@ -28,8 +28,8 @@
                 <div class="medium-3 columns">
                   <label for="message-file">Fichier :</label>
                   <select id="message-file" name="message-file">
-@foreach($files as $file)
-                    <option value="{{ $file }}">{{ $file }}</option>
+@foreach($files as $f)
+                    <option value="{{ $f }}">{{ $f }}</option>
 @endforeach
                   </select>
                 </div>
