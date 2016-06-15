@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -162,6 +163,27 @@ class DirectoryController extends Controller
     if($r->user()->id == $id OR Member::has('admin')->find($r->user()->id))
     {
       return view('directory.edit')->withM(Member::find($id));
+    }
+    else {
+      return view('errors.no_admin');
+    }
+  }
+
+  public function destroy(Request $r, $id)
+  {
+    if($r->user()->id == $id OR Member::has('admin')->find($r->user()->id))
+    {
+      if($id >= 4)
+      {
+        $m = Member::find($id);
+        $m->address()->delete();
+        $m->phones()->delete();
+        $m->emails()->delete();
+        $m->roles()->detach();
+        $m->delete();
+      }
+
+      return redirect('annuaire');
     }
     else {
       return view('errors.no_admin');

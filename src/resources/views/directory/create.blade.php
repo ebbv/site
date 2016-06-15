@@ -75,6 +75,6 @@
                 </fieldset>
               </div>
             </div>
-            <input class="button float-right" name="submit" type="submit" value="Ajouter" />
+            <input class="button float-right" id="submit" name="submit" type="submit" value="Ajouter" />
           </form>
 @stop

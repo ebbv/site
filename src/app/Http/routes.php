@@ -21,8 +21,9 @@ Route::post('connexion', 'AuthController@verify');
 Route::get('déconnexion', 'AuthController@logout');
 Route::get('annuaire', 'DirectoryController@index');
 Route::get('annuaire/ajouter', 'DirectoryController@create');
+Route::get('annuaire/modifier/{id}', 'DirectoryController@edit')->where('id', '[0-9]+');
+Route::get('annuaire/supprimer/{id}', 'DirectoryController@destroy')->where('id', '[0-9]+');
 Route::post('annuaire', 'DirectoryController@store');
-Route::get('annuaire/modifier/{id}', 'DirectoryController@edit')->where('id', '[0-9+]');
 
 
 View::creator(Config::get('app.theme'), function($view) {

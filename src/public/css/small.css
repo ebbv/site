@@ -114,6 +114,10 @@
         width: 70px;
     }
 
+    #delete {
+      margin-left: 20px;
+    }
+
 
 /* Messages styles
 =================================================*/
