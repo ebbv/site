@@ -86,7 +86,7 @@
               </div>
             </div>
             <input name="id" type="hidden" value="{{ $m->id }}" />
-            <a class="alert button float-right" id="delete" name="delete" href="annuaire/supprimer/{{ $m->id }}" type="button">Supprimer</a>
+            <input class="alert button float-right" id="delete" name="submit" type="submit" value="Supprimer" />
             <input class="button float-right" id="submit" name="submit" type="submit" value="Modifier" />
           </form>
 @stop
