@@ -3,14 +3,16 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
+use App\Models\Member;
 
 class VerifyRole
 {
   public function handle($request, Closure $next, $role)
   {
-    if(! \App\Models\Member::has($role)->find(\Auth::id()))
+    if(! Member::has($role)->find(Auth::id()))
     {
-        return \View::make('errors.no_admin');
+        return view('errors.no_admin');
     }
 
     return $next($request);

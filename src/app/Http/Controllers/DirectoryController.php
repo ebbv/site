@@ -16,7 +16,7 @@ class DirectoryController extends Controller
   public function __construct()
   {
     $this->middleware('auth');
-    $this->middleware('verifyrole:admin', ['except' => 'show']);
+    $this->middleware('verifyrole:admin', ['only' => 'create']);
   }
 
   public function show()
@@ -35,7 +35,11 @@ class DirectoryController extends Controller
 
   public function edit(Request $r, $id)
   {
-    return view('directory.edit')->withM(Member::find($id));
+    if($r->user()->id == $id OR Member::has('admin')->find($r->user()->id))
+    {
+      return view('directory.edit')->withM(Member::find($id));
+    }
+    return view('errors.no_admin');
   }
 
   public function store(Request $r)
@@ -177,7 +181,7 @@ class DirectoryController extends Controller
 
   private function _delete($id)
   {
-    if($id >= 4)
+    if($id >= 4) /* Making sure none of the default users are deleted */
     {
       $m = Member::find($id);
       $m->address()->delete();
