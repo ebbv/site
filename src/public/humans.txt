@@ -12,6 +12,6 @@
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
-    Normalize.css, jQuery, Modernizr
+    Normalize.css, jQuery, jQuery-UI
     Laravel Framework
     Zurb Foundation
