@@ -1,37 +1,37 @@
-@media only screen and (min-width: 40.063em) { /* min-width 641px, medium screens */
+@media screen and (min-width: 40em) { /* min-width 641px, medium screens */
 
 /* Global styles
 =================================================*/
 
-    body {
-        overflow-y: scroll;
-    }
+  body {
+    overflow-y: scroll;
+  }
 
-    header h1 {
-        font-size: 3rem;
-    }
+  header h1 {
+    font-size: 3rem;
+  }
 
-    #copyright {
-        font-size: 1rem;
-    }
+  #copyright {
+    font-size: 1rem;
+  }
 
 
 /* Contacts styles
 =================================================*/
 
-    #contact .meeting-times {
-        font-size: 1rem;
-    }
+  #contact .meeting-times {
+    font-size: 1rem;
+  }
 
 
 /* Messages styles
 =================================================*/
 
-    #messages-table div:first-child {
-        margin-top: 0;
-    }
+  #messages-table div:first-child {
+    margin-top: 0;
+  }
 
-    #messages-table .player {
-        margin: 0;
-    }
+  #messages-table .player {
+    margin: 0;
+  }
 }
