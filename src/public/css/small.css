@@ -57,6 +57,15 @@
 /* Contact styles
 =================================================*/
 
+    #contact .meeting-times {
+        font-size: 0.78rem;
+        margin-bottom: 1.7rem;
+    }
+
+    #contact .meeting-times p {
+        margin: 0;
+    }
+
     #contact iframe {
         margin-bottom: 30px;
     }
