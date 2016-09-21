@@ -23,6 +23,7 @@ Route::get('annuaire', 'DirectoryController@show');
 Route::get('annuaire/ajouter', 'DirectoryController@create');
 Route::get('annuaire/modifier/{id}', 'DirectoryController@edit')->where('id', '[0-9]+');
 Route::post('annuaire', 'DirectoryController@store');
+Route::get('croyances', 'BeliefsController@index');
 
 
 View::creator(Config::get('app.theme'), function($view) {

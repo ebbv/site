@@ -14,6 +14,7 @@
               <ul class="vertical medium-horizontal menu">
                 <li><a href="">{{ Lang::get('nav.home') }}</a></li>
                 <li><a href="contact">{{ Lang::get('nav.contact') }}</a></li>
+                <li><a href="croyances">{{ Lang::get('nav.beliefs') }}</a></li>
                 <li><a href="annuaire">{{ Lang::get('nav.directory') }}</a></li>
               </ul>
             </div>
