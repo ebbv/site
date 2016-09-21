@@ -69,10 +69,13 @@ class DirectoryController extends Controller
     $m->updated_by  = $r->user()->id;
     $m->save();
 
-    $m->roles()->attach(2, array(
-      'created_by' => $r->user()->id,
-      'updated_by' => $r->user()->id
-    ));
+    foreach($r->role as $value)
+    {
+      $m->roles()->attach($value, array(
+        'created_by' => $r->user()->id,
+        'updated_by' => $r->user()->id
+      ));
+    }
 
     $m->address()->save(new Address(array(
       'street_number'     => $r->street_number,
@@ -120,6 +123,15 @@ class DirectoryController extends Controller
     $m->last_name   = $r->last_name;
     $m->updated_by  = $r->user()->id;
     $m->save();
+
+    $m->roles()->detach();
+    foreach($r->role as $value)
+    {
+      $m->roles()->attach($value, array(
+        'created_by' => $r->user()->id,
+        'updated_by' => $r->user()->id
+      ));
+    }
 
     Address::where('member_id', $id)->update(array(
       'street_number'     => $r->street_number,

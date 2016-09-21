@@ -16,6 +16,14 @@
                     <input name="first_name" type="text" />
                   </label>
                 </fieldset>
+                <fieldset>
+                  <legend>Rôles</legend>
+@foreach(\App\Models\Role::all() as $r)
+                  <input id="role{{ $r->id }}" name="role[]" type="checkbox" value="{{ $r->id }}" />
+                  <label for="role{{ $r->id }}">{{ $r->name }}</label>
+                  <br />
+@endforeach
+                </fieldset>
               </div>
               <div class="medium-6 columns">
                 <fieldset>

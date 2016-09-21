@@ -11,10 +11,27 @@
                   <label>Nom :
                     <input name="last_name" type="text" value="{{ $m->last_name or '' }}" />
                   </label>
-
                   <label>Prénom :
                     <input name="first_name" type="text" value="{{ $m->first_name or '' }}" />
                   </label>
+                </fieldset>
+                <fieldset>
+                  <legend>Rôles</legend>
+@foreach(\App\Models\Role::all() as $r)
+<?php foreach($m->roles as $role) {
+  if($r->name == $role->name) {
+    $check = 'checked';
+    break;
+  }
+  else {
+    $check = '';
+  }
+}
+?>
+                  <input id="role{{ $r->id }}" name="role[]" type="checkbox" value="{{ $r->id }}" {{ $check }} />
+                  <label for="role{{ $r->id }}">{{ $r->name }}</label>
+                  <br />
+@endforeach
                 </fieldset>
               </div>
               <div class="medium-6 columns">
