@@ -21,7 +21,7 @@ Route::post('connexion', 'AuthController@verify');
 Route::get('déconnexion', 'AuthController@logout');
 Route::get('annuaire', 'DirectoryController@show');
 Route::get('annuaire/ajouter', 'DirectoryController@create');
-Route::get('annuaire/modifier/{id}', 'DirectoryController@edit')->where('id', '[0-9]+');
+Route::get('annuaire/modifier/{member}', 'DirectoryController@edit')->where('member', '[0-9]+');
 Route::post('annuaire', 'DirectoryController@store');
 Route::get('croyances', 'BeliefsController@index');
 

@@ -109,6 +109,28 @@
     text-transform: uppercase;
   }
 
+  #directory-form fieldset {
+    border: 2px solid #13a7c7;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    padding: 0 15px;
+  }
+
+  #directory-form fieldset legend {
+    font-weight: bold;
+    font-size: 1.7rem;
+  }
+
+  #directory-form fieldset label {
+    font-size: 1.2rem;
+  }
+
+  #directory-form #roles label {
+    font-size: 1rem;
+    position: relative;
+    top: -0.2rem;
+  }
+
   #street_number {
     -moz-appearance: textfield;
     padding-right: 10px;

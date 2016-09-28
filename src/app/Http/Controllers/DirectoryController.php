@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Member;
 use App\Models\Address;
-use App\Models\Phone;
 use App\Models\Email;
+use App\Models\Member;
+use App\Models\Phone;
 
 class DirectoryController extends Controller
 {
@@ -33,11 +34,11 @@ class DirectoryController extends Controller
     return view('directory.create');
   }
 
-  public function edit(Request $r, $id)
+  public function edit(Member $member)
   {
-    if($r->user()->id == $id OR Member::has('admin')->find($r->user()->id))
+    if(Auth::id() == $member->id OR (Auth::user()->roles()->count() > 0 AND Auth::user()->roles[0]->name == 'administrateur'))
     {
-      return view('directory.edit')->withM(Member::find($id));
+      return view('directory.edit')->withM($member);
     }
     return view('errors.no_admin');
   }
