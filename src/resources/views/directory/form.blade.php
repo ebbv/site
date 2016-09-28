@@ -19,6 +19,9 @@ foreach($m->roles as $role) {
     $check = 'checked';
     break;
   }
+  else {
+    $check = '';
+  }
 }
 }?>
                   <input id="role{{ $r->id }}" name="role[]" type="checkbox" value="{{ $r->id }}" {{ $check or '' }} />
