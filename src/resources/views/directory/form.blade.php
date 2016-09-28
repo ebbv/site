@@ -19,12 +19,9 @@ foreach($m->roles as $role) {
     $check = 'checked';
     break;
   }
-  else {
-    $check = '';
-  }
 }
 }?>
-                  <input id="role{{ $r->id }}" name="role[]" type="checkbox" value="{{ $r->id }}" {{ $check }} />
+                  <input id="role{{ $r->id }}" name="role[]" type="checkbox" value="{{ $r->id }}" {{ $check or '' }} />
                   <label for="role{{ $r->id }}">{{ $r->name }}</label>
                   <br />
 @endforeach
@@ -101,4 +98,4 @@ foreach($m->phones as $p) {
             <input name="id" type="hidden" value="{{ $m->id }}" />
             <input class="alert button float-right" id="delete" name="submit" type="submit" value="Supprimer" />
 @endif
-            <input class="button float-right" id="submit" name="submit" type="submit" value="{{ $submitButtonText ?? 'Ajouter' }}" />
+            <input class="button float-right" id="submit" name="submit" type="submit" value="{{ $submitButtonText or 'Ajouter' }}" />
