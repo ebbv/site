@@ -3,6 +3,6 @@
 @section('content')
         <div id="content" class="small-12 columns">
           <form id="directory-form" method="POST" action="annuaire" accept-charset="utf-8">
-            @include('directory.form', ['submitButtonText' => 'Modifier'])
+            @include('directory.admin.form')
           </form>
 @stop

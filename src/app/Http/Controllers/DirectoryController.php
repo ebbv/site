@@ -31,14 +31,14 @@ class DirectoryController extends Controller
 
   public function create()
   {
-    return view('directory.create');
+    return view('directory.admin.main');
   }
 
   public function edit(Member $member)
   {
     if(Auth::id() == $member->id OR (Auth::user()->roles()->count() > 0 AND Auth::user()->roles[0]->name == 'administrateur'))
     {
-      return view('directory.edit')->withM($member);
+      return view('directory.admin.main')->withM($member)->with('submitButtonText', 'Modifier');
     }
     return view('errors.no_admin');
   }
