@@ -125,14 +125,13 @@ class DirectoryController extends Controller
     $m->updated_by  = $r->user()->id;
     $m->save();
 
-    $m->roles()->detach();
-    foreach($r->role as $value)
-    {
-      $m->roles()->attach($value, array(
+    for($count = count($r->role), $i = 0; $i < $count; $i+=1) {
+      $extra[] = [
         'created_by' => $r->user()->id,
         'updated_by' => $r->user()->id
-      ));
+      ];
     }
+    $m->roles()->sync(array_combine($r->role, $extra));
 
     Address::where('member_id', $id)->update(array(
       'street_number'     => $r->street_number,
