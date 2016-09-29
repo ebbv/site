@@ -22,9 +22,9 @@ class DirectoryController extends Controller
 
   public function show()
   {
-    return view('directory.main')->withMembers(Member::with(array('address', 'emails', 'phones' => function($q) {
+    return view('directory.main')->withMembers(Member::with(['address', 'emails', 'phones' => function($q) {
       $q->orderBy('type', 'asc');
-    }))->whereHas('roles', function($q) {
+    }])->whereHas('roles', function($q) {
       $q->where('name', 'membre');
     })->orderBy('last_name', 'asc')->orderBy('first_name', 'asc')->get());
   }
@@ -72,13 +72,13 @@ class DirectoryController extends Controller
 
     foreach($r->role as $value)
     {
-      $m->roles()->attach($value, array(
+      $m->roles()->attach($value, [
         'created_by' => $r->user()->id,
         'updated_by' => $r->user()->id
-      ));
+      ]);
     }
 
-    $m->address()->save(new Address(array(
+    $m->address()->save(new Address([
       'street_number'     => $r->street_number,
       'street_type'       => $r->street_type,
       'street_name'       => $r->street_name,
@@ -87,18 +87,18 @@ class DirectoryController extends Controller
       'city'              => $r->city,
       'created_by'        => $r->user()->id,
       'updated_by'        => $r->user()->id
-    )));
+    ]));
 
     foreach($r->telephone as $type => $number)
     {
       if($number != '')
       {
-        $m->phones()->save(new Phone(array(
+        $m->phones()->save(new Phone([
           'number'        => $number,
           'type'          => ucfirst($type),
           'created_by'    => $r->user()->id,
           'updated_by'    => $r->user()->id
-        )));
+        ]));
       }
     }
 
@@ -106,12 +106,12 @@ class DirectoryController extends Controller
     {
       if($address != '')
       {
-        $m->emails()->save(new Email(array(
+        $m->emails()->save(new Email([
           'address'       => $address,
           'type'          => $key,
           'created_by'    => $r->user()->id,
           'updated_by'    => $r->user()->id
-        )));
+        ]));
       }
     }
   }
@@ -133,7 +133,7 @@ class DirectoryController extends Controller
     }
     $m->roles()->sync(array_combine($r->role, $extra));
 
-    Address::where('member_id', $id)->update(array(
+    Address::where('member_id', $id)->update([
       'street_number'     => $r->street_number,
       'street_type'       => $r->street_type,
       'street_name'       => $r->street_name,
@@ -141,24 +141,24 @@ class DirectoryController extends Controller
       'zip'               => $r->zip,
       'city'              => $r->city,
       'updated_by'        => $r->user()->id
-    ));
+    ]);
 
     foreach($r->telephone as $type => $number)
     {
       $type = ucfirst($type);
       if($number != '')
       {
-        if( ! Phone::where('member_id', $id)->where('type', $type)->update(array(
+        if( ! Phone::where('member_id', $id)->where('type', $type)->update([
           'number'      => $number,
           'updated_by'  => $r->user()->id
-        )))
+        ]))
         {
-          $m->phones()->save(new Phone(array(
+          $m->phones()->save(new Phone([
             'number'        => $number,
             'type'          => $type,
             'created_by'    => $r->user()->id,
             'updated_by'    => $r->user()->id
-          )));
+          ]));
         }
       }
       elseif($number == '')
@@ -171,17 +171,17 @@ class DirectoryController extends Controller
     {
       if($address != '')
       {
-        if( ! Email::where('member_id', $id)->where('type', $key)->update(array(
+        if( ! Email::where('member_id', $id)->where('type', $key)->update([
           'address'   => $address,
           'updated_by'=> $r->user()->id
-        )))
+        ]))
         {
-          $m->emails()->save(new Email(array(
+          $m->emails()->save(new Email([
             'address'   => $address,
             'type'      => $key,
             'created_by'=> $r->user()->id,
             'updated_by'=> $r->user()->id
-          )));
+          ]));
         }
       }
       elseif($address == '')
