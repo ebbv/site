@@ -125,13 +125,23 @@ class DirectoryController extends Controller
     $m->updated_by  = $r->user()->id;
     $m->save();
 
-    for($count = count($r->role), $i = 0; $i < $count; $i+=1) {
-      $extra[] = [
-        'created_by' => $r->user()->id,
-        'updated_by' => $r->user()->id
-      ];
+    foreach($m->roles as $role) {
+      $oldid = $role->pivot->role_id;
+      $oldids[] = $role->pivot->role_id;
+      if( ! in_array($oldid, $r->role)) {
+        $m->roles()->detach($oldid);
+      } else {
+        $m->roles()->updateExistingPivot($oldid, ['updated_by' => $r->user()->id]);
+      }
     }
-    $m->roles()->sync(array_combine($r->role, $extra));
+    foreach($r->role as $newid) {
+      if( ! in_array($newid, $oldids)) {
+        $m->roles()->attach($newid, [
+          'created_by' => $r->user()->id,
+          'updated_by' => $r->user()->id
+        ]);
+      }
+    }
 
     Address::where('member_id', $id)->update([
       'street_number'     => $r->street_number,
