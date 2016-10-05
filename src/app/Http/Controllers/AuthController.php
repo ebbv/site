@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use DB;
 use Validator;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Member;
 
 class AuthController extends Controller
 {
@@ -37,11 +37,10 @@ class AuthController extends Controller
     {
       if (Auth::attempt(array('username'=>$r->username, 'password'=>$r->password)))
       {
-        $u = Member::find(Auth::id());
-        $u->updated_by   = Auth::id();
-        $u->last_login   = Auth::user()->current_login;
-        $u->current_login= date('Y-m-d H:i:s');
-        $u->save();
+        DB::table('logins')->insert([
+          'member_id' => Auth::id(),
+          'time'      => date('Y-m-d H:i:s')
+        ]);
         return redirect()->intended($r->goto);
       }
       $r->session()->flash('login_error', 'Mauvaise combinaison, veuillez réessayer.');
@@ -51,6 +50,10 @@ class AuthController extends Controller
 
   public function logout()
   {
+    DB::table('logouts')->insert([
+      'member_id' => Auth::id(),
+      'time'      => date('Y-m-d H:i:s')
+    ]);
     Auth::logout();
     return redirect('/');
   }
