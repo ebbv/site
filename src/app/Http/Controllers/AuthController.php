@@ -31,11 +31,11 @@ class AuthController extends Controller
 
   public function verify(Request $r)
   {
-    $rules = array('username'=>'required', 'password'=>'required');
+    $rules = ['username'=>'required', 'password'=>'required'];
     $v = Validator::make($r->all(), $rules);
     if ($v->passes())
     {
-      if (Auth::attempt(array('username'=>$r->username, 'password'=>$r->password)))
+      if (Auth::attempt(['username'=>$r->username, 'password'=>$r->password]))
       {
         DB::table('logins')->insert([
           'member_id' => Auth::id(),
