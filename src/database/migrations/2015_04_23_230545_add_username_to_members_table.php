@@ -3,8 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUsernameToMembersTable extends Migration {
-
+class AddUsernameToMembersTable extends Migration
+{
 	/**
 	 * Run the migrations.
 	 *
@@ -12,8 +12,7 @@ class AddUsernameToMembersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('members', function(Blueprint $table)
-		{
+		Schema::table('members', function(Blueprint $table) {
 			$table->string('username')->after('last_name');
 		});
 	}
@@ -25,10 +24,8 @@ class AddUsernameToMembersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('members', function(Blueprint $table)
-		{
+		Schema::table('members', function(Blueprint $table) {
 			$table->dropColumn('username');
 		});
 	}
-
 }

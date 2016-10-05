@@ -3,8 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RemoveEmailFieldFromMembersTable extends Migration {
-
+class RemoveEmailFieldFromMembersTable extends Migration
+{
 	/**
 	 * Run the migrations.
 	 *
@@ -12,8 +12,7 @@ class RemoveEmailFieldFromMembersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('members', function(Blueprint $table)
-		{
+		Schema::table('members', function(Blueprint $table) {
 			$table->dropColumn('email');
 		});
 	}
@@ -25,10 +24,8 @@ class RemoveEmailFieldFromMembersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('members', function(Blueprint $table)
-		{
+		Schema::table('members', function(Blueprint $table) {
 			$table->string('email')->after('last_name');
 		});
 	}
-
 }

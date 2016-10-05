@@ -3,8 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmailsTable extends Migration {
-
+class CreateEmailsTable extends Migration
+{
 	/**
 	 * Run the migrations.
 	 *
@@ -12,16 +12,15 @@ class CreateEmailsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('emails', function(Blueprint $table)
-		{
+		Schema::create('emails', function(Blueprint $table) {
 			$table->integer('member_id')->unsigned();
 			$table->string('address')->unique();
 			$table->string('type');
-            $table->integer('created_by')->unsigned();
-            $table->integer('updated_by')->unsigned();
+      $table->integer('created_by')->unsigned();
+      $table->integer('updated_by')->unsigned();
 			$table->timestamps();
-            $table->primary(array('member_id', 'address'));
-            $table->foreign('member_id')->references('id')->on('members');
+      $table->primary(['member_id', 'address']);
+      $table->foreign('member_id')->references('id')->on('members');
 		});
 	}
 
@@ -34,5 +33,4 @@ class CreateEmailsTable extends Migration {
 	{
 		Schema::drop('emails');
 	}
-
 }
