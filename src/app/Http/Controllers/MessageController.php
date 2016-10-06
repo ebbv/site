@@ -31,7 +31,7 @@ class MessageController extends Controller
     {
       if(strpos($file, '.mp3') !== false)
       {
-        $files[] = str_replace(array('tmp/', '.mp3'), '', $file);
+        $files[] = str_replace(['tmp/', '.mp3'], '', $file);
       }
     }
     return view('messages.create')->withSpeakers(Member::has('speaker')->orderBy('last_name', 'asc')->get())->withFiles($files);
@@ -40,7 +40,7 @@ class MessageController extends Controller
   public function store(Request $r)
   {
     $filename = str_random(15);
-    $data = array(
+    $data = [
       'member_id' => $r->speaker,
       'title'     => $r->title,
       'passage'   => $r->input('message-passage'),
@@ -48,10 +48,10 @@ class MessageController extends Controller
       'date'      => $r->input('message-file'),
       'created_by'=> $r->user()->id,
       'updated_by'=> $r->user()->id
-    );
+    ];
     if(Message::create($data))
     {
-      foreach(array('mp3', 'ogg') as $ext)
+      foreach(['mp3', 'ogg'] as $ext)
       {
         Storage::move('tmp/'.$r->input('message-file').'.'.$ext, 'public/audio/'.$filename.'.'.$ext);
       }

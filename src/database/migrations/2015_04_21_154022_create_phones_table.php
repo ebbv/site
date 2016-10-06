@@ -19,7 +19,7 @@ class CreatePhonesTable extends Migration
       $table->integer('created_by')->unsigned();
       $table->integer('updated_by')->unsigned();
 			$table->timestamps();
-      $table->primary(array('member_id', 'number'));
+      $table->primary(['member_id', 'number']);
       $table->foreign('member_id')->references('id')->on('members');
 		});
 	}

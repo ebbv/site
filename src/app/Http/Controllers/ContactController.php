@@ -18,9 +18,9 @@ class ContactController extends Controller
 
   public function send(Request $r)
   {
-    $rules = array(
+    $rules = [
       'email' => 'required|email'
-    );
+    ];
     $v = Validator::make($r->all(), $rules);
     if($v->passes())
     {
@@ -29,6 +29,6 @@ class ContactController extends Controller
       });
       return view('emails.sent');
     }
-    return Redirect::to('contact')->withErrors($v);
+    return redirect('contact')->withErrors($v);
   }
 }
