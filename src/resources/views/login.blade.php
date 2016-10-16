@@ -7,7 +7,7 @@
             <small class="error">{{ session('login_error') }}</small>
           </div>
 @endif
-          <form method="POST" action="connexion" accept-charset="utf-8" id="login" data-abide>
+          <form method="POST" action="@lang('nav.login.url')" accept-charset="utf-8" id="login" data-abide>
             {!! csrf_field() !!}
             <div>
               <label>{{ Lang::get('forms.username') }}

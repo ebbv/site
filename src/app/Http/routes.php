@@ -14,16 +14,16 @@
 Route::get('/', 'MessageController@index');
 Route::get('message/ajouter', 'MessageController@create');
 Route::post('message', 'MessageController@store');
-Route::get('contact', 'ContactController@index');
-Route::post('contact', 'ContactController@send');
-Route::get('connexion', 'AuthController@login');
-Route::post('connexion', 'AuthController@verify');
-Route::get('déconnexion', 'AuthController@logout');
-Route::get('annuaire', 'DirectoryController@show');
-Route::get('annuaire/ajouter', 'DirectoryController@create');
-Route::get('annuaire/modifier/{member}', 'DirectoryController@edit')->where('member', '[0-9]+');
-Route::post('annuaire', 'DirectoryController@store');
-Route::get('croyances', 'BeliefsController@index');
+Route::get(trans('nav.contact.url'), 'ContactController@index');
+Route::post(trans('nav.contact.url'), 'ContactController@send');
+Route::get(trans('nav.login.url'), 'AuthController@login');
+Route::post(trans('nav.login.url'), 'AuthController@verify');
+Route::get(trans('nav.logout.url'), 'AuthController@logout');
+Route::get(trans('nav.directory.url'), 'DirectoryController@show');
+Route::get(trans('nav.directory.url').'/ajouter', 'DirectoryController@create');
+Route::get(trans('nav.directory.url').'/modifier/{member}', 'DirectoryController@edit')->where('member', '[0-9]+');
+Route::post(trans('nav.directory.url'), 'DirectoryController@store');
+Route::get(trans('nav.beliefs.url'), 'BeliefsController@index');
 
 
 View::creator(Config::get('app.theme'), function($view) {
