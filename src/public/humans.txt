@@ -5,13 +5,13 @@
 
     Robert Doucette -- Lead developer -- @robbyrice
 
-# THANKS
-
-    <name>
-
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
     Normalize.css, jQuery, jQuery-UI
     Laravel Framework
     Zurb Foundation
+    Nginx
+    Php
+    MySql
+    Ubuntu
