@@ -18,11 +18,11 @@ return [
       'url'  => 'annuaire'
     ],
     'login' => [
-      'text' => 'Se connecter',
+      'text' => 'Connexion',
       'url'  => 'connexion'
     ],
     'logout' => [
-      'text' => 'Se déconnecter',
+      'text' => 'Déconnexion',
       'url'  => 'déconnexion'
     ]
 ];
