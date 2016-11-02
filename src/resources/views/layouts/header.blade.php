@@ -18,6 +18,8 @@
                 <li><a href="@lang('nav.directory.url')">@lang('nav.directory.text')</a></li>
 @if(Auth::check())
                 <li><a href="@lang('nav.logout.url')">@lang('nav.logout.text')</a></li>
+@else
+                <li><a href="@lang('nav.login.url')">@lang('nav.login.text')</a></li>
 @endif
               </ul>
             </div>
