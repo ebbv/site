@@ -35,7 +35,7 @@ class AuthController extends Controller
     $v = Validator::make($r->all(), $rules);
     if ($v->passes())
     {
-      if (Auth::attempt(['username'=>$r->username, 'password'=>$r->password]))
+      if (Auth::attempt(['username'=>$r->username, 'password'=>$r->password], true))
       {
         DB::table('logins')->insert([
           'member_id' => Auth::id(),
