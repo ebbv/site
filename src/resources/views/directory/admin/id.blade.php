@@ -1,5 +1,5 @@
                 <fieldset>
-                  <legend>Identification</legend>
+                  <legend>Identité</legend>
                   <label>Nom :
                     <input name="last_name" type="text" value="{{ $m->last_name or '' }}" />
                   </label>

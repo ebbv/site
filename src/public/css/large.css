@@ -6,4 +6,22 @@
   header h1 {
     text-align: left;
   }
+
+
+/* Directory styles
+=================================================*/
+
+  #directory-form fieldset legend {
+    font-size: 2.5rem;
+  }
+
+  #directory-form fieldset label {
+    font-size: 1.2rem;
+  }
+
+  #directory-form fieldset input,
+  #directory-form fieldset select,
+  #directory-form #roles label {
+    font-size: 1rem;
+  }
 }

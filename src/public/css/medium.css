@@ -24,6 +24,22 @@
   }
 
 
+  /* Directory styles
+  =================================================*/
+
+  #directory-form fieldset label {
+    font-size: 0.8rem;
+  }
+
+  #directory-form fieldset input,
+  #directory-form fieldset select {
+    /*font-size: 0.7rem;*/
+  }
+
+  #directory-form #roles label {
+    font-size: 0.8rem;
+  }
+
 /* Messages styles
 =================================================*/
 

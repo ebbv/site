@@ -1,12 +1,12 @@
                 <fieldset>
                   <legend>Adresse</legend>
                   <div class="row">
-                    <div class="small-6 medium-4 columns">
+                    <div class="small-6 medium-5 columns">
                       <label>Numéro de rue :
                         <input id="street_number" name="street_number" type="number" value="{{ $m->address->street_number or '' }}" />
                       </label>
                     </div>
-                    <div class="small-1 medium-3 columns"></div>
+                    <div class="small-1 medium-2 columns"></div>
                     <div class="small-5 medium-5 columns">
                       <label>Type de rue :
                         <select name="street_type">

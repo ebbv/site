@@ -117,16 +117,24 @@
   }
 
   #directory-form fieldset legend {
-    font-weight: bold;
+    color: #13a7c7;
     font-size: 1.7rem;
+    font-weight: bold;
+    letter-spacing: 0.2rem;
   }
 
   #directory-form fieldset label {
-    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  #directory-form fieldset input,
+  #directory-form fieldset select {
+    font-size: 0.8rem;
+    font-weight: normal;
   }
 
   #directory-form #roles label {
-    font-size: 1rem;
+    font-weight: normal;
     position: relative;
     top: -0.2rem;
   }
