@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use Mail;
 use Validator;
-use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {

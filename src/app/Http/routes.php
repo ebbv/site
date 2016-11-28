@@ -19,9 +19,9 @@ Route::post(trans('nav.contact.url'), 'ContactController@send');
 Route::get(trans('nav.login.url'), 'AuthController@login');
 Route::post(trans('nav.login.url'), 'AuthController@verify');
 Route::get(trans('nav.logout.url'), 'AuthController@logout');
-Route::get(trans('nav.directory.url'), 'DirectoryController@show');
+Route::get(trans('nav.directory.url'), 'DirectoryController@index');
 Route::get(trans('nav.directory.url').'/ajouter', 'DirectoryController@create');
-Route::get(trans('nav.directory.url').'/modifier/{member}', 'DirectoryController@edit')->where('member', '[0-9]+');
+Route::get(trans('nav.directory.url').'/{member}/modifier', 'DirectoryController@edit')->where('member', '[0-9]+');
 Route::post(trans('nav.directory.url'), 'DirectoryController@store');
 Route::get(trans('nav.beliefs.url'), 'BeliefsController@index');
 

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Models\Address;
 use App\Models\Email;
 use App\Models\Member;
@@ -19,7 +18,7 @@ class DirectoryController extends Controller
     $this->middleware('verifyrole:admin', ['only' => 'create']);
   }
 
-  public function show()
+  public function index()
   {
     return view('directory.main')->withMembers(Member::with(['address', 'emails', 'phones' => function($q) {
       $q->orderBy('type', 'asc');
