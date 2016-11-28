@@ -34,6 +34,7 @@ class DirectoryController extends Controller
 
   public function edit(Member $member)
   {
+    $member = $member->load('address', 'emails', 'phones', 'roles');
     if(Auth::id() == $member->id OR (Auth::user()->roles()->count() > 0 AND Auth::user()->roles[0]->name == 'administrateur'))
     {
       return view('directory.admin.main')->withM($member)->with('submitButtonText', 'Modifier');
