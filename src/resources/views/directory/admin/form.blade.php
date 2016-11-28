@@ -1,4 +1,4 @@
-            {!! csrf_field() !!}
+            {{ csrf_field() }}
             <div class="row">
               <div class="medium-3 columns">
                 @include('directory.admin.id')

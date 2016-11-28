@@ -8,7 +8,7 @@
           </div>
 @endif
           <form method="POST" action="@lang('nav.login.url')" accept-charset="utf-8" id="login" data-abide>
-            {!! csrf_field() !!}
+            {{ csrf_field() }}
             <div>
               <label>{{ Lang::get('forms.username') }}
                 <input autofocus autocapitalize="none" id="username" name="username" type="text" value="{{ old('username') }}" required />
@@ -21,7 +21,7 @@
                 <small class="form-error">{{ Lang::get('validation.required') }}</small>
               </label>
             </div>
-            <input name="goto" type="hidden" value="{{ Input::old('goto', $goto) }}" />
+            <input name="goto" type="hidden" value="{{ old('goto', $goto) }}" />
             <button class="button float-right" type="submit" value="{{ Lang::get('forms.login_button') }}">{{ Lang::get('forms.login_button') }}</button>
           </form>
 @stop

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Auth;
 use DB;
-use Validator;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -29,21 +28,21 @@ class AuthController extends Controller
 
   public function verify()
   {
-    $rules = ['username'=>'required', 'password'=>'required'];
-    $v = Validator::make($this->r->all(), $rules);
-    if ($v->passes())
+    $this->validate($this->r, [
+      'username' => 'required',
+      'password' => 'required'
+    ]);
+
+    if (Auth::attempt(['username'=>$this->r->username, 'password'=>$this->r->password], true))
     {
-      if (Auth::attempt(['username'=>$this->r->username, 'password'=>$this->r->password], true))
-      {
-        DB::table('logins')->insert([
-          'member_id' => Auth::id(),
-          'time'      => date('Y-m-d H:i:s')
-        ]);
-        return redirect()->intended($this->r->goto);
-      }
-      $this->r->session()->flash('login_error', 'Mauvaise combinaison, veuillez réessayer.');
+      DB::table('logins')->insert([
+        'member_id' => Auth::id(),
+        'time'      => date('Y-m-d H:i:s')
+      ]);
+      return redirect()->intended($this->r->goto);
     }
-    return redirect('connexion')->withInput($this->r->except('password'))->withErrors($v);
+    $this->r->session()->flash('login_error', 'Mauvaise combinaison, veuillez réessayer.');
+    return back()->withInput($this->r->except('password'));
   }
 
   public function logout()

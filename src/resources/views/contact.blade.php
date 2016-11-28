@@ -16,7 +16,7 @@
               <h3 id="telephone">Nous téléphoner <small>02.32.51.24.37</small></h3>
               <h3>Nous écrire</h3>
               <form method="POST" action="contact" accept-charset="utf-8" data-abide>
-                {!! csrf_field() !!}
+                {{ csrf_field() }}
                 <div id="email">
                   <label>E-mail
                     <input autocapitalize="none" id="" name="email" type="email" placeholder="exemple@exemple.com" required />
