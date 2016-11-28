@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Storage;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Models\Message;
 use App\Models\Member;
 
@@ -21,7 +20,7 @@ class MessageController extends Controller
   public function index()
   {
     $messages = Message::with('speaker')->orderBy('date', 'desc')->orderBy('created_at', 'desc')->paginate(4);
-    return view('messages.main')->withMessages($messages);
+    return view('messages.main', compact('messages'));
   }
 
   public function create()
@@ -34,7 +33,10 @@ class MessageController extends Controller
         $files[] = str_replace(['tmp/', '.mp3'], '', $file);
       }
     }
-    return view('messages.create')->withSpeakers(Member::has('speaker')->orderBy('last_name', 'asc')->get())->withFiles($files);
+    return view('messages.create')->with([
+      'speakers'  => Member::has('speaker')->orderBy('last_name', 'asc')->get(),
+      'files'     =>$files
+    ]);
   }
 
   public function store(Request $r)

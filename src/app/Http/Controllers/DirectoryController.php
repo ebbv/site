@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Auth;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Email;
 use App\Models\Member;
