@@ -20,11 +20,11 @@ class CreateAddressesTable extends Migration
 			$table->string('street_complement');
 			$table->integer('zip');
 			$table->string('city');
-    		$table->integer('created_by')->unsigned();
-    		$table->integer('updated_by')->unsigned();
+			$table->integer('created_by')->unsigned();
+			$table->integer('updated_by')->unsigned();
 			$table->timestamps();
-    		$table->primary(['member_id']);
-    		$table->foreign('member_id')->references('id')->on('members');
+			$table->primary(['member_id']);
+			$table->foreign('member_id')->references('id')->on('members');
 		});
 	}
 

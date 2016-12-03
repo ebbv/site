@@ -16,11 +16,11 @@ class CreateEmailsTable extends Migration
 			$table->integer('member_id')->unsigned();
 			$table->string('address')->unique();
 			$table->string('type');
-    		$table->integer('created_by')->unsigned();
-    		$table->integer('updated_by')->unsigned();
+			$table->integer('created_by')->unsigned();
+			$table->integer('updated_by')->unsigned();
 			$table->timestamps();
-    		$table->primary(['member_id', 'address']);
-    		$table->foreign('member_id')->references('id')->on('members');
+			$table->primary(['member_id', 'address']);
+			$table->foreign('member_id')->references('id')->on('members');
 		});
 	}
 
