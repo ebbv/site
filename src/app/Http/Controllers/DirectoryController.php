@@ -46,18 +46,18 @@ class DirectoryController extends Controller
     public function store(Request $r)
     {
         switch ($r->submit) {
-            case 'Ajouter':
+            case trans('forms.add_button'):
                 $this->add($r);
                 break;
-            case 'Modifier':
+            case trans('forms.edit_button'):
                 $this->update($r);
                 break;
-            case 'Supprimer':
+            case trans('forms.delete_button'):
                 $this->delete($r->id);
                 break;
         }
 
-        return redirect('annuaire');
+        return redirect(trans('nav.directory.url'));
     }
 
     private function add($r)
