@@ -14,7 +14,7 @@ return [
     */
 
     "email"     => "Le format de l'adresse mail n'est pas valide.",
-    "required"	=> "Obligatoire",
+    "required"  => "Obligatoire",
 
     /*
     |--------------------------------------------------------------------------

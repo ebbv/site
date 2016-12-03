@@ -2,12 +2,12 @@
                   <legend>Contact</legend>
 @foreach (['fixe', 'portable'] as $type)
 <?php if (isset($m->phones)) {
-  foreach ($m->phones as $p) {
-    if ($p->type == ucfirst(substr($type, 0, 4))) {
-      $phone_number = $p->number;
-      break;
+    foreach ($m->phones as $p) {
+        if ($p->type == ucfirst(substr($type, 0, 4))) {
+            $phone_number = $p->number;
+            break;
+        }
     }
-  }
 }?>
                   <label>Téléphone {{ $type }} :
                     <input name="telephone[{{ substr($type, 0, 4) }}]" type="tel" value="{{ $phone_number or '' }}" />
