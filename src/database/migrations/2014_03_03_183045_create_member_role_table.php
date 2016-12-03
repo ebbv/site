@@ -9,7 +9,7 @@ class CreateMemberRoleTable extends Migration
      * Run the migrations.
      *
      * @return void
-    */
+     */
     public function up()
     {
         Schema::create('member_role', function (Blueprint $table) {
