@@ -12,7 +12,7 @@
 .c9
 .DS_Store
 .env
-.ps_cs.cache
+.php_cs.cache
 composer.lock
 composer.phar
 Thumbs.db
