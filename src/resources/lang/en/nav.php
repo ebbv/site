@@ -24,5 +24,9 @@ return [
     'logout'    => [
         'text' => 'Logout',
         'url'  => 'logout'
+    ],
+    'actions'   => [
+        'add'   => 'add',
+        'edit'  => 'edit'
     ]
 ];

@@ -24,5 +24,9 @@ return [
     'logout'    => [
         'text' => 'Déconnexion',
         'url'  => 'déconnexion'
+    ],
+    'actions'   => [
+        'add'   => 'ajouter',
+        'edit'  => 'modifier'
     ]
 ];

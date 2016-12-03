@@ -6,7 +6,7 @@
 @foreach ($members as $m)
             <li class="column">
               <ul class="vcard">
-                <li class="fn"><h4><a href="@lang('nav.directory.url')/{{ $m->id }}/modifier"><span class="last-name">{{ $m->last_name }}</span>, {{ $m->first_name }}</a></h4></li>
+                <li class="fn"><h4><a href="@lang('nav.directory.url')/{{ $m->id }}/@lang('nav.actions.edit')"><span class="last-name">{{ $m->last_name }}</span>, {{ $m->first_name }}</a></h4></li>
                 <li class="street-address">
                   {{ ($m->address->street_number != 0) ? $m->address->street_number.',' : '' }}
                   {{ $m->address->street_type }}
