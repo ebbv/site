@@ -13,6 +13,6 @@
             </div>
 @if (isset($submitButtonText))
             <input name="id" type="hidden" value="{{ $m->id }}" />
-            <input class="alert button float-right" id="delete" name="submit" type="submit" value="Supprimer" />
+            <input class="alert button float-right" id="delete" name="submit" type="submit" value="@lang('forms.delete_button')" />
 @endif
-            <input class="button float-right" id="submit" name="submit" type="submit" value="{{ $submitButtonText or 'Ajouter' }}" />
+            <input class="button float-right" id="submit" name="submit" type="submit" value="{{ $submitButtonText or trans('forms.add_button') }}" />

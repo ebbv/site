@@ -4,7 +4,7 @@
         <div id="content" class="medium-10 medium-centered columns">
           <div class="row" id="add-message">
             <form method="POST" action="message" accept-charset="utf-8" class="small-12 columns">
-              {!! csrf_field() !!}
+              {{ csrf_field() }}
               <div class="row">
                 <div class="medium-8 columns">
                   <label for="title">Titre :</label>
@@ -34,7 +34,7 @@
                   </select>
                 </div>
                 <div class="medium-3 columns">
-                  <input class="button float-right" type="submit" value="Ajouter">
+                  <input class="button float-right" type="submit" value="@lang('forms.add_button')">
                 </div>
               </div>
             </form>
