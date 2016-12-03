@@ -15,7 +15,7 @@
         <div id="content" class="medium-8 columns">
           <div class="row">
             <div class="small-12 columns" id="messages-table">
-@foreach($messages as $m)
+@foreach ($messages as $m)
               <div class="row message-info">
                 <div class="small-12 medium-5 columns">
                   <p class="full-name">

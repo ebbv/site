@@ -11,8 +11,8 @@
                       <label>Type de rue :
                         <select name="street_type">
                           <option></option>
-@foreach(['rue', 'allée', 'boulevard', 'chemin', 'route'] as $value)
-                          <option<?php if(isset($m->address->street_type) AND $value == $m->address->street_type) echo ' selected'; ?>>{{ $value }}</option>
+@foreach (['rue', 'allée', 'boulevard', 'chemin', 'route'] as $value)
+                          <option<?php if (isset($m->address->street_type) AND $value == $m->address->street_type) echo ' selected'; ?>>{{ $value }}</option>
 @endforeach
                         </select>
                       </label>

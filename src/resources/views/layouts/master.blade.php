@@ -1,6 +1,6 @@
 <!doctype html>
-<!--[if lt IE 9]><html class="oldie" lang="{{App::getlocale()}}"><![endif]-->
-<html class="no-js" lang="{{App::getlocale()}}">
+<!--[if lt IE 9]><html class="oldie" lang="{{ App::getlocale() }}"><![endif]-->
+<html class="no-js" lang="{{ App::getlocale() }}">
   <head>
     <meta charset="utf-8">
     <base href="{{ url('/') }}/">

@@ -11,7 +11,7 @@
                 @include('directory.admin.contact')
               </div>
             </div>
-@if(isset($submitButtonText))
+@if (isset($submitButtonText))
             <input name="id" type="hidden" value="{{ $m->id }}" />
             <input class="alert button float-right" id="delete" name="submit" type="submit" value="Supprimer" />
 @endif

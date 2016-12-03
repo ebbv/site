@@ -12,7 +12,7 @@ class AddPassageToMessagesTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::table('messages', function(Blueprint $table) {
+		Schema::table('messages', function (Blueprint $table) {
 			$table->string('passage')->after('title');
 		});
 	}
@@ -24,7 +24,7 @@ class AddPassageToMessagesTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::table('messages', function(Blueprint $table) {
+		Schema::table('messages', function (Blueprint $table) {
 			$table->dropColumn('passage');
 		});
 	}

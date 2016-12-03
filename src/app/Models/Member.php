@@ -6,8 +6,8 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-class Member extends Model implements AuthenticatableContract {
-
+class Member extends Model implements AuthenticatableContract
+{
     use Authenticatable;
 
     public function roles()

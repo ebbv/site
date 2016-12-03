@@ -3,51 +3,46 @@
 /* Global styles
 =================================================*/
 
-  body {
-    overflow-y: scroll;
-  }
+    body {
+        overflow-y: scroll;
+    }
 
-  header h1 {
-    font-size: 3rem;
-  }
+    header h1 {
+        font-size: 3rem;
+    }
 
-  #copyright {
-    font-size: 1rem;
-  }
+    #copyright {
+        font-size: 1rem;
+    }
 
 
 /* Contacts styles
 =================================================*/
 
-  #contact .meeting-times {
-    font-size: 1rem;
-  }
+    #contact .meeting-times {
+        font-size: 1rem;
+    }
 
 
-  /* Directory styles
-  =================================================*/
+/* Directory styles
+=================================================*/
 
-  #directory-form fieldset label {
-    font-size: 0.8rem;
-  }
+    #directory-form fieldset label {
+        font-size: 0.8rem;
+    }
 
-  #directory-form fieldset input,
-  #directory-form fieldset select {
-    /*font-size: 0.7rem;*/
-  }
-
-  #directory-form #roles label {
-    font-size: 0.8rem;
-  }
+    #directory-form #roles label {
+        font-size: 0.8rem;
+    }
 
 /* Messages styles
 =================================================*/
 
-  #messages-table div:first-child {
-    margin-top: 0;
-  }
+    #messages-table div:first-child {
+        margin-top: 0;
+    }
 
-  #messages-table .player {
-    margin: 0;
-  }
+    #messages-table .player {
+        margin: 0;
+    }
 }

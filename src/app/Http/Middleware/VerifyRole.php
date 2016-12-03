@@ -8,13 +8,12 @@ use App\Models\Member;
 
 class VerifyRole
 {
-  public function handle($request, Closure $next, $role)
-  {
-    if(! Member::has($role)->find(Auth::id()))
+    public function handle($request, Closure $next, $role)
     {
-        return view('errors.no_admin');
-    }
+        if (! Member::has($role)->find(Auth::id())) {
+            return view('errors.no_admin');
+        }
 
-    return $next($request);
-  }
+        return $next($request);
+    }
 }

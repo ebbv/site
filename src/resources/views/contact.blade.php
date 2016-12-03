@@ -20,7 +20,7 @@
                 <div id="email">
                   <label>E-mail
                     <input autocapitalize="none" id="" name="email" type="email" placeholder="exemple@exemple.com" required />
-                    <small class="form-error">{{ Lang::get('validation.email') }}</small>
+                    <small class="form-error">@lang('validation.email')</small>
                   </label>
                 </div>
                 <div>
@@ -28,7 +28,7 @@
                     <textarea name="body" rows="5"></textarea>
                   </label>
                 </div>
-                <button class="button small float-right" type="submit">{{ Lang::get('forms.send_button') }}</button>
+                <button class="button small float-right" type="submit">@lang('forms.send_button')</button>
               </form>
             </div>
           </div>

@@ -16,7 +16,7 @@
                 <li><a href="@lang('nav.contact.url')">@lang('nav.contact.text')</a></li>
                 <li><a href="@lang('nav.beliefs.url')">@lang('nav.beliefs.text')</a></li>
                 <li><a href="@lang('nav.directory.url')">@lang('nav.directory.text')</a></li>
-@if(Auth::check())
+@if (Auth::check())
                 <li><a href="@lang('nav.logout.url')">@lang('nav.logout.text')</a></li>
 @else
                 <li><a href="@lang('nav.login.url')">@lang('nav.login.text')</a></li>

@@ -1,28 +1,28 @@
 <?php
 
 return [
-    'home' => [
-      'text' => 'Accueil',
-      'url'  => ''
+    'home'      => [
+        'text' => 'Accueil',
+        'url'  => ''
     ],
-    'contact' => [
-      'text' => 'Contact',
-      'url'  => 'contact'
+    'contact'   => [
+        'text' => 'Contact',
+        'url'  => 'contact'
     ],
-    'beliefs' => [
-      'text' => 'Croyances',
-      'url'  => 'croyances'
+    'beliefs'   => [
+        'text' => 'Croyances',
+        'url'  => 'croyances'
     ],
     'directory' => [
-      'text' => 'Annuaire',
-      'url'  => 'annuaire'
+        'text' => 'Annuaire',
+        'url'  => 'annuaire'
     ],
-    'login' => [
-      'text' => 'Connexion',
-      'url'  => 'connexion'
+    'login'     => [
+        'text' => 'Connexion',
+        'url'  => 'connexion'
     ],
-    'logout' => [
-      'text' => 'Déconnexion',
-      'url'  => 'déconnexion'
+    'logout'    => [
+        'text' => 'Déconnexion',
+        'url'  => 'déconnexion'
     ]
 ];

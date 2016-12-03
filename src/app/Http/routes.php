@@ -26,6 +26,6 @@ Route::post(trans('nav.directory.url'), 'DirectoryController@store');
 Route::get(trans('nav.beliefs.url'), 'BeliefsController@index');
 
 
-View::creator(Config::get('app.theme'), function($view) {
-  $view->with('theme', str_replace('master', '', Config::get('app.theme')));
+View::creator(Config::get('app.theme'), function ($view) {
+    $view->with('theme', str_replace('master', '', Config::get('app.theme')));
 });

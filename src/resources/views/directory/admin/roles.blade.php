@@ -1,13 +1,12 @@
                 <fieldset id="roles">
                   <legend>Rôles</legend>
-@foreach(\App\Models\Role::all() as $r)
-<?php if(isset($m->roles)) {
-  foreach($m->roles as $role) {
-    if($r->name == $role->name) {
+@foreach (\App\Models\Role::all() as $r)
+<?php if (isset($m->roles)) {
+  foreach ($m->roles as $role) {
+    if ($r->name == $role->name) {
       $check = 'checked';
       break;
-    }
-    else {
+    } else {
       $check = '';
     }
   }
