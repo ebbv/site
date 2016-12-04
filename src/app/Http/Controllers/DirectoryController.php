@@ -9,6 +9,7 @@ use App\Models\Address;
 use App\Models\Email;
 use App\Models\Member;
 use App\Models\Phone;
+use App\Models\Role;
 
 class DirectoryController extends Controller
 {
@@ -29,7 +30,12 @@ class DirectoryController extends Controller
 
     public function create()
     {
-        return view('directory.admin.main');
+        return view('directory.admin.main')->with([
+            'emails'        => $this->getEmailInfo(),
+            'phones'        => $this->getPhoneInfo(),
+            'roles'         => $this->getRoles(),
+            'street_type'   => $this->getAddressType()
+        ]);
     }
 
     public function edit(Member $member)
@@ -37,7 +43,14 @@ class DirectoryController extends Controller
         $member = $member->load('address', 'emails', 'phones', 'roles');
 
         if (Auth::id() == $member->id or (Auth::user()->roles()->count() > 0 and Auth::user()->roles[0]->name == 'administrateur')) {
-            return view('directory.admin.main')->withM($member)->with('submitButtonText', trans('forms.edit_button'));
+            return view('directory.admin.main')->with([
+                'emails'            => $this->getEmailInfo($member),
+                'm'                 => $member,
+                'phones'            => $this->getPhoneInfo($member),
+                'roles'             => $this->getRoles($member),
+                'street_type'       => $this->getAddressType($member),
+                'submitButtonText'  => trans('forms.edit_button')
+            ]);
         }
 
         return view('errors.no_admin');
@@ -202,5 +215,76 @@ class DirectoryController extends Controller
             $m->roles()->detach();
             $m->delete();
         }
+    }
+
+    private function getAddressType($member = null)
+    {
+        foreach (['rue', 'allée', 'boulevard', 'chemin', 'route'] as $key => $value) {
+            $types[$key]['name']    = $value;
+            $types[$key]['selected']= '';
+
+            if ($member != null) {
+                if ($value == $member->address->street_type) {
+                    $types[$key]['selected'] = ' selected';
+                }
+            }
+        }
+
+        return $types;
+    }
+
+    private function getEmailInfo($member = null)
+    {
+        foreach (['principal', 'secondaire'] as $key => $value) {
+            $info[$key]['type'] = $value;
+            $info[$key]['val']  = '';
+
+            if ($member != null) {
+                if (isset($member->emails[$key])) {
+                    $info[$key]['val'] = $member->emails[$key]->address;
+                }
+            }
+        }
+
+        return $info;
+    }
+
+    private function getPhoneInfo($member = null)
+    {
+        foreach (['fixe', 'portable'] as $key => $value) {
+            $info[$key]['long']     = $value;
+            $info[$key]['short']    = substr($value, 0, 4);
+            $info[$key]['number']   = '';
+
+            if ($member != null) {
+                if (isset($member->phones[$key])) {
+                    $info[$key]['number'] = $member->phones[$key]->number;
+                }
+            }
+        }
+
+        return $info;
+    }
+
+    private function getRoles($member = null)
+    {
+        $roles = Role::all()->map(function ($item) {
+            $item['checked'] = '';
+            return $item;
+        });
+
+        if ($member == null) {
+            return $roles;
+        }
+
+        foreach ($roles as $role) {
+            foreach ($member->roles as $mem_role) {
+                if ($role->name == $mem_role->name) {
+                    $role->checked = ' checked';
+                }
+            }
+        }
+
+        return $roles;
     }
 }
