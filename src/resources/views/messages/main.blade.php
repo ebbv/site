@@ -22,8 +22,9 @@
                     <span class="last-name">{{ $m->speaker->last_name }}</span>, {{ $m->speaker->first_name }}
                   </p>
                   <p class="message-date">
-<?php list($year, $month, $day) = explode('-', $m->date); ?>
-                    Apporté le {{ ltrim($day, '0').' '.trans('date.month_names')[$month - 1].', '.$year }}
+@for (list($year, $month, $day) = explode('-', $m->date), $i = 0; $i < 1; $i++)
+                    Apporté le {{ ltrim($day, '0').' '.trans('date.month_names')[ltrim($month, '0')].', '.$year }}
+@endfor
                   </p>
                 </div>
                 <div class="medium-7 columns">
