@@ -1,29 +1,23 @@
 {
   "author": "Robert Doucette",
   "bugs": "https://github.com/ebbv/site/issues",
-  "dependencies": {},
   "description": "Le code pour le site de l'Eglise Biblique Baptiste de Vernon.",
   "devDependencies": {
-    "del": "^2.2.0",
     "foundation-sites": "^6.2.3",
-    "gulp": "^3.8.10",
-    "gulp-clean-css": "^2.0.6",
-    "gulp-concat": "^2.4.2",
-    "gulp-imagemin": "^3.0.0",
-    "gulp-load-plugins": "^1.2.0",
-    "gulp-rename": "^1.2.0",
-    "gulp-replace": "^0.5.0",
-    "gulp-uglify": "^2.0.0",
-    "normalize.css": "^4.1.1",
-    "run-sequence": "^1.0.2"
+    "gulp": "^3.9.1",
+    "laravel-elixir": "^5.0.0"
   },
   "homepage": "https://github.com/ebbv/site",
   "license": "GPL-3.0",
-  "name": "EBBV",
+  "name": "ebbv",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/ebbv/site.git"
   },
-  "scripts": {},
-  "version": "1.1.5"
+  "scripts": {
+    "prod": "gulp --production",
+    "dev": "gulp watch"
+  },
+  "version": "1.2.0"
 }

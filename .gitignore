@@ -1,13 +1,9 @@
-/app
-/bootstrap
 /bower_components
-/config
-/database
 /node_modules
-/public
-/resources
-/tests
-/tmp
+/public/audio
+/public/css
+/public/imgs
+/public/js
 /vendor
 .c9
 .DS_Store
