@@ -3,7 +3,7 @@
 @section('content')
         <div id="content" class="small-12 columns">
           <div class="row">
-            <div id="beliefs-welcome" class="small-12 medium-5 medium-centered columns">
+            <div id="beliefs-welcome" class="small-12 medium-7 medium-centered columns">
               <p>
                 Si vous êtes ici vous voulez sans doute savoir plus sur nos croyances
                 et nos pratiques. Nous espérons que ce que vous trouverez ci-dessous
