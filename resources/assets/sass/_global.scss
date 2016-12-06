@@ -1,0 +1,92 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    @include breakpoint('medium') {
+        overflow-y: scroll;
+    }
+}
+
+#wrapper {
+    min-height: 100%;
+}
+
+#main {
+    overflow: auto;
+    padding-bottom: 60px;
+    padding-top: 1.5em;
+}
+
+header {
+    background: #13a7c7;
+    min-width: 100%;
+}
+
+#site-title {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+header h1 {
+    color: #fff;
+    font-size: 1.8em;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+    @include breakpoint('medium') {
+        font-size: 3rem;
+    }
+
+    @include breakpoint('large') {
+        text-align: left;
+    }
+}
+
+#content p {
+    text-indent: 20px;
+}
+
+footer {
+    background: #13a7c7;
+    height: 60px;
+    margin-top: -60px;
+    padding: 1.3em 0;
+    text-align: center;
+    min-width: 100%;
+}
+
+#copyright {
+    margin: 0;
+
+    @include breakpoint('small') {
+        font-size: 0.9rem;
+    }
+
+    @include breakpoint('medium') {
+        font-size: 1rem;
+    }
+}
+
+#browsehappy {
+    display: none;
+}
+
+.oldie #wrapper, .no-csstransforms3d #wrapper {
+    display: none;
+}
+
+.oldie #browsehappy, .no-csstransforms3d #browsehappy {
+    background: white;
+    display: block;
+    min-height: 100%;
+    position: fixed;
+    text-align: center;
+    min-width: 100%;
+    z-index: 100;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    display: none;
+}

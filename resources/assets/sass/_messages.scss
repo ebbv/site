@@ -1,0 +1,110 @@
+#messages-table {
+    padding-bottom: 75px;
+}
+
+#messages-table div:first-child {
+    @include breakpoint('medium') {
+        margin-top: 0;
+    }
+}
+
+#messages-table p {
+    text-indent: 0;
+}
+
+#messages-table .message-info {
+    margin: 75px 0 15px 0;
+}
+
+#messages-table .full-name {
+    text-transform: capitalize;
+}
+
+#messages-table p {
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+#messages-table span.last-name {
+    text-transform: uppercase;
+}
+
+#messages-table .message-title {
+    font-style: italic;
+    font-weight: bold;
+}
+
+#messages-table .message-title a {
+    color: #222;
+}
+
+#messages-table .message-passage {
+    font-weight: bold;
+}
+
+#messages-table .player {
+    background: lightgray;
+    height: 48px;
+    position: relative;
+
+    @include breakpoint('medium') {
+        margin: 0;
+    }
+}
+
+#messages-table .player > div {
+    position: relative;
+}
+
+#messages-table .player .playtoggle {
+    background: url('../imgs/player.png') no-repeat scroll -30px 0;
+    cursor: pointer;
+    height: 30px;
+    left: 5px;
+    position: absolute;
+    top: 9px;
+    width: 30px;
+}
+
+#messages-table .player .playing {
+    background-position: 0 0;
+}
+
+#messages-table .player .gutter {
+    background: #516070;
+    border: 0;
+    border-radius: 5px;
+    height: 6px;
+    left: 40px;
+    margin-top: 21px;
+    padding: 4px;
+    position: absolute;
+    width: 100%;
+}
+
+#messages-table .player .handle {
+    background: url('../imgs/player.png') no-repeat scroll -65px -5px;
+    border: 0;
+    cursor: pointer;
+    height: 20px;
+    left: 0;
+    margin-left: -5px;
+    position: absolute;
+    top: -6px;
+    width: 20px;
+}
+
+#messages-table .player .ui-slider-range {
+    background: #13a7c7;
+    border-radius: 5px;
+}
+
+#messages-table .player .timeleft {
+    left: 30px;
+    position: absolute;
+    top: 14px;
+}
+
+#add-message .button {
+    margin-top: 1.35rem;
+}

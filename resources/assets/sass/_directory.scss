@@ -1,0 +1,94 @@
+ul.directory-list, ul.vcard {
+    list-style-type: none;
+}
+
+ul.vcard {
+    border: 1px solid #DDD;
+    display: block;
+    margin-right: auto;
+    margin-bottom: 1.4rem;
+    margin-left: auto;
+    max-width: 320px;
+    padding: 15px;
+    width: 100%;
+}
+
+ul.vcard .fn {
+    text-align: center;
+}
+
+ul.vcard .fn .last-name {
+    text-transform: uppercase;
+}
+
+#directory-form fieldset {
+    border: 2px solid #13a7c7;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    padding: 0 15px;
+}
+
+#directory-form fieldset legend {
+    color: #13a7c7;
+    font-size: 1.7rem;
+    font-weight: bold;
+    letter-spacing: 0.2rem;
+
+    @include breakpoint('large') {
+        font-size: 2.5rem;
+    }
+}
+
+#directory-form fieldset label {
+    font-weight: bold;
+
+    @include breakpoint('medium') {
+        font-size: 0.8rem;
+    }
+
+    @include breakpoint('large') {
+        font-size: 1.2rem;
+    }
+}
+
+#directory-form fieldset input,
+#directory-form fieldset select {
+    font-size: 0.8rem;
+    font-weight: normal;
+
+    @include breakpoint('large') {
+        font-size: 1rem;
+    }
+}
+
+#directory-form #roles label {
+    font-weight: normal;
+    position: relative;
+    top: -0.2rem;
+
+    @include breakpoint('medium') {
+        font-size: 0.8rem;
+    }
+
+    @include breakpoint('large') {
+        font-size: 1rem;
+    }
+}
+
+#street_number {
+    -moz-appearance: textfield;
+    padding-right: 10px;
+    text-align: center;
+    width: 60px;
+}
+
+#zipcode {
+    -moz-appearance: textfield;
+    padding-right: 9px;
+    text-align: center;
+    width: 70px;
+}
+
+#delete {
+    margin-left: 20px;
+}

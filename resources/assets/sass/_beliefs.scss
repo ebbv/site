@@ -1,0 +1,39 @@
+#beliefs-welcome {
+    margin-bottom: 50px;
+}
+
+#beliefs-welcome p {
+    border: 5px solid #13a7c7;
+    border-radius: 15px;
+    min-width: 100%;
+    padding: 20px;
+}
+
+#beliefs li {
+    font-size: 1.4rem;
+    font-weight: bold;
+    list-style-position: inside;
+    list-style-type: upper-roman;
+    margin-bottom: 2.3rem;
+}
+
+#beliefs li .title {
+    text-transform: uppercase;
+}
+
+#beliefs div {
+    margin-top: 1.3rem;
+}
+
+#beliefs li p {
+    font-size: 1rem;
+    font-weight: normal;
+    text-align: justify;
+}
+
+#beliefs li .verses {
+    color: #5C797E;
+    font-size: 0.85rem;
+    font-style: italic;
+    text-indent: 0;
+}
