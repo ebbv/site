@@ -1,7 +1,7 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-    ->exclude('storage')
+    ->exclude(['storage', 'bootstrap'])
     ->in(__DIR__)
 ;
 
