@@ -1,4 +1,4 @@
-@extends(Config::get('app.theme'))
+@extends(config('app.theme'))
 
 @section('aside')
         <aside id="sidebar" class="medium-4 columns">

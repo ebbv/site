@@ -1,4 +1,4 @@
-@extends(Config::get('app.theme'))
+@extends(config('app.theme'))
 
 @section('content')
         <div id="content" class="small-12 medium-4 medium-centered columns">

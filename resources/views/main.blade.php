@@ -1,4 +1,4 @@
-@extends(Config::get('app.theme'))
+@extends(config('app.theme'))
 
 @section('content')
           <p></p>
