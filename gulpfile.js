@@ -26,7 +26,7 @@ elixir(function(mix) {
     ])
     .scripts('app.js', 'public/js/app.js')
     .copy([
-        'node_modules/foundation-sites/dist/foundation.min.js',
+        'node_modules/foundation-sites/dist/js/foundation.min.js',
         'bower_components/jquery/dist/jquery.min.js',
         'bower_components/jquery-ui/jquery-ui.min.js'
     ], 'public/js/vendor')
