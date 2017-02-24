@@ -61,6 +61,6 @@
           </div>
 
           <div class="text-center">
-            {!! (new App\Pagination($messages))->render() !!}
+            {{ $messages->links() }}
           </div>
 @stop

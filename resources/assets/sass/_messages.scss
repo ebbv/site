@@ -57,7 +57,7 @@
 }
 
 #messages-table .player .playtoggle {
-    background: url('../imgs/player.png') no-repeat scroll -30px 0;
+    background: url('/imgs/player.png') no-repeat scroll -30px 0;
     cursor: pointer;
     height: 30px;
     left: 5px;
@@ -83,7 +83,7 @@
 }
 
 #messages-table .player .handle {
-    background: url('../imgs/player.png') no-repeat scroll -65px -5px;
+    background: url('/imgs/player.png') no-repeat scroll -65px -5px;
     border: 0;
     cursor: pointer;
     height: 20px;
