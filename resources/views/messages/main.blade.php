@@ -33,7 +33,7 @@
                 </div>
                 <div class="medium-7 columns">
                   <p class="message-title">
-                    <a download="{{ $m->title }}" href="audio/{{ $m->url }}.mp3">{{ $m->title }}</a>
+                    <a download="{{ $m->title }}" href="{{ Storage::url('audio/'.$m->url) }}.mp3">{{ $m->title }}</a>
                   </p>
                   <p class="message-passage">{{ $m->passage }}</p>
                 </div>
@@ -51,8 +51,8 @@
                 <div class="small-5 medium-4 large-3 columns text-center">
                   <span class="timeleft"></span>
                   <audio preload="metadata" buffered>
-                    <source src="audio/{{ $m->url }}.ogg" type="audio/ogg">
-                    <source src="audio/{{ $m->url }}.mp3" type="audio/mpeg">
+                    <source src="{{ Storage::url('audio/'.$m->url) }}.ogg" type="audio/ogg">
+                    <source src="{{ Storage::url('audio/'.$m->url) }}.mp3" type="audio/mpeg">
                   </audio>
                 </div>
               </div>

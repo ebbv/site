@@ -55,7 +55,7 @@ class MessageController extends Controller
 
         if (Message::create($data)) {
             foreach (['mp3', 'ogg'] as $ext) {
-                Storage::move('tmp/'.$r->input('message-file').'.'.$ext, 'public/audio/'.$filename.'.'.$ext);
+                Storage::move('tmp/'.$r->input('message-file').'.'.$ext, 'audio/'.$filename.'.'.$ext);
             }
         }
 
