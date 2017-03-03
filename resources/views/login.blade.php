@@ -2,13 +2,11 @@
 
 @section('content')
         <div id="content" class="small-12 medium-4 medium-centered columns">
-@if (session('login_error'))
-          <div>
-            <small class="error">{{ session('login_error') }}</small>
-          </div>
-@endif
           <form method="POST" action="@lang('nav.login.url')" accept-charset="utf-8" id="login" data-abide>
             {{ csrf_field() }}
+            <div data-abide-error class="alert callout text-center{{ (session('login_error')) ? '' : ' hide' }}">
+                <span><i class="fi-alert"> </i>{{ session('login_error') }}</span>
+            </div>
             <div>
               <label>@lang('forms.username')
                 <input autofocus autocapitalize="none" id="username" name="username" type="text" value="{{ old('username') }}" required />
