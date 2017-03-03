@@ -24,4 +24,4 @@
             <input name="goto" type="hidden" value="{{ old('goto', $goto) }}" />
             <button class="button float-right" type="submit" value="@lang('forms.login_button')">@lang('forms.login_button')</button>
           </form>
-@stop
+@endsection

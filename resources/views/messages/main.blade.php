@@ -63,4 +63,4 @@
           <div class="text-center">
             {{ $messages->links() }}
           </div>
-@stop
+@endsection

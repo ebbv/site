@@ -223,4 +223,4 @@
               </div>
             </li>
           </ol>
-@stop
+@endsection

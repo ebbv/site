@@ -5,4 +5,4 @@
           <form id="directory-form" method="POST" action="@lang('nav.directory.url')" accept-charset="utf-8">
             @include('directory.admin.form')
           </form>
-@stop
+@endsection

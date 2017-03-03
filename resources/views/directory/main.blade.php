@@ -31,4 +31,4 @@
             </li>
 @endforeach
           </ul>
-@stop
+@endsection

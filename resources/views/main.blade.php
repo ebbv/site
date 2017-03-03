@@ -2,4 +2,4 @@
 
 @section('content')
           <p></p>
-@stop
+@endsection
