@@ -38,9 +38,12 @@ class DirectoryController extends Controller
         ]);
     }
 
-    public function edit(Member $member)
+    public function edit(Member $annuaire)
     {
-        $member = $member->load('address', 'emails', 'phones', 'roles');
+        if (! $annuaire->exists) {
+            $annuaire = Member::find(request()->segment(2));
+        }
+        $member = $annuaire->load('address', 'emails', 'phones', 'roles');
 
         if (Auth::id() == $member->id or (Auth::user()->roles()->count() > 0 and Auth::user()->roles[0]->name == 'administrateur')) {
             return view('directory.admin.main')->with([
@@ -53,7 +56,7 @@ class DirectoryController extends Controller
             ]);
         }
 
-        return view('errors.no_admin');
+        return redirect('error');
     }
 
     public function store(Request $r)

@@ -9,33 +9,47 @@
 }
 
 #messages-table p {
+    margin-bottom: 3px;
+    margin-top: 3px;
     text-indent: 0;
 }
 
-#messages-table .message-info {
-    margin: 75px 0 15px 0;
+#messages-table .message-row {
+    border: 2px solid darkgray;
+    border-radius: 5px;
+    margin-bottom: 40px;
+    padding: 25px 15px 30px 15px;
+}
+
+#messages-table .message-info .delete {
+    color: #cc4b37;
+    cursor: pointer;
+}
+
+#messages-table .message-info .delete i {
+    font-size: 28px;
+}
+
+#messages-table .message-info .delete:hover {
+    color: #a53b2a;
+}
+
+#messages-table .message-info i {
+    font-size: 25px;
 }
 
 #messages-table .full-name {
     text-transform: capitalize;
 }
 
-#messages-table p {
-    margin-bottom: 3px;
-    margin-top: 3px;
-}
-
 #messages-table span.last-name {
     text-transform: uppercase;
 }
 
-#messages-table .message-title {
+#messages-table .message-info .message-title a {
+    color: #222;
     font-style: italic;
     font-weight: bold;
-}
-
-#messages-table .message-title a {
-    color: #222;
 }
 
 #messages-table .message-passage {

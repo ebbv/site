@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Message;
 use App\Models\Member;
 
-class MessageController extends Controller
+class MessagesController extends Controller
 {
     public function __construct()
     {
@@ -46,19 +46,44 @@ class MessageController extends Controller
         $data = [
             'member_id' => $r->speaker,
             'title'     => $r->title,
-            'passage'   => $r->input('message-passage'),
+            'passage'   => $r->passage,
             'url'       => $filename,
-            'date'      => $r->input('message-file'),
+            'date'      => $r->file,
             'created_by'=> $r->user()->id,
             'updated_by'=> $r->user()->id
         ];
 
         if (Message::create($data)) {
             foreach (['mp3', 'ogg'] as $ext) {
-                Storage::move('tmp/'.$r->input('message-file').'.'.$ext, 'audio/'.$filename.'.'.$ext);
+                Storage::move('tmp/'.$r->file.'.'.$ext, 'audio/'.$filename.'.'.$ext);
             }
         }
 
         return $this->create();
+    }
+
+    public function show(Message $message)
+    {
+        return $message;
+    }
+
+    public function edit(Message $message)
+    {
+        return view('messages.edit', compact('message'));
+    }
+
+    public function update(Request $r, Message $message)
+    {
+        $message->title     = $r->title;
+        $message->passage   = $r->passage;
+        $message->updated_by= $r->user()->id;
+        $message->save();
+        return redirect()->route('messages.index');
+    }
+
+    public function destroy(Message $message)
+    {
+        $message->delete();
+        return redirect()->route('messages.index');
     }
 }

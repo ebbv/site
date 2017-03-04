@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer(config('app.theme'), function ($view) {
+            $view->with('theme', str_replace('master', '', config('app.theme')));
+        });
     }
 
     /**
