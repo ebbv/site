@@ -12,8 +12,8 @@ class MessagesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => 'index']);
-        $this->middleware('verifyrole:admin', ['except' => 'index']);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('verifyrole:admin', ['except' => ['index', 'show']]);
     }
 
     public function index()
