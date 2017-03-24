@@ -14,10 +14,10 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->integer('member_id')->unsigned();
-            $table->integer('street_number')->unsigned();
+            $table->integer('street_number')->unsigned()->nullable();
             $table->string('street_type');
             $table->string('street_name');
-            $table->string('street_complement');
+            $table->string('street_complement')->nullable();
             $table->integer('zip');
             $table->string('city');
             $table->integer('created_by')->unsigned();

@@ -1,3 +1,5 @@
+          <form id="directory-form" method="POST" action="{{ $route }}" accept-charset="utf-8">
+            {{ (isset($submitButtonText)) ? method_field('PATCH') : '' }}
             {{ csrf_field() }}
             <div class="row">
               <div class="medium-3 columns">
@@ -13,6 +15,6 @@
             </div>
 @if (isset($submitButtonText))
             <input name="id" type="hidden" value="{{ $m->id }}" />
-            <input class="alert button float-right" id="delete" name="submit" type="submit" value="@lang('forms.delete_button')" />
 @endif
-            <input class="button float-right" id="submit" name="submit" type="submit" value="{{ $submitButtonText or trans('forms.add_button') }}" />
+            <input class="button float-right" id="submit" name="submit" type="submit" value="{{ $submitButtonText or __('forms.add_button') }}" />
+          </form>

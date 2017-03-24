@@ -27,6 +27,13 @@
                   {{ $e->address }}
                 </li>
 @endforeach
+                <li class="clearfix">
+                  <form method="POST" action="{{ route('directory.destroy', $m->id) }}" accept-charset="utf-8">
+                    {{ method_field('DELETE') }}
+                    {{ csrf_field() }}
+                    <input class="alert button float-right tiny" id="delete" name="submit" type="submit" value="@lang('forms.delete_button')" / />
+                  </form>
+                </li>
               </ul>
             </li>
 @endforeach

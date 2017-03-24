@@ -7,7 +7,7 @@
 @endforeach
 @foreach ($emails as $email)
                   <label>Mail ({{ $email['type'] }}) :
-                    <input name="emails[]" type="email" value="{{ $email['val'] }}" />
+                    <input name="email[{{ $email['type'] }}]" type="email" value="{{ $email['val'] }}" />
                   </label>
 @endforeach
                 </fieldset>

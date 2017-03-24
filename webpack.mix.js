@@ -11,7 +11,9 @@ const { mix } = require('laravel-mix');
  |
  */
 
-mix.sass('resources/assets/sass/app.scss', 'public/css')
+mix.sass('resources/assets/sass/app.scss', 'public/css', {
+    includePaths: ['node_modules/foundation-sites/scss']
+})
    .scripts('resources/assets/js/app.js', 'public/js/app.js')
    .copy([
         'node_modules/foundation-sites/dist/js/foundation.min.js',

@@ -19,7 +19,7 @@ class CreateEmailsTable extends Migration
             $table->integer('created_by')->unsigned();
             $table->integer('updated_by')->unsigned();
             $table->timestamps();
-            $table->primary(['member_id', 'address']);
+            $table->primary(['member_id', 'address', 'type']);
             $table->foreign('member_id')->references('id')->on('members');
         });
     }

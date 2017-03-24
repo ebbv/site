@@ -16,6 +16,11 @@ class MessagesController extends Controller
         $this->middleware('verifyrole:admin', ['except' => ['index', 'show']]);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $messages = Message::with('speaker')->orderBy('date', 'desc')->orderBy('created_at', 'desc')->paginate(4);
@@ -23,6 +28,22 @@ class MessagesController extends Controller
         return view('messages.main', compact('messages'));
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param App\Models\Message $message
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Message $message)
+    {
+        return $message;
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         $files = [];
@@ -39,6 +60,12 @@ class MessagesController extends Controller
         ]);
     }
 
+    /**
+     * Store the newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $r
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $r)
     {
         $filename = str_random(15);
@@ -62,16 +89,24 @@ class MessagesController extends Controller
         return $this->create();
     }
 
-    public function show(Message $message)
-    {
-        return $message;
-    }
-
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param App\Models\Message $message
+     * @return \Illuminate\Http\Response
+     */
     public function edit(Message $message)
     {
         return view('messages.edit', compact('message'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $r
+     * @param App\Models\Message $message
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $r, Message $message)
     {
         $message->title     = $r->title;
@@ -81,6 +116,12 @@ class MessagesController extends Controller
         return redirect()->route('messages.index');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param App\Models\Message $message
+     * @return \Illuminate\Http\Response
+     */
     public function destroy(Message $message)
     {
         $message->delete();
