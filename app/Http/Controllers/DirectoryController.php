@@ -141,20 +141,20 @@ class DirectoryController extends Controller
      */
     public function edit(Member $member)
     {
-        $member = $member->load(['address', 'emails' => function ($q) {
+        $m = $member->load(['address', 'emails' => function ($q) {
             $q->orderBy('type', 'asc');
         }, 'phones' => function ($q) {
             $q->orderBy('type', 'asc');
         }, 'roles']);
 
-        if (Auth::id() == $member->id or (Auth::user()->roles()->count() > 0 and Auth::user()->roles[0]->name == 'administrateur')) {
+        if (Auth::id() == $m->id or (Auth::user()->roles()->count() > 0 and Auth::user()->roles[0]->name == 'administrateur')) {
             return view('directory.admin.main')->with([
-                'emails'            => $this->getEmailInfo($member),
-                'm'                 => $member,
-                'phones'            => $this->getPhoneInfo($member),
-                'roles'             => $this->getRoles($member),
-                'route'             => route('directory.update', $member->id),
-                'street_type'       => $this->getAddressType($member),
+                'emails'            => $this->getEmailInfo($m),
+                'm'                 => $m,
+                'phones'            => $this->getPhoneInfo($m),
+                'roles'             => $this->getRoles($m),
+                'route'             => route('directory.update', $m->id),
+                'street_type'       => $this->getAddressType($m),
                 'submitButtonText'  => __('forms.edit_button')
             ]);
         }
@@ -244,7 +244,7 @@ class DirectoryController extends Controller
                     ]));
                 }
             } else {
-                Email::where('member_id', $m->id)->where('type', $key)->delete();
+                Email::where('member_id', $m->id)->where('type', $type)->delete();
             }
         }
 
@@ -279,6 +279,8 @@ class DirectoryController extends Controller
      */
     private function getAddressType($member = null)
     {
+        $types = [];
+
         foreach (['rue', 'allée', 'boulevard', 'chemin', 'route'] as $key => $value) {
             $types[$key]['name']    = $value;
             $types[$key]['selected']= '';
@@ -301,6 +303,8 @@ class DirectoryController extends Controller
      */
     private function getEmailInfo($member = null)
     {
+        $info = [];
+
         foreach (['principal', 'secondaire'] as $key => $value) {
             $info[$key]['type'] = $value;
             $info[$key]['val']  = '';
@@ -329,6 +333,8 @@ class DirectoryController extends Controller
      */
     private function getPhoneInfo($member = null)
     {
+        $info = [];
+
         foreach (['fixe', 'portable'] as $key => $value) {
             $info[$key]['long']     = $value;
             $info[$key]['short']    = substr($value, 0, 4);

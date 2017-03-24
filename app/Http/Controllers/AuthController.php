@@ -27,13 +27,7 @@ class AuthController extends Controller
      */
     public function login()
     {
-        $goto = $this->r->goto;
-
-        if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] !== url('connexion')) {
-            $goto = $_SERVER['HTTP_REFERER'];
-        }
-
-        return view('login')->withGoto($goto);
+        return view('login')->withGoto((filter_input(INPUT_SERVER, 'HTTP_REFERER')) ? : $this->r->goto);
     }
 
     /**
