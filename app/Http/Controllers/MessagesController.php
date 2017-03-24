@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Messages Controller
+ *
+ * @author Robert Doucette <rice8204@gmail.com>
+ */
+
 namespace App\Http\Controllers;
 
 use Storage;
@@ -8,6 +14,9 @@ use Illuminate\Http\Request;
 use App\Models\Message;
 use App\Models\Member;
 
+/**
+ * @author Robert Doucette <rice8204@gmail.com>
+ */
 class MessagesController extends Controller
 {
     public function __construct()
@@ -19,6 +28,7 @@ class MessagesController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @author Robert Doucette <rice8204@gmail.com>
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -31,6 +41,7 @@ class MessagesController extends Controller
     /**
      * Display the specified resource.
      *
+     * @author Robert Doucette <rice8204@gmail.com>
      * @param App\Models\Message $message
      * @return \Illuminate\Http\Response
      */
@@ -42,6 +53,7 @@ class MessagesController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @author Robert Doucette <rice8204@gmail.com>
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -63,8 +75,9 @@ class MessagesController extends Controller
     /**
      * Store the newly created resource in storage.
      *
+     * @author Robert Doucette <rice8204@gmail.com>
      * @param \Illuminate\Http\Request $r
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $r)
     {
@@ -92,6 +105,7 @@ class MessagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @author Robert Doucette <rice8204@gmail.com>
      * @param App\Models\Message $message
      * @return \Illuminate\Http\Response
      */
@@ -103,9 +117,10 @@ class MessagesController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @author Robert Doucette <rice8204@gmail.com>
      * @param \Illuminate\Http\Request $r
      * @param App\Models\Message $message
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $r, Message $message)
     {
@@ -119,8 +134,9 @@ class MessagesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @author Robert Doucette <rice8204@gmail.com>
      * @param App\Models\Message $message
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Message $message)
     {

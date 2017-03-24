@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Directory Controller
+ *
+ * @author Robert Doucette <rice8204@gmail.com>
+ */
+
 namespace App\Http\Controllers;
 
 use Auth;
@@ -22,6 +28,7 @@ class DirectoryController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @author Robert Doucette <rice8204@gmail.com>
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -38,6 +45,7 @@ class DirectoryController extends Controller
     /**
      * Display the specified resource.
      *
+     * @author Robert Doucette <rice8204@gmail.com>
      * @param App\Models\Member $member
      * @return \Illuminate\Http\Response
      */
@@ -49,6 +57,7 @@ class DirectoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @author Robert Doucette <rice8204@gmail.com>
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -65,8 +74,9 @@ class DirectoryController extends Controller
     /**
      * Store the newly created resource in storage.
      *
+     * @author Robert Doucette <rice8204@gmail.com>
      * @param \Illuminate\Http\Request $r
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $r)
     {
@@ -125,6 +135,7 @@ class DirectoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @author Robert Doucette <rice8204@gmail.com>
      * @param App\Models\Member $member
      * @return \Illuminate\Http\Response
      */
@@ -154,9 +165,10 @@ class DirectoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @author Robert Doucette <rice8204@gmail.com>
      * @param \Illuminate\Http\Request $r
      * @param App\Models\Member $member
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirctResponse
      */
     public function update(Request $r, Member $member)
     {
@@ -242,8 +254,9 @@ class DirectoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @author Robert Doucette <rice8204@gmail.com>
      * @param App\Models\Member $member
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Member $member)
     {
@@ -258,6 +271,12 @@ class DirectoryController extends Controller
         return redirect()->route('directory.index');
     }
 
+    /**
+     *
+     * @author Robert Doucette <rice8204@gmail.com>
+     * @param App\Models\Member $member
+     * @return array $types
+     */
     private function getAddressType($member = null)
     {
         foreach (['rue', 'allée', 'boulevard', 'chemin', 'route'] as $key => $value) {
@@ -274,6 +293,12 @@ class DirectoryController extends Controller
         return $types;
     }
 
+    /**
+     *
+     * @author Robert Doucette <rice8204@gmail.com>
+     * @param App\Models\Member $member
+     * @return array $info
+     */
     private function getEmailInfo($member = null)
     {
         foreach (['principal', 'secondaire'] as $key => $value) {
@@ -296,6 +321,12 @@ class DirectoryController extends Controller
         return $info;
     }
 
+    /**
+     *
+     * @author Robert Doucette <rice8204@gmail.com>
+     * @param App\Models\Member $member
+     * @return array $info
+     */
     private function getPhoneInfo($member = null)
     {
         foreach (['fixe', 'portable'] as $key => $value) {
@@ -319,6 +350,12 @@ class DirectoryController extends Controller
         return $info;
     }
 
+    /**
+     *
+     * @author Robert Doucette <rice8204@gmail.com>
+     * @param App\Models\Member $member
+     * @return array $roles
+     */
     private function getRoles($member = null)
     {
         $roles = Role::all()->map(function ($item) {

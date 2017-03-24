@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Authentication Controller
+ *
+ * @author Robert Doucette <rice8204@gmail.com>
+ */
+
 namespace App\Http\Controllers;
 
 use Auth;
@@ -14,6 +20,11 @@ class AuthController extends Controller
         $this->middleware('guest', ['only' => 'login']);
     }
 
+    /**
+     * 
+     * @author Robert Doucette <rice8204@gmail.com>
+     * @return \Illuminate\Http\Response
+     */
     public function login()
     {
         $goto = $this->r->goto;
@@ -25,6 +36,11 @@ class AuthController extends Controller
         return view('login')->withGoto($goto);
     }
 
+    /**
+     * 
+     * @author Robert Doucette <rice8204@gmail.com>
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function verify()
     {
         $this->validate($this->r, [
@@ -46,6 +62,11 @@ class AuthController extends Controller
         return back()->withInput($this->r->except('password'));
     }
 
+    /**
+     * 
+     * @author Robert Doucette <rice8204@gmail.com>
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function logout()
     {
         DB::table('logouts')->insert([
