@@ -41,7 +41,7 @@
                     <div class="row">
                       <div class="small-10 columns">
                         <p class="message-title">
-                          <a download="{{ $m->title }}" href="{{ Storage::url('audio/'.$m->url) }}.mp3">{{ $m->title }}</a>
+                          <a href="{{ route('messages.show', $m->id) }}">{{ $m->title }}</a>
                         </p>
                         <p class="message-passage">{{ $m->passage }}</p>
                       </div>
