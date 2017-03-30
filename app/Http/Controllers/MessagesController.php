@@ -49,7 +49,7 @@ class MessagesController extends Controller
     {
         $remote_url = Storage::url('audio/'.$message->url.'.mp3');
         header('Content-Description: File Transfer');
-        header('Content-Disposition: attachment; filename="'.$message->title.'"');
+        header('Content-Disposition: attachment; filename="'.$message->title.'.mp3"');
         header('Content-Type: audio/mpeg');
         header('Content-Length: '.get_headers($remote_url, 1)['Content-Length']);
         return readfile($remote_url);
