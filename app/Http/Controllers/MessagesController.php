@@ -8,11 +8,11 @@
 
 namespace App\Http\Controllers;
 
-use Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-use App\Models\Message;
 use App\Models\Member;
+use App\Models\Message;
 
 /**
  * @author Robert Doucette <rice8204@gmail.com>
