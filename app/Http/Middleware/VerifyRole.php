@@ -7,12 +7,12 @@ use App\Models\Member;
 
 class VerifyRole
 {
-    public function handle($request, Closure $next, $role)
+    public function handle($request, Closure $next, $role, $id = null)
     {
-        if (! Member::has($role)->find($request->user()->id)) {
-            return redirect('error');
+        if ($request->user()->id == $id or Member::has($role)->find($request->user()->id)) {
+            return $next($request);
         }
 
-        return $next($request);
+        return redirect('error');
     }
 }

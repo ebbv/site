@@ -8,7 +8,6 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use Illuminate\Http\Request;
 
 use App\Models\Address;
@@ -22,7 +21,7 @@ class DirectoryController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('verifyrole:admin', ['except' => ['index', 'show']]);
+        $this->middleware('verifyrole:admin, '.request()->segment(2), ['except' => ['index', 'show']]);
     }
 
     /**
@@ -147,19 +146,15 @@ class DirectoryController extends Controller
             $q->orderBy('type', 'asc');
         }, 'roles']);
 
-        if (Auth::id() == $m->id or (Auth::user()->roles()->count() > 0 and Auth::user()->roles[0]->name == 'administrateur')) {
-            return view('directory.admin.main')->with([
-                'emails'            => $this->getEmailInfo($m),
-                'm'                 => $m,
-                'phones'            => $this->getPhoneInfo($m),
-                'roles'             => $this->getRoles($m),
-                'route'             => route('directory.update', $m->id),
-                'street_type'       => $this->getAddressType($m),
-                'submitButtonText'  => __('forms.edit_button')
-            ]);
-        }
-
-        return redirect('error');
+        return view('directory.admin.main')->with([
+            'emails'            => $this->getEmailInfo($m),
+            'm'                 => $m,
+            'phones'            => $this->getPhoneInfo($m),
+            'roles'             => $this->getRoles($m),
+            'route'             => route('directory.update', $m->id),
+            'street_type'       => $this->getAddressType($m),
+            'submitButtonText'  => __('forms.edit_button')
+        ]);
     }
 
     /**
