@@ -25,6 +25,16 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('create-member', function ($user) {
+            return \App\Models\Member::has('admin')->find($user->id);
+        });
+
+        Gate::define('update-member', function ($user, $id) {
+            if (\App\Models\Member::has('admin')->find($user->id) or $user->id == $id) {
+                return true;
+            }
+
+            return false;
+        });
     }
 }

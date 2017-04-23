@@ -8,20 +8,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Models\Address;
 use App\Models\Email;
 use App\Models\Member;
 use App\Models\Phone;
 use App\Models\Role;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class DirectoryController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('verifyrole:admin, '.request()->segment(2), ['except' => ['index', 'show']]);
     }
 
     /**
@@ -61,6 +60,10 @@ class DirectoryController extends Controller
      */
     public function create()
     {
+        if (Gate::denies('create-member')) {
+            return redirect()->route('directory.index');
+        }
+
         return view('directory.admin.main')->with([
             'emails'        => $this->getEmailInfo(),
             'phones'        => $this->getPhoneInfo(),
@@ -140,6 +143,10 @@ class DirectoryController extends Controller
      */
     public function edit(Member $member)
     {
+        if (Gate::denies('update-member', $member->id)) {
+            return redirect()->route('directory.index');
+        }
+
         $m = $member->load(['address', 'emails' => function ($q) {
             $q->orderBy('type', 'asc');
         }, 'phones' => function ($q) {
@@ -255,7 +262,7 @@ class DirectoryController extends Controller
      */
     public function destroy(Member $member)
     {
-        if ($member->id >= 4) { /* Making sure none of the default users are deleted */
+        if ($member->id >= 4 or Gate::allows('update-member', $member->id)) { /* Making sure none of the default users are deleted */
             $member->address()->delete();
             $member->phones()->delete();
             $member->emails()->delete();
