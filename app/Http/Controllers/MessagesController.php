@@ -8,11 +8,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-
 use App\Models\Member;
 use App\Models\Message;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @author Robert Doucette <rice8204@gmail.com>
@@ -22,7 +21,6 @@ class MessagesController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
-        $this->middleware('verifyrole:admin', ['except' => ['index', 'show']]);
     }
 
     /**
@@ -63,6 +61,7 @@ class MessagesController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Message::class);
         $files = [];
 
         foreach ((Storage::files('tmp')) ? : [] as $file) {
@@ -116,6 +115,7 @@ class MessagesController extends Controller
      */
     public function edit(Message $message)
     {
+        $this->authorize('update', $message);
         return view('messages.edit', compact('message'));
     }
 

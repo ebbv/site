@@ -17,11 +17,11 @@
 
 @section('content')
         <div id="content" class="medium-8 columns">
-@if (Auth::check())
+@can ('create', App\Models\Message::class)
           <div>
             <p class="text-right"><a href="{{ route('messages.create') }}">@lang('forms.add_button')</a></p>
           </div>
-@endif
+@endcan
           <div class="row">
             <div class="small-12 columns" id="messages-table">
 @foreach ($messages as $m)
@@ -45,7 +45,7 @@
                         </p>
                         <p class="message-passage">{{ $m->passage }}</p>
                       </div>
-@if (Auth::check())
+@can ('update', $m)
                       <div class="small-2 columns text-right">
                         <a class="edit" href="{{ route('messages.edit', $m->id) }}"><i class="fi-page-edit"></i></a>
                         <form method="POST" action="{{ route('messages.destroy', $m->id) }}" accept-charset="utf-8">
@@ -54,7 +54,7 @@
                           <button class="delete" type="submit"><i class="fi-x-circle"></i></button>
                         </form>
                       </div>
-@endif
+@endcan
                     </div>
                   </div>
                 </div>
