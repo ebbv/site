@@ -40,17 +40,17 @@ class MessagesController extends Controller
      * Display the specified resource.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param App\Models\Message $message
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Message $message
+     * @return void
      */
     public function show(Message $message)
     {
-        $remote_url = Storage::url('audio/'.$message->url.'.mp3');
+        $url = Storage::url('audio/'.$message->url.'.mp3');
         header('Content-Description: File Transfer');
         header('Content-Disposition: attachment; filename="'.$message->title.'.mp3"');
         header('Content-Type: audio/mpeg');
-        header('Content-Length: '.get_headers($remote_url, 1)['Content-Length']);
-        return readfile($remote_url);
+        header('Content-Length: '.get_headers($url, 1)['Content-Length']);
+        readfile($url);
     }
 
     /**
@@ -110,7 +110,7 @@ class MessagesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param App\Models\Message $message
+     * @param \App\Models\Message $message
      * @return \Illuminate\Http\Response
      */
     public function edit(Message $message)
@@ -124,7 +124,7 @@ class MessagesController extends Controller
      *
      * @author Robert Doucette <rice8204@gmail.com>
      * @param \Illuminate\Http\Request $r
-     * @param App\Models\Message $message
+     * @param \App\Models\Message $message
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $r, Message $message)
@@ -140,7 +140,7 @@ class MessagesController extends Controller
      * Remove the specified resource from storage.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param App\Models\Message $message
+     * @param \App\Models\Message $message
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Message $message)

@@ -44,7 +44,7 @@ class DirectoryController extends Controller
      * Display the specified resource.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param App\Models\Member $member
+     * @param \App\Models\Member $member
      * @return \Illuminate\Http\Response
      */
     public function show(Member $member)
@@ -138,7 +138,7 @@ class DirectoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param App\Models\Member $member
+     * @param \App\Models\Member $member
      * @return \Illuminate\Http\Response
      */
     public function edit(Member $member)
@@ -169,7 +169,7 @@ class DirectoryController extends Controller
      *
      * @author Robert Doucette <rice8204@gmail.com>
      * @param \Illuminate\Http\Request $r
-     * @param App\Models\Member $member
+     * @param \App\Models\Member $member
      * @return \Illuminate\Http\RedirctResponse
      */
     public function update(Request $r, Member $member)
@@ -257,7 +257,7 @@ class DirectoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param App\Models\Member $member
+     * @param \App\Models\Member $member
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Member $member)
@@ -276,7 +276,7 @@ class DirectoryController extends Controller
     /**
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param App\Models\Member $member
+     * @param \App\Models\Member $member
      * @return array $types
      */
     private function getAddressType($member = null)
@@ -300,7 +300,7 @@ class DirectoryController extends Controller
     /**
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param App\Models\Member $member
+     * @param \App\Models\Member $member
      * @return array $info
      */
     private function getEmailInfo($member = null)
@@ -330,7 +330,7 @@ class DirectoryController extends Controller
     /**
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param App\Models\Member $member
+     * @param \App\Models\Member $member
      * @return array $info
      */
     private function getPhoneInfo($member = null)
@@ -361,7 +361,7 @@ class DirectoryController extends Controller
     /**
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param App\Models\Member $member
+     * @param \App\Models\Member $member
      * @return array $roles
      */
     private function getRoles($member = null)
