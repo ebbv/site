@@ -262,7 +262,7 @@ class DirectoryController extends Controller
      */
     public function destroy(Member $member)
     {
-        if ($member->id >= 4 or Gate::allows('update-member', $member->id)) { /* Making sure none of the default users are deleted */
+        if ($member->id >= 4 and Gate::allows('update-member', $member->id)) { /* Making sure none of the default users are deleted */
             $member->address()->delete();
             $member->phones()->delete();
             $member->emails()->delete();
