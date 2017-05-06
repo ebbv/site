@@ -26,8 +26,8 @@ class RemoveCurrentLoginAndLastLoginFromMembersTable extends Migration
     public function down()
     {
         Schema::table('members', function (Blueprint $table) {
-            $table->timestamp('current_login');
-            $table->timestamp('last_login');
+            $table->timestamp('current_login')->nullable();
+            $table->timestamp('last_login')->nullable();
         });
     }
 }
