@@ -5,7 +5,6 @@
 /public/fonts
 /public/imgs
 /public/js
-/public/mix.js
 /vendor
 .c9
 .DS_Store
@@ -13,5 +12,4 @@
 .php_cs.cache
 composer.lock
 composer.phar
-mix-manifest.json
 Thumbs.db
