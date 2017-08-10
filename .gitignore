@@ -1,11 +1,11 @@
 /bower_components
 /nbproject
 /node_modules
-/public/audio
 /public/css
 /public/fonts
 /public/imgs
 /public/js
+/public/mix.js
 /vendor
 .c9
 .DS_Store

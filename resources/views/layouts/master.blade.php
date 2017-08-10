@@ -1,37 +1,27 @@
 <!doctype html>
-<!--[if lt IE 9]><html class="oldie" lang="{{ App::getlocale() }}"><![endif]-->
-<html class="no-js" lang="{{ App::getlocale() }}">
+<html lang="{{ App::getlocale() }}">
   <head>
     <meta charset="utf-8">
     <base href="{{ url('/') }}/">
     <title>{{ config('app.site_prefix').'EBBV' }}</title>
     <meta name="description" content="Le site de l'Eglise Biblique Baptiste de Vernon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
     <link rel="stylesheet" href="css/app.css">
   </head>
-  <body>
-    <p id="browsehappy">
-      Vous utilisez un navigateur <strong>ancien</strong>.
-      Veuillez le <a href="http://browsehappy.com/">mettre à jour</a> pour une expérience améliorée.
-    </p>
+  <body class="mdc-typography">
+    @include($theme.'header')
 
-    <div id="wrapper">
-      @include($theme.'header')
-
-      <div id="main" class="row">
+    <main class="mdc-toolbar-fixed-adjust mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
 @yield('aside')
 @yield('content')
         </div> <!-- end of the content div -->
-      </div> <!-- end of the main div -->
-    </div> <!-- end of the wrapper div -->
+      </div>
+    </main>
 
     @include($theme.'footer')
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="js/vendor/jquery-ui.min.js"></script>
-    <script src="js/vendor/foundation.min.js"></script>
     <script src="js/app.js"></script>
-
   </body>
 </html>

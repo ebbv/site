@@ -1,0 +1,33 @@
+.pagination {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.pagination li {
+  display: inline-block;
+  line-height: 30px;
+  vertical-align: top;
+}
+
+.pagination li.current {
+  padding: 0 0.8rem;
+  width: 24px;
+}
+
+.pagination li a {
+  display: block;
+  line-height: 30px;
+  padding: 0 0.8rem;
+  text-decoration: none;
+  width: 24px;
+  @include mdc-theme-prop(color, primary);
+}
+
+.pagination li.current,
+.pagination li a:hover {
+  @include mdc-theme-prop(background, primary);
+  @include mdc-theme-prop(color, text-primary-on-primary);
+}
+

@@ -1,25 +1,49 @@
 @extends(config('app.theme'))
 
 @section('content')
-        <div id="content" class="small-12 medium-4 medium-centered columns">
-          <form method="POST" action="@lang('nav.login.url')" accept-charset="utf-8" id="login" data-abide>
-            {{ csrf_field() }}
-            <div data-abide-error class="alert callout text-center{{ (session('login_error')) ? '' : ' hide' }}">
-                <span><i class="fi-alert"> </i>{{ session('login_error') }}</span>
-            </div>
-            <div>
-              <label>@lang('forms.username')
-                <input autofocus autocapitalize="none" id="username" name="username" type="text" value="{{ old('username') }}" required />
-                <small class="form-error">@lang('validation.required')</small>
+      <div class="mdc-layout-grid__cell--span-12" id="content">
+        <form method="POST" action="@lang('nav.login.url')" accept-charset="utf-8" id="login" class="mdc-card">
+          {{ csrf_field() }}
+          <section class="mdc-card__primary">
+            <div class="mdc-textfield">
+              <input aria-controls="username-validation-msg"
+                     autocapitalize="none"
+                     autofocus
+                     class="mdc-textfield__input"
+                     id="username"
+                     name="username"
+                     required
+                     type="text"
+                     value="{{ old('username') }}">
+              <label class="mdc-textfield__label mdc-textfield__label--float-above" for="username">
+                @lang('forms.username')
               </label>
             </div>
-            <div>
-              <label>@lang('forms.password')
-                <input id="password" name="password" type="password" required />
-                <small class="form-error">@lang('validation.required')</small>
+            <p class="mdc-textfield-helptext mdc-textfield-helptext--validation-msg"
+               id="username-validation-msg">
+              Obligatoire
+            </p>
+            <div class="mdc-textfield">
+              <input aria-controls="password-validation-msg"
+                     class="mdc-textfield__input"
+                     id="password"
+                     name="password"
+                     required
+                     type="password">
+              <label class="mdc-textfield__label" for="password">
+                @lang('forms.password')
               </label>
             </div>
-            <input name="goto" type="hidden" value="{{ old('goto', $goto) }}" />
-            <button class="button float-right" type="submit" value="@lang('forms.login_button')">@lang('forms.login_button')</button>
-          </form>
+            <p class="mdc-textfield-helptext mdc-textfield-helptext--validation-msg"
+               id="password-validation-msg">
+              Obligatoire
+            </p>
+          </section>
+          <section class="mdc-card__actions">
+            <input name="goto" type="hidden" value="{{ old('goto', $goto) }}">
+            <button class="mdc-button mdc-button--primary mdc-button--raised" type="submit">
+              @lang('forms.login_button')
+            </button>
+          </section>
+        </form>
 @endsection

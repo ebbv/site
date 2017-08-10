@@ -1,53 +1,72 @@
 @extends(config('app.theme'))
 
 @section('content')
-        <div id="content" class="small-12 columns">
-          <ul class="row small-up-1 medium-up-2 large-up-3 directory-list">
+        <div class="mdc-layout-grid__cell--span-12" id="content">
+          <div class="mdc-layout-grid" id="directory-list">
+            <div class="mdc-layout-grid__inner">
 @foreach ($members as $m)
-            <li class="column">
-              <ul class="vcard">
-                <li class="fn">
-                  <h4>
-@can ('update-member', $m->id)
-                    <a href="@lang('nav.directory.url')/{{ $m->id }}/@lang('nav.actions.edit')">
-@endcan
-                      <span class="last-name">{{ $m->last_name }}</span>, {{ $m->first_name }}
-@can ('update-member', $m->id)
-                    </a>
-@endcan
-                  </h4>
-                </li>
-                <li class="street-address">
-                  {{ ($m->address->street_number != 0) ? $m->address->street_number.',' : '' }}
-                  {{ $m->address->street_type }}
-                  {{ $m->address->street_name }}
-                </li>
-                <li class="">{{ $m->address->street_complement }}</li>
-                <li><span class="zip">{{ $m->address->zip }}</span> <span class="locality">{{ $m->address->city }}</span></li>
+              <div class="mdc-layout-grid__cell">
+                <div class="mdc-card">
+                  <section class="mdc-card__primary">
+                    <h1 class="mdc-card__title mdc-card__title--large">
+                      <span class="last-name">{{ $m->last_name }}</span><span>, {{ $m->first_name }}</span>
+                    </h1>
+                  </section>
+                  <section class="mdc-card__supporting-text">
+                    <div class="address">
+                      <p class="street-address">
+                        {{ ($m->address->street_number != 0) ? $m->address->street_number.',' : '' }}
+                        {{ $m->address->street_type }}
+                        {{ $m->address->street_name }}
+                      </p>
+                      <p>{{ $m->address->street_complement }}</p>
+                      <p>
+                        <span class="zip">{{ $m->address->zip }}</span>
+                        <span class="locality">{{ $m->address->city }}</span>
+                      </p>
+                    </div>
+                    <ul class="mdc-list--dense phones">
 @foreach ($m->phones as $p)
-                <li class="telephone">{{ $p->type }} : {{ $p->number }}</li>
+                      <li class="mdc-list-item">
+                        <i class="mdc-list-item__start-detail material-icons">{{ ($p->type == 'Fixe') ? 'phone' : 'smartphone'}}</i>
+                        {{ $p->number }}
+                      </li>
 @endforeach
+                    </ul>
+                    <hr class="mdc-list-divider">
+                    <ul class="mdc-list--dense emails">
 @foreach ($m->emails as $key => $e)
-                <li class="email">
-@if ($key == 0)
-                  Mail :
-@else
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-@endif
-                  {{ $e->address }}
-                </li>
+                      <li class="mdc-list-item">
+                        <i class="mdc-list-item__start-detail material-icons">email</i>
+                        {{ $e->address }}
+                      </li>
 @endforeach
+                    </ul>
+                  </section>
 @can ('update-member', $m->id)
-                <li class="clearfix">
-                  <form method="POST" action="{{ route('directory.destroy', $m->id) }}" accept-charset="utf-8">
-                    {{ method_field('DELETE') }}
-                    {{ csrf_field() }}
-                    <input class="alert button float-right tiny" id="delete" name="submit" type="submit" value="@lang('forms.delete_button')" / />
-                  </form>
-                </li>
+                  <section class="mdc-card__actions">
+                    <a href="{{ route('directory.edit', $m->id) }}">
+                      <button class="mdc-button mdc-button--compact mdc-card__action material-icons">edit</button>
+                    </a>
+                    <form method="POST" action="{{ route('directory.destroy', $m->id) }}" accept-charset="utf-8">
+                      {{ method_field('DELETE') }}
+                      {{ csrf_field() }}
+                      <button class="mdc-button mdc-button--compact mdc-card__action material-icons">delete</button>
+                    </form>
+                  </section>
 @endcan
-              </ul>
-            </li>
+                </div>
+              </div>
 @endforeach
-          </ul>
+            </div>
+          </div>
+@can ('update-member', $m->id)
+          <a href="{{ route('directory.create') }}">
+            <button class="mdc-fab material-icons" aria-label="Add">
+              <span class="mdc-fab__icon">
+                add
+              </span>
+            </button>
+          </a>
+@endcan
 @endsection

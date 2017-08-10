@@ -6,8 +6,5 @@
     "Robert Doucette <rice8204@gmail.com>"
   ],
   "license": "MIT",
-  "dependencies": {
-    "jquery": "2.2.4",
-    "jquery-ui": "~1.11.4"
-  }
+  "dependencies": {}
 }

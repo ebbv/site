@@ -11,7 +11,7 @@ namespace App\Http\Controllers;
 class ErrorsController extends Controller
 {
     /**
-     * 
+     *
      * @author Robert Doucette <rice8204@gmail.com>
      * @return \Illuminate\Http\Response
      */

@@ -1,20 +1,33 @@
-          <form id="directory-form" method="POST" action="{{ $route }}" accept-charset="utf-8">
-            {{ (isset($submitButtonText)) ? method_field('PATCH') : '' }}
-            {{ csrf_field() }}
-            <div class="row">
-              <div class="medium-3 columns">
-                @include('directory.admin.id')
-                @include('directory.admin.roles')
-              </div>
-              <div class="medium-6 columns">
-                @include('directory.admin.address')
-              </div>
-              <div class="medium-3 columns">
-                @include('directory.admin.contact')
-              </div>
+        <form accept-charset="utf-8"
+              action="{{ $route }}"
+              class="mdc-layout-grid"
+              id="directory-form"
+              method="POST">
+          {{ (isset($editButtonText)) ? method_field('PATCH') : '' }}
+          {{ csrf_field() }}
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop">
+              @include('directory.admin.id')
+              @include('directory.admin.roles')
             </div>
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+              @include('directory.admin.address')
+            </div>
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop">
+              @include('directory.admin.contact')
+            </div>
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop">
 @if (isset($submitButtonText))
-            <input name="id" type="hidden" value="{{ $m->id }}" />
+              <input name="id" type="hidden" value="{{ $m->id }}">
 @endif
-            <input class="button float-right" id="submit" name="submit" type="submit" value="{{ $submitButtonText or __('forms.add_button') }}" />
-          </form>
+              <button class="mdc-button mdc-button--raised mdc-button--primary" type="submit">
+                {{ $editButtonText or __('forms.add_button') }}
+              </button>
+              <a href="{{ route('directory.index') }}">
+                <button class="mdc-button mdc-button--raised mdc-button--accent" type="button">
+                  @lang('forms.cancel_button')
+                </button>
+              </a>
+            </div>
+          </div>
+        </form>

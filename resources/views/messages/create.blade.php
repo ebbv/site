@@ -1,42 +1,67 @@
 @extends(config('app.theme'))
 
 @section('content')
-        <div id="content" class="medium-10 medium-centered columns">
-          <div class="row" id="add-message">
-            <form method="POST" action="{{ route('messages.store') }}" accept-charset="utf-8" class="small-12 columns">
-              {{ csrf_field() }}
-              <div class="row">
-                <div class="medium-8 columns">
-                  <label for="title">Titre :</label>
-                  <input autofocus id="title" name="title" type="text" value="">
-                </div>
-                <div class="medium-4 columns">
-                  <label for="speaker">Orateur :</label>
-                  <select id="speaker" name="speaker">
-                    <!-- <option></option> -->
+        <div class="mdc-layout-grid__cell--span-12" id="content">
+          <form accept-charset="utf-8"
+                action="{{ route('messages.store') }}"
+                class="mdc-layout-grid"
+                id="add-message"
+                method="POST">
+            {{ csrf_field() }}
+            <div class="mdc-layout-grid__inner">
+              <div class="mdc-layout-grid__cell
+                          mdc-layout-grid__cell--span-5-tablet
+                          mdc-layout-grid__cell--span-8-desktop
+                          mdc-textfield">
+                <input class="mdc-textfield__input"
+                       id="title"
+                       name="title"
+                       required
+                       type="text">
+                <label class="mdc-textfield__label" for="title">
+                  Titre
+                </label>
+              </div>
+              <div class="mdc-layout-grid__cell
+                          mdc-layout-grid__cell--span-3-tablet
+                          mdc-layout-grid__cell--span-4-desktop">
+                <select class="mdc-select" id="speaker" name="speaker">
+                  <!-- <option></option> -->
 @foreach ($speakers as $s)
-                    <option value="{{ $s->id }}">{{ $s->last_name }}, {{ $s->first_name }}</option>
+                  <option value="{{ $s->id }}">{{ $s->last_name }}, {{ $s->first_name }}</option>
 @endforeach
-                  </select>
-                </div>
+                </select>
               </div>
-              <div class="row">
-                <div class="medium-6 columns">
-                  <label for="message-passage">Passage :</label>
-                  <input id="message-passage" name="passage" type="text" value="">
-                </div>
-                <div class="medium-3 columns">
-                  <label for="message-file">Fichier :</label>
-                  <select id="message-file" name="file">
+              <div class="mdc-layout-grid__cell
+                          mdc-layout-grid__cell--span-4-tablet
+                          mdc-layout-grid__cell--span-7-desktop
+                          mdc-textfield">
+                <input class="mdc-textfield__input"
+                       id="message-passage"
+                       name="passage"
+                       required
+                       type="text">
+                <label class="mdc-textfield__label" for="message-passage">
+                  Passage
+                </label>
+              </div>
+              <div class="mdc-layout-grid__cell
+                          mdc-layout-grid__cell--span-2-tablet
+                          mdc-layout-grid__cell--span-3-desktop">
+                <select class="mdc-select" id="message-file" name="file">
+                  <option default selected>Choisir un fichier...</option>
 @foreach ($files as $f)
-                    <option value="{{ $f }}">{{ $f }}</option>
+                  <option value="{{ $f }}">{{ $f }}</option>
 @endforeach
-                  </select>
-                </div>
-                <div class="medium-3 columns">
-                  <input class="button float-right" type="submit" value="@lang('forms.add_button')">
-                </div>
+                </select>
               </div>
-            </form>
-          </div>
+              <div class="mdc-layout-grid__cell
+                          mdc-layout-grid__cell--span-2-tablet
+                          mdc-layout-grid__cell--span-2-desktop">
+                <button class="mdc-button mdc-button--raised mdc-button--primary" type="submit">
+                  @lang('forms.add_button')
+                </button>
+              </div>
+            </div>
+          </form>
 @endsection

@@ -1,0 +1,11 @@
+footer {
+  text-align: center;
+  @include mdc-theme-prop(background, primary);
+  @include mdc-theme-prop(color, text-secondary-on-primary);
+}
+
+#copyright {
+  margin: 0;
+  padding: 1.2rem 0;
+  @include mdc-typography(caption);
+}

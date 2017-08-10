@@ -1,0 +1,47 @@
+#sidebar {
+  @include mdc-typography(body1);
+}
+
+.message-cards .mdc-card {
+  margin: 0 auto 25px auto;
+  max-width: 500px;
+}
+
+.message-cards .mdc-layout-grid {
+  padding: 0 16px;
+  width: 100%;
+}
+
+.player {
+  margin-bottom: 10px;
+}
+
+.player i {
+  font-size: 48px;
+  padding: 0;
+}
+
+.player .duration {
+  text-align: center;
+}
+
+#add-message {
+  margin: 0 auto;
+  max-width: 1024px;
+}
+
+#add-message .mdc-textfield input,
+#add-message select {
+  width: 100%;
+}
+
+#add-message select {
+  height: 48px;
+  margin-top: 1.08rem;
+  max-width: 100%;
+}
+
+#add-message button {
+  float: right;
+  margin-top: 30px;
+}

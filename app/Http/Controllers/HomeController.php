@@ -1,23 +1,23 @@
 <?php
 
 /**
- * Beliefs Controller
+ * Home Controller
  *
  * @author Robert Doucette <rice8204@gmail.com>
  */
 
 namespace App\Http\Controllers;
 
-class BeliefsController extends Controller
+class HomeController extends Controller
 {
+
     /**
-     * The main beliefs page
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function index()
     {
-        return view('beliefs.main');
+        return redirect()->route('messages.index');
     }
 }

@@ -1,40 +1,62 @@
-                <fieldset>
-                  <legend>Adresse</legend>
-                  <div class="row">
-                    <div class="small-6 medium-5 columns">
-                      <label>Numéro de rue :
-                        <input id="street_number" name="street_number" type="number" value="{{ $m->address->street_number or '' }}" />
-                      </label>
+            <fieldset id="address">
+              <legend>Adresse</legend>
+              <div class="mdc-layout-grid">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop">
+                    <div class="mdc-textfield">
+                      <input class="mdc-textfield__input"
+                             id="street_number"
+                             name="street_number"
+                             type="number"
+                             value="{{ $m->address->street_number or '' }}">
+                      <label class="mdc-textfield__label" for="street_number">Numéro</label>
                     </div>
-                    <div class="small-1 medium-2 columns"></div>
-                    <div class="small-5 medium-5 columns">
-                      <label>Type de rue :
-                        <select name="street_type">
-                          <option></option>
+                  </div>
+                  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop">
+                    <select class="mdc-select" name="street_type">
+                      <option>Type de rue...</option>
 @foreach ($street_type as $type)
-                          <option{{ $type['selected'] }}>{{ $type['name'] }}</option>
+                      <option{{ $type['selected'] }}>{{ $type['name'] }}</option>
 @endforeach
-                        </select>
-                      </label>
+                    </select>
+                  </div>
+                  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7-desktop">
+                    <div class="mdc-textfield">
+                      <input class="mdc-textfield__input"
+                             name="street_name"
+                             type="text"
+                             value="{{ $m->address->street_name or '' }}">
+                      <label class="mdc-textfield__label">Nom de la rue</label>
                     </div>
                   </div>
-                  <label>Nom de la rue :
-                    <input name="street_name" type="text" value="{{ $m->address->street_name or '' }}" />
-                  </label>
-                  <label>Complément :
-                    <input name="street_complement" type="text" value="{{ $m->address->street_complement or '' }}" />
-                  </label>
-                  <div class="row">
-                    <div class="small-5 medium-4 columns">
-                      <label>Code postal :
-                        <input id="zipcode" name="zip" type="number" value="{{ $m->address->zip or '' }}" />
-                      </label>
-                    </div>
-                    <div class="small-1 medium-1 columns"></div>
-                    <div class="small-6 medium-7 columns">
-                      <label>Ville :
-                        <input name="city" type="text" value="{{ $m->address->city or '' }}" />
-                      </label>
+                  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7-desktop">
+                    <div class="mdc-textfield">
+                      <input class="mdc-textfield__input"
+                             name="street_complement"
+                             type="text"
+                             value="{{ $m->address->street_complement or '' }}">
+                      <label class="mdc-textfield__label">Complément</label>
                     </div>
                   </div>
-                </fieldset>
+                  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop">
+                    <div class="mdc-textfield">
+                      <input class="mdc-textfield__input"
+                             id="zipcode"
+                             name="zip"
+                             type="number"
+                             value="{{ $m->address->zip or '' }}">
+                      <label class="mdc-textfield__label">Code postal</label>
+                    </div>
+                  </div>
+                  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-5-desktop">
+                    <div class="mdc-textfield">
+                      <input class="mdc-textfield__input"
+                             name="city"
+                             type="text"
+                             value="{{ $m->address->city or '' }}">
+                      <label class="mdc-textfield__label">Ville</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>

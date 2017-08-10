@@ -4,7 +4,7 @@
         @if ($paginator->onFirstPage())
             <li class="disabled pagination-previous"></li>
         @else
-            <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+            <li><a class="material-icons" href="{{ $paginator->previousPageUrl() }}" rel="prev">chevron_left</a></li>
         @endif
 
         {{-- Pagination Elements --}}
@@ -28,7 +28,7 @@
 
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
-            <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">&raquo;</a></li>
+            <li><a class="material-icons" href="{{ $paginator->nextPageUrl() }}" rel="next">chevron_right</a></li>
         @else
             <li class="disabled pagination-next"></li>
         @endif

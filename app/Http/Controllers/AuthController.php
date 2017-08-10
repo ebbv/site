@@ -21,7 +21,7 @@ class AuthController extends Controller
     }
 
     /**
-     * 
+     *
      * @author Robert Doucette <rice8204@gmail.com>
      * @return \Illuminate\Http\Response
      */
@@ -31,7 +31,7 @@ class AuthController extends Controller
     }
 
     /**
-     * 
+     *
      * @author Robert Doucette <rice8204@gmail.com>
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -57,7 +57,7 @@ class AuthController extends Controller
     }
 
     /**
-     * 
+     *
      * @author Robert Doucette <rice8204@gmail.com>
      * @return \Illuminate\Http\RedirectResponse
      */

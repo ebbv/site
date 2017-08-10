@@ -1,78 +1,72 @@
-var $,
-    player = {
-        init : function () {
-            "use strict";
-            $('.player').each(function () {
-                var audio            = $(this).find('audio').get(0),
-                    button           = $(this).find('.playtoggle'),
-                    loadingIndicator = $(this).find('.loading'),
-                    loaded           = false,
-                    manualSeek       = false,
-                    parent           = this;
+import { MDCCheckbox } from '@material/checkbox';
+import { MDCIconToggle } from '@material/icon-toggle';
+import { MDCLinearProgress } from '@material/linear-progress';
+import { MDCTemporaryDrawer } from '@material/drawer';
+import { MDCTextfield } from '@material/textfield';
+import { MDCToolbar } from '@material/toolbar';
 
-                if ((audio.buffered !== undefined) && (audio.buffered.length !== 0)) {
-                    $(audio).on('progress', function () {
-                        var loaded = parseInt(((audio.buffered.end(0) / audio.duration) * 100), 10);
-                        loadingIndicator.css({width: loaded + '%'});
-                    });
-                } else {
-                    loadingIndicator.remove();
-                }
+new MDCToolbar(document.querySelector('.mdc-toolbar'));
 
-                $(audio).on('timeupdate', function () {
-                    var ad          = parseInt(audio.duration, 10),
-                        ct          = parseInt(audio.currentTime, 10),
-                        pos         = (ct / ad) * 100,
-                        rem         = ad - ct,
-                        mins        = Math.floor(rem / 60, 10),
-                        secs        = rem - mins * 60,
-                        righttime   = mins + ':' + (secs > 9 ? secs : '0' + secs),
-                        playedmins  = Math.floor(ct / 60, 10),
-                        playedsecs  = ct - playedmins * 60,
-                        lefttime    = playedmins + ':' + (playedsecs <= 9 ? '0' + playedsecs : playedsecs);
+document.querySelector('.mdc-toolbar__icon--menu').addEventListener('click', function(e) {
+  e.preventDefault();
+  new MDCTemporaryDrawer(document.querySelector('.mdc-temporary-drawer')).open = true;
+});
 
-                    $(parent).find('.timeleft').text(lefttime + ' / ' + '-' + righttime);
+for(let i = 0, node; node = document.querySelectorAll('.mdc-icon-toggle')[i]; i++) {
+  new MDCIconToggle(node);
+}
 
-                    if (!manualSeek) {
-                        $(parent).find('.handle').css({left: pos + '%'}).next().css({width: pos + '%'});
-                    }
+for(let i = 0, node; node = document.querySelectorAll('.mdc-textfield')[i]; i++) {
+  new MDCTextfield(node);
+}
 
-                    if (!loaded) {
-                        loaded = true;
+for(let i = 0, node; node = document.querySelectorAll('.mdc-checkbox')[i]; i++) {
+  new MDCCheckbox(node);
+}
 
-                        $(parent).find('.gutter').slider({
-                            value: 0,
-                            step: 0.01,
-                            orientation: "horizontal",
-                            range: "min",
-                            max: audio.duration,
-                            animate: true,
-                            slide: function () {
-                                manualSeek = true;
-                            },
-                            stop: function (e, ui) {
-                                manualSeek = false;
-                                audio.currentTime = ui.value;
-                            }
-                        });
-                    }
-                }).on('play', function () {
-                    button.addClass('playing');
-                }).on('pause ended', function () {
-                    button.removeClass('playing');
-                });
+let player = {
+  init : function () {
+    for (let i = 0, node; node = document.querySelectorAll('.player')[i]; i++) {
+      let audio = node.querySelector('audio');
+      if (! audio.duration) {
+        audio.addEventListener('durationchange', function () {
+          player.time(this);
+        }, false);
+      } else {
+        player.time(audio);
+      }
+    }
+  },
+  control : function (e) {
+    if (e.target.tagName === "I") {
+      let audio = e.target.parentNode.parentNode.querySelector('audio');
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+      audio.addEventListener('timeupdate', function () {
+        player.time(audio);
+      }, false);
+    }
+  },
+  time : function (audio) {
+    let curtime   = parseInt(audio.currentTime, 10),
+        duration  = parseInt(audio.duration, 10),
+        remaining = duration - curtime,
+        mins      = Math.floor(remaining / 60, 10),
+        secs      = remaining - mins * 60,
+        righttime = mins + ':' + (secs > 9 ? secs : '0' + secs),
+        playedmins= Math.floor(curtime / 60, 10),
+        playedsecs= curtime - playedmins * 60,
+        lefttime  = playedmins + ':' + (playedsecs <= 9 ? '0' + playedsecs : playedsecs),
+        linprog   = new MDCLinearProgress(audio.nextElementSibling.querySelector('.mdc-linear-progress'));
 
-                button.on('click', function () {
-                    if (audio.paused) {
-                        audio.play();
-                    } else {
-                        audio.pause();
-                    }
-                });
-            });
-        }
-    };
+        linprog.progress = curtime / duration;
 
-$(document).foundation();
+    audio.previousElementSibling.textContent = lefttime + ' / ' + '-' + righttime;
+  }
+};
 
 player.init();
+document.getElementById('content').addEventListener('click', player.control, false);

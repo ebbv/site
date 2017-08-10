@@ -1,0 +1,69 @@
+#directory-list {
+  padding: 0;
+}
+
+#directory-list .last-name {
+  text-transform: uppercase;
+}
+
+#directory-list .mdc-card__supporting-text div {
+  margin: 0 0 20px 0;
+}
+
+#directory-list .mdc-card__supporting-text {
+  padding-bottom: 0;
+}
+
+#directory-list .mdc-card__supporting-text p {
+  margin: 0;
+}
+
+#directory-list .mdc-list,
+#directory-list .mdc-list--dense {
+  padding: 0;
+}
+
+#directory-list .mdc-list-item__start-detail {
+  margin: 0 10px 0 0;
+}
+
+#directory-list .mdc-list-item i {
+  line-height: 1.2rem;
+}
+
+#directory-list hr {
+  margin: 20px 0;
+}
+
+#directory-form {
+  @include mdc-typography(body1);
+}
+
+#directory-form fieldset {
+  border-radius: 10px;
+  margin: 0 auto 30px auto;
+}
+
+#directory-form legend {
+  @include mdc-typography(display1);
+}
+
+#directory-form .mdc-textfield,
+#directory-form .mdc-textfield input,
+#directory-form .mdc-select {
+  width: 100%;
+}
+
+#address .mdc-layout-grid {
+  padding-top: 0;
+}
+
+#street_number,
+#zipcode {
+  text-align: center;
+}
+
+#address .mdc-select {
+  position: relative;
+  top: 32px;
+}

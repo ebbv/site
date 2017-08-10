@@ -1,22 +1,36 @@
 @extends(config('app.theme'))
 
 @section('content')
-        <div id="content" class="medium-10 medium-centered columns">
-          <div class="row" id="edit-message">
-            <form method="POST" action="{{ route('messages.update', $message->id) }}" accept-charset="utf-8" class="small-12 columns">
-              {{ method_field('PATCH') }}
-              {{ csrf_field() }}
-              <div class="row">
-                <div class="medium-8 columns">
-                  <label for="title">Titre :</label>
-                  <input autofocus id="title" name="title" type="text" value="{{ $message->title }}">
-                </div>
-                <div class="medium-4 columns">
-                  <label for="message-passage">Passage :</label>
-                  <input id="message-passage" name="passage" type="text" value="{{ $message->passage }}">
-                </div>
-              </div>
-              <input class="button float-right" type="submit" value="@lang('forms.edit_button')">
-            </form>
-          </div>
+        <div class="mdc-layout-grid__cell--span-12" id="content">
+          <form accept-charset="utf-8"
+                action="{{ route('messages.update', $message->id) }}"
+                id="edit-message"
+                method="POST">
+            {{ method_field('PATCH') }}
+            {{ csrf_field() }}
+            <div class="mdc-textfield mdc-textfield--upgraded">
+              <input autofocus
+                     class="mdc-textfield__input"
+                     id="title"
+                     name="title"
+                     type="text"
+                     value="{{ $message->title }}">
+              <label class="mdc-textfield__label mdc-textfield__label--float-above" for="title">
+                Titre
+              </label>
+            </div>
+            <div class="mdc-textfield">
+              <input class="mdc-textfield__input"
+                     id="message-passage"
+                     name="passage"
+                     type="text"
+                     value="{{ $message->passage }}">
+              <label class="mdc-textfield__label" for="message-passage">
+                Passage
+              </label>
+            </div>
+            <button class="mdc-button mdc-button--raised mdc-button--primary" type="submit">
+              @lang('forms.edit_button')
+            </button>
+          </form>
 @endsection

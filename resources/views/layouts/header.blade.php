@@ -1,28 +1,28 @@
-      <header>
-        <div class="row" id="site-title">
-          <div class="small-12 columns">
-            <h1>Eglise Biblique Baptiste de Vernon</h1>
-          </div>
-        </div>
-        <div class="title-bar" data-responsive-toggle="nav" data-hide-for="medium">
-          <button class="menu-icon" type="button" data-toggle></button>
-          <div class="title-bar-title">MENU</div>
-        </div>
-        <div class="top-bar" id="nav">
-          <div class="row collapse">
-            <div class="top-bar-left small-12 columns">
-              <ul class="vertical medium-horizontal menu">
-                <li><a href="@lang('nav.home.url')">@lang('nav.home.text')</a></li>
-                <li><a href="@lang('nav.contact.url')">@lang('nav.contact.text')</a></li>
-                <li><a href="@lang('nav.beliefs.url')">@lang('nav.beliefs.text')</a></li>
-                <li><a href="@lang('nav.directory.url')">@lang('nav.directory.text')</a></li>
-@if (Auth::check())
-                <li><a href="@lang('nav.logout.url')">@lang('nav.logout.text')</a></li>
-@else
-                <li><a href="@lang('nav.login.url')">@lang('nav.login.text')</a></li>
+    <header class="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall">
+      <div class="mdc-toolbar__row">
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+          <a href="#" class="material-icons mdc-toolbar__icon--menu">menu</a>
+          <span class="mdc-toolbar__title mdc-toolbar__title--full">Eglise Biblique Baptiste de Vernon</span>
+          <span class="mdc-toolbar__title mdc-toolbar__title--mini">EBBV</span>
+        </section>
+      </div>
+      <aside class="mdc-temporary-drawer">
+        <nav class="mdc-temporary-drawer__drawer">
+          <div class="mdc-temporary-drawer__toolbar-spacer"></div>
+          <nav class="mdc-temporary-drawer__content mdc-list">
+@foreach (__('nav') as $key => $value)
+@if (Auth::check() and $key == 'login')
+@continue
+@elseif (! Auth::check() and $key == 'logout')
+@continue
 @endif
-              </ul>
-            </div>
-          </div>
-        </div>
-      </header>
+@if (array_key_exists('text', $value))
+            <a class="mdc-list-item" href="{{ $value['url'] }}">
+              <span class="mdc-list-item__start-detail" aria-hidden="true">{{ $value['text'] }}</span>
+            </a>
+@endif
+@endforeach
+          </nav>
+        </nav>
+      </aside>
+    </header>

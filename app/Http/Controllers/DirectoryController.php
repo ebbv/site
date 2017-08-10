@@ -160,7 +160,7 @@ class DirectoryController extends Controller
             'roles'             => $this->getRoles($m),
             'route'             => route('directory.update', $m->id),
             'street_type'       => $this->getAddressType($m),
-            'submitButtonText'  => __('forms.edit_button')
+            'editButtonText'    => __('forms.edit_button')
         ]);
     }
 

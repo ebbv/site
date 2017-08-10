@@ -1,6 +1,6 @@
 @extends(config('app.theme'))
 
 @section('content')
-        <div id="content" class="small-12 columns">
-            @include('directory.admin.form')
+        <div class="mdc-layout-grid__cell--span-12" id="content">
+          @include('directory.admin.form')
 @endsection

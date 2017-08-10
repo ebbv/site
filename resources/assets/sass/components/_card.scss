@@ -1,0 +1,19 @@
+.mdc-card__title {
+  padding: 0 0 1rem 0;
+  text-align: center;
+  @include mdc-theme-prop(color, primary);
+}
+
+.mdc-card a {
+  text-decoration: none;
+  @include mdc-theme-prop(color, primary);
+}
+
+.mdc-card__action {
+  margin-right: 0;
+}
+
+.mdc-card__actions button {
+  min-width: 0;
+  @include mdc-theme-prop(color, text-icon-on-background);
+}

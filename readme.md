@@ -1,1 +1,1 @@
-Le code pour le site de l'Eglise Biblique Baptiste de Vernon.
+The code behind the website for Eglise Biblique Baptiste de Vernon.

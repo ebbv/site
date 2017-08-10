@@ -13,9 +13,6 @@ use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-/**
- * @author Robert Doucette <rice8204@gmail.com>
- */
 class MessagesController extends Controller
 {
     public function __construct()
@@ -31,7 +28,9 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        $messages = Message::with('speaker')->orderBy('date', 'desc')->orderBy('created_at', 'desc')->paginate(4);
+        $messages = Message::with('speaker')->orderBy('date', 'desc')
+                                            ->orderBy('created_at', 'desc')
+                                            ->paginate(4);
 
         return view('messages.main', compact('messages'));
     }
@@ -103,7 +102,7 @@ class MessagesController extends Controller
             }
         }
 
-        return $this->create();
+        return redirect()->route('messages.create');
     }
 
     /**

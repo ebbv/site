@@ -8,9 +8,10 @@
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
-    Normalize.css, jQuery, jQuery-UI
+    Normalize.css
+    Material Design Components
+    Material Icons
     Laravel Framework
-    Zurb Foundation
     Nginx
     Php
     MySql
