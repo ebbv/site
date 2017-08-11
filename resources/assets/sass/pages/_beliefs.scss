@@ -5,10 +5,6 @@
   @include mdc-typography(caption);
 }
 
-#beliefs {
-  --mdc-layout-grid-gutter: 24px;
-}
-
 #beliefs li {
   list-style-position: inside;
   list-style-type: upper-roman;

@@ -1,7 +1,7 @@
 @extends(config('app.theme'))
 
 @section('content')
-      <div class="mdc-layout-grid__cell--span-12" id="content">
+      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12" id="content">
         <form method="POST" action="@lang('nav.login.url')" accept-charset="utf-8" id="login" class="mdc-card">
           {{ csrf_field() }}
           <section class="mdc-card__primary">

@@ -1,7 +1,7 @@
 @extends(config('app.theme'))
 
 @section('content')
-        <div class="mdc-layout-grid__cell--span-12" id="content">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12" id="content">
           <div class="mdc-layout-grid" id="directory-list">
             <div class="mdc-layout-grid__inner">
 @foreach ($members as $m)

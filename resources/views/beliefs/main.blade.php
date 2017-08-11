@@ -1,7 +1,7 @@
 @extends(config('app.theme'))
 
 @section('content')
-        <div class="mdc-layout-grid__cell--span-12" id="content">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12" id="content">
           <p id="beliefs-welcome">
             Si vous êtes ici vous voulez sans doute savoir plus sur nos croyances
             et nos pratiques. Nous espérons que ce que vous trouverez ci-dessous
