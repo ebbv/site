@@ -1,26 +1,31 @@
 import { MDCCheckbox } from '@material/checkbox';
 import { MDCIconToggle } from '@material/icon-toggle';
 import { MDCLinearProgress } from '@material/linear-progress';
+import { MDCRipple } from '@material/ripple';
 import { MDCTemporaryDrawer } from '@material/drawer';
 import { MDCTextfield } from '@material/textfield';
 import { MDCToolbar } from '@material/toolbar';
 
 new MDCToolbar(document.querySelector('.mdc-toolbar'));
 
-document.querySelector('.mdc-toolbar__icon--menu').addEventListener('click', function(e) {
+document.querySelector('.mdc-toolbar__icon--menu').addEventListener('click', function (e) {
   e.preventDefault();
   new MDCTemporaryDrawer(document.querySelector('.mdc-temporary-drawer')).open = true;
 });
 
-for(let i = 0, node; node = document.querySelectorAll('.mdc-icon-toggle')[i]; i++) {
+for (let i = 0, node; node = document.querySelectorAll('.mdc-button')[i]; i++) {
+  MDCRipple.attachTo(node);
+}
+
+for (let i = 0, node; node = document.querySelectorAll('.mdc-icon-toggle')[i]; i++) {
   new MDCIconToggle(node);
 }
 
-for(let i = 0, node; node = document.querySelectorAll('.mdc-textfield')[i]; i++) {
+for (let i = 0, node; node = document.querySelectorAll('.mdc-textfield')[i]; i++) {
   new MDCTextfield(node);
 }
 
-for(let i = 0, node; node = document.querySelectorAll('.mdc-checkbox')[i]; i++) {
+for (let i = 0, node; node = document.querySelectorAll('.mdc-checkbox')[i]; i++) {
   new MDCCheckbox(node);
 }
 
@@ -38,7 +43,7 @@ let player = {
     }
   },
   control : function (e) {
-    if (e.target.tagName === "I") {
+    if (e.target.tagName === 'I') {
       let audio = e.target.parentNode.parentNode.querySelector('audio');
       if (audio.paused) {
         audio.play();
@@ -52,17 +57,16 @@ let player = {
   },
   time : function (audio) {
     let curtime   = parseInt(audio.currentTime, 10),
-        duration  = parseInt(audio.duration, 10),
-        remaining = duration - curtime,
-        mins      = Math.floor(remaining / 60, 10),
-        secs      = remaining - mins * 60,
-        righttime = mins + ':' + (secs > 9 ? secs : '0' + secs),
-        playedmins= Math.floor(curtime / 60, 10),
-        playedsecs= curtime - playedmins * 60,
-        lefttime  = playedmins + ':' + (playedsecs <= 9 ? '0' + playedsecs : playedsecs),
-        linprog   = new MDCLinearProgress(audio.nextElementSibling.querySelector('.mdc-linear-progress'));
+      duration    = parseInt(audio.duration, 10),
+      remaining   = duration - curtime,
+      mins        = Math.floor(remaining / 60, 10),
+      secs        = remaining - mins * 60,
+      righttime   = mins + ':' + (secs > 9 ? secs : '0' + secs),
+      playedmins  = Math.floor(curtime / 60, 10),
+      playedsecs  = curtime - playedmins * 60,
+      lefttime    = playedmins + ':' + (playedsecs <= 9 ? '0' + playedsecs : playedsecs);
 
-        linprog.progress = curtime / duration;
+    new MDCLinearProgress(audio.nextElementSibling.querySelector('.mdc-linear-progress')).progress = curtime / duration;
 
     audio.previousElementSibling.textContent = lefttime + ' / ' + '-' + righttime;
   }
