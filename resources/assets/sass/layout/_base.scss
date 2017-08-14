@@ -1,14 +1,19 @@
+html {
+  height: 100%;
+}
+
 body {
+  height: calc(100% - 64px);
   overflow-y: scroll !important;
 }
 
 main {
   max-width: 1200px;
-  min-height: calc(100vh - 152.5px);
+  min-height: calc(100% - 88.5px);
 }
 
 @media (max-width: 599px) {
   main {
-    min-height: calc(100vh - 144.5px);
+    min-height: calc(100% - 80.5px);
   }
 }
