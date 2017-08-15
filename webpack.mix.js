@@ -10,7 +10,7 @@ mix.options({})
           use: [
             {
               loader: 'babel-loader',
-              options: Config.babel ()
+              options: mix.config.babel()
             }
           ]
         }
@@ -22,6 +22,6 @@ mix.options({})
   })
   .js('resources/assets/js/app.js', 'public/js');
 
-if (mix.config.inProduction) {
+if (mix.inProduction()) {
   mix.disableNotifications();
 }
