@@ -1,10 +1,10 @@
-import { MDCCheckbox } from '@material/checkbox';
-import { MDCIconToggle } from '@material/icon-toggle';
-import { MDCLinearProgress } from '@material/linear-progress';
-import { MDCRipple } from '@material/ripple';
-import { MDCTemporaryDrawer } from '@material/drawer';
-import { MDCTextfield } from '@material/textfield';
-import { MDCToolbar } from '@material/toolbar';
+import { MDCCheckbox } from '@material/checkbox/dist/mdc.checkbox';
+import { MDCIconToggle } from '@material/icon-toggle/dist/mdc.iconToggle';
+import { MDCLinearProgress } from '@material/linear-progress/dist/mdc.linearProgress';
+import { MDCRipple } from '@material/ripple/dist/mdc.ripple';
+import { MDCTemporaryDrawer } from '@material/drawer/dist/mdc.drawer';
+import { MDCTextfield } from '@material/textfield/dist/mdc.textfield';
+import { MDCToolbar } from '@material/toolbar/dist/mdc.toolbar';
 
 new MDCToolbar(document.querySelector('.mdc-toolbar'));
 
