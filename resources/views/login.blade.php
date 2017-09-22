@@ -41,7 +41,7 @@
           </section>
           <section class="mdc-card__actions">
             <input name="goto" type="hidden" value="{{ old('goto', $goto) }}">
-            <button class="mdc-button mdc-button--primary mdc-button--raised" type="submit">
+            <button class="mdc-button mdc-button--raised" type="submit">
               @lang('forms.login_button')
             </button>
           </section>

@@ -41,7 +41,7 @@
                     Question ou commentaire
                   </label>
                 </div>
-                <button class="mdc-button mdc-button--raised mdc-button--primary"
+                <button class="mdc-button mdc-button--raised"
                         type="submit"
                         value="@lang('forms.send_button')">
                   @lang('forms.send_button')

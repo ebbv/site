@@ -20,11 +20,11 @@
 @if (isset($submitButtonText))
               <input name="id" type="hidden" value="{{ $m->id }}">
 @endif
-              <button class="mdc-button mdc-button--raised mdc-button--primary" type="submit">
+              <button class="mdc-button mdc-button--raised" type="submit">
                 {{ $editButtonText or __('forms.add_button') }}
               </button>
               <a href="{{ route('directory.index') }}">
-                <button class="mdc-button mdc-button--raised mdc-button--accent" type="button">
+                <button class="mdc-button mdc-button--cancel mdc-button--raised" type="button">
                   @lang('forms.cancel_button')
                 </button>
               </a>
