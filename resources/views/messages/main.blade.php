@@ -36,7 +36,7 @@
               <div class="mdc-layout-grid__inner">
                 <div class="mdc-layout-grid__cell
                             mdc-layout-grid__cell--span-1">
-                  <i class="mdc-icon-toggle material-icons"
+                  <i class="material-icons mdc-icon-toggle"
                      role="button"
                      aria-pressed="false"
                      data-mdc-auto-init="MDCIconToggle"
@@ -75,12 +75,12 @@
 @can ('update', $m)
             <section class="mdc-card__actions message-actions">
               <a href="{{ route('messages.edit', $m->id) }}">
-                <button class="mdc-button mdc-button--compact mdc-card__action material-icons">edit</button>
+                <button class="material-icons mdc-button mdc-button--compact mdc-card__action">edit</button>
               </a>
               <form method="POST" action="{{ route('messages.destroy', $m->id) }}" accept-charset="utf-8">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
-                <button class="mdc-button mdc-button--compact mdc-card__action material-icons">delete</button>
+                <button class="material-icons mdc-button mdc-button--compact mdc-card__action">delete</button>
               </form>
             </section>
 @endcan
@@ -92,7 +92,7 @@
           </div>
 @can ('create', App\Models\Message::class)
           <a href="{{ route('messages.create') }}">
-            <button class="mdc-fab material-icons" aria-label="Add">
+            <button class="material-icons mdc-fab" aria-label="Add">
               <span class="mdc-fab__icon">
                 add
               </span>

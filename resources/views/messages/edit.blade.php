@@ -29,7 +29,7 @@
                 Passage
               </label>
             </div>
-            <button class="mdc-button mdc-button--raised mdc-button--primary" type="submit">
+            <button class="mdc-button mdc-button--raised" type="submit">
               @lang('forms.edit_button')
             </button>
           </form>

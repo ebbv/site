@@ -58,7 +58,7 @@
               <div class="mdc-layout-grid__cell
                           mdc-layout-grid__cell--span-2-tablet
                           mdc-layout-grid__cell--span-2-desktop">
-                <button class="mdc-button mdc-button--raised mdc-button--primary" type="submit">
+                <button class="mdc-button mdc-button--raised" type="submit">
                   @lang('forms.add_button')
                 </button>
               </div>
