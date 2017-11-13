@@ -33,7 +33,9 @@
                       </li>
 @endforeach
                     </ul>
+@if (count($m->emails) > 0)
                     <hr class="mdc-list-divider">
+@endif
                     <ul class="mdc-list--dense emails">
 @foreach ($m->emails as $key => $e)
                       <li class="mdc-list-item">

@@ -4,6 +4,8 @@
               <div class="mdc-form-field">
                 <div class="mdc-checkbox">
                   <input class="mdc-checkbox__native-control"
+                         id="role{{ $r->id }}"
+                         name="role[]"
                          type="checkbox"
                          value="{{ $r->id }}"{{ $r->checked or '' }}>
                   <div class="mdc-checkbox__background">
@@ -14,6 +16,7 @@
                             fill="none"
                             stroke="white" />
                     </svg>
+                    <div class="mdc-checkbox__mixedmark"></div>
                   </div>
                 </div>
                 <label for="role{{ $r->id }}">{{ $r->name }}</label>
