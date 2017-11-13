@@ -30,7 +30,7 @@ class MessagesController extends Controller
     {
         $messages = Message::with('speaker')->orderBy('date', 'desc')
                                             ->orderBy('created_at', 'desc')
-                                            ->paginate(4);
+                                            ->simplePaginate(4);
 
         return view('messages.main', compact('messages'));
     }
