@@ -29,13 +29,14 @@
                   <label class="mdc-textfield__label" for="email">
                     E-mail
                   </label>
+                  <div class="mdc-textfield__bottom-line"></div>
                 </div>
                 <p class="mdc-textfield-helptext
                           mdc-textfield-helptext--validation-msg"
                    id="email-validation-msg">
                   Obligatoire
                 </p>
-                <div class="mdc-textfield mdc-textfield--multiline">
+                <div class="mdc-textfield mdc-textfield--textarea">
                   <textarea class="mdc-textfield__input" id="body" name="body" rows="5"></textarea>
                   <label class="mdc-textfield__label" for="body">
                     Question ou commentaire

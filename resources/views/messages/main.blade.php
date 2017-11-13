@@ -75,12 +75,16 @@
 @can ('update', $m)
             <section class="mdc-card__actions message-actions">
               <a href="{{ route('messages.edit', $m->id) }}">
-                <button class="material-icons mdc-button mdc-button--compact mdc-card__action">edit</button>
+                <button class="mdc-button mdc-button--compact mdc-card__action">
+                  <i class="material-icons mdc-button__icon">edit</i>
+                </button>
               </a>
               <form method="POST" action="{{ route('messages.destroy', $m->id) }}" accept-charset="utf-8">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
-                <button class="material-icons mdc-button mdc-button--compact mdc-card__action">delete</button>
+                <button class="mdc-button mdc-button--compact mdc-card__action">
+                  <i class="cancel material-icons mdc-button__icon">delete</i>
+                </button>
               </form>
             </section>
 @endcan

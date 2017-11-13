@@ -18,6 +18,7 @@
               <label class="mdc-textfield__label mdc-textfield__label--float-above" for="username">
                 @lang('forms.username')
               </label>
+              <div class="mdc-textfield__bottom-line"></div>
             </div>
             <p class="mdc-textfield-helptext mdc-textfield-helptext--validation-msg"
                id="username-validation-msg">
@@ -33,6 +34,7 @@
               <label class="mdc-textfield__label" for="password">
                 @lang('forms.password')
               </label>
+              <div class="mdc-textfield__bottom-line"></div>
             </div>
             <p class="mdc-textfield-helptext mdc-textfield-helptext--validation-msg"
                id="password-validation-msg">

@@ -1,7 +1,7 @@
-.mdc-button--raised {
-  @include mdc-button-filled-accessible($mdc-theme-primary);
-}
-
 .mdc-button--cancel {
   @include mdc-button-filled-accessible($mdc-theme-secondary);
+}
+
+i.cancel {
+  @include mdc-button-ink-color($mdc-theme-secondary);
 }

@@ -1,7 +1,7 @@
     <header class="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall">
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-          <a href="#" class="material-icons mdc-toolbar__icon--menu">menu</a>
+          <a href="#" class="material-icons mdc-toolbar__menu-icon">menu</a>
           <span class="mdc-toolbar__title mdc-toolbar__title--full">Eglise Biblique Baptiste de Vernon</span>
           <span class="mdc-toolbar__title mdc-toolbar__title--mini">EBBV</span>
         </section>

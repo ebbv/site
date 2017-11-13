@@ -3,13 +3,13 @@
   "bugs": "https://github.com/ebbv/site/issues",
   "description": "Le code pour le site de l'Eglise Biblique Baptiste de Vernon.",
   "dependencies": {
-    "material-components-web": "^0.21.1",
+    "material-components-web": "^0.24.0",
     "material-design-icons": "^3.0.1",
     "normalize.css": "^7.0.0"
   },
   "devDependencies": {
-    "cross-env": "^5.0.5",
-    "laravel-mix": "^1.4.5"
+    "cross-env": "^5.1.1",
+    "laravel-mix": "^1.6.1"
   },
   "homepage": "https://github.com/ebbv/site",
   "license": "GPL-3.0",

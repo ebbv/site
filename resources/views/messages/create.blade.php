@@ -21,6 +21,7 @@
                 <label class="mdc-textfield__label" for="title">
                   Titre
                 </label>
+                <div class="mdc-textfield__bottom-line"></div>
               </div>
               <div class="mdc-layout-grid__cell
                           mdc-layout-grid__cell--span-3-tablet
@@ -44,6 +45,7 @@
                 <label class="mdc-textfield__label" for="message-passage">
                   Passage
                 </label>
+                <div class="mdc-textfield__bottom-line"></div>
               </div>
               <div class="mdc-layout-grid__cell
                           mdc-layout-grid__cell--span-2-tablet

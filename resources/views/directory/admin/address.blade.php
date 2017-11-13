@@ -10,6 +10,7 @@
                              type="number"
                              value="{{ $m->address->street_number or '' }}">
                       <label class="mdc-textfield__label" for="street_number">Numéro</label>
+                      <div class="mdc-textfield__bottom-line"></div>
                     </div>
                   </div>
                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop">
@@ -27,6 +28,7 @@
                              type="text"
                              value="{{ $m->address->street_name or '' }}">
                       <label class="mdc-textfield__label">Nom de la rue</label>
+                      <div class="mdc-textfield__bottom-line"></div>
                     </div>
                   </div>
                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7-desktop">
@@ -36,6 +38,7 @@
                              type="text"
                              value="{{ $m->address->street_complement or '' }}">
                       <label class="mdc-textfield__label">Complément</label>
+                      <div class="mdc-textfield__bottom-line"></div>
                     </div>
                   </div>
                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop">
@@ -46,6 +49,7 @@
                              type="number"
                              value="{{ $m->address->zip or '' }}">
                       <label class="mdc-textfield__label">Code postal</label>
+                      <div class="mdc-textfield__bottom-line"></div>
                     </div>
                   </div>
                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-5-desktop">
@@ -55,6 +59,7 @@
                              type="text"
                              value="{{ $m->address->city or '' }}">
                       <label class="mdc-textfield__label">Ville</label>
+                      <div class="mdc-textfield__bottom-line"></div>
                     </div>
                   </div>
                 </div>
