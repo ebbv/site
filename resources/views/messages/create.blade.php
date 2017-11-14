@@ -12,16 +12,16 @@
               <div class="mdc-layout-grid__cell
                           mdc-layout-grid__cell--span-5-tablet
                           mdc-layout-grid__cell--span-8-desktop
-                          mdc-textfield">
-                <input class="mdc-textfield__input"
+                          mdc-text-field">
+                <input class="mdc-text-field__input"
                        id="title"
                        name="title"
                        required
                        type="text">
-                <label class="mdc-textfield__label" for="title">
+                <label class="mdc-text-field__label" for="title">
                   Titre
                 </label>
-                <div class="mdc-textfield__bottom-line"></div>
+                <div class="mdc-text-field__bottom-line"></div>
               </div>
               <div class="mdc-layout-grid__cell
                           mdc-layout-grid__cell--span-3-tablet
@@ -36,16 +36,16 @@
               <div class="mdc-layout-grid__cell
                           mdc-layout-grid__cell--span-4-tablet
                           mdc-layout-grid__cell--span-7-desktop
-                          mdc-textfield">
-                <input class="mdc-textfield__input"
+                          mdc-text-field">
+                <input class="mdc-text-field__input"
                        id="message-passage"
                        name="passage"
                        required
                        type="text">
-                <label class="mdc-textfield__label" for="message-passage">
+                <label class="mdc-text-field__label" for="message-passage">
                   Passage
                 </label>
-                <div class="mdc-textfield__bottom-line"></div>
+                <div class="mdc-text-field__bottom-line"></div>
               </div>
               <div class="mdc-layout-grid__cell
                           mdc-layout-grid__cell--span-2-tablet

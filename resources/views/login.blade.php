@@ -15,7 +15,7 @@
                      required
                      type="text"
                      value="{{ old('username') }}">
-              <label class="mdc-text-field__label mdc-text-field__label--float-above" for="username">
+              <label class="mdc-text-field__label" for="username">
                 @lang('forms.username')
               </label>
               <div class="mdc-text-field__bottom-line"></div>

@@ -1,29 +1,29 @@
             <fieldset>
               <legend>Contact</legend>
 @foreach ($phones as $phone)
-              <div class="mdc-textfield">
-                <input class="mdc-textfield__input"
+              <div class="mdc-text-field">
+                <input class="mdc-text-field__input"
                        id="telephone[{{ $phone['short'] }}]"
                        name="telephone[{{ $phone['short'] }}]"
                        type="tel"
                        value="{{ $phone['number'] }}">
-                <label class="mdc-textfield__label" for="telephone[{{ $phone['short'] }}]">
+                <label class="mdc-text-field__label" for="telephone[{{ $phone['short'] }}]">
                   Téléphone {{ $phone['long'] }}
                 </label>
-                <div class="mdc-textfield__bottom-line"></div>
+                <div class="mdc-text-field__bottom-line"></div>
               </div>
 @endforeach
 @foreach ($emails as $email)
-              <div class="mdc-textfield">
-                <input class="mdc-textfield__input"
+              <div class="mdc-text-field">
+                <input class="mdc-text-field__input"
                        id="email[{{ $email['type'] }}]"
                        name="email[{{ $email['type'] }}]"
                        type="email"
                        value="{{ $email['val'] }}">
-                <label class="mdc-textfield__label" for="email[{{ $email['type'] }}]">
+                <label class="mdc-text-field__label" for="email[{{ $email['type'] }}]">
                   Mail ({{ $email['type'] }})
                 </label>
-                <div class="mdc-textfield__bottom-line"></div>
+                <div class="mdc-text-field__bottom-line"></div>
               </div>
 @endforeach
             </fieldset>

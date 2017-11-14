@@ -48,8 +48,8 @@
   @include mdc-typography(display1);
 }
 
-#directory-form .mdc-textfield,
-#directory-form .mdc-textfield input,
+#directory-form .mdc-text-field,
+#directory-form .mdc-text-field input,
 #directory-form .mdc-select {
   width: 100%;
 }

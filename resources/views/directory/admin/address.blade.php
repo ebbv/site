@@ -3,14 +3,14 @@
               <div class="mdc-layout-grid">
                 <div class="mdc-layout-grid__inner">
                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop">
-                    <div class="mdc-textfield">
-                      <input class="mdc-textfield__input"
+                    <div class="mdc-text-field">
+                      <input class="mdc-text-field__input"
                              id="street_number"
                              name="street_number"
                              type="number"
                              value="{{ $m->address->street_number or '' }}">
-                      <label class="mdc-textfield__label" for="street_number">Numéro</label>
-                      <div class="mdc-textfield__bottom-line"></div>
+                      <label class="mdc-text-field__label" for="street_number">Numéro</label>
+                      <div class="mdc-text-field__bottom-line"></div>
                     </div>
                   </div>
                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop">
@@ -22,44 +22,44 @@
                     </select>
                   </div>
                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7-desktop">
-                    <div class="mdc-textfield">
-                      <input class="mdc-textfield__input"
+                    <div class="mdc-text-field">
+                      <input class="mdc-text-field__input"
                              name="street_name"
                              type="text"
                              value="{{ $m->address->street_name or '' }}">
-                      <label class="mdc-textfield__label">Nom de la rue</label>
-                      <div class="mdc-textfield__bottom-line"></div>
+                      <label class="mdc-text-field__label">Nom de la rue</label>
+                      <div class="mdc-text-field__bottom-line"></div>
                     </div>
                   </div>
                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7-desktop">
-                    <div class="mdc-textfield">
-                      <input class="mdc-textfield__input"
+                    <div class="mdc-text-field">
+                      <input class="mdc-text-field__input"
                              name="street_complement"
                              type="text"
                              value="{{ $m->address->street_complement or '' }}">
-                      <label class="mdc-textfield__label">Complément</label>
-                      <div class="mdc-textfield__bottom-line"></div>
+                      <label class="mdc-text-field__label">Complément</label>
+                      <div class="mdc-text-field__bottom-line"></div>
                     </div>
                   </div>
                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop">
-                    <div class="mdc-textfield">
-                      <input class="mdc-textfield__input"
+                    <div class="mdc-text-field">
+                      <input class="mdc-text-field__input"
                              id="zipcode"
                              name="zip"
                              type="number"
                              value="{{ $m->address->zip or '' }}">
-                      <label class="mdc-textfield__label">Code postal</label>
-                      <div class="mdc-textfield__bottom-line"></div>
+                      <label class="mdc-text-field__label">Code postal</label>
+                      <div class="mdc-text-field__bottom-line"></div>
                     </div>
                   </div>
                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-5-desktop">
-                    <div class="mdc-textfield">
-                      <input class="mdc-textfield__input"
+                    <div class="mdc-text-field">
+                      <input class="mdc-text-field__input"
                              name="city"
                              type="text"
                              value="{{ $m->address->city or '' }}">
-                      <label class="mdc-textfield__label">Ville</label>
-                      <div class="mdc-textfield__bottom-line"></div>
+                      <label class="mdc-text-field__label">Ville</label>
+                      <div class="mdc-text-field__bottom-line"></div>
                     </div>
                   </div>
                 </div>

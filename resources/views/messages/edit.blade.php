@@ -8,26 +8,28 @@
                 method="POST">
             {{ method_field('PATCH') }}
             {{ csrf_field() }}
-            <div class="mdc-textfield mdc-textfield--upgraded">
+            <div class="mdc-text-field">
               <input autofocus
-                     class="mdc-textfield__input"
+                     class="mdc-text-field__input"
                      id="title"
                      name="title"
                      type="text"
                      value="{{ $message->title }}">
-              <label class="mdc-textfield__label mdc-textfield__label--float-above" for="title">
+              <label class="mdc-text-field__label" for="title">
                 Titre
               </label>
+              <div class="mdc-text-field__bottom-line"></div>
             </div>
-            <div class="mdc-textfield">
-              <input class="mdc-textfield__input"
+            <div class="mdc-text-field">
+              <input class="mdc-text-field__input"
                      id="message-passage"
                      name="passage"
                      type="text"
                      value="{{ $message->passage }}">
-              <label class="mdc-textfield__label" for="message-passage">
+              <label class="mdc-text-field__label" for="message-passage">
                 Passage
               </label>
+              <div class="mdc-text-field__bottom-line"></div>
             </div>
             <button class="mdc-button mdc-button--raised" type="submit">
               @lang('forms.edit_button')
