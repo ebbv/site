@@ -18,27 +18,27 @@
               <form accept-charset="utf-8" action="contact" id="contact-form" method="POST">
                 {{ csrf_field() }}
                 <h3>Nous écrire</h3>
-                <div class="mdc-textfield">
+                <div class="mdc-text-field">
                   <input aria-controls="email-validation-msg"
                          autocapitalize="none"
-                         class="mdc-textfield__input"
+                         class="mdc-text-field__input"
                          id="email"
                          name="email"
                          required
                          type="email">
-                  <label class="mdc-textfield__label" for="email">
+                  <label class="mdc-text-field__label" for="email">
                     E-mail
                   </label>
-                  <div class="mdc-textfield__bottom-line"></div>
+                  <div class="mdc-text-field__bottom-line"></div>
                 </div>
-                <p class="mdc-textfield-helptext
-                          mdc-textfield-helptext--validation-msg"
+                <p class="mdc-text-field-helptext
+                          mdc-text-field-helptext--validation-msg"
                    id="email-validation-msg">
                   Obligatoire
                 </p>
-                <div class="mdc-textfield mdc-textfield--textarea">
-                  <textarea class="mdc-textfield__input" id="body" name="body" rows="5"></textarea>
-                  <label class="mdc-textfield__label" for="body">
+                <div class="mdc-text-field mdc-text-field--textarea">
+                  <textarea class="mdc-text-field__input" id="body" name="body" rows="5"></textarea>
+                  <label class="mdc-text-field__label" for="body">
                     Question ou commentaire
                   </label>
                 </div>

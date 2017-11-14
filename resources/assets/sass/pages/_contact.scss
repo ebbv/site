@@ -30,13 +30,12 @@
     margin: 0;
 }
 
-#contact-form .mdc-textfield,
-#contact-form .mdc-textfield__input {
+#contact-form .mdc-text-field,
+#contact-form .mdc-text-field__input {
     width: 100%;
 }
 
-#contact-form .mdc-textfield--multiline {
-    border: 1px solid rgba(0, 0, 0, 0.12);
+#contact-form .mdc-text-field--textarea {
     margin: 50px auto 30px auto;
 }
 

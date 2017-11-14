@@ -3,7 +3,7 @@ import { MDCIconToggle } from '@material/icon-toggle';
 import { MDCLinearProgress } from '@material/linear-progress';
 import { MDCRipple } from '@material/ripple';
 import { MDCTemporaryDrawer } from '@material/drawer';
-import { MDCTextfield } from '@material/textfield';
+import { MDCTextField } from '@material/textfield';
 import { MDCToolbar } from '@material/toolbar';
 
 new MDCToolbar(document.querySelector('.mdc-toolbar'));
@@ -21,8 +21,8 @@ for (let i = 0, node; node = document.querySelectorAll('.mdc-icon-toggle')[i]; i
   new MDCIconToggle(node);
 }
 
-for (let i = 0, node; node = document.querySelectorAll('.mdc-textfield')[i]; i++) {
-  new MDCTextfield(node);
+for (let i = 0, node; node = document.querySelectorAll('.mdc-text-field')[i]; i++) {
+  new MDCTextField(node);
 }
 
 for (let i = 0, node; node = document.querySelectorAll('.mdc-checkbox')[i]; i++) {
