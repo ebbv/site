@@ -31,8 +31,8 @@
                   </label>
                   <div class="mdc-text-field__bottom-line"></div>
                 </div>
-                <p class="mdc-text-field-helptext
-                          mdc-text-field-helptext--validation-msg"
+                <p class="mdc-text-field-helper-text
+                          mdc-text-field-helper-text--validation-msg"
                    id="email-validation-msg">
                   Obligatoire
                 </p>

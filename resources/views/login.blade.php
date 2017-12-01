@@ -5,7 +5,7 @@
         <form method="POST" action="@lang('nav.login.url')" accept-charset="utf-8" id="login" class="mdc-card">
           {{ csrf_field() }}
           <section class="mdc-card__primary">
-            <div class="mdc-text-field">
+            <div class="mdc-text-field mdc-text-field--upgraded">
               <input aria-controls="username-validation-msg"
                      autocapitalize="none"
                      autofocus
@@ -15,12 +15,12 @@
                      required
                      type="text"
                      value="{{ old('username') }}">
-              <label class="mdc-text-field__label" for="username">
+              <label class="mdc-text-field__label mdc-text-field__label--float-above" for="username">
                 @lang('forms.username')
               </label>
               <div class="mdc-text-field__bottom-line"></div>
             </div>
-            <p class="mdc-text-field-helptext mdc-text-field-helptext--validation-msg"
+            <p class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg"
                id="username-validation-msg">
               Obligatoire
             </p>
@@ -36,7 +36,7 @@
               </label>
               <div class="mdc-text-field__bottom-line"></div>
             </div>
-            <p class="mdc-text-field-helptext mdc-text-field-helptext--validation-msg"
+            <p class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg"
                id="password-validation-msg">
               Obligatoire
             </p>
