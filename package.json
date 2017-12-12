@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "cross-env": "^5.1.1",
-    "laravel-mix": "^1.6.2"
+    "laravel-mix": "^1.7.2"
   },
   "homepage": "https://github.com/ebbv/site",
   "license": "GPL-3.0",
