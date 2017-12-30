@@ -9,7 +9,7 @@
       <aside class="mdc-temporary-drawer">
         <nav class="mdc-temporary-drawer__drawer">
           <div class="mdc-temporary-drawer__toolbar-spacer"></div>
-          <nav class="mdc-temporary-drawer__content mdc-list">
+          <nav class="mdc-list mdc-temporary-drawer__content">
 @foreach (__('nav') as $key => $value)
 @if (Auth::check() and $key == 'login')
 @continue
@@ -17,9 +17,7 @@
 @continue
 @endif
 @if (array_key_exists('text', $value))
-            <a class="mdc-list-item" href="{{ $value['url'] }}">
-              <span class="mdc-list-item__start-detail" aria-hidden="true">{{ $value['text'] }}</span>
-            </a>
+            <a class="mdc-list-item" href="{{ $value['url'] }}" aria-hidden="true">{{ $value['text'] }}</a>
 @endif
 @endforeach
           </nav>

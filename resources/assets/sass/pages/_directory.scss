@@ -48,14 +48,8 @@
   @include mdc-typography(display1);
 }
 
-#directory-form .mdc-text-field,
-#directory-form .mdc-text-field input,
-#directory-form .mdc-select {
+#directory-form .mdc-text-field {
   width: 100%;
-}
-
-#address .mdc-layout-grid {
-  padding-top: 0;
 }
 
 #street_number,
@@ -64,6 +58,10 @@
 }
 
 #address .mdc-select {
-  position: relative;
-  top: 32px;
+  top: 8px;
+  width: 100%;
+}
+
+#action-buttons {
+  float: right;
 }

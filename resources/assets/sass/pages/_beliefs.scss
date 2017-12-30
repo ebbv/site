@@ -5,6 +5,10 @@
   @include mdc-typography(caption);
 }
 
+#beliefs {
+  padding: 0;
+}
+
 #beliefs li {
   list-style-position: inside;
   list-style-type: upper-roman;

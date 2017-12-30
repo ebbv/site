@@ -7,13 +7,9 @@
   max-width: 500px;
 }
 
-.message-cards .mdc-layout-grid {
-  padding: 0 16px;
-  width: 100%;
-}
-
 .player {
   margin-bottom: 10px;
+  padding: 0 16px;
 }
 
 .player i {
@@ -30,15 +26,9 @@
   max-width: 1024px;
 }
 
-#add-message .mdc-text-field input,
-#add-message select {
+#add-message .mdc-select {
+  top: 8px;
   width: 100%;
-}
-
-#add-message select {
-  height: 48px;
-  margin-top: 1.08rem;
-  max-width: 100%;
 }
 
 #add-message button {

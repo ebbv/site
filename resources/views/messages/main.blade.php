@@ -32,42 +32,40 @@
                 par {{ $m->speaker->first_name.' '.$m->speaker->last_name }}
               </p>
             </section>
-            <div class="mdc-layout-grid player">
-              <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell
-                            mdc-layout-grid__cell--span-1">
-                  <i class="material-icons mdc-icon-toggle"
-                     role="button"
-                     aria-pressed="false"
-                     data-mdc-auto-init="MDCIconToggle"
-                     data-toggle-on='{"content": "pause", "cssClass": "audio-pause"}'
-                     data-toggle-off='{"content": "play_arrow", "cssClass": "audio-play"}'>
-                  </i>
-                </div>
-                <div class="duration
-                            mdc-layout-grid__cell
-                            mdc-layout-grid__cell--span-3-phone
-                            mdc-layout-grid__cell--span-3-tablet
-                            mdc-layout-grid__cell--span-4-desktop
-                            mdc-layout-grid__cell--align-middle">
-                </div>
-                <audio buffered class="my-audio" preload="metadata">
-                  <source src="{{ Storage::url('audio/'.$m->url) }}.ogg" type="audio/ogg">
-                  <source src="{{ Storage::url('audio/'.$m->url) }}.mp3" type="audio/mpeg">
-                </audio>
-                <div class="mdc-layout-grid__cell
-                            mdc-layout-grid__cell--span-4-tablet
-                            mdc-layout-grid__cell--span-7-desktop
-                            mdc-layout-grid__cell--align-middle">
-                  <div role="progressbar" class="mdc-linear-progress">
-                    <div class="mdc-linear-progress__buffering-dots"></div>
-                    <div class="mdc-linear-progress__buffer"></div>
-                    <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
-                      <span class="mdc-linear-progress__bar-inner"></span>
-                    </div>
-                    <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
-                      <span class="mdc-linear-progress__bar-inner"></span>
-                    </div>
+            <div class="mdc-layout-grid__inner player">
+              <div class="mdc-layout-grid__cell
+                          mdc-layout-grid__cell--span-1">
+                <i class="material-icons mdc-icon-toggle"
+                    role="button"
+                    aria-pressed="false"
+                    data-mdc-auto-init="MDCIconToggle"
+                    data-toggle-on='{"content": "pause", "cssClass": "audio-pause"}'
+                    data-toggle-off='{"content": "play_arrow", "cssClass": "audio-play"}'>
+                </i>
+              </div>
+              <div class="duration
+                          mdc-layout-grid__cell
+                          mdc-layout-grid__cell--span-3-phone
+                          mdc-layout-grid__cell--span-3-tablet
+                          mdc-layout-grid__cell--span-4-desktop
+                          mdc-layout-grid__cell--align-middle">
+              </div>
+              <audio buffered class="my-audio" preload="metadata">
+                <source src="{{ Storage::url('audio/'.$m->url) }}.ogg" type="audio/ogg">
+                <source src="{{ Storage::url('audio/'.$m->url) }}.mp3" type="audio/mpeg">
+              </audio>
+              <div class="mdc-layout-grid__cell
+                          mdc-layout-grid__cell--span-4-tablet
+                          mdc-layout-grid__cell--span-7-desktop
+                          mdc-layout-grid__cell--align-middle">
+                <div role="progressbar" class="mdc-linear-progress">
+                  <div class="mdc-linear-progress__buffering-dots"></div>
+                  <div class="mdc-linear-progress__buffer"></div>
+                  <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+                    <span class="mdc-linear-progress__bar-inner"></span>
+                  </div>
+                  <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+                    <span class="mdc-linear-progress__bar-inner"></span>
                   </div>
                 </div>
               </div>

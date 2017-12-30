@@ -26,12 +26,15 @@
               <div class="mdc-layout-grid__cell
                           mdc-layout-grid__cell--span-3-tablet
                           mdc-layout-grid__cell--span-4-desktop">
-                <select class="mdc-select" id="speaker" name="speaker">
-                  <!-- <option></option> -->
+                <div class="mdc-select">
+                  <select class="mdc-select__surface" id="speaker" name="speaker">
+                    <!-- <option></option> -->
 @foreach ($speakers as $s)
-                  <option value="{{ $s->id }}">{{ $s->last_name }}, {{ $s->first_name }}</option>
+                    <option value="{{ $s->id }}">{{ $s->last_name }}, {{ $s->first_name }}</option>
 @endforeach
-                </select>
+                  </select>
+                  <div class="mdc-select__bottom-line"></div>
+                </div>
               </div>
               <div class="mdc-layout-grid__cell
                           mdc-layout-grid__cell--span-4-tablet
@@ -50,12 +53,15 @@
               <div class="mdc-layout-grid__cell
                           mdc-layout-grid__cell--span-2-tablet
                           mdc-layout-grid__cell--span-3-desktop">
-                <select class="mdc-select" id="message-file" name="file">
-                  <option default selected>Choisir un fichier...</option>
+                <div class="mdc-select">
+                  <select class="mdc-select__surface" id="message-file" name="file">
+                    <option default selected>Choisir un fichier...</option>
 @foreach ($files as $f)
-                  <option value="{{ $f }}">{{ $f }}</option>
+                    <option value="{{ $f }}">{{ $f }}</option>
 @endforeach
-                </select>
+                  </select>
+                  <div class="mdc-select__bottom-line"></div>
+                </div>
               </div>
               <div class="mdc-layout-grid__cell
                           mdc-layout-grid__cell--span-2-tablet
