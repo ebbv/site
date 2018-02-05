@@ -6,10 +6,10 @@
           <span class="mdc-toolbar__title mdc-toolbar__title--mini">EBBV</span>
         </section>
       </div>
-      <aside class="mdc-temporary-drawer">
-        <nav class="mdc-temporary-drawer__drawer">
-          <div class="mdc-temporary-drawer__toolbar-spacer"></div>
-          <nav class="mdc-list mdc-temporary-drawer__content">
+      <aside class="mdc-drawer--temporary">
+        <nav class="mdc-drawer__drawer">
+          <div class="mdc-drawer__toolbar-spacer"></div>
+          <nav class="mdc-list mdc-drawer__content">
 @foreach (__('nav') as $key => $value)
 @if (Auth::check() and $key == 'login')
 @continue

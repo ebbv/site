@@ -10,7 +10,7 @@ new MDCToolbar(document.querySelector('.mdc-toolbar'));
 
 document.querySelector('.mdc-toolbar__menu-icon').addEventListener('click', function (e) {
   e.preventDefault();
-  new MDCTemporaryDrawer(document.querySelector('.mdc-temporary-drawer')).open = true;
+  new MDCTemporaryDrawer(document.querySelector('.mdc-drawer--temporary')).open = true;
 });
 
 for (let i = 0, node; node = document.querySelectorAll('.mdc-button')[i]; i++) {
