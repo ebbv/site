@@ -9,7 +9,7 @@
                 <label class="mdc-text-field__label" for="last_name">
                   Nom
                 </label>
-                <div class="mdc-text-field__bottom-line"></div>
+                <div class="mdc-line-ripple"></div>
               </div>
               <div class="mdc-text-field">
                 <input class="mdc-text-field__input"
@@ -20,6 +20,6 @@
                 <label class="mdc-text-field__label" for="last_name">
                   Prénom
                 </label>
-                <div class="mdc-text-field__bottom-line"></div>
+                <div class="mdc-line-ripple"></div>
               </div>
             </fieldset>

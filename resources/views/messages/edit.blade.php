@@ -18,7 +18,7 @@
               <label class="mdc-text-field__label" for="title">
                 Titre
               </label>
-              <div class="mdc-text-field__bottom-line"></div>
+              <div class="mdc-line-ripple"></div>
             </div>
             <div class="mdc-text-field">
               <input class="mdc-text-field__input"
@@ -29,7 +29,7 @@
               <label class="mdc-text-field__label" for="message-passage">
                 Passage
               </label>
-              <div class="mdc-text-field__bottom-line"></div>
+              <div class="mdc-line-ripple"></div>
             </div>
             <button class="mdc-button mdc-button--raised" type="submit">
               @lang('forms.edit_button')

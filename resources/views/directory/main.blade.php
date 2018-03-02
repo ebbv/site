@@ -8,11 +8,11 @@
               <div class="mdc-layout-grid__cell">
                 <div class="mdc-card">
                   <section class="mdc-card__primary">
-                    <h1 class="mdc-card__title mdc-card__title--large">
+                    <h1>
                       <span class="last-name">{{ $m->last_name }}</span><span>, {{ $m->first_name }}</span>
                     </h1>
                   </section>
-                  <section class="mdc-card__supporting-text">
+                  <section class="mdc-card__secondary">
                     <div class="address">
                       <p class="street-address">
                         {{ ($m->address->street_number != 0) ? $m->address->street_number.',' : '' }}
@@ -25,7 +25,8 @@
                         <span class="locality">{{ $m->address->city }}</span>
                       </p>
                     </div>
-                    <ul class="mdc-list--dense phones">
+                    <hr class="mdc-list-divider" role="separator">
+                    <ul class="mdc-list mdc-list--dense mdc-list--non-interactive phones">
 @foreach ($m->phones as $p)
                       <li class="mdc-list-item">
                         <i class="mdc-list-item__start-detail material-icons">{{ ($p->type == 'Fixe') ? 'phone' : 'smartphone'}}</i>
@@ -34,9 +35,9 @@
 @endforeach
                     </ul>
 @if (count($m->emails) > 0)
-                    <hr class="mdc-list-divider">
+                    <hr class="mdc-list-divider" role="separator">
 @endif
-                    <ul class="mdc-list--dense emails">
+                    <ul class="mdc-list mdc-list--dense mdc-list--non-interactive emails">
 @foreach ($m->emails as $key => $e)
                       <li class="mdc-list-item">
                         <i class="mdc-list-item__start-detail material-icons">email</i>
@@ -48,16 +49,12 @@
 @can ('update-member', $m->id)
                   <section class="mdc-card__actions">
                     <a href="{{ route('directory.edit', $m->id) }}">
-                      <button class="mdc-button mdc-button--compact mdc-card__action">
-                        <i class="material-icons mdc-button__icon">edit</i>
-                      </button>
+                      <i class="material-icons mdc-card__action mdc-card__action-icon" role="button">edit</i>
                     </a>
                     <form method="POST" action="{{ route('directory.destroy', $m->id) }}" accept-charset="utf-8">
                       {{ method_field('DELETE') }}
                       {{ csrf_field() }}
-                      <button class="mdc-button mdc-button--compact mdc-card__action">
-                        <i class="cancel material-icons mdc-button__icon">delete</i>
-                      </button>
+                      <i class="cancel material-icons mdc-card__action mdc-card__action-icon" role="button">delete</i>
                     </form>
                   </section>
 @endcan

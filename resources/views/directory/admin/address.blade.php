@@ -12,7 +12,7 @@
                            type="number"
                            value="{{ $m->address->street_number or '' }}">
                     <label class="mdc-text-field__label" for="street_number">Numéro</label>
-                    <div class="mdc-text-field__bottom-line"></div>
+                    <div class="mdc-line-ripple"></div>
                   </div>
                 </div>
                 <div class="mdc-layout-grid__cell
@@ -37,7 +37,7 @@
                            type="text"
                            value="{{ $m->address->street_name or '' }}">
                     <label class="mdc-text-field__label">Nom de la rue</label>
-                    <div class="mdc-text-field__bottom-line"></div>
+                    <div class="mdc-line-ripple"></div>
                   </div>
                 </div>
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-5-desktop">
@@ -48,7 +48,7 @@
                            type="text"
                            value="{{ $m->address->street_complement or '' }}">
                     <label class="mdc-text-field__label">Complément</label>
-                    <div class="mdc-text-field__bottom-line"></div>
+                    <div class="mdc-line-ripple"></div>
                   </div>
                 </div>
                 <div class="mdc-layout-grid__cell
@@ -61,7 +61,7 @@
                            type="number"
                            value="{{ $m->address->zip or '' }}">
                     <label class="mdc-text-field__label">Code postal</label>
-                    <div class="mdc-text-field__bottom-line"></div>
+                    <div class="mdc-line-ripple"></div>
                   </div>
                 </div>
                 <div class="mdc-layout-grid__cell
@@ -73,7 +73,7 @@
                            type="text"
                            value="{{ $m->address->city or '' }}">
                     <label class="mdc-text-field__label">Ville</label>
-                    <div class="mdc-text-field__bottom-line"></div>
+                    <div class="mdc-line-ripple"></div>
                   </div>
                 </div>
               </div>

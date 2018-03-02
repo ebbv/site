@@ -6,29 +6,25 @@
   text-transform: uppercase;
 }
 
-#directory-list .mdc-card__supporting-text div {
+#directory-list .mdc-card__secondary {
+  padding: 10px 0;
+  @include mdc-typography(body1);
+}
+
+#directory-list .mdc-card__secondary div {
   margin: 0 0 20px 0;
 }
 
-#directory-list .mdc-card__supporting-text {
-  padding-bottom: 0;
-}
-
-#directory-list .mdc-card__supporting-text p {
+#directory-list .mdc-card__secondary p {
   margin: 0;
 }
 
-#directory-list .mdc-list,
-#directory-list .mdc-list--dense {
-  padding: 0;
+#directory-list .address {
+  padding: 0 16px;
 }
 
 #directory-list .mdc-list-item__start-detail {
   margin: 0 10px 0 0;
-}
-
-#directory-list .mdc-list-item i {
-  line-height: 1.2rem;
 }
 
 #directory-list hr {

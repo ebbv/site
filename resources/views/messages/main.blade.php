@@ -21,16 +21,16 @@
 @foreach ($messages as $m)
           <div class="mdc-card">
             <section class="mdc-card__primary">
-              <h1 class="mdc-card__title mdc-card__title--large">
-                <a href="{{ route('messages.show', $m->id) }}">{{ $m->title }}</a>
-              </h1>
-              <h2 class="mdc-card__subtitle">Passage : {{ $m->passage }}</h2>
+              <a href="{{ route('messages.show', $m->id) }}">
+                <h1>{{ $m->title }}</h1>
+              </a>
             </section>
-            <section class="mdc-card__supporting-text">
-              <p>
+            <section class="mdc-card__secondary">
+              <h3>Passage : {{ $m->passage }}</h3>
+              <h3>
                 Apporté le {{ utf8_encode(strftime("%e %B, %Y", strtotime($m->date))) }}
                 par {{ $m->speaker->first_name.' '.$m->speaker->last_name }}
-              </p>
+              </h3>
             </section>
             <div class="mdc-layout-grid__inner player">
               <div class="mdc-layout-grid__cell
@@ -73,16 +73,12 @@
 @can ('update', $m)
             <section class="mdc-card__actions message-actions">
               <a href="{{ route('messages.edit', $m->id) }}">
-                <button class="mdc-button mdc-button--compact mdc-card__action">
-                  <i class="material-icons mdc-button__icon">edit</i>
-                </button>
+                <i class="material-icons mdc-card__action mdc-card__action-icon" role="button">edit</i>
               </a>
               <form method="POST" action="{{ route('messages.destroy', $m->id) }}" accept-charset="utf-8">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
-                <button class="mdc-button mdc-button--compact mdc-card__action">
-                  <i class="cancel material-icons mdc-button__icon">delete</i>
-                </button>
+                <i class="cancel material-icons mdc-card__action mdc-card__action-icon" role="button">delete</i>
               </form>
             </section>
 @endcan

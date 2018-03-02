@@ -1,23 +1,22 @@
-.mdc-card__title {
-  padding: 0 0 1rem 0;
+.mdc-card__primary a {
+  text-decoration: none;
+}
+
+.mdc-card__primary h1 {
   text-align: center;
   @include mdc-theme-prop(color, primary);
+  @include mdc-typography(headline);
 }
 
-.mdc-card a {
-  text-decoration: none;
-  @include mdc-theme-prop(color, primary);
-}
-
-.mdc-card__action {
-  margin-right: 0;
-}
-
-.mdc-card__actions button {
-  min-width: 0;
-  @include mdc-theme-prop(color, text-icon-on-background);
+.mdc-card__secondary h3 {
+  @include mdc-typography(body1);
 }
 
 .mdc-card__actions i {
-  line-height: inherit;
+  padding: 0 8px;
+  @include mdc-button-ink-color($mdc-theme-primary);
+}
+
+.mdc-card__actions i.cancel {
+  @include mdc-button-ink-color($mdc-theme-secondary);
 }

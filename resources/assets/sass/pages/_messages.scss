@@ -5,20 +5,27 @@
 .message-cards .mdc-card {
   margin: 0 auto 25px auto;
   max-width: 500px;
+  padding: 0 16px;
 }
 
 .player {
   margin-bottom: 10px;
-  padding: 0 16px;
 }
 
 .player i {
   font-size: 48px;
+  left: -16px;
   padding: 0;
 }
 
 .player .duration {
   text-align: center;
+}
+
+.message-actions {
+  left: -8px;
+  padding: 8px 0;
+  position: relative;
 }
 
 #add-message {

@@ -10,7 +10,7 @@
                 <label class="mdc-text-field__label" for="telephone[{{ $phone['short'] }}]">
                   Téléphone {{ $phone['long'] }}
                 </label>
-                <div class="mdc-text-field__bottom-line"></div>
+                <div class="mdc-line-ripple"></div>
               </div>
 @endforeach
 @foreach ($emails as $email)
@@ -23,7 +23,7 @@
                 <label class="mdc-text-field__label" for="email[{{ $email['type'] }}]">
                   Mail ({{ $email['type'] }})
                 </label>
-                <div class="mdc-text-field__bottom-line"></div>
+                <div class="mdc-line-ripple"></div>
               </div>
 @endforeach
             </fieldset>
