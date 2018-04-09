@@ -15,7 +15,7 @@
                      name="title"
                      type="text"
                      value="{{ $message->title }}">
-              <label class="mdc-text-field__label" for="title">
+              <label class="mdc-floating-label" for="title">
                 Titre
               </label>
               <div class="mdc-line-ripple"></div>
@@ -26,7 +26,7 @@
                      name="passage"
                      type="text"
                      value="{{ $message->passage }}">
-              <label class="mdc-text-field__label" for="message-passage">
+              <label class="mdc-floating-label" for="message-passage">
                 Passage
               </label>
               <div class="mdc-line-ripple"></div>

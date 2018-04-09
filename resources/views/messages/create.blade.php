@@ -18,7 +18,7 @@
                        name="title"
                        required
                        type="text">
-                <label class="mdc-text-field__label" for="title">
+                <label class="mdc-floating-label" for="title">
                   Titre
                 </label>
                 <div class="mdc-line-ripple"></div>
@@ -27,7 +27,7 @@
                           mdc-layout-grid__cell--span-3-tablet
                           mdc-layout-grid__cell--span-4-desktop">
                 <div class="mdc-select">
-                  <select class="mdc-select__surface" id="speaker" name="speaker">
+                  <select class="mdc-select__native-control" id="speaker" name="speaker">
                     <!-- <option></option> -->
 @foreach ($speakers as $s)
                     <option value="{{ $s->id }}">{{ $s->last_name }}, {{ $s->first_name }}</option>
@@ -45,7 +45,7 @@
                        name="passage"
                        required
                        type="text">
-                <label class="mdc-text-field__label" for="message-passage">
+                <label class="mdc-floating-label" for="message-passage">
                   Passage
                 </label>
                 <div class="mdc-line-ripple"></div>
@@ -54,7 +54,7 @@
                           mdc-layout-grid__cell--span-2-tablet
                           mdc-layout-grid__cell--span-3-desktop">
                 <div class="mdc-select">
-                  <select class="mdc-select__surface" id="message-file" name="file">
+                  <select class="mdc-select__native-control" id="message-file" name="file">
                     <option default selected>Choisir un fichier...</option>
 @foreach ($files as $f)
                     <option value="{{ $f }}">{{ $f }}</option>

@@ -7,7 +7,7 @@
                        name="telephone[{{ $phone['short'] }}]"
                        type="tel"
                        value="{{ $phone['number'] }}">
-                <label class="mdc-text-field__label" for="telephone[{{ $phone['short'] }}]">
+                <label class="mdc-floating-label" for="telephone[{{ $phone['short'] }}]">
                   Téléphone {{ $phone['long'] }}
                 </label>
                 <div class="mdc-line-ripple"></div>
@@ -20,7 +20,7 @@
                        name="email[{{ $email['type'] }}]"
                        type="email"
                        value="{{ $email['val'] }}">
-                <label class="mdc-text-field__label" for="email[{{ $email['type'] }}]">
+                <label class="mdc-floating-label" for="email[{{ $email['type'] }}]">
                   Mail ({{ $email['type'] }})
                 </label>
                 <div class="mdc-line-ripple"></div>

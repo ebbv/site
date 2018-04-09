@@ -2,6 +2,7 @@ import { MDCCheckbox } from '@material/checkbox';
 import { MDCIconToggle } from '@material/icon-toggle';
 import { MDCLinearProgress } from '@material/linear-progress';
 import { MDCRipple } from '@material/ripple';
+import { MDCSelect } from '@material/select';
 import { MDCTemporaryDrawer } from '@material/drawer';
 import { MDCTextField } from '@material/textfield';
 import { MDCToolbar } from '@material/toolbar';
@@ -27,6 +28,10 @@ for (let i = 0, node; node = document.querySelectorAll('.mdc-text-field')[i]; i+
 
 for (let i = 0, node; node = document.querySelectorAll('.mdc-checkbox')[i]; i++) {
   new MDCCheckbox(node);
+}
+
+for (let i = 0, node; node = document.querySelectorAll('.mdc-select')[i]; i++) {
+  new MDCSelect(node);
 }
 
 let player = {

@@ -6,7 +6,7 @@
                        name="last_name"
                        type="text"
                        value="{{ $m->last_name or '' }}">
-                <label class="mdc-text-field__label" for="last_name">
+                <label class="mdc-floating-label" for="last_name">
                   Nom
                 </label>
                 <div class="mdc-line-ripple"></div>
@@ -17,7 +17,7 @@
                        name="first_name"
                        type="text"
                        value="{{ $m->first_name or '' }}">
-                <label class="mdc-text-field__label" for="last_name">
+                <label class="mdc-floating-label" for="last_name">
                   Prénom
                 </label>
                 <div class="mdc-line-ripple"></div>
