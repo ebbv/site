@@ -26,7 +26,7 @@
                          name="email"
                          required
                          type="email">
-                  <label class="mdc-text-field__label" for="email">
+                  <label class="mdc-floating-label" for="email">
                     E-mail
                   </label>
                   <div class="mdc-line-ripple"></div>
@@ -38,7 +38,7 @@
                 </p>
                 <div class="mdc-text-field mdc-text-field--textarea">
                   <textarea class="mdc-text-field__input" id="body" name="body" rows="5"></textarea>
-                  <label class="mdc-text-field__label" for="body">
+                  <label class="mdc-floating-label" for="body">
                     Question ou commentaire
                   </label>
                 </div>

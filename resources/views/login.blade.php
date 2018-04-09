@@ -15,7 +15,7 @@
                      required
                      type="text"
                      value="{{ old('username') }}">
-              <label class="mdc-text-field__label mdc-text-field__label--float-above" for="username">
+              <label class="mdc-floating-label mdc-floating-label--float-above" for="username">
                 @lang('forms.username')
               </label>
               <div class="mdc-line-ripple"></div>
@@ -31,7 +31,7 @@
                      name="password"
                      required
                      type="password">
-              <label class="mdc-text-field__label" for="password">
+              <label class="mdc-floating-label" for="password">
                 @lang('forms.password')
               </label>
               <div class="mdc-line-ripple"></div>
