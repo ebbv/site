@@ -12,7 +12,7 @@
   <body class="mdc-typography">
     @include($theme.'header')
 
-    <main class="mdc-layout-grid mdc-toolbar-fixed-adjust">
+    <main class="mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
 @yield('aside')
 @yield('content')

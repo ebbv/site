@@ -5,11 +5,11 @@ import { MDCRipple } from '@material/ripple';
 import { MDCSelect } from '@material/select';
 import { MDCTemporaryDrawer } from '@material/drawer';
 import { MDCTextField } from '@material/textfield';
-import { MDCToolbar } from '@material/toolbar';
+import { MDCTopAppBar } from '@material/top-app-bar';
 
-new MDCToolbar(document.querySelector('.mdc-toolbar'));
+new MDCTopAppBar(document.querySelector('.mdc-top-app-bar'));
 
-document.querySelector('.mdc-toolbar__menu-icon').addEventListener('click', function (e) {
+document.querySelector('.mdc-top-app-bar__navigation-icon').addEventListener('click', function (e) {
   e.preventDefault();
   new MDCTemporaryDrawer(document.querySelector('.mdc-drawer--temporary')).open = true;
 });

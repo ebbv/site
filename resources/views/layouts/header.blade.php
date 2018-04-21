@@ -1,9 +1,9 @@
-    <header class="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall">
-      <div class="mdc-toolbar__row">
-        <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-          <a href="#" class="material-icons mdc-toolbar__menu-icon">menu</a>
-          <span class="mdc-toolbar__title mdc-toolbar__title--full">Eglise Biblique Baptiste de Vernon</span>
-          <span class="mdc-toolbar__title mdc-toolbar__title--mini">EBBV</span>
+    <header class="mdc-top-app-bar ">
+      <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+          <a href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
+          <span class="mdc-top-app-bar__title mdc-top-app-bar__title--full">Eglise Biblique Baptiste de Vernon</span>
+          <span class="mdc-top-app-bar__title mdc-top-app-bar__title--mini">EBBV</span>
         </section>
       </div>
       <aside class="mdc-drawer--temporary">
