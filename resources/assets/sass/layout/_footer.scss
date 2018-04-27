@@ -2,12 +2,12 @@ footer {
   height: 58.5px;
   margin-top: 30px;
   text-align: center;
-  @include mdc-theme-prop(background, primary);
-  @include mdc-theme-prop(color, on-primary);
+  @include mdc-theme-prop('background', 'primary');
+  @include mdc-theme-prop('color', 'on-primary');
 }
 
 #copyright {
   margin: 0;
   padding: 1.2rem 0;
-  @include mdc-typography(caption);
+  @include mdc-typography('caption');
 }

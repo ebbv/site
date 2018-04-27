@@ -2,7 +2,7 @@
   margin: 0 auto;
   max-width: 600px;
   padding: 20px;
-  @include mdc-typography(caption);
+  @include mdc-typography('caption');
 }
 
 #beliefs {
@@ -12,7 +12,7 @@
 #beliefs li {
   list-style-position: inside;
   list-style-type: upper-roman;
-  @include mdc-typography(headline5);
+  @include mdc-typography('headline5');
 }
 
 #beliefs li div {
@@ -22,7 +22,7 @@
 #beliefs li p {
   margin-bottom: 1rem;
   text-indent: 1rem;
-  @include mdc-typography(body2);
+  @include mdc-typography('body2');
 }
 
 #beliefs li .title {
@@ -32,6 +32,6 @@
 #beliefs li .verses {
   font-style: italic;
   text-indent: 0;
-  @include mdc-typography(caption);
-  @include mdc-theme-prop(color, text-secondary-on-light);
+  @include mdc-typography('caption');
+  @include mdc-theme-prop('color', 'text-secondary-on-light');
 }

@@ -4,12 +4,12 @@
 
 .mdc-card__primary h1 {
   text-align: center;
-  @include mdc-theme-prop(color, primary);
-  @include mdc-typography(headline5);
+  @include mdc-theme-prop('color', 'primary');
+  @include mdc-typography('headline5');
 }
 
 .mdc-card__secondary h3 {
-  @include mdc-typography(body2);
+  @include mdc-typography('body2');
 }
 
 .mdc-card__actions i {

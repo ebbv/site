@@ -22,11 +22,11 @@
   padding: 0 0.8rem;
   text-decoration: none;
   width: 24px;
-  @include mdc-theme-prop(color, primary);
+  @include mdc-theme-prop('color', 'primary');
 }
 
 .pagination li.current,
 .pagination li a:hover {
-  @include mdc-theme-prop(background, primary);
-  @include mdc-theme-prop(color, on-primary);
+  @include mdc-theme-prop('background', 'primary');
+  @include mdc-theme-prop('color', 'on-primary');
 }

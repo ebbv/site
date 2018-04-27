@@ -4,12 +4,12 @@
 
 #contact h3 {
   margin: 0 auto 20px auto;
-  @include mdc-typography(headline4);
+  @include mdc-typography('headline4');
 }
 
 #meeting-times p {
   text-indent: 20px;
-  @include mdc-typography(body2);
+  @include mdc-typography('body2');
 }
 
 #meeting-times iframe {
@@ -17,8 +17,8 @@
 }
 
 #telephone small {
-  @include mdc-theme-prop(color, text-secondary-on-light);
-  @include mdc-typography(body2);
+  @include mdc-theme-prop('color', 'text-secondary-on-light');
+  @include mdc-typography('body2');
 }
 
 #contact-form {

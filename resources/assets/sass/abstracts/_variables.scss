@@ -1,8 +1,8 @@
 $breakpoints: (
   'small': 0px,
   'medium': 480px,
-  'large': 840px
+  'large': 840px,
 );
 
-$mdc-theme-primary: #2196f3;
-$mdc-theme-secondary: #ff4081;
+$mdc-theme-primary: hsla(207, 90%, 54%, 1);
+$mdc-theme-secondary: hsla(340, 100%, 63%, 1);
