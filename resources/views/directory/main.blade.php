@@ -29,7 +29,7 @@
                     <ul class="mdc-list mdc-list--dense mdc-list--non-interactive phones">
 @foreach ($m->phones as $p)
                       <li class="mdc-list-item">
-                        <i class="mdc-list-item__start-detail material-icons">{{ ($p->type == 'Fixe') ? 'phone' : 'smartphone'}}</i>
+                        <i class="material-icons mdc-list-item__start-detail">{{ ($p->type == 'Fixe') ? 'phone' : 'smartphone'}}</i>
                         {{ $p->number }}
                       </li>
 @endforeach
@@ -37,10 +37,10 @@
 @if (count($m->emails) > 0)
                     <hr class="mdc-list-divider" role="separator">
 @endif
-                    <ul class="mdc-list mdc-list--dense mdc-list--non-interactive emails">
+                    <ul class="emails mdc-list mdc-list--dense mdc-list--non-interactive">
 @foreach ($m->emails as $key => $e)
                       <li class="mdc-list-item">
-                        <i class="mdc-list-item__start-detail material-icons">email</i>
+                        <i class="material-icons mdc-list-item__start-detail">email</i>
                         {{ $e->address }}
                       </li>
 @endforeach
@@ -65,7 +65,7 @@
           </div>
 @can ('update-member', $m->id)
           <a href="{{ route('directory.create') }}">
-            <button class="mdc-fab material-icons" aria-label="Add">
+            <button class="material-icons mdc-fab" aria-label="Add">
               <span class="mdc-fab__icon">
                 add
               </span>

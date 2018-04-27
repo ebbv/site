@@ -35,12 +35,12 @@
             <div class="mdc-layout-grid__inner player">
               <div class="mdc-layout-grid__cell
                           mdc-layout-grid__cell--span-1">
-                <i class="material-icons mdc-icon-toggle"
-                    role="button"
-                    aria-pressed="false"
-                    data-mdc-auto-init="MDCIconToggle"
-                    data-toggle-on='{"content": "pause", "cssClass": "audio-pause"}'
-                    data-toggle-off='{"content": "play_arrow", "cssClass": "audio-play"}'>
+                <i aria-pressed="false"
+                   class="material-icons mdc-icon-toggle"
+                   data-mdc-auto-init="MDCIconToggle"
+                   data-toggle-on='{"content": "pause", "cssClass": "audio-pause"}'
+                   data-toggle-off='{"content": "play_arrow", "cssClass": "audio-play"}'
+                   role="button">
                 </i>
               </div>
               <div class="duration
@@ -58,7 +58,7 @@
                           mdc-layout-grid__cell--span-4-tablet
                           mdc-layout-grid__cell--span-7-desktop
                           mdc-layout-grid__cell--align-middle">
-                <div role="progressbar" class="mdc-linear-progress">
+                <div class="mdc-linear-progress role="progressbar"">
                   <div class="mdc-linear-progress__buffering-dots"></div>
                   <div class="mdc-linear-progress__buffer"></div>
                   <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
@@ -90,7 +90,7 @@
           </div>
 @can ('create', App\Models\Message::class)
           <a href="{{ route('messages.create') }}">
-            <button class="material-icons mdc-fab" aria-label="Add">
+            <button aria-label="Add" class="material-icons mdc-fab">
               <span class="mdc-fab__icon">
                 add
               </span>

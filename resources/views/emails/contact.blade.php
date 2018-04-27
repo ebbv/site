@@ -6,7 +6,7 @@
   <body>
     <p>Message venant de {{ $email }}</p>
     <div>
-        {{ $body }}
+      {{ $body }}
     </div>
   </body>
 </html>

@@ -35,5 +35,5 @@
                 {{ $editButtonText or __('forms.add_button') }}
               </button>
             </div>
-        </div>
+          </div>
         </form>

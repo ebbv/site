@@ -2,7 +2,7 @@
 
 @section('content')
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12" id="content">
-        <form method="POST" action="@lang('nav.login.url')" accept-charset="utf-8" id="login" class="mdc-card">
+        <form accept-charset="utf-8" action="@lang('nav.login.url')" class="mdc-card" id="login" method="POST">
           {{ csrf_field() }}
           <section class="mdc-card__primary">
             <div class="mdc-text-field mdc-text-field--upgraded">
