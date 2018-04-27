@@ -1,5 +1,5 @@
 #sidebar {
-  @include mdc-typography(body1);
+  @include mdc-typography(body2);
 }
 
 .message-cards .mdc-card {
@@ -34,7 +34,7 @@
 }
 
 #add-message .mdc-select {
-  top: 16px;
+  top: 12px;
   width: 100%;
 }
 

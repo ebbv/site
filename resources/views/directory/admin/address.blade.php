@@ -20,13 +20,13 @@
                             mdc-layout-grid__cell--span-5-tablet
                             mdc-layout-grid__cell--span-4-desktop">
                   <div class="mdc-select">
-                    <select class="mdc-select__native-control" name="street_type">
+                    <select class="mdc-select__native-control" id="street_type" name="street_type">
                       <option></option>
 @foreach ($street_type as $type)
                       <option{{ $type['selected'] }}>{{ $type['name'] }}</option>
 @endforeach
                     </select>
-                    <div class="mdc-select__label">Type de rue...</div>
+                    <label class="mdc-floating-label" for="street_type">Type de rue...</label>
                     <div class="mdc-select__bottom-line"></div>
                   </div>
                 </div>
@@ -34,21 +34,23 @@
                             mdc-layout-grid__cell--span-6-desktop">
                   <div class="mdc-text-field">
                     <input class="mdc-text-field__input"
+                           id="street_name"
                            name="street_name"
                            type="text"
                            value="{{ $m->address->street_name or '' }}">
-                    <label class="mdc-floating-label">Nom de la rue</label>
+                    <label class="mdc-floating-label" for="street_name">Nom de la rue</label>
                     <div class="mdc-line-ripple"></div>
                   </div>
                 </div>
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-5-desktop">
                   <div class="mdc-text-field">
                     <input class="mdc-text-field__input"
+                           id="street_complement"
                            max="5"
                            name="street_complement"
                            type="text"
                            value="{{ $m->address->street_complement or '' }}">
-                    <label class="mdc-floating-label">Complément</label>
+                    <label class="mdc-floating-label" for="street_complement">Complément</label>
                     <div class="mdc-line-ripple"></div>
                   </div>
                 </div>
@@ -61,7 +63,7 @@
                            name="zip"
                            type="number"
                            value="{{ $m->address->zip or '' }}">
-                    <label class="mdc-floating-label">Code postal</label>
+                    <label class="mdc-floating-label" for="zipcode">Code postal</label>
                     <div class="mdc-line-ripple"></div>
                   </div>
                 </div>
@@ -70,10 +72,11 @@
                             mdc-layout-grid__cell--span-4-desktop">
                   <div class="mdc-text-field">
                     <input class="mdc-text-field__input"
+                           id="city"
                            name="city"
                            type="text"
                            value="{{ $m->address->city or '' }}">
-                    <label class="mdc-floating-label">Ville</label>
+                    <label class="mdc-floating-label" for="city">Ville</label>
                     <div class="mdc-line-ripple"></div>
                   </div>
                 </div>

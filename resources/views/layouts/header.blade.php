@@ -1,4 +1,4 @@
-    <header class="mdc-top-app-bar ">
+    <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
       <div class="mdc-top-app-bar__row">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
           <a href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
@@ -6,7 +6,7 @@
           <span class="mdc-top-app-bar__title mdc-top-app-bar__title--mini">EBBV</span>
         </section>
       </div>
-      <aside class="mdc-drawer--temporary">
+      <aside class="mdc-drawer mdc-drawer--temporary">
         <nav class="mdc-drawer__drawer">
           <div class="mdc-drawer__toolbar-spacer"></div>
           <nav class="mdc-list mdc-drawer__content">

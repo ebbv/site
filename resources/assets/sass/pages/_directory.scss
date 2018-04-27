@@ -8,7 +8,7 @@
 
 #directory-list .mdc-card__secondary {
   padding: 10px 0;
-  @include mdc-typography(body1);
+  @include mdc-typography(body2);
 }
 
 #directory-list .mdc-card__secondary div {
@@ -32,7 +32,7 @@
 }
 
 #directory-form {
-  @include mdc-typography(body1);
+  @include mdc-typography(body2);
 }
 
 #directory-form fieldset {
@@ -41,7 +41,7 @@
 }
 
 #directory-form legend {
-  @include mdc-typography(display1);
+  @include mdc-typography(headline4);
 }
 
 #directory-form .mdc-text-field {
@@ -54,7 +54,7 @@
 }
 
 #address .mdc-select {
-  top: 16px;
+  top: 12px;
   width: 100%;
 }
 

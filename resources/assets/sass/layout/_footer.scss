@@ -3,7 +3,7 @@ footer {
   margin-top: 30px;
   text-align: center;
   @include mdc-theme-prop(background, primary);
-  @include mdc-theme-prop(color, text-secondary-on-primary);
+  @include mdc-theme-prop(color, on-primary);
 }
 
 #copyright {

@@ -28,6 +28,5 @@
 .pagination li.current,
 .pagination li a:hover {
   @include mdc-theme-prop(background, primary);
-  @include mdc-theme-prop(color, text-primary-on-primary);
+  @include mdc-theme-prop(color, on-primary);
 }
-

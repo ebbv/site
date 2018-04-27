@@ -8,11 +8,11 @@ body {
 
 main {
   max-width: 1200px;
-  min-height: calc(100% - 25px);
+  min-height: calc(100% - 43px);
 }
 
 @media (max-width: 599px) {
   main {
-    min-height: calc(100% - 17px);
+    min-height: calc(100% - 35px);
   }
 }

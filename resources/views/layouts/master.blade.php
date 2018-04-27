@@ -11,8 +11,8 @@
   </head>
   <body class="mdc-typography">
     @include($theme.'header')
-
-    <main class="mdc-layout-grid">
+&nbsp;
+    <main class="mdc-layout-grid mdc-top-app-bar--fixed-adjust">
       <div class="mdc-layout-grid__inner">
 @yield('aside')
 @yield('content')

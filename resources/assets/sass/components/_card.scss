@@ -5,11 +5,11 @@
 .mdc-card__primary h1 {
   text-align: center;
   @include mdc-theme-prop(color, primary);
-  @include mdc-typography(headline);
+  @include mdc-typography(headline5);
 }
 
 .mdc-card__secondary h3 {
-  @include mdc-typography(body1);
+  @include mdc-typography(body2);
 }
 
 .mdc-card__actions i {
