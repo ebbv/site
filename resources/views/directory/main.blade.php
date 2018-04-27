@@ -51,7 +51,7 @@
                     <a href="{{ route('directory.edit', $m->id) }}">
                       <i class="material-icons mdc-card__action mdc-card__action-icon" role="button">edit</i>
                     </a>
-                    <form method="POST" action="{{ route('directory.destroy', $m->id) }}" accept-charset="utf-8">
+                    <form accept-charset="utf-8" action="{{ route('directory.destroy', $m->id) }}" method="POST">
                       {{ method_field('DELETE') }}
                       {{ csrf_field() }}
                       <i class="cancel material-icons mdc-card__action mdc-card__action-icon" role="button">delete</i>

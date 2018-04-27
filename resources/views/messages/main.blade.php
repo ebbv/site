@@ -75,7 +75,7 @@
               <a href="{{ route('messages.edit', $m->id) }}">
                 <i class="material-icons mdc-card__action mdc-card__action-icon" role="button">edit</i>
               </a>
-              <form method="POST" action="{{ route('messages.destroy', $m->id) }}" accept-charset="utf-8">
+              <form accept-charset="utf-8" action="{{ route('messages.destroy', $m->id) }}" method="POST">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
                 <i class="cancel material-icons mdc-card__action mdc-card__action-icon" role="button">delete</i>

@@ -7,11 +7,11 @@
                             mdc-layout-grid__cell--span-2-desktop">
                   <div class="mdc-text-field">
                     <input class="mdc-text-field__input"
-                           id="street_number"
+                           id="street-number"
                            name="street_number"
                            type="number"
                            value="{{ $m->address->street_number or '' }}">
-                    <label class="mdc-floating-label" for="street_number">Numéro</label>
+                    <label class="mdc-floating-label" for="street-number">Numéro</label>
                     <div class="mdc-line-ripple"></div>
                   </div>
                 </div>
@@ -20,13 +20,13 @@
                             mdc-layout-grid__cell--span-5-tablet
                             mdc-layout-grid__cell--span-4-desktop">
                   <div class="mdc-select">
-                    <select class="mdc-select__native-control" id="street_type" name="street_type">
+                    <select class="mdc-select__native-control" id="street-type" name="street_type">
                       <option></option>
 @foreach ($street_type as $type)
                       <option{{ $type['selected'] }}>{{ $type['name'] }}</option>
 @endforeach
                     </select>
-                    <label class="mdc-floating-label" for="street_type">Type de rue...</label>
+                    <label class="mdc-floating-label" for="street-type">Type de rue...</label>
                     <div class="mdc-select__bottom-line"></div>
                   </div>
                 </div>
@@ -34,23 +34,23 @@
                             mdc-layout-grid__cell--span-6-desktop">
                   <div class="mdc-text-field">
                     <input class="mdc-text-field__input"
-                           id="street_name"
+                           id="street-name"
                            name="street_name"
                            type="text"
                            value="{{ $m->address->street_name or '' }}">
-                    <label class="mdc-floating-label" for="street_name">Nom de la rue</label>
+                    <label class="mdc-floating-label" for="street-name">Nom de la rue</label>
                     <div class="mdc-line-ripple"></div>
                   </div>
                 </div>
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-5-desktop">
                   <div class="mdc-text-field">
                     <input class="mdc-text-field__input"
-                           id="street_complement"
+                           id="street-complement"
                            max="5"
                            name="street_complement"
                            type="text"
                            value="{{ $m->address->street_complement or '' }}">
-                    <label class="mdc-floating-label" for="street_complement">Complément</label>
+                    <label class="mdc-floating-label" for="street-complement">Complément</label>
                     <div class="mdc-line-ripple"></div>
                   </div>
                 </div>
