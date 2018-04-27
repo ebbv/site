@@ -58,7 +58,7 @@
                           mdc-layout-grid__cell--span-4-tablet
                           mdc-layout-grid__cell--span-7-desktop
                           mdc-layout-grid__cell--align-middle">
-                <div class="mdc-linear-progress role="progressbar"">
+                <div class="mdc-linear-progress" role="progressbar">
                   <div class="mdc-linear-progress__buffering-dots"></div>
                   <div class="mdc-linear-progress__buffer"></div>
                   <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
