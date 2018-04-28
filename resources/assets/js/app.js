@@ -14,30 +14,30 @@ document.querySelector('.mdc-top-app-bar__navigation-icon').addEventListener('cl
   new MDCTemporaryDrawer(document.querySelector('.mdc-drawer--temporary')).open = true;
 });
 
-for (let i = 0, node; node = document.querySelectorAll('.mdc-button')[i]; i++) {
-  MDCRipple.attachTo(node);
+for (let i = 0, nodes = document.querySelectorAll('.mdc-button'), items = nodes.length; i < items; i++) {
+  MDCRipple.attachTo(nodes[i]);
 }
 
-for (let i = 0, node; node = document.querySelectorAll('.mdc-icon-toggle')[i]; i++) {
-  new MDCIconToggle(node);
+for (let i = 0, nodes = document.querySelectorAll('.mdc-icon-toggle'), items = nodes.length; i < items; i++) {
+  new MDCIconToggle(nodes[i]);
 }
 
-for (let i = 0, node; node = document.querySelectorAll('.mdc-text-field')[i]; i++) {
-  new MDCTextField(node);
+for (let i = 0, nodes = document.querySelectorAll('.mdc-text-field'), items = nodes.length; i < items; i++) {
+  new MDCTextField(nodes[i]);
 }
 
-for (let i = 0, node; node = document.querySelectorAll('.mdc-checkbox')[i]; i++) {
-  new MDCCheckbox(node);
+for (let i = 0, nodes = document.querySelectorAll('.mdc-checkbox'), items = nodes.length; i < items; i++) {
+  new MDCCheckbox(nodes[i]);
 }
 
-for (let i = 0, node; node = document.querySelectorAll('.mdc-select')[i]; i++) {
-  new MDCSelect(node);
+for (let i = 0, nodes = document.querySelectorAll('.mdc-select'), items = nodes.length; i < items; i++) {
+  new MDCSelect(nodes[i]);
 }
 
 let player = {
   init : function () {
-    for (let i = 0, node; node = document.querySelectorAll('.player')[i]; i++) {
-      let audio = node.querySelector('audio');
+    for (let i = 0, nodes = document.querySelectorAll('.player'), items = nodes.length; i < items; i++) {
+      let audio = nodes[i].querySelector('audio');
       if (! audio.duration) {
         audio.addEventListener('durationchange', function () {
           player.time(this);
