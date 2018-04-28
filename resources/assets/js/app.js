@@ -7,9 +7,9 @@ import { MDCTemporaryDrawer } from '@material/drawer';
 import { MDCTextField } from '@material/textfield';
 import { MDCTopAppBar } from '@material/top-app-bar';
 
-new MDCTopAppBar(document.querySelector('.mdc-top-app-bar'));
+new MDCTopAppBar(document.querySelector('#top-app-bar'));
 
-document.querySelector('.mdc-top-app-bar__navigation-icon').addEventListener('click', function (e) {
+document.querySelector('#nav-menu-btn').addEventListener('click', function (e) {
   e.preventDefault();
   new MDCTemporaryDrawer(document.querySelector('.mdc-drawer--temporary')).open = true;
 });
@@ -36,7 +36,7 @@ for (let i = 0, nodes = document.querySelectorAll('.mdc-select'), items = nodes.
 
 let player = {
   init : function () {
-    for (let i = 0, nodes = document.querySelectorAll('.player'), items = nodes.length; i < items; i++) {
+    for (let i = 0, nodes = document.querySelectorAll('.js-player'), items = nodes.length; i < items; i++) {
       let audio = nodes[i].querySelector('audio');
       if (! audio.duration) {
         audio.addEventListener('durationchange', function () {

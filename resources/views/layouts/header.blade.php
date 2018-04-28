@@ -1,7 +1,7 @@
-    <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
+    <header class="mdc-top-app-bar mdc-top-app-bar--fixed" id="top-app-bar">
       <div class="mdc-top-app-bar__row">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-          <a href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
+          <a href="#" class="material-icons mdc-top-app-bar__navigation-icon" id="nav-menu-btn">menu</a>
           <span class="mdc-top-app-bar__title mdc-top-app-bar__title--full">Eglise Biblique Baptiste de Vernon</span>
           <span class="mdc-top-app-bar__title mdc-top-app-bar__title--mini">EBBV</span>
         </section>

@@ -32,7 +32,7 @@
                 par {{ $m->speaker->first_name.' '.$m->speaker->last_name }}
               </h3>
             </section>
-            <div class="mdc-layout-grid__inner player">
+            <div class="mdc-layout-grid__inner player js-player">
               <div class="mdc-layout-grid__cell
                           mdc-layout-grid__cell--span-1">
                 <i aria-pressed="false"
