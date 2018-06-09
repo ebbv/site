@@ -56,7 +56,7 @@ class MessagesController extends Controller
         $this->authorize('create', Message::class);
         $files = [];
 
-        foreach ((Storage::files('tmp')) ? : [] as $file) {
+        foreach ((Storage::files('tmp')) ?: [] as $file) {
             if (strpos($file, '.mp3') !== false) {
                 $files[] = str_replace(['tmp/', '.mp3'], '', $file);
             }
