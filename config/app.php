@@ -2,9 +2,7 @@
 
 return [
 
-    'ga_key'        => env('APP_GA_KEY'),
-    'site_prefix'   => env('APP_PREFIX'),
-    'theme'         => 'layouts.master',
+    'theme' => 'layouts.master',
 
     /*
     |--------------------------------------------------------------------------
@@ -16,7 +14,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'EBBV',
+    'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -170,7 +168,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Laravel\Tinker\TinkerServiceProvider::class,
 
         /*
          * Application Service Providers...

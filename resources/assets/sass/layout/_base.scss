@@ -8,11 +8,17 @@ body {
 
 main {
   max-width: 1200px;
-  min-height: calc(100% - 43px);
+  min-height: calc(100% + 39px);
 }
 
-@media (max-width: 599px) {
-  main {
-    min-height: calc(100% - 35px);
-  }
+main > div {
+  padding-top: 24px;
 }
+
+#sidebar {
+  @include mdc-typography('body2');
+}
+
+#sidebar p {
+  margin: 0;
+  }

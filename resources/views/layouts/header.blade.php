@@ -1,25 +1,55 @@
-    <header class="mdc-top-app-bar mdc-top-app-bar--fixed" id="top-app-bar">
+    <header class="mdc-top-app-bar mdc-top-app-bar--fixed" id="js-top-app-bar">
       <div class="mdc-top-app-bar__row">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-          <a href="#" class="material-icons mdc-top-app-bar__navigation-icon" id="nav-menu-btn">menu</a>
+          <button class="material-icons mdc-top-app-bar__navigation-icon" id="nav-menu-btn">menu</button>
           <span class="mdc-top-app-bar__title mdc-top-app-bar__title--full">Eglise Biblique Baptiste de Vernon</span>
           <span class="mdc-top-app-bar__title mdc-top-app-bar__title--mini">EBBV</span>
         </section>
+@if (url()->current() !== route('login'))
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+          <button aria-label="Account"
+                  class="material-icons mdc-top-app-bar__action-item"
+                  id="account-menu-button">
+            account_circle
+          </button>
+          <div class="mdc-menu" id="account-menu" tabindex="-1">
+            <div aria-hidden="true" class="mdc-list mdc-menu__items" role="menu">
+@if (Auth::check())
+              <a class="mdc-list-item" href="{{ auth()->user()->path() }}" role="menuitem">
+                {{ auth()->user()->fullname }} ({{ auth()->user()->username }})
+              </a>
+              <form accept-charset="utf-8" action="{{ route('logout') }}" id="logout-form" method="POST">
+                {{ csrf_field() }}
+              </form>
+              <a class="mdc-list-item" href="{{ route('logout') }}" id="logout-button" role="menuitem">
+                {{ __('nav.logout.text') }}
+              </a>
+@else
+              <a class="mdc-list-item" href="{{ route('login') }}" role="menuitem">
+                {{ __('nav.login.text') }}
+              </a>
+@endif
+            </div>
+          </div>
+        </section>
+@endif
       </div>
-      <aside class="mdc-drawer mdc-drawer--temporary">
+      <aside class="mdc-drawer mdc-drawer--temporary" id="js-app-drawer">
         <nav class="mdc-drawer__drawer">
           <div class="mdc-drawer__toolbar-spacer"></div>
-          <nav class="mdc-list mdc-drawer__content">
-@foreach (__('nav') as $key => $value)
-@if (Auth::check() and $key == 'login')
-@continue
-@elseif (! Auth::check() and $key == 'logout')
-@continue
-@endif
-@if (array_key_exists('text', $value))
-            <a class="mdc-list-item" href="{{ $value['url'] }}" aria-hidden="true">{{ $value['text'] }}</a>
-@endif
-@endforeach
+          <nav class="mdc-drawer__content mdc-list">
+            <a class="mdc-list-item" href="/" id="home-link" aria-hidden="true">
+              {{ __('nav.home.text') }}
+            </a>
+            <a class="mdc-list-item" href="{{ route('contact') }}" id="contact-link" aria-hidden="true">
+              {{ __('nav.contact.text') }}
+            </a>
+            <a class="mdc-list-item" href="{{ route('beliefs') }}" id="beliefs-link" aria-hidden="true">
+              {{ __('nav.beliefs.text') }}
+            </a>
+            <a class="mdc-list-item" href="{{ route('directory') }}" id="directory-link" aria-hidden="true">
+              {{ __('nav.directory.text') }}
+            </a>
           </nav>
         </nav>
       </aside>

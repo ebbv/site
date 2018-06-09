@@ -1,8 +1,8 @@
 #beliefs-welcome {
-  margin: 0 auto;
+  margin: 0 auto 50px auto;
   max-width: 600px;
   padding: 20px;
-  @include mdc-typography('caption');
+  @include mdc-typography('subtitle2');
 }
 
 #beliefs {
@@ -16,11 +16,10 @@
 }
 
 #beliefs li div {
-  margin-top: 1.2rem;
+  text-align: justify;
 }
 
 #beliefs li p {
-  margin-bottom: 1rem;
   text-indent: 1rem;
   @include mdc-typography('body2');
 }

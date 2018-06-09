@@ -1,9 +1,4 @@
-#contact {
-  padding: 16px 0;
-}
-
 #contact h3 {
-  margin: 0 auto 20px auto;
   @include mdc-typography('headline4');
 }
 
@@ -21,16 +16,8 @@
   @include mdc-typography('body2');
 }
 
-#contact-form {
-  padding-top: 30px;
-}
-
-#contact-form h3 {
-  margin: 0;
-}
-
-#contact-form .mdc-text-field--textarea {
-  margin: 50px auto 30px auto;
+#contact-form .mdc-text-field {
+  margin-top: 0;
 }
 
 #contact-form button {

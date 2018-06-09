@@ -1,59 +1,24 @@
-#directory-list {
-  padding: 0;
+#directory-list .mdc-card {
+  padding: 0 0 24px 0;
 }
 
 #directory-list .last-name {
   text-transform: uppercase;
 }
 
-#directory-list .mdc-card__secondary {
-  padding: 10px 0;
-  @include mdc-typography('body2');
-}
-
-#directory-list .mdc-card__secondary div {
-  margin: 0 0 20px 0;
-}
-
-#directory-list .mdc-card__secondary p {
-  margin: 0;
-}
-
 #directory-list .address {
   padding: 0 16px;
 }
 
+#directory-list .address p {
+  margin: 0;
+  @include mdc-typography('body2');
+}
+
 #directory-list .mdc-list-item__start-detail {
-  margin: 0 10px 0 0;
+  margin-right: 10px;
 }
 
 #directory-list hr {
   margin: 20px 0;
-}
-
-#directory-form {
-  @include mdc-typography('body2');
-}
-
-#directory-form fieldset {
-  border-radius: 10px;
-  margin: 0 auto 30px auto;
-}
-
-#directory-form legend {
-  @include mdc-typography('headline4');
-}
-
-#street-number,
-#zipcode {
-  text-align: center;
-}
-
-#address .mdc-select {
-  top: 12px;
-  width: 100%;
-}
-
-#action-buttons {
-  float: right;
 }

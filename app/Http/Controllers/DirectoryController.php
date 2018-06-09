@@ -8,13 +8,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Address;
-use App\Models\Email;
-use App\Models\Member;
-use App\Models\Phone;
-use App\Models\Role;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
+use App\User;
 
 class DirectoryController extends Controller
 {
@@ -24,53 +18,46 @@ class DirectoryController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the users.
      *
      * @author Robert Doucette <rice8204@gmail.com>
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('directory.main')->withMembers(Member::with(['address', 'emails' => function ($q) {
-            $q->orderBy('type', 'asc');
-        }, 'phones' => function ($q) {
-            $q->orderBy('type', 'asc');
-        }])->whereHas('roles', function ($q) {
+        return view('directory.index')->withMembers(User::with(['address',
+            'emails' => function ($q) {
+                $q->orderBy('type', 'asc');
+            },
+            'phones' => function ($q) {
+                $q->orderBy('type', 'asc');
+            }
+        ])->whereHas('roles', function ($q) {
             $q->where('name', 'membre');
         })->orderBy('last_name', 'asc')->orderBy('first_name', 'asc')->get());
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified user.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Member $member
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Member $member)
+    public function show(User $user)
     {
-        return $member;
+        return view('directory.show')->withUser($user->load('address', 'emails', 'phones', 'roles'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new user.
      *
      * @author Robert Doucette <rice8204@gmail.com>
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        if (Gate::denies('create-member')) {
-            return redirect()->route('directory.index');
-        }
-
-        return view('directory.admin.main')->with([
-            'emails'        => $this->getEmailInfo(),
-            'phones'        => $this->getPhoneInfo(),
-            'roles'         => $this->getRoles(),
-            'route'         => route('directory.store'),
-            'street_type'   => $this->getAddressType()
-        ]);
+        return view('directory.create');
     }
 
     /**

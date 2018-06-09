@@ -2,11 +2,21 @@
   display: none;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 415px) {
   .mdc-top-app-bar__title--mini {
     display: block;
   }
   .mdc-top-app-bar__title--full {
     display: none;
+  }
+}
+
+#account-menu {
+  top: 64px;
+}
+
+@media (max-width: 599px) {
+  #account-menu {
+    top: 56px;
   }
 }

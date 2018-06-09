@@ -1,81 +1,52 @@
 import { MDCCheckbox } from '@material/checkbox';
 import { MDCIconToggle } from '@material/icon-toggle';
-import { MDCLinearProgress } from '@material/linear-progress';
+import { MDCMenu } from '@material/menu';
 import { MDCRipple } from '@material/ripple';
 import { MDCSelect } from '@material/select';
 import { MDCTemporaryDrawer } from '@material/drawer';
 import { MDCTextField } from '@material/textfield';
 import { MDCTopAppBar } from '@material/top-app-bar';
+require('./player');
 
-new MDCTopAppBar(document.querySelector('#top-app-bar'));
+new MDCTopAppBar(document.getElementById('js-top-app-bar'));
 
-document.querySelector('#nav-menu-btn').addEventListener('click', function (e) {
-  e.preventDefault();
-  new MDCTemporaryDrawer(document.querySelector('.mdc-drawer--temporary')).open = true;
+document.getElementById('nav-menu-btn').addEventListener('click', function () {
+  new MDCTemporaryDrawer(document.getElementById('js-app-drawer')).open = true;
 });
 
-for (let i = 0, nodes = document.querySelectorAll('.mdc-button'), items = nodes.length; i < items; i++) {
-  MDCRipple.attachTo(nodes[i]);
+let menuButton = document.getElementById('account-menu-button'),
+  logoutButton = document.getElementById('logout-button');
+
+if (menuButton) {
+  menuButton.addEventListener('click', function () {
+    let menu = new MDCMenu(document.getElementById('account-menu'));
+    menu.open = !menu.open;
+  });
 }
 
-for (let i = 0, nodes = document.querySelectorAll('.mdc-icon-toggle'), items = nodes.length; i < items; i++) {
-  new MDCIconToggle(nodes[i]);
+if (logoutButton) {
+  logoutButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.getElementById('logout-form').submit();
+  });
 }
 
-for (let i = 0, nodes = document.querySelectorAll('.mdc-text-field'), items = nodes.length; i < items; i++) {
-  new MDCTextField(nodes[i]);
-}
+document.querySelectorAll('.mdc-button').forEach(function (element) {
+  new MDCRipple(element);
+});
 
-for (let i = 0, nodes = document.querySelectorAll('.mdc-checkbox'), items = nodes.length; i < items; i++) {
-  new MDCCheckbox(nodes[i]);
-}
+document.querySelectorAll('.mdc-icon-toggle').forEach(function (element) {
+  new MDCIconToggle(element);
+});
 
-for (let i = 0, nodes = document.querySelectorAll('.mdc-select'), items = nodes.length; i < items; i++) {
-  new MDCSelect(nodes[i]);
-}
+document.querySelectorAll('.mdc-text-field').forEach(function (element) {
+  new MDCTextField(element);
+});
 
-let player = {
-  init : function () {
-    for (let i = 0, nodes = document.querySelectorAll('.js-player'), items = nodes.length; i < items; i++) {
-      let audio = nodes[i].querySelector('audio');
-      if (! audio.duration) {
-        audio.addEventListener('durationchange', function () {
-          player.time(this);
-        }, false);
-      } else {
-        player.time(audio);
-      }
-    }
-  },
-  control : function (e) {
-    if (e.target.tagName === 'I') {
-      let audio = e.target.parentNode.parentNode.querySelector('audio');
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
-      audio.addEventListener('timeupdate', function () {
-        player.time(audio);
-      }, false);
-    }
-  },
-  time : function (audio) {
-    let curtime   = parseInt(audio.currentTime, 10),
-      duration    = parseInt(audio.duration, 10),
-      remaining   = duration - curtime,
-      mins        = Math.floor(remaining / 60, 10),
-      secs        = remaining - mins * 60,
-      righttime   = mins + ':' + (secs > 9 ? secs : '0' + secs),
-      playedmins  = Math.floor(curtime / 60, 10),
-      playedsecs  = curtime - playedmins * 60,
-      lefttime    = playedmins + ':' + (playedsecs <= 9 ? '0' + playedsecs : playedsecs);
+document.querySelectorAll('.mdc-checkbox').forEach(function (element) {
+  new MDCCheckbox(element);
+});
 
-    new MDCLinearProgress(audio.nextElementSibling.querySelector('.mdc-linear-progress')).progress = curtime / duration;
-
-    audio.previousElementSibling.textContent = lefttime + ' / ' + '-' + righttime;
-  }
-};
-
-player.init();
-document.getElementById('content').addEventListener('click', player.control, false);
+document.querySelectorAll('.mdc-select').forEach(function (element) {
+  new MDCSelect(element);
+});

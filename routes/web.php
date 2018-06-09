@@ -4,53 +4,51 @@ $add        = __('nav.actions.add');
 $edit       = __('nav.actions.edit');
 $directory  = __('nav.directory.url');
 
-Route::get('/', 'HomeController@index');
+Route::redirect('/', 'messages');
+
 
 Route::get('messages', 'MessagesController@index')
     ->name('messages.index');
-Route::get('messages/{message}', 'MessagesController@show')
-    ->name('messages.show')
+
+Route::get('message/{message}', 'MessagesController@show')
+    ->name('message')
     ->where('message', '[0-9]+');
-Route::get('messages/'.$add, 'MessagesController@create')
-    ->name('messages.create');
-Route::post('messages', 'MessagesController@store')
-    ->name('messages.store');
-Route::get('messages/{message}/'.$edit, 'MessagesController@edit')
-    ->name('messages.edit')
+
+Route::get('message/'.$add, 'MessagesController@create')
+    ->name('message.create');
+
+Route::post('message', 'MessagesController@store')
+    ->name('message.store');
+
+Route::get('message/{message}/'.$edit, 'MessagesController@edit')
+    ->name('message.edit')
     ->where('message', '[0-9]+');
-Route::match(['put', 'patch'], 'messages/{message}', 'MessagesController@update')
-    ->name('messages.update')
+
+Route::match(['put', 'patch'], 'message/{message}', 'MessagesController@update')
+    ->name('message.update')
     ->where('message', '[0-9]+');
-Route::delete('messages/{message}', 'MessagesController@destroy')
-    ->name('messages.destroy')
+
+Route::delete('message/{message}', 'MessagesController@destroy')
+    ->name('message.destroy')
     ->where('message', '[0-9]+');
+
+
+Route::get('contact', 'ContactController@index')->name('contact');
+
+
+Route::get(__('nav.beliefs.url'), 'BeliefsController@index')->name('beliefs');
+
 
 Route::get($directory, 'DirectoryController@index')
-    ->name('directory.index');
-Route::get($directory.'/{member}', 'DirectoryController@show')
-    ->name('directory.show')
-    ->where('member', '[0-9]+');
+    ->name('directory');
+
+Route::get($directory.'/{user}', 'DirectoryController@show')
+    ->where('user', '[0-9]+');
+
 Route::get($directory.'/'.$add, 'DirectoryController@create')
     ->name('directory.create');
-Route::post($directory, 'DirectoryController@store')
-    ->name('directory.store');
-Route::get($directory.'/{member}/'.$edit, 'DirectoryController@edit')
-    ->name('directory.edit')
-    ->where('member', '[0-9]+');
-Route::match(['put', 'patch'], $directory.'/{member}', 'DirectoryController@update')
-    ->name('directory.update')
-    ->where('member', '[0-9]+');
-Route::delete($directory.'/{member}', 'DirectoryController@destroy')
-    ->name('directory.destroy')
-    ->where('member', '[0-9]+');
 
-Route::get(__('nav.contact.url'), 'ContactController@index');
-Route::post(__('nav.contact.url'), 'ContactController@send');
 
-Route::get(__('nav.login.url'), 'AuthController@login');
-Route::post(__('nav.login.url'), 'AuthController@verify');
-Route::get(__('nav.logout.url'), 'AuthController@logout');
-
-Route::get(__('nav.beliefs.url'), 'BeliefsController@index');
-
-Route::get('error', 'ErrorsController@index');
+Route::get(__('nav.login.url'), 'Auth\LoginController@showLoginForm')->name('login');
+Route::post(__('nav.login.url'), 'Auth\LoginController@login');
+Route::post(__('nav.logout.url'), 'Auth\LoginController@logout')->name('logout');

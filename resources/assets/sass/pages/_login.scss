@@ -1,12 +1,14 @@
 #login {
-  margin: 0 auto;
   max-width: 300px;
-}
-
-#login .mdc-card__primary {
-  padding: 16px;
 }
 
 #login .mdc-card__actions {
   justify-content: flex-end;
+  padding-right: 0;
+}
+
+.error {
+  color: $mdc-text-field-error;
+  text-align: center;
+  @include mdc-typography('caption');
 }

@@ -1,9 +1,8 @@
 @extends(config('app.theme'))
 
 @section('content')
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12" id="content">
           <form accept-charset="utf-8"
-                action="{{ route('messages.update', $message->id) }}"
+                action="{{ route('message.update', $message->id) }}"
                 id="edit-message"
                 method="POST">
             {{ method_field('PATCH') }}

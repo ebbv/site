@@ -8,8 +8,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Member;
-use App\Models\Message;
+use App\Message;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,43 +17,36 @@ class MessagesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth')->except(['index', 'show']);
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the messages.
      *
      * @author Robert Doucette <rice8204@gmail.com>
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $messages = Message::with('speaker')->orderBy('date', 'desc')
-                                            ->orderBy('created_at', 'desc')
-                                            ->simplePaginate(4);
+        $messages = Message::with('speaker')->latest('date')->get();
 
-        return view('messages.main', compact('messages'));
+        return view('messages.index', compact('messages'));
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified message.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Message $message
-     * @return void
+     * @param \App\Message $message
+     * @return \Illuminate\Http\Response
      */
     public function show(Message $message)
     {
-        $url = Storage::url('audio/'.$message->url.'.mp3');
-        header('Content-Description: File Transfer');
-        header('Content-Disposition: attachment; filename="'.$message->title.'.mp3"');
-        header('Content-Type: audio/mpeg');
-        header('Content-Length: '.get_headers($url, 1)['Content-Length']);
-        readfile($url);
+        return view('messages.show', compact('message'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new message.
      *
      * @author Robert Doucette <rice8204@gmail.com>
      * @return \Illuminate\Http\Response
@@ -70,46 +63,50 @@ class MessagesController extends Controller
         }
 
         return view('messages.create')->with([
-            'speakers'  => Member::has('speaker')->orderBy('last_name', 'asc')->get(),
+            'speakers'  => User::has('speaker')->orderBy('last_name', 'asc')->get(),
             'files'     => $files
         ]);
     }
 
     /**
-     * Store the newly created resource in storage.
+     * Store the newly created message in storage.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \Illuminate\Http\Request $r
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $r)
+    public function store(Request $request)
     {
-        $filename = str_random(15);
+        $this->authorize('create', Message::class);
 
-        $data = [
-            'member_id' => $r->speaker,
-            'title'     => $r->title,
-            'passage'   => $r->passage,
-            'url'       => $filename,
-            'date'      => $r->file,
-            'created_by'=> $r->user()->id,
-            'updated_by'=> $r->user()->id
-        ];
+        $this->validate($request, [
+            'user_id'   => 'required|exists:users,id',
+            'title'     => 'required',
+            'passage'   => 'required'
+        ]);
 
-        if (Message::create($data)) {
-            foreach (['mp3', 'ogg'] as $ext) {
-                Storage::move('tmp/'.$r->file.'.'.$ext, 'audio/'.$filename.'.'.$ext);
-            }
+        $fileName = str_random(15);
+
+        if ($message = Message::create([
+            'user_id'   => $request->user_id,
+            'title'     => $request->title,
+            'passage'   => $request->passage,
+            'url'       => $fileName,
+            'date'      => $request->date,
+            'created_by'=> auth()->id(),
+            'updated_by'=> auth()->id()
+        ])) {
+            $this->move_audio_files($request->date, $fileName);
         }
 
-        return redirect()->route('messages.create');
+        return redirect($message->path());
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified message.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Message $message
+     * @param \App\Message $message
      * @return \Illuminate\Http\Response
      */
     public function edit(Message $message)
@@ -119,32 +116,54 @@ class MessagesController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified message in storage.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \Illuminate\Http\Request $r
-     * @param \App\Models\Message $message
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Message $message
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $r, Message $message)
+    public function update(Request $request, Message $message)
     {
-        $message->title     = $r->title;
-        $message->passage   = $r->passage;
-        $message->updated_by= $r->user()->id;
+        $this->authorize('update', $message);
+
+        $this->validate($request, [
+            'title'     => 'required',
+            'passage'   => 'required'
+        ]);
+
+        $message->title     = $request->title;
+        $message->passage   = $request->passage;
+        $message->updated_by= auth()->id();
         $message->save();
-        return redirect()->route('messages.index');
+
+        return redirect($message->path());
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified message from storage.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Message $message
+     * @param \App\Message $message
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Message $message)
     {
+        $this->authorize('delete', $message);
+
         $message->delete();
+
         return redirect()->route('messages.index');
+    }
+
+    private function move_audio_files($oldFileName, $newFileName)
+    {
+        foreach (['mp3', 'ogg'] as $ext) {
+            $oldFileName = 'tmp/'.$oldFileName.'.'.$ext;
+
+            if (Storage::exists($oldFileName)) {
+                Storage::move($oldFileName, 'audio/'.$newFileName.'.'.$ext);
+            }
+        }
     }
 }
