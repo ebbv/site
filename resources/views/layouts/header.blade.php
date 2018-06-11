@@ -7,16 +7,17 @@
         </section>
 @if (url()->current() !== route('login'))
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-          <button aria-label="Account"
-                  class="material-icons mdc-top-app-bar__action-item"
-                  id="account-menu-button">
-            account_circle
-          </button>
+@if (Auth::check())
+          <div id="account-menu-button">
+            <span>{{ auth()->user()->fullname }}</span>
+            <i class="material-icons">
+              keyboard_arrow_down
+            </i>
+          </div>
           <div class="mdc-menu" id="account-menu" tabindex="-1">
             <div aria-hidden="true" class="mdc-list mdc-menu__items" role="menu">
-@if (Auth::check())
               <a class="mdc-list-item" href="{{ auth()->user()->path() }}" role="menuitem">
-                {{ auth()->user()->fullname }} ({{ auth()->user()->username }})
+                Mes Infos ({{ auth()->user()->username }})
               </a>
               <form accept-charset="utf-8" action="{{ route('logout') }}" id="logout-form" method="POST">
                 {{ csrf_field() }}
@@ -24,13 +25,14 @@
               <a class="mdc-list-item" href="{{ route('logout') }}" id="logout-button" role="menuitem">
                 {{ __('nav.logout.text') }}
               </a>
-@else
-              <a class="mdc-list-item" href="{{ route('login') }}" role="menuitem">
-                {{ __('nav.login.text') }}
-              </a>
-@endif
             </div>
           </div>
+@else
+          <a class="mdc-list-item" href="{{ route('login') }}" role="menuitem">
+            {{ __('nav.login.text') }}
+          </a>
+@endif
+          {{-- <span>Connecté !</span> --}}
         </section>
 @endif
       </div>

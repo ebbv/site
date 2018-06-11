@@ -11,7 +11,18 @@
   }
 }
 
+#account-menu-button {
+  cursor: pointer;
+  line-height: 2;
+}
+
+#account-menu-button > i {
+  position: relative;
+  top: 8px;
+}
+
 #account-menu {
+  right: 0;
   top: 64px;
 }
 
