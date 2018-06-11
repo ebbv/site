@@ -32,7 +32,6 @@
             {{ __('nav.login.text') }}
           </a>
 @endif
-          {{-- <span>Connecté !</span> --}}
         </section>
 @endif
       </div>
