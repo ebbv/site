@@ -8,7 +8,7 @@
     "normalize.css": "^8.0.0"
   },
   "devDependencies": {
-    "cross-env": "^5.1.6",
+    "cross-env": "^5.2.0",
     "laravel-mix": "^2.1.11"
   },
   "homepage": "https://github.com/ebbv/site",
