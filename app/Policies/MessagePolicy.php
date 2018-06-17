@@ -37,7 +37,7 @@ class MessagePolicy
      */
     public function create(User $user)
     {
-        return $user->has('admin')->find($user->id);
+        return $user->has('admin');
     }
 
     /**
@@ -50,7 +50,7 @@ class MessagePolicy
      */
     public function update(User $user, Message $message)
     {
-        return $user->has('admin')->find($user->id);
+        return $user->has('admin');
     }
 
     /**
@@ -63,6 +63,6 @@ class MessagePolicy
      */
     public function delete(User $user, Message $message)
     {
-        return $user->has('admin')->find($user->id);
+        return $user->has('admin');
     }
 }
