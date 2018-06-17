@@ -52,9 +52,9 @@ class User extends Authenticatable
         return $this->roles()->where('name', 'orateur');
     }
 
-    public function admin()
+    public function getIsAdminAttribute()
     {
-        return $this->roles()->where('name', 'administrateur');
+        return ($this->roles()->where('name', 'administrateur')->count() > 0) ? true : false;
     }
 
     public function emails()
