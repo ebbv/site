@@ -32,11 +32,11 @@ class CreateMessageTest extends TestCase
     {
         $this->signInAdmin();
 
-        $message = factory('App\Message')->create();
+        $message = factory('App\Message')->make();
 
-        $this->post('message', $message->toArray());
+        $response = $this->post('message', $message->toArray());
 
-        $this->get($message->path())
+        $this->get($response->headers->get('Location'))
             ->assertSee($message->title);
     }
 
@@ -70,7 +70,7 @@ class CreateMessageTest extends TestCase
             ->assertSessionHasErrors('passage');
     }
 
-    public function publishMessage($overrides = [])
+    protected function publishMessage($overrides = [])
     {
         $this->withExceptionHandling();
 
