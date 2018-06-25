@@ -32,12 +32,11 @@ class CreateMessageTest extends TestCase
     {
         $this->signInAdmin();
 
-        $message = factory('App\Message')->make();
+        $title = 'Some title';
 
-        $response = $this->post('message', $message->toArray());
+        $this->publishMessage(['title' => $title]);
 
-        $this->get($response->headers->get('Location'))
-            ->assertSee($message->title);
+        $this->assertDatabaseHas('messages', ['title' => $title]);
     }
 
     /** @test */
