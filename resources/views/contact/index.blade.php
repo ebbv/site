@@ -16,7 +16,7 @@
               <form accept-charset="utf-8" action="contact" id="contact-form" method="POST">
                 {{ csrf_field() }}
                 <h3>Nous écrire</h3>
-                <div class="mdc-text-field">
+                <div class="mdc-text-field mdc-text-field--outlined">
                   <input aria-controls="email-validation-msg"
                         autocapitalize="none"
                         class="mdc-text-field__input"
@@ -27,7 +27,12 @@
                   <label class="mdc-floating-label" for="email">
                     E-mail
                   </label>
-                  <div class="mdc-line-ripple"></div>
+                  <div class="mdc-notched-outline">
+                    <svg>
+                      <path class="mdc-notched-outline__path"/>
+                    </svg>
+                  </div>
+                  <div class="mdc-notched-outline__idle"></div>
                 </div>
                 <p class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg"
                   id="email-validation-msg">

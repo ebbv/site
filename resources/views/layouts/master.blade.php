@@ -13,6 +13,7 @@
 
     @include($theme.'header')
 
+    <div class="mdc-drawer-scrim"></div>
     <main class="mdc-layout-grid mdc-top-app-bar--fixed-adjust">
       <div class="mdc-layout-grid__inner">
 @yield('aside')

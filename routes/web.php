@@ -8,7 +8,7 @@ Route::redirect('/', 'messages');
 
 
 Route::get('messages', 'MessagesController@index')
-    ->name('messages.index');
+    ->name('messages');
 
 Route::get('message/{message}', 'MessagesController@show')
     ->name('message')

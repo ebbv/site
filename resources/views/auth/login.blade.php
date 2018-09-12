@@ -11,7 +11,7 @@
             <p class="error">{{ $error }}</p>
 @endforeach
             <section class="mdc-card__primary">
-              <div class="mdc-text-field mdc-text-field--upgraded">
+              <div class="mdc-text-field mdc-text-field--outlined">
                 <input aria-controls="username-validation-msg"
                        autocapitalize="none"
                        autofocus
@@ -24,13 +24,18 @@
                 <label class="mdc-floating-label mdc-floating-label--float-above" for="username">
                   @lang('forms.username')
                 </label>
-                <div class="mdc-line-ripple"></div>
+                <div class="mdc-notched-outline">
+                  <svg>
+                    <path class="mdc-notched-outline__path"/>
+                  </svg>
+                </div>
+                <div class="mdc-notched-outline__idle"></div>
               </div>
               <p class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg"
                 id="username-validation-msg">
                 Obligatoire
               </p>
-              <div class="mdc-text-field">
+              <div class="mdc-text-field mdc-text-field--outlined">
                 <input aria-controls="password-validation-msg"
                        class="mdc-text-field__input"
                        id="password"
@@ -40,7 +45,12 @@
                 <label class="mdc-floating-label" for="password">
                   @lang('forms.password')
                 </label>
-                <div class="mdc-line-ripple"></div>
+                <div class="mdc-notched-outline">
+                  <svg>
+                    <path class="mdc-notched-outline__path"/>
+                  </svg>
+                </div>
+                <div class="mdc-notched-outline__idle"></div>
               </div>
               <p class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg"
                 id="password-validation-msg">

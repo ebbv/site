@@ -14,6 +14,7 @@
 @import '@material/linear-progress/mdc-linear-progress';
 @import '@material/list/mdc-list';
 @import '@material/menu/mdc-menu';
+@import '@material/menu-surface/mdc-menu-surface';
 @import '@material/select/mdc-select';
 @import '@material/textfield/mdc-text-field';
 @import '@material/theme/mdc-theme';
@@ -27,10 +28,8 @@
 @import 'layout/header';
 @import 'layout/footer';
 
-// @import 'components/button';
 @import 'components/card';
 @import 'components/fab';
-// @import 'components/pagination';
 @import 'components/player';
 @import 'components/text-field';
 

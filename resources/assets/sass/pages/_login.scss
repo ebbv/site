@@ -1,5 +1,10 @@
 #login {
   max-width: 300px;
+  padding-top: 20px;
+}
+
+#login .mdc-text-field-helper-text {
+  margin-bottom: 30px;
 }
 
 #login .mdc-card__actions {
@@ -9,6 +14,7 @@
 
 .error {
   color: $mdc-text-field-error;
+  margin: 0 auto 20px auto;
   text-align: center;
   @include mdc-typography('caption');
 }

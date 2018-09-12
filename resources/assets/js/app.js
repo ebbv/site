@@ -1,9 +1,9 @@
 import { MDCCheckbox } from '@material/checkbox';
+import { MDCDrawer } from '@material/drawer';
 import { MDCIconToggle } from '@material/icon-toggle';
 import { MDCMenu } from '@material/menu';
 import { MDCRipple } from '@material/ripple';
 import { MDCSelect } from '@material/select';
-import { MDCTemporaryDrawer } from '@material/drawer';
 import { MDCTextField } from '@material/textfield';
 import { MDCTopAppBar } from '@material/top-app-bar';
 require('./player');
@@ -11,7 +11,7 @@ require('./player');
 new MDCTopAppBar(document.getElementById('js-top-app-bar'));
 
 document.getElementById('nav-menu-btn').addEventListener('click', function () {
-  new MDCTemporaryDrawer(document.getElementById('js-app-drawer')).open = true;
+  new MDCDrawer(document.getElementById('js-app-drawer')).open = true;
 });
 
 let menuButton = document.getElementById('account-menu-button'),

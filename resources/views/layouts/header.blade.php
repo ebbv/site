@@ -6,7 +6,7 @@
           <span class="mdc-top-app-bar__title mdc-top-app-bar__title--mini">EBBV</span>
         </section>
 @if (url()->current() !== route('login'))
-        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+        <section class="mdc-menu-surface--anchor mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
 @if (Auth::check())
           <div id="account-menu-button">
             <span>{{ auth()->user()->fullname }}</span>
@@ -14,7 +14,7 @@
               keyboard_arrow_down
             </i>
           </div>
-          <div class="mdc-menu" id="account-menu" tabindex="-1">
+          <div class="mdc-menu mdc-menu-surface" id="account-menu" tabindex="-1">
             <div aria-hidden="true" class="mdc-list mdc-menu__items" role="menu">
               <a class="mdc-list-item" href="{{ auth()->user()->path() }}" role="menuitem">
                 Mes Infos ({{ auth()->user()->username }})
@@ -35,23 +35,20 @@
         </section>
 @endif
       </div>
-      <aside class="mdc-drawer mdc-drawer--temporary" id="js-app-drawer">
-        <nav class="mdc-drawer__drawer">
-          <div class="mdc-drawer__toolbar-spacer"></div>
-          <nav class="mdc-drawer__content mdc-list">
-            <a class="mdc-list-item" href="/" id="home-link" aria-hidden="true">
-              {{ __('nav.home.text') }}
-            </a>
-            <a class="mdc-list-item" href="{{ route('contact') }}" id="contact-link" aria-hidden="true">
-              {{ __('nav.contact.text') }}
-            </a>
-            <a class="mdc-list-item" href="{{ route('beliefs') }}" id="beliefs-link" aria-hidden="true">
-              {{ __('nav.beliefs.text') }}
-            </a>
-            <a class="mdc-list-item" href="{{ route('directory') }}" id="directory-link" aria-hidden="true">
-              {{ __('nav.directory.text') }}
-            </a>
-          </nav>
-        </nav>
-      </aside>
     </header>
+
+    <aside class="mdc-drawer mdc-drawer--modal" id="js-app-drawer">
+      <div class="mdc-drawer__content">
+        <nav class="mdc-list">
+@foreach (['messages', 'contact', 'beliefs', 'directory'] as $uri)
+          <a aria-hidden="true"
+             class="mdc-list-item{{ (url()->current() == route($uri)) ? ' mdc-list-item--activated' : '' }}"
+             href="{{ route($uri) }}"
+             id="{{ $uri }}-link"
+             tabindex="0">
+            {{ __('nav.'.$uri.'.text') }}
+          </a>
+@endforeach
+        </nav>
+      </div>
+    </aside>
