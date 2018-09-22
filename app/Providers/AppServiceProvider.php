@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,6 +18,8 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(config('app.theme'), function ($view) {
             $view->with('theme', str_replace('master', '', config('app.theme')));
         });
+
+        Paginator::defaultView('pagination::default');
     }
 
     /**

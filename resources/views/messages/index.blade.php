@@ -24,6 +24,8 @@
           @include('messages.card', ['type' => 'list'])
 @endforeach
 
+{{ $messages->onEachSide(2)->links() }}
+
 @can ('create', App\Message::class)
           <a href="{{ route('message.create') }}">
             <button aria-label="Add" class="material-icons mdc-fab">

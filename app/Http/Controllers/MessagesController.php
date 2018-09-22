@@ -28,7 +28,7 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        $messages = Message::with('speaker')->latest('date')->get();
+        $messages = Message::with('speaker')->latest('date')->paginate(4);
 
         return view('messages.index', compact('messages'));
     }
