@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             'city'          => 'Vernon'
         ]);
 
-        factory('App\Message', 40)->create();
+        factory('App\Message', 100)->create();
 
         foreach (User::all() as $user) {
             $user->roles()->attach(2, [
