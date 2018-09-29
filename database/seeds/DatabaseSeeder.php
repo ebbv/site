@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $m = factory('App\User')->create([
+        $m = factory(User::class)->create([
             'first_name'=> 'Robert',
             'last_name' => 'Doucette',
             'username'  => 'pasteur',
@@ -20,33 +20,20 @@ class DatabaseSeeder extends Seeder
         ]);
 
         foreach (['administrateur', 'membre', 'orateur'] as $name) {
-            factory('App\Role')->create(['name' => $name]);
+            factory(App\Role::class)->create(['name' => $name]);
         }
 
-        foreach ([1, 3] as $r) {
+        foreach ([1, 2, 3] as $r) {
             $m->roles()->attach($r, [
                 'created_by' => 1,
                 'updated_by' => 1
             ]);
         }
 
-        factory('App\Address')->create([
-            'user_id'       => $m->id,
-            'street_number' => 58,
-            'street_name'   => 'du Vieux Château',
-            'city'          => 'Vernon'
-        ]);
+        factory(App\Address::class)->create(['user_id' => $m->id]);
+        factory(App\Email::class)->create(['user_id' => $m->id]);
+        factory(App\Phone::class)->create(['user_id' => $m->id]);
 
-        factory('App\Message', 100)->create();
-
-        foreach (User::all() as $user) {
-            $user->roles()->attach(2, [
-                'created_by' => 1,
-                'updated_by' => 1
-            ]);
-
-            factory('App\Email')->create(['user_id' => $user->id]);
-            factory('App\Phone')->create(['user_id' => $user->id]);
-        }
+        factory(App\Message::class, 100)->create();
     }
 }

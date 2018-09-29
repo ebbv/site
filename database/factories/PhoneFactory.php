@@ -7,8 +7,8 @@ $factory->define(App\Phone::class, function (Faker $faker) {
         'user_id'   => function () {
             return factory('App\User')->create()->id;
         },
-        'number'    => '02.02.02.02.02',
-        'type'      => 'fixe',
+        'number'    => $faker->phoneNumber,
+        'type'      => $faker->randomElement(['fixe', 'portable']),
         'created_by'=> 1,
         'updated_by'=> 1
     ];

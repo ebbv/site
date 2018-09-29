@@ -8,7 +8,7 @@ $factory->define(App\Email::class, function (Faker $faker) {
             return factory('App\User')->create()->id;
         },
         'address'   => $faker->email,
-        'type'      => 'principal',
+        'type'      => $faker->randomElement(['principal', 'secondaire']),
         'created_by'=> 1,
         'updated_by'=> 1
     ];
