@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateRoleUserTable extends Migration
+class CreateAddressUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateRoleUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('role_user', function (Blueprint $table) {
-            $table->unsignedInteger('role_id');
+        Schema::create('address_user', function (Blueprint $table) {
+            $table->unsignedInteger('address_id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
             $table->timestamps();
-            $table->primary(['role_id', 'user_id']);
-            $table->foreign('role_id')->references('id')->on('roles');
+            $table->primary(['address_id', 'user_id']);
+            $table->foreign('address_id')->references('id')->on('addresses');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
@@ -34,6 +34,6 @@ class CreateRoleUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role_user');
+        Schema::dropIfExists('address_user');
     }
 }

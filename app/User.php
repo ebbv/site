@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'username', 'password', 'created_by', 'updated_by'
+        'first_name', 'last_name', 'username', 'password', 'address_id', 'created_by', 'updated_by'
     ];
 
     /**
@@ -62,9 +62,9 @@ class User extends Authenticatable
         return $this->hasMany(Email::class);
     }
 
-    public function address()
+    public function addresses()
     {
-        return $this->hasOne(Address::class);
+        return $this->belongsToMany(Address::class)->withTimestamps()->withPivot('created_by', 'updated_by');
     }
 
     public function phones()

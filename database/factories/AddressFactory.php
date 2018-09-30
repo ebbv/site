@@ -4,9 +4,6 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Address::class, function (Faker $faker) {
     return [
-        'user_id'           => function () {
-            return factory('App\User')->create()->id;
-        },
         'street_number'     => $faker->randomNumber(3),
         'street_type'       => $faker->streetPrefix(),
         'street_name'       => $faker->streetName(),

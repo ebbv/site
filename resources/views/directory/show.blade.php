@@ -10,10 +10,10 @@
           </div>
           <div>
             <p>
-@isset ($user->address)
-              <span>{{ $user->address->streetAddress }}</span><br>
-              <span>{{ $user->address->zip }} {{ $user->address->city }}</span>
-@endisset
+@foreach ($user->addresses as $address)
+              <span>{{ $address->streetAddress }}</span><br>
+              <span>{{ $address->zip }} {{ $address->city }}</span>
+@endforeach
             </p>
           </div>
           <div>

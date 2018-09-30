@@ -19,6 +19,10 @@ class DatabaseSeeder extends Seeder
             'password'  => Hash::make(env('DB_PASSWORD'))
         ]);
 
+        factory(App\Address::class, 3)->create();
+        factory(App\Email::class)->create(['user_id' => $m->id]);
+        factory(App\Phone::class)->create(['user_id' => $m->id]);
+
         foreach (['administrateur', 'membre', 'orateur'] as $name) {
             factory(App\Role::class)->create(['name' => $name]);
         }
@@ -30,9 +34,10 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        factory(App\Address::class)->create(['user_id' => $m->id]);
-        factory(App\Email::class)->create(['user_id' => $m->id]);
-        factory(App\Phone::class)->create(['user_id' => $m->id]);
+        $m->addresses()->attach(1, [
+            'created_by' => 1,
+            'updated_by' => 1
+        ]);
 
         factory(App\Message::class, 100)->create();
     }

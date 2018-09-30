@@ -25,7 +25,7 @@ class DirectoryController extends Controller
      */
     public function index()
     {
-        return view('directory.index')->withMembers(User::with(['address',
+        return view('directory.index')->withMembers(User::with(['addresses',
             'emails' => function ($q) {
                 $q->orderBy('type', 'asc');
             },
@@ -46,7 +46,7 @@ class DirectoryController extends Controller
      */
     public function show(User $user)
     {
-        return view('directory.show')->withUser($user->load('address', 'emails', 'phones', 'roles'));
+        return view('directory.show')->withUser($user->load('addresses', 'emails', 'phones', 'roles'));
     }
 
     /**

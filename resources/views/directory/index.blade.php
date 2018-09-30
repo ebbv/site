@@ -11,12 +11,12 @@
                   </h3>
                 </section>
                 <section class="mdc-card__secondary">
-@isset ($member->address)
+@foreach ($member->addresses as $address)
                   <div class="address">
-                    <p>{{ $member->address->streetAddress }}</p>
-                    <p>{{ $member->address->zip }} {{ $member->address->city }}</p>
+                    <p>{{ $address->streetAddress }}</p>
+                    <p>{{ $address->zip }} {{ $address->city }}</p>
                   </div>
-@endisset
+@endforeach
                   <hr class="mdc-list-divider" role="separator">
                   <ul class="mdc-list mdc-list--dense mdc-list--non-interactive phones">
 @foreach ($member->phones as $p)

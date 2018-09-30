@@ -12,15 +12,13 @@ class Address extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'steet_number', 'street_type', 'street_name', 'street_complement',
+        'steet_number', 'street_type', 'street_name', 'street_complement',
         'zip', 'city', 'created_by', 'updated_by'
     ];
 
-    public $incrementing = false;
-
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class)->withTimestamps()->withPivot('created_by', 'updated_by');
     }
 
     public function getStreetAddressAttribute()
