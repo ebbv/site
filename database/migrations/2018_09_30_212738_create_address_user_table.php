@@ -20,10 +20,10 @@ class CreateAddressUserTable extends Migration
             $table->unsignedInteger('updated_by');
             $table->timestamps();
             $table->primary(['address_id', 'user_id']);
-            $table->foreign('address_id')->references('id')->on('addresses');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('created_by')->references('id')->on('users');
-            $table->foreign('updated_by')->references('id')->on('users');
+            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
