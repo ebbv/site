@@ -13,16 +13,20 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('username')->unique();
             $table->string('password');
+            $table->unsignedInteger('address_id')->nullable();
             $table->rememberToken();
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
             $table->timestamps();
+            $table->foreign('address_id')->references('id')->on('addresses');
         });
     }
 

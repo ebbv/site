@@ -62,9 +62,9 @@ class User extends Authenticatable
         return $this->hasMany(Email::class);
     }
 
-    public function addresses()
+    public function address()
     {
-        return $this->belongsToMany(Address::class)->withTimestamps()->withPivot('created_by', 'updated_by');
+        return $this->hasOne(Address::class, 'id', 'address_id');
     }
 
     public function phones()

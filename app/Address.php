@@ -18,7 +18,7 @@ class Address extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withTimestamps()->withPivot('created_by', 'updated_by');
+        return $this->hasMany(User::class);
     }
 
     public function getStreetAddressAttribute()

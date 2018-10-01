@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             'first_name'=> 'Robert',
             'last_name' => 'Doucette',
             'username'  => 'pasteur',
-            'password'  => Hash::make(env('DB_PASSWORD'))
+            'password'  => Hash::make(env('DB_PASSWORD')),
+            'address_id'=> 1
         ]);
 
         factory(App\Address::class, 3)->create();
@@ -33,11 +34,6 @@ class DatabaseSeeder extends Seeder
                 'updated_by' => 1
             ]);
         }
-
-        $m->addresses()->attach(1, [
-            'created_by' => 1,
-            'updated_by' => 1
-        ]);
 
         factory(App\Message::class, 100)->create();
     }
