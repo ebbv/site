@@ -12,8 +12,7 @@ class Address extends Model
      * @var array
      */
     protected $fillable = [
-        'steet_number', 'street_type', 'street_name', 'street_complement',
-        'zip', 'city', 'created_by', 'updated_by'
+        'street_info', 'street_complement', 'zip', 'city', 'created_by', 'updated_by'
     ];
 
     public function users()
@@ -23,8 +22,6 @@ class Address extends Model
 
     public function getStreetAddressAttribute()
     {
-        $street_number = $this->street_number ? $this->street_number.', ' : '';
-
-        return "{$street_number}{$this->street_type} {$this->street_name}";
+        return $this->street_info;
     }
 }
