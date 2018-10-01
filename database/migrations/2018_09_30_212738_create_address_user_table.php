@@ -15,7 +15,7 @@ class CreateAddressUserTable extends Migration
     {
         Schema::create('address_user', function (Blueprint $table) {
             $table->unsignedInteger('address_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->unique();
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
             $table->timestamps();
