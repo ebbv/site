@@ -24,4 +24,14 @@ class Message extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function getFormattedDateAttribute() {
+        $formatted = strftime("%e %B, %Y", strtotime($this->date));
+
+        if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
+            return utf8_encode($formatted);
+        }
+
+        return $formatted;
+    }
 }

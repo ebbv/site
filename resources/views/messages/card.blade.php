@@ -11,9 +11,9 @@
             <section class="mdc-card__secondary">
               <p>Passage : {{ $message->passage }}</p>
               <p>
-                Apporté le {{ strftime("%e %B, %Y", strtotime($message->date)) }} par
+                Apporté le {{ $message->formattedDate }} par
                 <a href="{{ $message->speaker->path() }}">
-                  {{ $message->speaker->fullname }}
+                  {{ $message->speaker->fullName }}
                 </a>
               </p>
             </section>
