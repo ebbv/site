@@ -21,4 +21,12 @@ class Role extends Model
     {
         return $this->belongsToMany(User::class)->withTimestamps()->withPivot('created_by', 'updated_by');
     }
+
+    public function assignTo($user)
+    {
+        $this->users()->attach($user, [
+            'created_by' => auth()->id() ?: 1,
+            'updated_by' => auth()->id() ?: 1
+        ]);
+    }
 }

@@ -8,14 +8,14 @@
             <p>{{ $role->name }}</p>
 @endforeach
           </div>
+@isset ($user->address)
           <div>
             <p>
-@isset ($user->address)
               <span>{{ $user->address->streetAddress }}</span><br>
               <span>{{ $user->address->zip }} {{ $user->address->city }}</span>
-@endisset
             </p>
           </div>
+@endisset
           <div>
 @foreach ($user->phones as $phone)
             <p><span>{{ $phone->type }}</span> : {{ $phone->number }}</p>

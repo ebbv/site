@@ -7,7 +7,9 @@
               <div class="mdc-card">
                 <section class="mdc-card__primary">
                   <h3>
-                    <span class="last-name">{{ $member->last_name }}</span>, {{ $member->first_name }}
+                    <a href="{{ $member->path() }}">
+                      <span class="last-name">{{ $member->last_name }}</span>, {{ $member->first_name }}
+                    </a>
                   </h3>
                 </section>
                 <section class="mdc-card__secondary">

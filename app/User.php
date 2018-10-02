@@ -71,4 +71,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Phone::class);
     }
+
+    public function assignRoles($roles)
+    {
+        $this->roles()->attach($roles, [
+            'created_by' => auth()->id() ?: 1,
+            'updated_by' => auth()->id() ?: 1
+        ]);
+    }
 }

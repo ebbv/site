@@ -24,11 +24,7 @@ abstract class TestCase extends BaseTestCase
     protected function signInAdmin()
     {
         $user = factory('App\User')->create();
-        $role = factory('App\Role')->create(['name' => 'administrateur']);
-        $user->roles()->attach(1, [
-            'created_by' => 1,
-            'updated_by' => 1
-        ]);
+        factory('App\Role')->create(['name' => 'administrateur'])->assignTo($user);
         $this->actingAs($user);
         return $this;
     }
