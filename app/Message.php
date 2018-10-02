@@ -6,13 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
+    use RecordWhoCreatesAndUpdates;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'user_id', 'title', 'passage', 'url', 'date', 'created_by', 'updated_by'
+        'user_id', 'title', 'passage', 'url', 'date'
     ];
 
     public function path()

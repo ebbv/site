@@ -6,13 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
 {
+    use RecordWhoCreatesAndUpdates;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'street_info', 'street_complement', 'zip', 'city', 'created_by', 'updated_by'
+        'street_info', 'street_complement', 'zip', 'city'
     ];
 
     public function users()

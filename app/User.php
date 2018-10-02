@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, RecordWhoCreatesAndUpdates;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'username', 'password', 'address_id', 'created_by', 'updated_by'
+        'first_name', 'last_name', 'username', 'password', 'address_id'
     ];
 
     /**

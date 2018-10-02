@@ -10,8 +10,6 @@ $factory->define(App\Message::class, function (Faker $faker) {
         'title'     => $faker->sentence,
         'passage'   => 'Genèse 1.1',
         'url'       => str_random(15),
-        'date'      => $faker->date,
-        'created_by'=> 1,
-        'updated_by'=> 1
+        'date'      => $faker->date
     ];
 });

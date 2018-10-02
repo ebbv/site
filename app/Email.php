@@ -6,12 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Email extends Model
 {
+    use RecordWhoCreatesAndUpdates;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'address', 'type', 'created_by', 'updated_by'];
+    protected $fillable = [
+        'user_id', 'address', 'type'
+    ];
 
     public $incrementing = false;
 

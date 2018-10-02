@@ -92,9 +92,7 @@ class MessagesController extends Controller
             'title'     => $request->title,
             'passage'   => $request->passage,
             'url'       => $fileName,
-            'date'      => $request->date,
-            'created_by'=> auth()->id(),
-            'updated_by'=> auth()->id()
+            'date'      => $request->date
         ])) {
             $this->move_audio_files($request->date, $fileName);
         }
@@ -134,7 +132,6 @@ class MessagesController extends Controller
 
         $message->title     = $request->title;
         $message->passage   = $request->passage;
-        $message->updated_by= auth()->id();
         $message->save();
 
         return redirect($message->path());
