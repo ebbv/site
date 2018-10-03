@@ -12,20 +12,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        foreach (['administrateur', 'membre', 'orateur'] as $name) {
-            factory(App\Role::class)->create(['name' => $name]);
-        }
-
-        factory(User::class)->create([
+        $m = factory(User::class)->create([
             'first_name'=> 'Robert',
             'last_name' => 'Doucette',
             'username'  => 'pasteur',
             'password'  => Hash::make(env('DB_PASSWORD'))
-        ])->assignRoles([1, 3]);
+        ]);
 
         factory(App\Address::class, 5)->create();
-        factory(App\Email::class)->create(['user_id' => 1]);
-        factory(App\Phone::class)->create(['user_id' => 1]);
+        factory(App\Email::class)->create(['user_id' => $m->id]);
+        factory(App\Phone::class)->create(['user_id' => $m->id]);
         factory(App\Message::class, 100)->create();
+
+        foreach (['administrateur', 'membre', 'orateur'] as $key => $name) {
+            factory(App\Role::class)
+            ->create(['name' => $name])
+            ->assignTo(($key == 1) ? User::all() : $m);
+        }
     }
 }

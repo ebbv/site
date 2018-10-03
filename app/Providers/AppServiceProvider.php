@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Observers\UserObserver;
-use App\User;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,8 +20,6 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Paginator::defaultView('pagination::default');
-
-        User::observe(UserObserver::class);
     }
 
     /**
