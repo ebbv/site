@@ -2,7 +2,7 @@
               <p>
 @foreach(\App\Role::orderBy('name', 'asc')->get() as $role)
                 <label for="role{{ $role->id }}">{{ $role->name }}</label>
-                <input {{ $role->status }} id="role{{ $role->id }}" name="role[]" type="checkbox">
+                <input id="role{{ $role->id }}" name="roles[]" type="checkbox" value="{{ $role->id }}">
 @endforeach
               </p>
             </div>

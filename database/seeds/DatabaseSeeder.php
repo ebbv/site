@@ -26,8 +26,8 @@ class DatabaseSeeder extends Seeder
 
         foreach (['administrateur', 'membre', 'orateur'] as $key => $name) {
             factory(App\Role::class)
-            ->create(['name' => $name])
-            ->assignTo(($key == 1) ? User::all() : $m);
+                ->create(['name' => $name])
+                ->assignTo(($key == 1) ? User::all() : $m);
         }
     }
 }

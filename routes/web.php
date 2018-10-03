@@ -48,6 +48,9 @@ Route::get($directory.'/{user}', 'DirectoryController@show')
 Route::get($directory.'/'.$add, 'DirectoryController@create')
     ->name('directory.create');
 
+Route::post($directory, 'DirectoryController@store')
+    ->name('directory.store');
+
 
 Route::get(__('nav.login.url'), 'Auth\LoginController@showLoginForm')->name('login');
 Route::post(__('nav.login.url'), 'Auth\LoginController@login');

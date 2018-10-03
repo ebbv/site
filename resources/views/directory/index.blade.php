@@ -46,4 +46,13 @@
             </div>
 @endforeach
           </div>
+@can ('create', App\User::class)
+          <a href="{{ route('directory.create') }}">
+            <button aria-label="Add" class="material-icons mdc-fab">
+              <span class="mdc-fab__icon">
+                add
+              </span>
+            </button>
+          </a>
+@endcan
 @endsection

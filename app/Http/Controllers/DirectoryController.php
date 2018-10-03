@@ -8,7 +8,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
+use App\Role;
 use App\User;
+use Illuminate\Http\Request;
 
 class DirectoryController extends Controller
 {
@@ -57,6 +60,7 @@ class DirectoryController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', User::class);
         return view('directory.create');
     }
 
@@ -67,58 +71,16 @@ class DirectoryController extends Controller
      * @param \Illuminate\Http\Request $r
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $r)
+    public function store(Request $request)
     {
-        $m = new Member;
-        $m->first_name  = $r->first_name;
-        $m->last_name   = $r->last_name;
-        $m->username    = '';
-        $m->password    = '';
-        $m->created_by  = $r->user()->id;
-        $m->updated_by  = $r->user()->id;
-        $m->save();
+        $request = $request->toArray();
+        $request['address_id'] = Address::create($request)->id;
 
-        foreach ($r->role as $value) {
-            $m->roles()->attach($value, [
-                'created_by' => $r->user()->id,
-                'updated_by' => $r->user()->id
-            ]);
-        }
+        $user = User::create($request);
 
-        $m->address()->save(new Address([
-            'street_number'     => $r->street_number,
-            'street_type'       => $r->street_type,
-            'street_name'       => $r->street_name,
-            'street_complement' => $r->street_complement,
-            'zip'               => $r->zip,
-            'city'              => $r->city,
-            'created_by'        => $r->user()->id,
-            'updated_by'        => $r->user()->id
-        ]));
+        Role::find($request['roles'])->each->assignTo($user);
 
-        foreach ($r->telephone as $type => $number) {
-            if ($number != null) {
-                $m->phones()->save(new Phone([
-                    'number'    => $number,
-                    'type'      => ucfirst($type),
-                    'created_by'=> $r->user()->id,
-                    'updated_by'=> $r->user()->id
-                ]));
-            }
-        }
-
-        foreach ($r->email as $key => $address) {
-            if ($address != null) {
-                $m->emails()->save(new Email([
-                    'address'   => $address,
-                    'type'      => $key,
-                    'created_by'=> $r->user()->id,
-                    'updated_by'=> $r->user()->id
-                ]));
-            }
-        }
-
-        return redirect()->route('directory.index');
+        return redirect($user->path());
     }
 
     /**
