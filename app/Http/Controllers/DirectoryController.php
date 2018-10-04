@@ -75,14 +75,13 @@ class DirectoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request = $request->toArray();
-        $request['address_id'] = Address::firstOrCreate($request['address'])->id;
+        $request->merge(['address_id' => Address::firstOrCreate($request->address)->id]);
 
-        $user = User::create($request);
+        $user = User::create($request->all());
 
-        Role::find($request['roles'])->each->assignTo($user);
+        Role::find($request->roles)->each->assignTo($user);
 
-        foreach ($request['telephone'] as $type => $number) {
+        foreach ($request->telephone as $type => $number) {
             if ($number !== null) {
                 Phone::firstOrCreate([
                     'number' => $number,
@@ -91,7 +90,7 @@ class DirectoryController extends Controller
             }
         }
 
-        foreach ($request['email'] as $type => $address) {
+        foreach ($request->email as $type => $address) {
             if ($address !== null) {
                 Email::firstOrCreate([
                     'address' => $address,
