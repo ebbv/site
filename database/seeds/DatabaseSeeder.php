@@ -27,8 +27,8 @@ class DatabaseSeeder extends Seeder
         $users = User::all();
 
         foreach ($users as $u) {
-            $u->assign('phone', array_random(range(1, 10)));
-            $u->assign('email', array_random(range(1, 10)));
+            $u->assign('phone', array_random(range(1, 10), array_random([1, 2])));
+            $u->assign('email', array_random(range(1, 10), array_random([1, 2])));
         }
 
         foreach (['administrateur', 'membre', 'orateur'] as $key => $name) {
