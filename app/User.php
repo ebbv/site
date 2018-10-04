@@ -59,7 +59,7 @@ class User extends Authenticatable
 
     public function emails()
     {
-        return $this->hasMany(Email::class);
+        return $this->belongsToMany(Email::class)->withTimestamps()->withPivot('created_by', 'updated_by');
     }
 
     public function address()
@@ -69,12 +69,14 @@ class User extends Authenticatable
 
     public function phones()
     {
-        return $this->hasMany(Phone::class);
+        return $this->belongsToMany(Phone::class)->withTimestamps()->withPivot('created_by', 'updated_by');
     }
 
-    public function assignRoles($roles)
+    public function assign($relationship, $value)
     {
-        $this->roles()->attach($roles, [
+        $relationship = $relationship.'s';
+
+        $this->$relationship()->attach($value, [
             'created_by' => auth()->id() ?: 1,
             'updated_by' => auth()->id() ?: 1
         ]);

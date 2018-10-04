@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAddressesTable extends Migration
+class CreateEmailUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::create('addresses', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('street_info');
-            $table->string('street_complement')->nullable();
-            $table->string('zip', 6);
-            $table->string('city', 75);
+        Schema::create('email_user', function (Blueprint $table) {
+            $table->unsignedInteger('email_id');
+            $table->unsignedInteger('user_id');
+            $table->timestamps();
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
-            $table->timestamps();
-            $table->unique(['street_info', 'street_complement', 'zip', 'city'], 'unique_address');
+            $table->foreign('email_id')->references('id')->on('emails')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
         });
@@ -35,6 +33,6 @@ class CreateAddressesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('addresses');
+        Schema::dropIfExists('email_user');
     }
 }

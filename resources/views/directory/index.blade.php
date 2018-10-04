@@ -19,6 +19,7 @@
                     <p>{{ $member->address->zip }} {{ $member->address->city }}</p>
                   </div>
 @endisset
+@if (count($member->phones) > 0)
                   <hr class="mdc-list-divider" role="separator">
                   <ul class="mdc-list mdc-list--dense mdc-list--non-interactive phones">
 @foreach ($member->phones as $p)
@@ -30,7 +31,8 @@
                     </li>
 @endforeach
                   </ul>
-@isset ($member->emails)
+@endif
+@if (count($member->emails) > 0)
                   <hr class="mdc-list-divider" role="separator">
                   <ul class="emails mdc-list mdc-list--dense mdc-list--non-interactive">
 @foreach ($member->emails as $e)
@@ -39,8 +41,8 @@
                       {{ $e->address }}
                     </li>
 @endforeach
-@endisset
                   </ul>
+@endif
                 </section>
               </div>
             </div>

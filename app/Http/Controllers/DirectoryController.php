@@ -9,6 +9,8 @@
 namespace App\Http\Controllers;
 
 use App\Address;
+use App\Email;
+use App\Phone;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
@@ -74,11 +76,29 @@ class DirectoryController extends Controller
     public function store(Request $request)
     {
         $request = $request->toArray();
-        $request['address_id'] = Address::create($request)->id;
+        $request['address_id'] = Address::firstOrCreate($request['address'])->id;
 
         $user = User::create($request);
 
         Role::find($request['roles'])->each->assignTo($user);
+
+        foreach ($request['telephone'] as $type => $number) {
+            if ($number !== null) {
+                Phone::firstOrCreate([
+                    'number' => $number,
+                    'type'   => $type
+                ])->assignTo($user);
+            }
+        }
+
+        foreach ($request['email'] as $type => $address) {
+            if ($address !== null) {
+                Email::firstOrCreate([
+                    'address' => $address,
+                    'type'    => $type
+                ])->assignTo($user);
+            }
+        }
 
         return redirect($user->path());
     }

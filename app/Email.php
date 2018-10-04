@@ -14,13 +14,19 @@ class Email extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'address', 'type'
+        'address', 'type'
     ];
 
-    public $incrementing = false;
-
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class)->withTimestamps()->withPivot('created_by', 'updated_by');
+    }
+
+    public function assignTo($user)
+    {
+        $this->users()->attach($user, [
+            'created_by' => auth()->id() ?: 1,
+            'updated_by' => auth()->id() ?: 1
+        ]);
     }
 }

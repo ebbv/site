@@ -20,14 +20,21 @@ class DatabaseSeeder extends Seeder
         ]);
 
         factory(App\Address::class, 5)->create();
-        factory(App\Email::class)->create(['user_id' => $m->id]);
-        factory(App\Phone::class)->create(['user_id' => $m->id]);
+        factory(App\Email::class, 10)->create();
+        factory(App\Phone::class, 10)->create();
         factory(App\Message::class, 100)->create();
+
+        $users = User::all();
+
+        foreach ($users as $u) {
+            $u->assign('phone', array_random(range(1, 10)));
+            $u->assign('email', array_random(range(1, 10)));
+        }
 
         foreach (['administrateur', 'membre', 'orateur'] as $key => $name) {
             factory(App\Role::class)
                 ->create(['name' => $name])
-                ->assignTo(($key == 1) ? User::all() : $m);
+                ->assignTo(($key == 1) ? $users : $m);
         }
     }
 }

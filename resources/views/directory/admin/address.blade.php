@@ -1,10 +1,10 @@
             <div>
               <label>Adresse</label>
-              <input id="" name="street_info" type="text">
+              <input id="" name="address[street_info]" type="text">
               <label>Complément</label>
-              <input id="" name="street_complement" type="text">
+              <input id="" name="address[street_complement]" type="text">
               <label>Code Postal</label>
-              <input id="" name="zip" type="number">
+              <input id="" name="address[zip]" type="number">
               <label>Ville</label>
-              <input id="" name="city" type="text">
+              <input id="" name="address[city]" type="text">
             </div>

@@ -9,6 +9,7 @@
             @include('directory.admin.id')
             @include('directory.admin.roles')
             @include('directory.admin.address')
+            @include('directory.admin.contact')
             <a href="{{ route('directory') }}">@lang('forms.cancel_button')</a>
             <input type="submit" value="Ajouter">
           </form>
