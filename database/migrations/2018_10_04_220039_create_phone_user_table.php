@@ -19,6 +19,7 @@ class CreatePhoneUserTable extends Migration
             $table->timestamps();
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
+            $table->unique(['phone_id', 'user_id']);
             $table->foreign('phone_id')->references('id')->on('phones')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');

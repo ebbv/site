@@ -17,7 +17,7 @@ class CreateAddressesTable extends Migration
             $table->increments('id');
             $table->string('street_info');
             $table->string('street_complement')->nullable();
-            $table->string('zip', 6);
+            $table->string('zip', 5);
             $table->string('city', 75);
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');

@@ -59,7 +59,10 @@ class User extends Authenticatable
 
     public function emails()
     {
-        return $this->belongsToMany(Email::class)->withTimestamps()->withPivot('created_by', 'updated_by');
+        return $this->belongsToMany(Email::class)
+            ->withTimestamps()
+            ->withPivot('type', 'created_by', 'updated_by')
+            ->orderBy('type');
     }
 
     public function address()
@@ -69,16 +72,21 @@ class User extends Authenticatable
 
     public function phones()
     {
-        return $this->belongsToMany(Phone::class)->withTimestamps()->withPivot('created_by', 'updated_by');
+        return $this->belongsToMany(Phone::class)
+            ->withTimestamps()
+            ->withPivot('created_by', 'updated_by')
+            ->orderBy('type');
     }
 
-    public function assign($relationship, $value)
+    public function assign($relationship, $value, $extras = [])
     {
         $relationship = $relationship.'s';
 
-        $this->$relationship()->attach($value, [
+        $extras = array_merge($extras, [
             'created_by' => auth()->id() ?: 1,
             'updated_by' => auth()->id() ?: 1
         ]);
+
+        $this->$relationship()->attach($value, $extras);
     }
 }

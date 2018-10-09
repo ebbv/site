@@ -15,7 +15,8 @@
                 <section class="mdc-card__secondary">
 @isset ($member->address)
                   <div class="address">
-                    <p>{{ $member->address->streetAddress }}</p>
+                    <p>{{ $member->address->street_info }}</p>
+                    <p>{{ $member->address->street_complement }}</p>
                     <p>{{ $member->address->zip }} {{ $member->address->city }}</p>
                   </div>
 @endisset

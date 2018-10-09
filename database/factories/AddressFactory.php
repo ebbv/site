@@ -6,7 +6,7 @@ $factory->define(App\Address::class, function (Faker $faker) {
     return [
         'street_info'       => $faker->streetAddress(),
         'street_complement' => null,
-        'zip'               => $faker->postcode(),
+        'zip'               => str_replace(' ', '', $faker->postcode()),
         'city'              => $faker->city()
     ];
 });

@@ -63,39 +63,58 @@ class DirectoryController extends Controller
     public function create()
     {
         $this->authorize('create', User::class);
-        return view('directory.create');
+        return view('directory.admin.index');
     }
 
     /**
      * Store the newly created resource in storage.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \Illuminate\Http\Request $r
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $request->merge(['address_id' => Address::firstOrCreate($request->address)->id]);
+        if ($request->address['new_id'] === null) {
+            $address_values = array_except($request->address, 'new_id');
+
+            $address_id = null;
+
+            if (array_sum($address_values) > 0) {
+                $address_id = Address::create(array_except($request->address, 'new_id'))->id;
+            }
+        } else {
+            $address_id = $request->address['new_id'];
+        }
+
+        $request->merge(['address_id' => $address_id]);
 
         $user = User::create($request->all());
 
         Role::find($request->roles)->each->assignTo($user);
 
-        foreach ($request->telephone as $type => $number) {
-            if ($number !== null) {
-                Phone::firstOrCreate([
-                    'number' => $number,
-                    'type'   => $type
-                ])->assignTo($user);
+        foreach ($request->telephone as $phone) {
+            if ($phone['id'] === null and $phone['number'] !== null) {
+                $phoneIds[] = Phone::firstOrCreate([
+                    'number' => $phone['number'],
+                    'type'   => $phone['type']
+                ])->id;
+            } else {
+                $phoneIds[] = $phone['id'];
             }
         }
 
-        foreach ($request->email as $type => $address) {
-            if ($address !== null) {
-                Email::firstOrCreate([
-                    'address' => $address,
-                    'type'    => $type
-                ])->assignTo($user);
+        $user->assign('phone', array_filter($phoneIds));
+
+        foreach ($request->email as $email) {
+            if ($email['id'] === null and $email['address'] !== null) {
+                $emailId = Email::create(['address' => $email['address']])->id;
+            } else {
+                $emailId = (int) $email['id'];
+            }
+
+            if ($emailId !== 0) {
+                $user->assign('email', $emailId, ['type' => $email['type']]);
             }
         }
 
@@ -106,28 +125,22 @@ class DirectoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Member $member
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Member $member)
+    public function edit(User $user)
     {
-        if (Gate::denies('update-member', $member->id)) {
-            return redirect()->route('directory.index');
-        }
+        $this->authorize('update', $user);
 
-        $m = $member->load(['address', 'emails' => function ($q) {
+        $m = $user->load(['address', 'emails' => function ($q) {
             $q->orderBy('type', 'asc');
         }, 'phones' => function ($q) {
             $q->orderBy('type', 'asc');
         }, 'roles']);
 
-        return view('directory.admin.main')->with([
-            'emails'            => $this->getEmailInfo($m),
+        return view('directory.admin.index')->with([
             'm'                 => $m,
-            'phones'            => $this->getPhoneInfo($m),
-            'roles'             => $this->getRoles($m),
             'route'             => route('directory.update', $m->id),
-            'street_type'       => $this->getAddressType($m),
             'editButtonText'    => __('forms.edit_button')
         ]);
     }
@@ -136,221 +149,100 @@ class DirectoryController extends Controller
      * Update the specified resource in storage.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \Illuminate\Http\Request $r
-     * @param \App\Models\Member $member
+     * @param \Illuminate\Http\Request $request
+     * @param \App\User $User
      * @return \Illuminate\Http\RedirctResponse
      */
-    public function update(Request $r, Member $member)
+    public function update(Request $request, User $user)
     {
-        $m = $member;
-        $m->first_name  = $r->first_name;
-        $m->last_name   = $r->last_name;
-        $m->updated_by  = $r->user()->id;
-        $m->save();
+        if ($request->address['new_id'] === null) {
+            $address = array_except($request->address, 'new_id');
 
-        foreach ($m->roles as $role) {
-            $oldid = $role->pivot->role_id;
-
-            $oldids[] = $role->pivot->role_id;
-
-            if (! in_array($oldid, $r->role)) {
-                $m->roles()->detach($oldid);
-            } else {
-                $m->roles()->updateExistingPivot($oldid, ['updated_by' => $r->user()->id]);
+            if ($user->address_id !== null) {
+                $user->address_id = null;
+            } elseif (array_sum($address) > 0) {
+                $user->address_id = Address::create($address)->id;
             }
+        } elseif ((int) $request->address['new_id'] === $user->address_id) {
+            Address::find($user->address_id)->update($request->address);
+        } else {
+            $user->address_id = $request->address['new_id'];
         }
 
-        foreach ($r->role as $newid) {
-            if (! in_array($newid, $oldids)) {
-                $m->roles()->attach($newid, [
-                    'created_by' => $r->user()->id,
-                    'updated_by' => $r->user()->id
-                ]);
-            }
-        }
-
-        Address::where('member_id', $m->id)->update([
-            'street_number'     => $r->street_number,
-            'street_type'       => $r->street_type,
-            'street_name'       => $r->street_name,
-            'street_complement' => $r->street_complement,
-            'zip'               => $r->zip,
-            'city'              => $r->city,
-            'updated_by'        => $r->user()->id
+        $user->update([
+            'first_name' => $request->first_name,
+            'last_name'  => $request->last_name
         ]);
 
-        foreach ($r->telephone as $type => $number) {
-            $type = ucfirst($type);
+        foreach ($request->roles as $role) {
+            $roles[$role] = ['created_by' => auth()->id(), 'updated_by' => auth()->id()];
+        }
 
-            if ($number != null) {
-                if (! Phone::where('member_id', $m->id)->where('type', $type)->update([
-                    'number'      => $number,
-                    'updated_by'  => $r->user()->id
-                ])) {
-                    $m->phones()->save(new Phone([
-                        'number'    => $number,
-                        'type'      => $type,
-                        'created_by'=> $r->user()->id,
-                        'updated_by'=> $r->user()->id
-                    ]));
+        $user->roles()->sync($roles);
+
+        $user_phones = array_pluck($user->phones->toArray(), 'type', 'id');
+
+        foreach ($request->telephone as $key => $phone) {
+            $phoneId = array_search($phone['type'], $user_phones);
+
+            if ($phone['id'] === null) {
+                if ($phone['number'] !== null and $phoneId === false) {
+                    $user->assign('phone', Phone::create($phone)->id);
+                } else {
+                    $user->phones()->detach($phoneId);
                 }
+            } elseif ((int) $phone['id'] === $phoneId) {
+                Phone::find($phone['id'])->update($phone);
             } else {
-                Phone::where('member_id', $m->id)->where('type', $type)->delete();
+                $user->phones()->detach($phoneId);
+                $user->assign('phone', $phone['id']);
             }
         }
 
-        foreach ($r->email as $type => $address) {
-            if ($address != null) {
-                if (! Email::where('member_id', $m->id)->where('type', $type)->update([
-                  'address'   => $address,
-                  'type'      => $type,
-                  'updated_by'=> $r->user()->id
-                ])) {
-                    $m->emails()->save(new Email([
-                        'address'   => $address,
-                        'type'      => $type,
-                        'created_by'=> $r->user()->id,
-                        'updated_by'=> $r->user()->id
-                    ]));
+        $user_emails = array_pluck($user->emails->toArray(), 'pivot.type', 'id');
+
+        foreach ($request->email as $key => $email) {
+            if ($email['id'] === null) {
+                if ($email['address'] !== null) {
+                    $email_id = Email::firstOrCreate(['address' => $email['address']])->id;
+
+                    if (array_key_exists($email_id, $user_emails)) {
+                        $user->emails()->wherePivot('type', $email['type'])->detach($email_id);
+                    } else {
+                        $user->assign('email', $email_id, ['type' => $email['type']]);
+                    }
                 }
+            } elseif ((int) $email['id'] === array_search($email['type'], $user_emails)) {
+                Email::find($email['id'])->update(['address' => $email['address']]);
             } else {
-                Email::where('member_id', $m->id)->where('type', $type)->delete();
+                $user->emails()
+                    ->wherePivot('type', $email['type'])
+                    ->detach(current(array_keys($user_emails, $email['type'])));
+
+                $user->assign('email', $email['id'], ['type' => $email['type']]);
             }
         }
 
-        return redirect()->route('directory.index');
+        return redirect($user->path());
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Member $member
+     * @param \App\User $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Member $member)
+    public function destroy(User $user)
     {
-        if ($member->id >= 4 and Gate::allows('update-member', $member->id)) { /* Making sure none of the default users are deleted */
-            $member->address()->delete();
-            $member->phones()->delete();
-            $member->emails()->delete();
-            $member->roles()->detach();
-            $member->delete();
-        }
+        // if ($member->id >= 4 and Gate::allows('update-member', $member->id)) { /* Making sure none of the default users are deleted */
+        //     $member->address()->delete();
+        //     $member->phones()->delete();
+        //     $member->emails()->delete();
+        //     $member->roles()->detach();
+        //     $member->delete();
+        // }
 
         return redirect()->route('directory.index');
-    }
-
-    /**
-     *
-     * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Member $member
-     * @return array $types
-     */
-    private function getAddressType($member = null)
-    {
-        $types = [];
-
-        foreach (['rue', 'allée', 'boulevard', 'chemin', 'route'] as $key => $value) {
-            $types[$key]['name']    = $value;
-            $types[$key]['selected']= '';
-
-            if ($member != null) {
-                if ($value == $member->address->street_type) {
-                    $types[$key]['selected'] = ' selected';
-                }
-            }
-        }
-
-        return $types;
-    }
-
-    /**
-     *
-     * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Member $member
-     * @return array $info
-     */
-    private function getEmailInfo($member = null)
-    {
-        $info = [];
-
-        foreach (['principal', 'secondaire'] as $key => $value) {
-            $info[$key]['type'] = $value;
-            $info[$key]['val']  = '';
-        }
-
-        if ($member == null) {
-            return $info;
-        }
-
-        foreach ($info as $key => $i) {
-            foreach ($member->emails as $email) {
-                if ($i['type'] == $email->type) {
-                    $info[$key]['val'] = $email->address;
-                }
-            }
-        }
-
-        return $info;
-    }
-
-    /**
-     *
-     * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Member $member
-     * @return array $info
-     */
-    private function getPhoneInfo($member = null)
-    {
-        $info = [];
-
-        foreach (['fixe', 'portable'] as $key => $value) {
-            $info[$key]['long']     = $value;
-            $info[$key]['short']    = substr($value, 0, 4);
-            $info[$key]['number']   = '';
-        }
-
-        if ($member == null) {
-            return $info;
-        }
-
-        foreach ($info as $key => $i) {
-            foreach ($member->phones as $phone) {
-                if (ucfirst($i['short']) == $phone->type) {
-                    $info[$key]['number'] = $phone->number;
-                }
-            }
-        }
-
-        return $info;
-    }
-
-    /**
-     *
-     * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Member $member
-     * @return array $roles
-     */
-    private function getRoles($member = null)
-    {
-        $roles = Role::all()->map(function ($item) {
-            $item['checked'] = '';
-            return $item;
-        });
-
-        if ($member == null) {
-            return $roles;
-        }
-
-        foreach ($roles as $role) {
-            foreach ($member->roles as $mem_role) {
-                if ($role->name == $mem_role->name) {
-                    $role->checked = ' checked';
-                }
-            }
-        }
-
-        return $roles;
     }
 }

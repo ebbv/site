@@ -51,6 +51,18 @@ Route::get($directory.'/'.$add, 'DirectoryController@create')
 Route::post($directory, 'DirectoryController@store')
     ->name('directory.store');
 
+Route::get($directory.'/{user}/'.$edit, 'DirectoryController@edit')
+    ->name('directory.edit')
+    ->where('user', '[0-9]+');
+
+Route::match(['put', 'patch'], $directory.'/{user}', 'DirectoryController@update')
+    ->name('directory.update')
+    ->where('user', '[0-9]+');
+
+Route::delete($directory.'/{user}', 'DirectoryController@destroy')
+    ->name('directory.destroy')
+    ->where('user', '[0-9]+');
+
 
 Route::get(__('nav.login.url'), 'Auth\LoginController@showLoginForm')->name('login');
 Route::post(__('nav.login.url'), 'Auth\LoginController@login');

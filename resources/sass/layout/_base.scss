@@ -3,6 +3,7 @@ html, body {
 }
 
 body {
+  @include mdc-theme-prop('background', 'background');
   overflow-y: scroll !important;
 }
 

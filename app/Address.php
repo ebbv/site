@@ -22,8 +22,8 @@ class Address extends Model
         return $this->hasMany(User::class);
     }
 
-    public function getStreetAddressAttribute()
+    public function getFullAddressAttribute()
     {
-        return $this->street_info;
+        return $this->street_info.' '.$this->street_complement.' '.$this->zip.' '.$this->city;
     }
 }
