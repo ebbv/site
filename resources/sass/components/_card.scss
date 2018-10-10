@@ -1,0 +1,20 @@
+.mdc-card {
+  margin: 0 auto 25px auto;
+  max-width: 500px;
+  padding: 0 16px;
+}
+
+.mdc-card__primary a {
+  text-decoration: none;
+  @include mdc-theme-prop('color', 'primary');
+}
+
+.mdc-card__primary h3 {
+  text-align: center;
+  @include mdc-theme-prop('color', 'primary');
+  @include mdc-typography('headline5');
+}
+
+.mdc-card__secondary h3 {
+  @include mdc-typography('body2');
+}

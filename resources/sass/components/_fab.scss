@@ -1,0 +1,11 @@
+.mdc-fab {
+  bottom: 2rem;
+  position: fixed;
+  right: 1rem;
+}
+
+@media(min-width: 1024px) {
+  .mdc-fab {
+    right: 5rem;
+  }
+}

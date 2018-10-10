@@ -1,0 +1,24 @@
+#login {
+  max-width: 300px;
+}
+
+#login .mdc-card__primary {
+  overflow: hidden;
+  padding-top: 20px;
+}
+
+#login .mdc-text-field-helper-text {
+  margin-bottom: 30px;
+}
+
+#login .mdc-card__actions {
+  justify-content: flex-end;
+  padding-right: 0;
+}
+
+.error {
+  color: $mdc-text-field-error;
+  margin: 0 auto 20px auto;
+  text-align: center;
+  @include mdc-typography('caption');
+}

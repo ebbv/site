@@ -8,13 +8,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Address;
-use App\Models\Email;
-use App\Models\Member;
-use App\Models\Phone;
-use App\Models\Role;
+use App\Address;
+use App\Email;
+use App\Phone;
+use App\Role;
+use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 
 class DirectoryController extends Controller
 {
@@ -24,142 +23,118 @@ class DirectoryController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the users.
      *
      * @author Robert Doucette <rice8204@gmail.com>
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('directory.main')->withMembers(Member::with(['address', 'emails' => function ($q) {
-            $q->orderBy('type', 'asc');
-        }, 'phones' => function ($q) {
-            $q->orderBy('type', 'asc');
-        }])->whereHas('roles', function ($q) {
+        return view('directory.index')->withMembers(User::with(['address',
+            'emails' => function ($q) {
+                $q->orderBy('type', 'asc');
+            },
+            'phones' => function ($q) {
+                $q->orderBy('type', 'asc');
+            }
+        ])->whereHas('roles', function ($q) {
             $q->where('name', 'membre');
         })->orderBy('last_name', 'asc')->orderBy('first_name', 'asc')->get());
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified user.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Member $member
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Member $member)
+    public function show(User $user)
     {
-        return $member;
+        return view('directory.show')->withUser($user->load('address', 'emails', 'phones', 'roles'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new user.
      *
      * @author Robert Doucette <rice8204@gmail.com>
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        if (Gate::denies('create-member')) {
-            return redirect()->route('directory.index');
-        }
-
-        return view('directory.admin.main')->with([
-            'emails'        => $this->getEmailInfo(),
-            'phones'        => $this->getPhoneInfo(),
-            'roles'         => $this->getRoles(),
-            'route'         => route('directory.store'),
-            'street_type'   => $this->getAddressType()
-        ]);
+        $this->authorize('create', User::class);
+        return view('directory.admin.index');
     }
 
     /**
      * Store the newly created resource in storage.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \Illuminate\Http\Request $r
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $r)
+    public function store(Request $request)
     {
-        $m = new Member;
-        $m->first_name  = $r->first_name;
-        $m->last_name   = $r->last_name;
-        $m->username    = '';
-        $m->password    = '';
-        $m->created_by  = $r->user()->id;
-        $m->updated_by  = $r->user()->id;
-        $m->save();
+        $user_info = $request->user;
 
-        foreach ($r->role as $value) {
-            $m->roles()->attach($value, [
-                'created_by' => $r->user()->id,
-                'updated_by' => $r->user()->id
-            ]);
+        $address_info = array_filter($request->address);
+
+        if ($request->user['address_id'] === null and ! empty($address_info)) {
+            $user_info['address_id'] = Address::create($address_info)->id;
         }
 
-        $m->address()->save(new Address([
-            'street_number'     => $r->street_number,
-            'street_type'       => $r->street_type,
-            'street_name'       => $r->street_name,
-            'street_complement' => $r->street_complement,
-            'zip'               => $r->zip,
-            'city'              => $r->city,
-            'created_by'        => $r->user()->id,
-            'updated_by'        => $r->user()->id
-        ]));
+        $user = User::create($user_info);
 
-        foreach ($r->telephone as $type => $number) {
-            if ($number != null) {
-                $m->phones()->save(new Phone([
-                    'number'    => $number,
-                    'type'      => ucfirst($type),
-                    'created_by'=> $r->user()->id,
-                    'updated_by'=> $r->user()->id
-                ]));
+        Role::find($request->roles)->each->assignTo($user);
+
+        foreach ($request->telephone as $phone) {
+            if ($phone['id'] === null and $phone['number'] !== null) {
+                $phoneIds[] = Phone::firstOrCreate([
+                    'number' => $phone['number'],
+                    'type'   => $phone['type']
+                ])->id;
+            } else {
+                $phoneIds[] = $phone['id'];
             }
         }
 
-        foreach ($r->email as $key => $address) {
-            if ($address != null) {
-                $m->emails()->save(new Email([
-                    'address'   => $address,
-                    'type'      => $key,
-                    'created_by'=> $r->user()->id,
-                    'updated_by'=> $r->user()->id
-                ]));
+        $user->assign('phone', array_filter($phoneIds));
+
+        foreach ($request->email as $email) {
+            if ($email['id'] === null and $email['address'] !== null) {
+                $emailId = Email::create(['address' => $email['address']])->id;
+            } else {
+                $emailId = (int) $email['id'];
+            }
+
+            if ($emailId !== 0) {
+                $user->assign('email', $emailId, ['type' => $email['type']]);
             }
         }
 
-        return redirect()->route('directory.index');
+        return redirect($user->path());
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Member $member
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Member $member)
+    public function edit(User $user)
     {
-        if (Gate::denies('update-member', $member->id)) {
-            return redirect()->route('directory.index');
-        }
+        $this->authorize('update', $user);
 
-        $m = $member->load(['address', 'emails' => function ($q) {
+        $m = $user->load(['address', 'emails' => function ($q) {
             $q->orderBy('type', 'asc');
         }, 'phones' => function ($q) {
             $q->orderBy('type', 'asc');
         }, 'roles']);
 
-        return view('directory.admin.main')->with([
-            'emails'            => $this->getEmailInfo($m),
+        return view('directory.admin.index')->with([
             'm'                 => $m,
-            'phones'            => $this->getPhoneInfo($m),
-            'roles'             => $this->getRoles($m),
             'route'             => route('directory.update', $m->id),
-            'street_type'       => $this->getAddressType($m),
             'editButtonText'    => __('forms.edit_button')
         ]);
     }
@@ -168,221 +143,97 @@ class DirectoryController extends Controller
      * Update the specified resource in storage.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \Illuminate\Http\Request $r
-     * @param \App\Models\Member $member
+     * @param \Illuminate\Http\Request $request
+     * @param \App\User $User
      * @return \Illuminate\Http\RedirctResponse
      */
-    public function update(Request $r, Member $member)
+    public function update(Request $request, User $user)
     {
-        $m = $member;
-        $m->first_name  = $r->first_name;
-        $m->last_name   = $r->last_name;
-        $m->updated_by  = $r->user()->id;
-        $m->save();
+        $user_info = $request->user;
 
-        foreach ($m->roles as $role) {
-            $oldid = $role->pivot->role_id;
+        $address_info = array_filter($request->address);
 
-            $oldids[] = $role->pivot->role_id;
-
-            if (! in_array($oldid, $r->role)) {
-                $m->roles()->detach($oldid);
+        if ($request->user['address_id'] === null) {
+            if ($user->address_id !== null and empty($address_info)) {
+                $user_info['address_id'] = null;
             } else {
-                $m->roles()->updateExistingPivot($oldid, ['updated_by' => $r->user()->id]);
+                $user_info['address_id'] = Address::firstOrCreate($address_info)->id;
             }
+        } elseif ((int) $request->user['address_id'] === $user->address_id) {
+            $user->address->update($address_info);
         }
 
-        foreach ($r->role as $newid) {
-            if (! in_array($newid, $oldids)) {
-                $m->roles()->attach($newid, [
-                    'created_by' => $r->user()->id,
-                    'updated_by' => $r->user()->id
-                ]);
-            }
+        $user->update($user_info);
+
+        foreach ($request->roles as $role) {
+            $roles[$role] = ['created_by' => auth()->id(), 'updated_by' => auth()->id()];
         }
 
-        Address::where('member_id', $m->id)->update([
-            'street_number'     => $r->street_number,
-            'street_type'       => $r->street_type,
-            'street_name'       => $r->street_name,
-            'street_complement' => $r->street_complement,
-            'zip'               => $r->zip,
-            'city'              => $r->city,
-            'updated_by'        => $r->user()->id
-        ]);
+        $user->roles()->sync($roles);
 
-        foreach ($r->telephone as $type => $number) {
-            $type = ucfirst($type);
+        $user_phones = array_pluck($user->phones->toArray(), 'type', 'id');
 
-            if ($number != null) {
-                if (! Phone::where('member_id', $m->id)->where('type', $type)->update([
-                    'number'      => $number,
-                    'updated_by'  => $r->user()->id
-                ])) {
-                    $m->phones()->save(new Phone([
-                        'number'    => $number,
-                        'type'      => $type,
-                        'created_by'=> $r->user()->id,
-                        'updated_by'=> $r->user()->id
-                    ]));
+        foreach ($request->telephone as $key => $phone) {
+            $phoneId = array_search($phone['type'], $user_phones);
+
+            if ($phone['id'] === null) {
+                if ($phone['number'] !== null and $phoneId === false) {
+                    $user->assign('phone', Phone::create($phone)->id);
+                } else {
+                    $user->phones()->detach($phoneId);
                 }
+            } elseif ((int) $phone['id'] === $phoneId) {
+                Phone::find($phone['id'])->update($phone);
             } else {
-                Phone::where('member_id', $m->id)->where('type', $type)->delete();
+                $user->phones()->detach($phoneId);
+                $user->assign('phone', $phone['id']);
             }
         }
 
-        foreach ($r->email as $type => $address) {
-            if ($address != null) {
-                if (! Email::where('member_id', $m->id)->where('type', $type)->update([
-                  'address'   => $address,
-                  'type'      => $type,
-                  'updated_by'=> $r->user()->id
-                ])) {
-                    $m->emails()->save(new Email([
-                        'address'   => $address,
-                        'type'      => $type,
-                        'created_by'=> $r->user()->id,
-                        'updated_by'=> $r->user()->id
-                    ]));
+        $user_emails = array_pluck($user->emails->toArray(), 'pivot.type', 'id');
+
+        foreach ($request->email as $key => $email) {
+            if ($email['id'] === null) {
+                if ($email['address'] !== null) {
+                    $email_id = Email::firstOrCreate(['address' => $email['address']])->id;
+
+                    if (array_key_exists($email_id, $user_emails)) {
+                        $user->emails()->wherePivot('type', $email['type'])->detach($email_id);
+                    } else {
+                        $user->assign('email', $email_id, ['type' => $email['type']]);
+                    }
                 }
+            } elseif ((int) $email['id'] === array_search($email['type'], $user_emails)) {
+                Email::find($email['id'])->update(['address' => $email['address']]);
             } else {
-                Email::where('member_id', $m->id)->where('type', $type)->delete();
+                $user->emails()
+                    ->wherePivot('type', $email['type'])
+                    ->detach(current(array_keys($user_emails, $email['type'])));
+
+                $user->assign('email', $email['id'], ['type' => $email['type']]);
             }
         }
 
-        return redirect()->route('directory.index');
+        return redirect($user->path());
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Member $member
+     * @param \App\User $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Member $member)
+    public function destroy(User $user)
     {
-        if ($member->id >= 4 and Gate::allows('update-member', $member->id)) { /* Making sure none of the default users are deleted */
-            $member->address()->delete();
-            $member->phones()->delete();
-            $member->emails()->delete();
-            $member->roles()->detach();
-            $member->delete();
-        }
+        // if ($member->id >= 4 and Gate::allows('update-member', $member->id)) { /* Making sure none of the default users are deleted */
+        //     $member->address()->delete();
+        //     $member->phones()->delete();
+        //     $member->emails()->delete();
+        //     $member->roles()->detach();
+        //     $member->delete();
+        // }
 
         return redirect()->route('directory.index');
-    }
-
-    /**
-     *
-     * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Member $member
-     * @return array $types
-     */
-    private function getAddressType($member = null)
-    {
-        $types = [];
-
-        foreach (['rue', 'allée', 'boulevard', 'chemin', 'route'] as $key => $value) {
-            $types[$key]['name']    = $value;
-            $types[$key]['selected']= '';
-
-            if ($member != null) {
-                if ($value == $member->address->street_type) {
-                    $types[$key]['selected'] = ' selected';
-                }
-            }
-        }
-
-        return $types;
-    }
-
-    /**
-     *
-     * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Member $member
-     * @return array $info
-     */
-    private function getEmailInfo($member = null)
-    {
-        $info = [];
-
-        foreach (['principal', 'secondaire'] as $key => $value) {
-            $info[$key]['type'] = $value;
-            $info[$key]['val']  = '';
-        }
-
-        if ($member == null) {
-            return $info;
-        }
-
-        foreach ($info as $key => $i) {
-            foreach ($member->emails as $email) {
-                if ($i['type'] == $email->type) {
-                    $info[$key]['val'] = $email->address;
-                }
-            }
-        }
-
-        return $info;
-    }
-
-    /**
-     *
-     * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Member $member
-     * @return array $info
-     */
-    private function getPhoneInfo($member = null)
-    {
-        $info = [];
-
-        foreach (['fixe', 'portable'] as $key => $value) {
-            $info[$key]['long']     = $value;
-            $info[$key]['short']    = substr($value, 0, 4);
-            $info[$key]['number']   = '';
-        }
-
-        if ($member == null) {
-            return $info;
-        }
-
-        foreach ($info as $key => $i) {
-            foreach ($member->phones as $phone) {
-                if (ucfirst($i['short']) == $phone->type) {
-                    $info[$key]['number'] = $phone->number;
-                }
-            }
-        }
-
-        return $info;
-    }
-
-    /**
-     *
-     * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Models\Member $member
-     * @return array $roles
-     */
-    private function getRoles($member = null)
-    {
-        $roles = Role::all()->map(function ($item) {
-            $item['checked'] = '';
-            return $item;
-        });
-
-        if ($member == null) {
-            return $roles;
-        }
-
-        foreach ($roles as $role) {
-            foreach ($member->roles as $mem_role) {
-                if ($role->name == $mem_role->name) {
-                    $role->checked = ' checked';
-                }
-            }
-        }
-
-        return $roles;
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'home'      => [
+    'messages'      => [
         'text' => 'Accueil',
-        'url'  => ''
+        'url'  => 'messages'
     ],
     'contact'   => [
         'text' => 'Contact',

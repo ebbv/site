@@ -1,29 +1,36 @@
-            <fieldset>
-              <legend>Contact</legend>
-@foreach ($phones as $phone)
-              <div class="mdc-text-field">
-                <input class="mdc-text-field__input"
-                       id="telephone[{{ $phone['short'] }}]"
-                       name="telephone[{{ $phone['short'] }}]"
+            <div>
+<?php $temp = isset($m) ? array_pluck($m->phones->toArray(), 'type', 'number') : [] ?>
+@foreach (['fixe', 'portable'] as $key => $value)
+              <p>
+                <input name="telephone[{{ $key }}][type]"  type="hidden" value="{{ $value }}">
+                <select name="telephone[{{ $key }}][id]">
+                  <option></option>
+@foreach (App\Phone::where('type', $value)->orderBy('number')->get() as $phone)
+                  <option {{ (array_search($value, $temp) === $phone->number) ? 'selected ' : '' }}value="{{ $phone->id }}">{{ $phone->number }}</option>
+@endforeach
+                </select>
+                <label for="telephone[{{ $value }}]">Téléphone {{ $value }}</label>
+                <input id="telephone[{{ $value }}]"
+                       name="telephone[{{ $key }}][number]"
                        type="tel"
-                       value="{{ $phone['number'] }}">
-                <label class="mdc-text-field__label" for="telephone[{{ $phone['short'] }}]">
-                  Téléphone {{ $phone['long'] }}
-                </label>
-                <div class="mdc-line-ripple"></div>
-              </div>
+                       value="{{ array_search($value, $temp) }}">
+              </p>
 @endforeach
-@foreach ($emails as $email)
-              <div class="mdc-text-field">
-                <input class="mdc-text-field__input"
-                       id="email[{{ $email['type'] }}]"
-                       name="email[{{ $email['type'] }}]"
+<?php $temp = isset($m) ? array_pluck($m->emails->toArray(), 'pivot.type', 'address') : [] ?>
+@foreach (['principal', 'secondaire'] as $key => $value)
+              <p>
+                <input name="email[{{ $key }}][type]"  type="hidden" value="{{ $value }}">
+                <select name="email[{{ $key }}][id]">
+                    <option></option>
+@foreach (App\Email::orderBy('address')->get() as $email)
+                    <option {{ (array_search($value, $temp) === $email->address) ? 'selected ' : '' }}value="{{ $email->id }}">{{ $email->address }}</option>
+@endforeach
+                </select>
+                <label for="email[{{ $value }}]">E-mail ({{ $value }})</label>
+                <input id="email[{{ $value }}]"
+                       name="email[{{ $key }}][address]"
                        type="email"
-                       value="{{ $email['val'] }}">
-                <label class="mdc-text-field__label" for="email[{{ $email['type'] }}]">
-                  Mail ({{ $email['type'] }})
-                </label>
-                <div class="mdc-line-ripple"></div>
-              </div>
+                       value="{{ (array_search($value, $temp)) }}">
+              </p>
 @endforeach
-            </fieldset>
+            </div>

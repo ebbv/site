@@ -1,0 +1,36 @@
+#beliefs-welcome {
+  margin: 0 auto 50px auto;
+  max-width: 600px;
+  padding: 20px;
+  @include mdc-typography('subtitle2');
+}
+
+#beliefs {
+  padding: 0;
+}
+
+#beliefs li {
+  list-style-position: inside;
+  list-style-type: upper-roman;
+  @include mdc-typography('headline5');
+}
+
+#beliefs li div {
+  text-align: justify;
+}
+
+#beliefs li p {
+  text-indent: 1rem;
+  @include mdc-typography('body2');
+}
+
+#beliefs li .title {
+  text-transform: uppercase;
+}
+
+#beliefs li .verses {
+  font-style: italic;
+  text-indent: 0;
+  @include mdc-typography('caption');
+  @include mdc-theme-prop('color', 'text-secondary-on-light');
+}

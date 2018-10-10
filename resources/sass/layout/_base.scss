@@ -1,0 +1,25 @@
+html, body {
+  height: calc(100% - 64px);
+}
+
+body {
+  @include mdc-theme-prop('background', 'background');
+  overflow-y: scroll !important;
+}
+
+main {
+  max-width: 1200px;
+  min-height: calc(100% + 39px);
+}
+
+main > div {
+  padding-top: 24px;
+}
+
+#sidebar {
+  @include mdc-typography('body2');
+}
+
+#sidebar p {
+  margin: 0;
+}

@@ -1,0 +1,34 @@
+.mdc-top-app-bar__title--mini {
+  display: none;
+}
+
+@media (max-width: 415px) {
+  .mdc-top-app-bar__title--mini {
+    display: block;
+  }
+  .mdc-top-app-bar__title--full {
+    display: none;
+  }
+}
+
+#account-menu-button {
+  cursor: pointer;
+  line-height: 2;
+}
+
+#account-menu-button > i {
+  position: relative;
+  top: 8px;
+}
+
+#account-menu {
+  left: inherit !important;
+  right: 0 !important;
+  top: 64px !important;
+}
+
+@media (max-width: 599px) {
+  #account-menu {
+    top: 56px !important;
+  }
+}

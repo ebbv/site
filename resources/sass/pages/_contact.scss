@@ -1,0 +1,32 @@
+#contact h3 {
+  margin-top: 0;
+  @include mdc-typography('headline4');
+}
+
+#meeting-times p {
+  text-indent: 20px;
+  @include mdc-typography('body2');
+}
+
+#meeting-times iframe {
+  margin: 20px auto 30px auto;
+}
+
+#telephone small {
+  @include mdc-theme-prop('color', 'text-secondary-on-light');
+  @include mdc-typography('body2');
+}
+
+#contact-form {
+  overflow: hidden;
+  padding-top: 15px;
+}
+
+#contact-form .mdc-text-field--textarea {
+  margin-top: 30px;
+}
+
+#contact-form button {
+  float: right;
+  margin-top: 30px;
+}

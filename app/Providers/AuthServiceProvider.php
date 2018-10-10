@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -13,7 +12,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Models\Message' => 'App\Policies\MessagePolicy',
+        'App\Message' => 'App\Policies\MessagePolicy',
+        'App\User'    => 'App\Policies\UserPolicy'
     ];
 
     /**
@@ -24,17 +24,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        Gate::define('create-member', function ($user) {
-            return \App\Models\Member::has('admin')->find($user->id);
-        });
-
-        Gate::define('update-member', function ($user, $id) {
-            if (\App\Models\Member::has('admin')->find($user->id) or $user->id == $id) {
-                return true;
-            }
-
-            return false;
-        });
     }
 }

@@ -18,6 +18,6 @@ class BeliefsController extends Controller
      */
     public function index()
     {
-        return view('beliefs.main');
+        return view('beliefs.index');
     }
 }

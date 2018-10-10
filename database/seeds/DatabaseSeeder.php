@@ -1,25 +1,30 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Seed the application's database.
      *
      * @return void
      */
     public function run()
     {
-        Model::unguard();
+        $m = factory(User::class)->create([
+            'first_name'=> 'Robert',
+            'last_name' => 'Doucette',
+            'username'  => 'pasteur',
+            'password'  => Hash::make(env('DB_PASSWORD'))
+        ]);
 
-        $this->call('MembersandRolesTableSeeder');
-        $this->call('MessagesTableSeeder');
-        $this->call('PhonesTableSeeder');
-        $this->call('AddressesTableSeeder');
-        $this->call('EmailsTableSeeder');
+        factory(App\Message::class, 100)->create();
 
-        Model::reguard();
+        foreach (['administrateur', 'membre', 'orateur'] as $key => $name) {
+            factory(App\Role::class)
+                ->create(['name' => $name])
+                ->assignTo(($key == 2) ? User::all() : $m);
+        }
     }
 }

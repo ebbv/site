@@ -4,12 +4,12 @@
  * Message Policy
  *
  * @author Robert Doucette <rice8204@gmail.com>
-*/
+ */
 
 namespace App\Policies;
 
-use App\Models\Member;
-use App\Models\Message;
+use App\Message;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class MessagePolicy
@@ -20,50 +20,49 @@ class MessagePolicy
      * Determine whether the user can view the message.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param  \App\Models\Member  $member
-     * @param  \App\Models\Message  $message
+     * @param  \App\User  $user
+     * @param  \App\Message  $message
      * @return mixed
      */
-    public function view(Member $member, Message $message)
+    public function view(User $user, Message $message)
     {
-        //
     }
 
     /**
      * Determine whether the user can create messages.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param  \App\Models\Member  $member
-     * @return bool
+     * @param  \App\User  $user
+     * @return mixed
      */
-    public function create(Member $member)
+    public function create(User $user)
     {
-        return Member::has('admin')->find($member->id);
+        return $user->isAdmin;
     }
 
     /**
      * Determine whether the user can update the message.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param  \App\Models\Member  $member
-     * @param  \App\Models\Message  $message
-     * @return bool
+     * @param  \App\User  $user
+     * @param  \App\Message  $message
+     * @return mixed
      */
-    public function update(Member $member, Message $message)
+    public function update(User $user, Message $message)
     {
-        return Member::has('admin')->find($member->id);
+        return $user->isAdmin;
     }
 
     /**
      * Determine whether the user can delete the message.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param  \App\Models\Member  $member
-     * @param  \App\Models\Message  $message
+     * @param  \App\User  $user
+     * @param  \App\Message  $message
      * @return mixed
      */
-    public function delete(Member $member, Message $message)
+    public function delete(User $user, Message $message)
     {
-        //
+        return $user->isAdmin;
     }
 }

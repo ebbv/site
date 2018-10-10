@@ -1,0 +1,24 @@
+#directory-list .mdc-card {
+  padding: 0 0 24px 0;
+}
+
+#directory-list .last-name {
+  text-transform: uppercase;
+}
+
+#directory-list .address {
+  padding: 0 16px;
+}
+
+#directory-list .address p {
+  margin: 0;
+  @include mdc-typography('body2');
+}
+
+#directory-list .mdc-list-item__start-detail {
+  margin-right: 10px;
+}
+
+#directory-list hr {
+  margin: 20px 0;
+}
