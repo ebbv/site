@@ -75,21 +75,15 @@ class DirectoryController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->address['new_id'] === null) {
-            $address_values = array_except($request->address, 'new_id');
+        $user_info = $request->user;
 
-            $address_id = null;
+        $address_info = array_filter($request->address);
 
-            if (array_sum($address_values) > 0) {
-                $address_id = Address::create(array_except($request->address, 'new_id'))->id;
-            }
-        } else {
-            $address_id = $request->address['new_id'];
+        if ($request->user['address_id'] === null and ! empty($address_info)) {
+            $user_info['address_id'] = Address::create($address_info)->id;
         }
 
-        $request->merge(['address_id' => $address_id]);
-
-        $user = User::create($request->all());
+        $user = User::create($user_info);
 
         Role::find($request->roles)->each->assignTo($user);
 
@@ -155,24 +149,21 @@ class DirectoryController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        if ($request->address['new_id'] === null) {
-            $address = array_except($request->address, 'new_id');
+        $user_info = $request->user;
 
-            if ($user->address_id !== null) {
-                $user->address_id = null;
-            } elseif (array_sum($address) > 0) {
-                $user->address_id = Address::create($address)->id;
+        $address_info = array_filter($request->address);
+
+        if ($request->user['address_id'] === null) {
+            if ($user->address_id !== null and empty($address_info)) {
+                $user_info['address_id'] = null;
+            } else {
+                $user_info['address_id'] = Address::firstOrCreate($address_info)->id;
             }
-        } elseif ((int) $request->address['new_id'] === $user->address_id) {
-            Address::find($user->address_id)->update($request->address);
-        } else {
-            $user->address_id = $request->address['new_id'];
+        } elseif ((int) $request->user['address_id'] === $user->address_id) {
+            $user->address->update($address_info);
         }
 
-        $user->update([
-            'first_name' => $request->first_name,
-            'last_name'  => $request->last_name
-        ]);
+        $user->update($user_info);
 
         foreach ($request->roles as $role) {
             $roles[$role] = ['created_by' => auth()->id(), 'updated_by' => auth()->id()];
