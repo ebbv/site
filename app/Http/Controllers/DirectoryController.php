@@ -14,6 +14,7 @@ use App\Phone;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class DirectoryController extends Controller
 {
@@ -82,6 +83,8 @@ class DirectoryController extends Controller
         if ($request->user['address_id'] === null and ! empty($address_info)) {
             $user_info['address_id'] = Address::create($address_info)->id;
         }
+
+        $user_info['password'] = Hash::make($request->user['password']);
 
         $user = User::create($user_info);
 
@@ -162,6 +165,8 @@ class DirectoryController extends Controller
         } elseif ((int) $request->user['address_id'] === $user->address_id) {
             $user->address->update($address_info);
         }
+
+        $user_info['password'] = Hash::make($request->user['password']);
 
         $user->update($user_info);
 
