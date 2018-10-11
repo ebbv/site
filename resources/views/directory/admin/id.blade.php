@@ -20,5 +20,5 @@
               <input id="passord"
                      name="user[password]"
                      type="password"
-                     value="{{ $m->password ?? '' }}">
+                     value="">
             </div>
