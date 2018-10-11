@@ -28,8 +28,8 @@ class UserPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function update(User $user)
+    public function update(User $loggedInUser, User $user)
     {
-        return $user->isAdmin;
+        return $loggedInUser->id === $user->id or $loggedInUser->isAdmin;
     }
 }

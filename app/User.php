@@ -39,7 +39,9 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class)->withTimestamps()->withPivot('created_by', 'updated_by');
+        return $this->belongsToMany(Role::class)
+            ->withTimestamps()
+            ->withPivot('created_by', 'updated_by');
     }
 
     public function messages()
