@@ -76,7 +76,7 @@ class DirectoryController extends Controller
      */
     public function store(Request $request)
     {
-        $user_info = $request->user;
+        $user_info = array_filter($request->user);
 
         $address_info = array_filter($request->address);
 
@@ -84,7 +84,9 @@ class DirectoryController extends Controller
             $user_info['address_id'] = Address::create($address_info)->id;
         }
 
-        $user_info['password'] = Hash::make($request->user['password']);
+        if (isset($user_info['password'])) {
+            $user_info['password'] = Hash::make($request->user['password']);
+        }
 
         $user = User::create($user_info);
 
@@ -152,29 +154,33 @@ class DirectoryController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user_info = $request->user;
+        $user_info = array_filter($request->user);
 
         $address_info = array_filter($request->address);
 
         if ($request->user['address_id'] === null) {
             if ($user->address_id !== null and empty($address_info)) {
                 $user_info['address_id'] = null;
-            } else {
+            } elseif (! empty($address_info)) {
                 $user_info['address_id'] = Address::firstOrCreate($address_info)->id;
             }
         } elseif ((int) $request->user['address_id'] === $user->address_id) {
             $user->address->update($address_info);
         }
 
-        $user_info['password'] = Hash::make($request->user['password']);
+        if (isset($user_info['password'])) {
+            $user_info['password'] = Hash::make($request->user['password']);
+        }
 
         $user->update($user_info);
 
-        foreach ($request->roles as $role) {
-            $roles[$role] = ['created_by' => auth()->id(), 'updated_by' => auth()->id()];
-        }
+        if ($request->roles !== null) {
+            foreach ($request->roles as $role) {
+                $roles[$role] = ['created_by' => auth()->id(), 'updated_by' => auth()->id()];
+            }
 
-        $user->roles()->sync($roles);
+            $user->roles()->sync($roles);
+        }
 
         $user_phones = array_pluck($user->phones->toArray(), 'type', 'id');
 
