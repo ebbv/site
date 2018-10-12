@@ -15,19 +15,23 @@ document.getElementById('nav-menu-btn').addEventListener('click', function () {
 });
 
 let menuButton = document.getElementById('account-menu-button'),
-  logoutButton = document.getElementById('logout-button');
+  accountMenu = document.getElementById('account-menu');
 
 if (menuButton) {
   menuButton.addEventListener('click', function () {
-    let menu = new MDCMenu(document.getElementById('account-menu'));
+    let menu = new MDCMenu(accountMenu);
     menu.open = !menu.open;
   });
-}
 
-if (logoutButton) {
-  logoutButton.addEventListener('click', function (e) {
-    e.preventDefault();
-    document.getElementById('logout-form').submit();
+  accountMenu.querySelectorAll('a').forEach(function (element) {
+    element.addEventListener('click', function (e) {
+      if (element.id == 'logout-button') {
+        e.preventDefault();
+        element.previousElementSibling.submit();
+      } else {
+        location.assign(element.href);
+      }
+    });
   });
 }
 
