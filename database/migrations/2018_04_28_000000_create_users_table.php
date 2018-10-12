@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('username')->unique()->nullable()->default(null);
-            $table->string('password')->default('');
             $table->unsignedInteger('address_id')->nullable();
+            $table->string('password')->default('');
             $table->rememberToken();
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
