@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'password'  => Hash::make(env('DB_PASSWORD'))
         ]);
 
-        factory(App\User::class, 5)->create();
+        factory(User::class, 5)->create();
 
         factory(App\Message::class, 100)->create();
 
