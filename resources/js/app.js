@@ -14,10 +14,11 @@ document.getElementById('nav-menu-btn').addEventListener('click', function () {
   new MDCDrawer(document.getElementById('js-app-drawer')).open = true;
 });
 
-let menuButton = document.getElementById('account-menu-button'),
-  accountMenu = document.getElementById('account-menu');
+let menuButton = document.getElementById('account-menu-button');
 
 if (menuButton) {
+  let accountMenu = menuButton.nextElementSibling;
+
   menuButton.addEventListener('click', function () {
     let menu = new MDCMenu(accountMenu);
     menu.open = !menu.open;
