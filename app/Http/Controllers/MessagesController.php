@@ -37,7 +37,7 @@ class MessagesController extends Controller
      * Display the specified message.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Message $message
+     * @param  \App\Message $message
      * @return \Illuminate\Http\Response
      */
     public function show(Message $message)
@@ -72,7 +72,7 @@ class MessagesController extends Controller
      * Store the newly created message in storage.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -104,7 +104,7 @@ class MessagesController extends Controller
      * Show the form for editing the specified message.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\Message $message
+     * @param  \App\Message $message
      * @return \Illuminate\Http\Response
      */
     public function edit(Message $message)

@@ -50,7 +50,7 @@ class DirectoryController extends Controller
      * Display the specified user.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\User $user
+     * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
@@ -74,7 +74,7 @@ class DirectoryController extends Controller
      * Store the newly created resource in storage.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -127,7 +127,7 @@ class DirectoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\User $user
+     * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
@@ -151,8 +151,8 @@ class DirectoryController extends Controller
      * Update the specified resource in storage.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \Illuminate\Http\Request $request
-     * @param \App\User $User
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\User $User
      * @return \Illuminate\Http\RedirctResponse
      */
     public function update(Request $request, User $user)
@@ -235,7 +235,7 @@ class DirectoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @author Robert Doucette <rice8204@gmail.com>
-     * @param \App\User $user
+     * @param  \App\User $user
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(User $user)
