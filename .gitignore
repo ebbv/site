@@ -5,7 +5,7 @@
 /public/fonts
 /public/imgs
 /public/js
-/public/mix-manifest.json
+/public/*.json
 /vendor
 .c9
 .DS_Store
