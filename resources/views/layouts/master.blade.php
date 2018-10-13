@@ -7,7 +7,7 @@
     <meta name="description" content="Le site de l'Eglise Biblique Baptiste de Vernon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
   </head>
   <body class="mdc-typography">
 
@@ -29,6 +29,6 @@
 
     @include($theme.'footer')
 
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
   </body>
 </html>
