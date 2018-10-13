@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <base href="{{ url('/') }}/">
-    <title>{{ env('APP_PREFIX').'EBBV' }}</title>
+    <title>{{ config('app.prefix').'EBBV' }}</title>
     <meta name="description" content="Le site de l'Eglise Biblique Baptiste de Vernon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">

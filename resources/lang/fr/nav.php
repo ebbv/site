@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'messages'      => [
+    'messages'  => [
         'text' => 'Accueil',
         'url'  => 'messages'
     ],

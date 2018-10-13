@@ -2,7 +2,8 @@
 
 return [
 
-    'theme' => 'layouts.master',
+    'prefix' => env('APP_PREFIX'),
+    'theme'  => 'layouts.master',
 
     /*
     |--------------------------------------------------------------------------
