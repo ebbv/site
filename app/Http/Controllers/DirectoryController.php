@@ -31,16 +31,19 @@ class DirectoryController extends Controller
      */
     public function index()
     {
-        return view('directory.index')->withMembers(User::with(['address',
+        return view('directory.index')->withMembers(User::with([
+            'address' => function ($q) {
+                $q->select('id', 'street_info', 'street_complement', 'zip', 'city');
+            },
             'emails' => function ($q) {
-                $q->orderBy('type', 'asc');
+                $q->select('id', 'address');
             },
             'phones' => function ($q) {
-                $q->orderBy('type', 'asc');
+                $q->select('id', 'number');
             }
         ])->whereHas('roles', function ($q) {
-            $q->where('name', 'membre');
-        })->orderBy('last_name', 'asc')->orderBy('first_name', 'asc')->get());
+            $q->select('id', 'name')->where('name', 'membre');
+        })->orderBy('last_name', 'asc')->orderBy('first_name', 'asc')->get(['id', 'first_name', 'last_name', 'address_id']));
     }
 
     /**
