@@ -56,7 +56,7 @@ class User extends Authenticatable
 
     public function getIsAdminAttribute()
     {
-        return ($this->roles()->where('name', 'administrateur')->count() === 0) ? false : true;
+        return session('isAdmin');
     }
 
     public function emails()

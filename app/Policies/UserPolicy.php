@@ -30,6 +30,6 @@ class UserPolicy
      */
     public function update(User $loggedInUser, User $user)
     {
-        return $loggedInUser->id === $user->id or $loggedInUser->isAdmin;
+        return ($loggedInUser->id === $user->id) or $loggedInUser->isAdmin;
     }
 }
