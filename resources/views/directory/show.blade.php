@@ -25,16 +25,4 @@
             <p><span>{{ $email->pivot->type }}</span> : {{ $email->address }}</p>
 @endforeach
           </div>
-@can ('update', $user)
-          <div class="mdc-card__actions">
-            <a href="{{ route('directory.edit', $user->id) }}">
-              <i class="material-icons mdc-card__action mdc-card__action--button" role="button">edit</i>
-            </a>
-            <form method="POST" action="{{ route('directory.destroy', $user->id) }}" accept-charset="utf-8">
-              {{ method_field('DELETE') }}
-              {{ csrf_field() }}
-              <i class="cancel material-icons mdc-card__action mdc-card__action--button" role="button">delete</i>
-            </form>
-          </div>
-@endcan
 @endsection
