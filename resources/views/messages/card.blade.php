@@ -12,9 +12,7 @@
               <p>Passage : {{ $message->passage }}</p>
               <p>
                 Apporté le {{ $message->formattedDate }} par
-                <a href="{{ $message->speaker->path() }}">
                   {{ $message->speaker->fullName }}
-                </a>
               </p>
             </section>
             <div class="mdc-layout-grid__inner player js-player">
