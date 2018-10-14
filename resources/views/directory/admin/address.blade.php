@@ -1,7 +1,7 @@
             <div>
               <select name="user[address_id]">
                 <option></option>
-@foreach (App\Address::orderBy('zip')->orderBy('street_info')->get() as $address)
+@foreach ($addresses as $address)
                 <option {{ (isset($m->address) and $address->id == $m->address->id) ? 'selected ' : '' }}value="{{ $address->id }}">
                   {{ $address->fullAddress }}
                 </option>

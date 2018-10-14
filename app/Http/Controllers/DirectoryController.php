@@ -66,7 +66,12 @@ class DirectoryController extends Controller
     public function create()
     {
         $this->authorize('create', User::class);
-        return view('directory.admin.index');
+        return view('directory.admin.index')->with([
+            'addresses' => Address::orderBy('zip')->orderBy('street_info')->get(),
+            'emails'    => Email::orderBy('address')->get(),
+            'phones'    => $this->getPhonesArray(),
+            'roles'     => Role::orderBy('name', 'asc')->get()
+        ]);
     }
 
     /**
@@ -140,7 +145,11 @@ class DirectoryController extends Controller
         }, 'roles']);
 
         return view('directory.admin.index')->with([
+            'addresses'         => Address::orderBy('zip')->orderBy('street_info')->get(),
+            'emails'            => Email::orderBy('address')->get(),
             'm'                 => $m,
+            'phones'            => $this->getPhonesArray(),
+            'roles'             => Role::orderBy('name', 'asc')->get(),
             'route'             => route('directory.update', $m->id),
             'editButtonText'    => __('forms.edit_button')
         ]);
@@ -187,11 +196,14 @@ class DirectoryController extends Controller
         $user_phones = array_pluck($user->phones->toArray(), 'type', 'id');
 
         foreach ($request->telephone as $key => $phone) {
-            $phoneId = array_search($phone['type'], $user_phones);
+            $phoneId = array_search($key, $user_phones);
 
             if ($phone['id'] === null) {
                 if ($phone['number'] !== null and $phoneId === false) {
-                    $user->assign('phone', Phone::create($phone)->id);
+                    $user->assign('phone', Phone::create([
+                        'number' => $phone,
+                        'type'   => $key
+                    ])->id);
                 } else {
                     $user->phones()->detach($phoneId);
                 }
@@ -248,5 +260,13 @@ class DirectoryController extends Controller
         // }
 
         return redirect()->route('directory.index');
+    }
+
+    public function getPhonesArray() {
+        foreach (Phone::orderBy('type')->orderBy('number')->get() as $phone) {
+            $phones[$phone->type][$phone->id] = $phone->number;
+        }
+
+        return $phones;
     }
 }

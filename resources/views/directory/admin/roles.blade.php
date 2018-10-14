@@ -1,6 +1,6 @@
             <div>
               <p>
-@foreach (App\Role::orderBy('name', 'asc')->get() as $role)
+@foreach ($roles as $role)
                 <label for="role{{ $role->id }}">{{ $role->name }}</label>
                 <input id="role{{ $role->id }}"
 @isset ($m)

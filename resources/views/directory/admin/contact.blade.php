@@ -1,19 +1,18 @@
             <div>
 <?php $temp = isset($m) ? array_pluck($m->phones->toArray(), 'type', 'number') : [] ?>
-@foreach (['fixe', 'portable'] as $key => $value)
+@foreach ($phones as $key => $value)
               <p>
-                <input name="telephone[{{ $key }}][type]"  type="hidden" value="{{ $value }}">
                 <select name="telephone[{{ $key }}][id]">
                   <option></option>
-@foreach (App\Phone::where('type', $value)->orderBy('number')->get() as $phone)
-                  <option {{ (array_search($value, $temp) === $phone->number) ? 'selected ' : '' }}value="{{ $phone->id }}">{{ $phone->number }}</option>
+@foreach ($value as $id => $number)
+                  <option {{ (array_search($key, $temp) === $number) ? 'selected ' : '' }}value="{{ $id }}">{{ $number }}</option>
 @endforeach
                 </select>
-                <label for="telephone[{{ $value }}]">Téléphone {{ $value }}</label>
-                <input id="telephone[{{ $value }}]"
+                <label for="telephone[{{ $key }}]">Téléphone {{ $key }}</label>
+                <input id="telephone-{{ $key }}"
                        name="telephone[{{ $key }}][number]"
                        type="tel"
-                       value="{{ array_search($value, $temp) }}">
+                       value="{{ array_search($key, $temp) }}">
               </p>
 @endforeach
 <?php $temp = isset($m) ? array_pluck($m->emails->toArray(), 'pivot.type', 'address') : [] ?>
@@ -22,7 +21,7 @@
                 <input name="email[{{ $key }}][type]"  type="hidden" value="{{ $value }}">
                 <select name="email[{{ $key }}][id]">
                     <option></option>
-@foreach (App\Email::orderBy('address')->get() as $email)
+@foreach ($emails as $email)
                     <option {{ (array_search($value, $temp) === $email->address) ? 'selected ' : '' }}value="{{ $email->id }}">{{ $email->address }}</option>
 @endforeach
                 </select>
