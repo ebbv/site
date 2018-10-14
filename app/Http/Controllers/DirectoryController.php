@@ -43,7 +43,7 @@ class DirectoryController extends Controller
             }
         ])->whereHas('roles', function ($q) {
             $q->select('id', 'name')->where('name', 'membre');
-        })->orderBy('last_name', 'asc')->orderBy('first_name', 'asc')
+        })->orderBy('last_name')->orderBy('first_name')
         ->get(['id', 'first_name', 'last_name', 'address_id']));
     }
 
@@ -73,7 +73,7 @@ class DirectoryController extends Controller
             ]),
             'emails'    => Email::orderBy('address')->get(['id', 'address']),
             'phones'    => $this->getPhonesArray(),
-            'roles'     => Role::orderBy('name', 'asc')->get(['id', 'name'])
+            'roles'     => Role::orderBy('name')->get(['id', 'name'])
         ]);
     }
 
@@ -158,7 +158,7 @@ class DirectoryController extends Controller
             'emails'            => Email::orderBy('address')->get(['id', 'address']),
             'm'                 => $m,
             'phones'            => $this->getPhonesArray(),
-            'roles'             => Role::orderBy('name', 'asc')->get(['id', 'name']),
+            'roles'             => Role::orderBy('name')->get(['id', 'name']),
             'route'             => route('directory.update', $m->id),
             'editButtonText'    => __('forms.edit_button')
         ]);
