@@ -43,7 +43,8 @@ class DirectoryController extends Controller
             }
         ])->whereHas('roles', function ($q) {
             $q->select('id', 'name')->where('name', 'membre');
-        })->orderBy('last_name', 'asc')->orderBy('first_name', 'asc')->get(['id', 'first_name', 'last_name', 'address_id']));
+        })->orderBy('last_name', 'asc')->orderBy('first_name', 'asc')
+        ->get(['id', 'first_name', 'last_name', 'address_id']));
     }
 
     /**
@@ -67,10 +68,12 @@ class DirectoryController extends Controller
     {
         $this->authorize('create', User::class);
         return view('directory.admin.index')->with([
-            'addresses' => Address::orderBy('zip')->orderBy('street_info')->get(),
-            'emails'    => Email::orderBy('address')->get(),
+            'addresses' => Address::orderBy('zip')->orderBy('street_info')->get([
+                'id', 'street_info','street_complement', 'zip', 'city'
+            ]),
+            'emails'    => Email::orderBy('address')->get(['id', 'address']),
             'phones'    => $this->getPhonesArray(),
-            'roles'     => Role::orderBy('name', 'asc')->get()
+            'roles'     => Role::orderBy('name', 'asc')->get(['id', 'name'])
         ]);
     }
 
@@ -138,18 +141,24 @@ class DirectoryController extends Controller
     {
         $this->authorize('update', $user);
 
-        $m = $user->load(['address', 'emails' => function ($q) {
-            $q->orderBy('type', 'asc');
+        $m = $user->load(['address' => function ($q) {
+            $q->select('id', 'street_info', 'street_complement', 'zip', 'city');
+        }, 'emails' => function ($q) {
+            $q->select('id', 'address');
         }, 'phones' => function ($q) {
-            $q->orderBy('type', 'asc');
-        }, 'roles']);
+            $q->select('id', 'number', 'type');
+        }, 'roles' => function ($q) {
+            $q->select('id', 'name');
+        }]);
 
         return view('directory.admin.index')->with([
-            'addresses'         => Address::orderBy('zip')->orderBy('street_info')->get(),
-            'emails'            => Email::orderBy('address')->get(),
+            'addresses'         => Address::orderBy('zip')->orderBy('street_info')->get([
+                'id', 'street_info', 'street_complement', 'zip', 'city'
+            ]),
+            'emails'            => Email::orderBy('address')->get(['id', 'address']),
             'm'                 => $m,
             'phones'            => $this->getPhonesArray(),
-            'roles'             => Role::orderBy('name', 'asc')->get(),
+            'roles'             => Role::orderBy('name', 'asc')->get(['id', 'name']),
             'route'             => route('directory.update', $m->id),
             'editButtonText'    => __('forms.edit_button')
         ]);
@@ -263,7 +272,7 @@ class DirectoryController extends Controller
     }
 
     public function getPhonesArray() {
-        foreach (Phone::orderBy('type')->orderBy('number')->get() as $phone) {
+        foreach (Phone::orderBy('number')->get(['id', 'number', 'type']) as $phone) {
             $phones[$phone->type][$phone->id] = $phone->number;
         }
 
