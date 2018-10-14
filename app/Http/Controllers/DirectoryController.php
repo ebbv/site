@@ -119,7 +119,7 @@ class DirectoryController extends Controller
             }
         }
 
-        return redirect()->route('directory');
+        return redirect()->route('directory.index');
     }
 
     /**
@@ -227,7 +227,7 @@ class DirectoryController extends Controller
             }
         }
 
-        return redirect()->route('directory');
+        return redirect()->route('directory.index');
     }
 
     /**

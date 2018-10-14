@@ -42,8 +42,8 @@
         <nav class="mdc-list">
 @foreach (['messages', 'contact', 'beliefs', 'directory'] as $uri)
           <a aria-hidden="true"
-             class="mdc-list-item{{ (url()->current() == route($uri)) ? ' mdc-list-item--activated' : '' }}"
-             href="{{ route($uri) }}"
+             class="mdc-list-item{{ (url()->current() == route($uri.'.index')) ? ' mdc-list-item--activated' : '' }}"
+             href="{{ route($uri.'.index') }}"
              id="{{ $uri }}-link"
              tabindex="0">
             {{ __('nav.'.$uri.'.text') }}

@@ -8,10 +8,10 @@ Route::redirect('/', 'messages');
 
 
 Route::get('messages', 'MessagesController@index')
-    ->name('messages');
+    ->name('messages.index');
 
 Route::get('message/{message}', 'MessagesController@show')
-    ->name('message')
+    ->name('message.show')
     ->where('message', '[0-9]+');
 
 Route::get('message/'.$add, 'MessagesController@create')
@@ -33,14 +33,14 @@ Route::delete('message/{message}', 'MessagesController@destroy')
     ->where('message', '[0-9]+');
 
 
-Route::get('contact', 'ContactController@index')->name('contact');
+Route::get('contact', 'ContactController@index')->name('contact.index');
 
 
-Route::get(__('nav.beliefs.url'), 'BeliefsController@index')->name('beliefs');
+Route::get(__('nav.beliefs.url'), 'BeliefsController@index')->name('beliefs.index');
 
 
 Route::get($directory, 'DirectoryController@index')
-    ->name('directory');
+    ->name('directory.index');
 
 Route::get($directory.'/'.$add, 'DirectoryController@create')
     ->name('directory.create');

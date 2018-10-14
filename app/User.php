@@ -34,7 +34,7 @@ class User extends Authenticatable
 
     public function path()
     {
-        return route('directory').'/'.$this->id;
+        return route('directory.index').'/'.$this->id;
     }
 
     public function roles()
