@@ -12,7 +12,9 @@ class MessageTest extends TestCase
     /** @test */
     public function it_has_a_speaker()
     {
-        $message = factory('App\Message')->create();
+        $message = factory('App\Message')->create([
+            'user_id' => factory('App\User')->create()->id
+        ]);
 
         $this->assertInstanceOf('App\User', $message->speaker);
     }

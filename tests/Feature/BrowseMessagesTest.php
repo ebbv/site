@@ -13,7 +13,9 @@ class BrowseMessagesTest extends TestCase
     {
         parent::setUp();
 
-        $this->message = factory('App\Message')->create();
+        $this->message = factory('App\Message')->create([
+            'user_id' => factory('App\User')->create()->id
+        ]);
     }
 
     /** @test */

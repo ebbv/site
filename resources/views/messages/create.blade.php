@@ -53,7 +53,7 @@
                         mdc-layout-grid__cell--span-2-tablet
                         mdc-layout-grid__cell--span-3-desktop">
               <div class="mdc-select mdc-select--box">
-                <select class="mdc-select__native-control" id="message-file" name="file">
+                <select class="mdc-select__native-control" id="message-file" name="date">
                   <option disabled selected value=""></option>
 @foreach ($files as $f)
                   <option value="{{ $f }}">{{ $f }}</option>

@@ -92,9 +92,9 @@ class MessagesController extends Controller
             'title'     => $request->title,
             'passage'   => $request->passage,
             'url'       => $fileName,
-            'date'      => $request->file
+            'date'      => $request->date
         ])) {
-            $this->move_audio_files($request->file, $fileName);
+            $this->move_audio_files($request->date, $fileName);
         }
 
         return redirect($message->path());

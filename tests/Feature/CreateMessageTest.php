@@ -34,7 +34,10 @@ class CreateMessageTest extends TestCase
 
         $title = 'Some title';
 
-        $this->publishMessage(['title' => $title]);
+        $this->publishMessage([
+            'title'   => $title,
+            'user_id' => 1
+        ]);
 
         $this->assertDatabaseHas('messages', ['title' => $title]);
     }

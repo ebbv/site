@@ -26,6 +26,7 @@ abstract class TestCase extends BaseTestCase
         $user = factory('App\User')->create();
         factory('App\Role')->create(['name' => 'administrateur'])->assignTo($user);
         $this->actingAs($user);
+        session(['isAdmin' => true]);
         return $this;
     }
 }
