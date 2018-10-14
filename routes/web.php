@@ -10,10 +10,6 @@ Route::redirect('/', 'messages');
 Route::get('messages', 'MessagesController@index')
     ->name('messages');
 
-Route::get('message/{message}', 'MessagesController@show')
-    ->name('message')
-    ->where('message', '[0-9]+');
-
 Route::get('message/'.$add, 'MessagesController@create')
     ->name('message.create');
 

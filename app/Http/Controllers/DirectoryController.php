@@ -55,7 +55,6 @@ class DirectoryController extends Controller
      */
     public function show(User $user)
     {
-        return view('directory.show')->withUser($user->load('address', 'emails', 'phones', 'roles'));
     }
 
     /**
