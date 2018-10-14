@@ -10,6 +10,10 @@ Route::redirect('/', 'messages');
 Route::get('messages', 'MessagesController@index')
     ->name('messages');
 
+Route::get('message/{message}', 'MessagesController@show')
+    ->name('message')
+    ->where('message', '[0-9]+');
+
 Route::get('message/'.$add, 'MessagesController@create')
     ->name('message.create');
 
@@ -37,9 +41,6 @@ Route::get(__('nav.beliefs.url'), 'BeliefsController@index')->name('beliefs');
 
 Route::get($directory, 'DirectoryController@index')
     ->name('directory');
-
-Route::get($directory.'/{user}', 'DirectoryController@show')
-    ->where('user', '[0-9]+');
 
 Route::get($directory.'/'.$add, 'DirectoryController@create')
     ->name('directory.create');

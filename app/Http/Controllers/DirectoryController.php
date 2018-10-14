@@ -119,7 +119,7 @@ class DirectoryController extends Controller
             }
         }
 
-        return redirect($user->path());
+        return redirect()->route('directory');
     }
 
     /**
@@ -227,7 +227,7 @@ class DirectoryController extends Controller
             }
         }
 
-        return redirect($user->path());
+        return redirect()->route('directory');
     }
 
     /**
