@@ -16,7 +16,9 @@
           </div>
           <div class="mdc-menu mdc-menu-surface" id="account-menu" tabindex="-1">
             <div aria-hidden="true" class="mdc-list mdc-menu__items" role="menu">
-              <a class="mdc-list-item" href="{{ auth()->user()->path() }}" role="menuitem">
+              <a class="mdc-list-item"
+                 href="{{ auth()->user()->path().'/'.__('nav.actions.edit') }}"
+                 role="menuitem">
                 Mes Infos ({{ auth()->user()->username }})
               </a>
               <form accept-charset="utf-8" action="{{ route('logout') }}" id="logout-form" method="POST">
