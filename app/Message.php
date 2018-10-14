@@ -24,7 +24,8 @@ class Message extends Model
 
     public function speaker()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id')
+            ->select('id', 'last_name', 'first_name', 'username');
     }
 
     public function getFormattedDateAttribute()

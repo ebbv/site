@@ -28,7 +28,10 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        $messages = Message::with('speaker')->latest('date')->paginate(5);
+        $messages = Message::with('speaker')
+            ->select('id', 'user_id', 'title', 'passage', 'date', 'url')
+            ->latest('date')
+            ->paginate(5);
 
         return view('messages.index', compact('messages'));
     }
@@ -63,7 +66,9 @@ class MessagesController extends Controller
         }
 
         return view('messages.create')->with([
-            'speakers'  => User::has('speaker')->orderBy('last_name', 'asc')->get(),
+            'speakers'  => User::has('speaker')
+                ->orderBy('last_name')
+                ->get(['id', 'first_name', 'last_name']),
             'files'     => $files
         ]);
     }
