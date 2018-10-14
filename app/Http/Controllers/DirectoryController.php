@@ -39,7 +39,7 @@ class DirectoryController extends Controller
                 $q->select('id', 'address');
             },
             'phones' => function ($q) {
-                $q->select('id', 'number');
+                $q->select('id', 'number', 'type');
             }
         ])->whereHas('roles', function ($q) {
             $q->select('id', 'name')->where('name', 'membre');
