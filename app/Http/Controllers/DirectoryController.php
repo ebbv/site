@@ -71,7 +71,7 @@ class DirectoryController extends Controller
             'addresses' => Address::get(['id', 'street_info','street_complement', 'zip', 'city']),
             'emails'    => Email::orderBy('address')->get(['id', 'address']),
             'phones'    => $this->getPhonesArray(),
-            'roles'     => Role::orderBy('name')->get(['id', 'name'])
+            'roles'     => Role::get(['id', 'name'])
         ]);
     }
 
@@ -156,7 +156,7 @@ class DirectoryController extends Controller
             'emails'            => Email::orderBy('address')->get(['id', 'address']),
             'm'                 => $m,
             'phones'            => $this->getPhonesArray(),
-            'roles'             => Role::orderBy('name')->get(['id', 'name']),
+            'roles'             => Role::get(['id', 'name']),
             'route'             => route('directory.update', $m->id),
             'editButtonText'    => __('forms.edit_button')
         ]);
