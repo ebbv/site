@@ -2,11 +2,12 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
 {
-    use RecordWhoCreatesAndUpdates;
+    use Trackable;
 
     /**
      * The attributes that are mass assignable.
@@ -16,6 +17,15 @@ class Address extends Model
     protected $fillable = [
         'street_info', 'street_complement', 'zip', 'city'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('sort', function (Builder $builder) {
+            $builder->orderBy('zip')->orderBy('city')->orderBy('street_info');
+        });
+    }
 
     public function users()
     {

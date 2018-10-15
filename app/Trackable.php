@@ -2,12 +2,10 @@
 
 namespace App;
 
-trait RecordWhoCreatesAndUpdates
+trait Trackable
 {
-    protected static function boot()
+    protected static function bootTrackable()
     {
-        parent::boot();
-
         static::creating(function ($model) {
             $model->created_by = auth()->id() ?: 1;
             $model->updated_by = auth()->id() ?: 1;

@@ -2,11 +2,12 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Email extends Model
 {
-    use RecordWhoCreatesAndUpdates;
+    use Trackable;
 
     /**
      * The attributes that are mass assignable.
@@ -16,6 +17,15 @@ class Email extends Model
     protected $fillable = [
         'address', 'type'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('sort', function (Builder $builder) {
+            $builder->orderBy('address');
+        });
+    }
 
     public function users()
     {

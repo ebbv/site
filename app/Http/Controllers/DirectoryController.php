@@ -68,12 +68,10 @@ class DirectoryController extends Controller
     {
         $this->authorize('create', User::class);
         return view('directory.admin.index')->with([
-            'addresses' => Address::orderBy('zip')->orderBy('street_info')->get([
-                'id', 'street_info','street_complement', 'zip', 'city'
-            ]),
-            'emails'    => Email::orderBy('address')->get(['id', 'address']),
+            'addresses' => Address::get(['id', 'street_info','street_complement', 'zip', 'city']),
+            'emails'    => Email::get(['id', 'address']),
             'phones'    => $this->getPhonesArray(),
-            'roles'     => Role::orderBy('name')->get(['id', 'name'])
+            'roles'     => Role::get(['id', 'name'])
         ]);
     }
 
@@ -102,11 +100,11 @@ class DirectoryController extends Controller
 
         Role::find($request->roles)->each->assignTo($user);
 
-        foreach ($request->telephone as $phone) {
+        foreach ($request->telephone as $key =>$phone) {
             if ($phone['id'] === null and $phone['number'] !== null) {
                 $phoneIds[] = Phone::firstOrCreate([
                     'number' => $phone['number'],
-                    'type'   => $phone['type']
+                    'type'   => $key
                 ])->id;
             } else {
                 $phoneIds[] = $phone['id'];
@@ -152,15 +150,15 @@ class DirectoryController extends Controller
         }]);
 
         return view('directory.admin.index')->with([
-            'addresses'         => Address::orderBy('zip')->orderBy('street_info')->get([
+            'addresses'      => Address::get([
                 'id', 'street_info', 'street_complement', 'zip', 'city'
             ]),
-            'emails'            => Email::orderBy('address')->get(['id', 'address']),
-            'm'                 => $m,
-            'phones'            => $this->getPhonesArray(),
-            'roles'             => Role::orderBy('name')->get(['id', 'name']),
-            'route'             => route('directory.update', $m->id),
-            'editButtonText'    => __('forms.edit_button')
+            'emails'        => Email::get(['id', 'address']),
+            'm'             => $m,
+            'phones'        => $this->getPhonesArray(),
+            'roles'         => Role::get(['id', 'name']),
+            'route'         => route('directory.update', $m->id),
+            'editButtonText'=> __('forms.edit_button')
         ]);
     }
 
@@ -205,22 +203,39 @@ class DirectoryController extends Controller
         $user_phones = array_pluck($user->phones->toArray(), 'type', 'id');
 
         foreach ($request->telephone as $key => $phone) {
-            $phoneId = array_search($key, $user_phones);
+            $oldPhoneId = array_search($key, $user_phones);
 
             if ($phone['id'] === null) {
-                if ($phone['number'] !== null and $phoneId === false) {
-                    $user->assign('phone', Phone::create([
-                        'number' => $phone,
-                        'type'   => $key
-                    ])->id);
-                } else {
-                    $user->phones()->detach($phoneId);
+                $newPhoneId = false;
+
+                if ($phone['number'] !== null) {
+                    $newPhoneId = Phone::firstOrCreate([
+                        'number'=> $phone['number'],
+                        'type'  => $key
+                    ])->id;
                 }
-            } elseif ((int) $phone['id'] === $phoneId) {
-                Phone::find($phone['id'])->update($phone);
+
+                if ($oldPhoneId === false and $newPhoneId !== false) {
+                    $user->assign('phone', $newPhoneId);
+                } elseif ($oldPhoneId === $newPhoneId) {
+                    $user->phones()->detach($oldPhoneId);
+                } elseif ($newPhoneId !== false) {
+                    $user->phones()->updateExistingPivot($oldPhoneId, [
+                        'phone_id' => $newPhoneId
+                    ]);
+                }
+            } elseif ((int) $phone['id'] === $oldPhoneId) {
+                if ($phone['number'] !== null) {
+                    Phone::find($phone['id'])->update($phone);
+                }
             } else {
-                $user->phones()->detach($phoneId);
-                $user->assign('phone', $phone['id']);
+                if ($oldPhoneId === false) {
+                    $user->assign('phone', $phone['id']);
+                } else {
+                    $user->phones()->updateExistingPivot($oldPhoneId, [
+                        'phone_id' => $phone['id']
+                    ]);
+                }
             }
         }
 
@@ -272,6 +287,8 @@ class DirectoryController extends Controller
     }
 
     public function getPhonesArray() {
+        $phones = ['fixe' => [], 'portable' => []];
+
         foreach (Phone::orderBy('number')->get(['id', 'number', 'type']) as $phone) {
             $phones[$phone->type][$phone->id] = $phone->number;
         }

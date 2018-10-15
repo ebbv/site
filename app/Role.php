@@ -2,11 +2,12 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    use RecordWhoCreatesAndUpdates;
+    use Trackable;
 
     /**
      * The attributes that are mass assignable.
@@ -16,6 +17,15 @@ class Role extends Model
     protected $fillable = [
         'name'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('sort', function (Builder $builder) {
+            $builder->orderBy('name');
+        });
+    }
 
     public function users()
     {
