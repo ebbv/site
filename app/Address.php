@@ -23,7 +23,7 @@ class Address extends Model
         parent::boot();
 
         static::addGlobalScope('sort', function (Builder $builder) {
-            $builder->orderBy('zip')->orderBy('city');
+            $builder->orderBy('zip')->orderBy('city')->orderBy('street_info');
         });
     }
 
