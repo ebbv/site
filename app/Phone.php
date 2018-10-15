@@ -19,7 +19,9 @@ class Phone extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withTimestamps()->withPivot('created_by', 'updated_by');
+        return $this->belongsToMany(User::class)
+            ->withTimestamps()
+            ->withPivot('created_by', 'updated_by');
     }
 
     public function assignTo($user)
