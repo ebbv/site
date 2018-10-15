@@ -225,7 +225,9 @@ class DirectoryController extends Controller
                     ]);
                 }
             } elseif ((int) $phone['id'] === $oldPhoneId) {
-                Phone::find($phone['id'])->update($phone);
+                if ($phone['number'] !== null) {
+                    Phone::find($phone['id'])->update($phone);
+                }
             } else {
                 if ($oldPhoneId === false) {
                     $user->assign('phone', $phone['id']);
