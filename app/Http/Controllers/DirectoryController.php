@@ -150,15 +150,15 @@ class DirectoryController extends Controller
         }]);
 
         return view('directory.admin.index')->with([
-            'addresses'         => Address::get([
+            'addresses'      => Address::get([
                 'id', 'street_info', 'street_complement', 'zip', 'city'
             ]),
-            'emails'            => Email::orderBy('address')->get(['id', 'address']),
-            'm'                 => $m,
-            'phones'            => $this->getPhonesArray(),
-            'roles'             => Role::get(['id', 'name']),
-            'route'             => route('directory.update', $m->id),
-            'editButtonText'    => __('forms.edit_button')
+            'emails'        => Email::orderBy('address')->get(['id', 'address']),
+            'm'             => $m,
+            'phones'        => $this->getPhonesArray(),
+            'roles'         => Role::get(['id', 'name']),
+            'route'         => route('directory.update', $m->id),
+            'editButtonText'=> __('forms.edit_button')
         ]);
     }
 
