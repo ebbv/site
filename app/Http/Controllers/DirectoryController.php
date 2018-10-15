@@ -100,11 +100,11 @@ class DirectoryController extends Controller
 
         Role::find($request->roles)->each->assignTo($user);
 
-        foreach ($request->telephone as $phone) {
+        foreach ($request->telephone as $key =>$phone) {
             if ($phone['id'] === null and $phone['number'] !== null) {
                 $phoneIds[] = Phone::firstOrCreate([
                     'number' => $phone['number'],
-                    'type'   => $phone['type']
+                    'type'   => $key
                 ])->id;
             } else {
                 $phoneIds[] = $phone['id'];
@@ -203,22 +203,37 @@ class DirectoryController extends Controller
         $user_phones = array_pluck($user->phones->toArray(), 'type', 'id');
 
         foreach ($request->telephone as $key => $phone) {
-            $phoneId = array_search($key, $user_phones);
+            $oldPhoneId = array_search($key, $user_phones);
 
             if ($phone['id'] === null) {
-                if ($phone['number'] !== null and $phoneId === false) {
-                    $user->assign('phone', Phone::create([
-                        'number' => $phone['number'],
-                        'type'   => $key
-                    ])->id);
-                } else {
-                    $user->phones()->detach($phoneId);
+                $newPhoneId = false;
+
+                if ($phone['number'] !== null) {
+                    $newPhoneId = Phone::firstOrCreate([
+                        'number'=> $phone['number'],
+                        'type'  => $key
+                    ])->id;
                 }
-            } elseif ((int) $phone['id'] === $phoneId) {
+
+                if ($oldPhoneId === false and $newPhoneId !== false) {
+                    $user->assign('phone', $newPhoneId);
+                } elseif ($oldPhoneId === $newPhoneId) {
+                    $user->phones()->detach($oldPhoneId);
+                } elseif ($newPhoneId !== false) {
+                    $user->phones()->updateExistingPivot($oldPhoneId, [
+                        'phone_id' => $newPhoneId
+                    ]);
+                }
+            } elseif ((int) $phone['id'] === $oldPhoneId) {
                 Phone::find($phone['id'])->update($phone);
             } else {
-                $user->phones()->detach($phoneId);
-                $user->assign('phone', $phone['id']);
+                if ($oldPhoneId === false) {
+                    $user->assign('phone', $phone['id']);
+                } else {
+                    $user->phones()->updateExistingPivot($oldPhoneId, [
+                        'phone_id' => $phone['id']
+                    ]);
+                }
             }
         }
 
