@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
 {
-    use RecordWhoCreatesAndUpdates;
+    use Trackable;
 
     /**
      * The attributes that are mass assignable.

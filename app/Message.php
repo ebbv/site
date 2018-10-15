@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    use RecordWhoCreatesAndUpdates;
+    use Trackable;
 
     /**
      * The attributes that are mass assignable.

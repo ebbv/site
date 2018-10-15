@@ -208,7 +208,7 @@ class DirectoryController extends Controller
             if ($phone['id'] === null) {
                 if ($phone['number'] !== null and $phoneId === false) {
                     $user->assign('phone', Phone::create([
-                        'number' => $phone,
+                        'number' => $phone['number'],
                         'type'   => $key
                     ])->id);
                 } else {
@@ -270,6 +270,8 @@ class DirectoryController extends Controller
     }
 
     public function getPhonesArray() {
+        $phones = ['fixe' => [], 'portable' => []];
+
         foreach (Phone::orderBy('number')->get(['id', 'number', 'type']) as $phone) {
             $phones[$phone->type][$phone->id] = $phone->number;
         }
