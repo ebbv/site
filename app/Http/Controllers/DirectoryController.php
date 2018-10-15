@@ -68,9 +68,7 @@ class DirectoryController extends Controller
     {
         $this->authorize('create', User::class);
         return view('directory.admin.index')->with([
-            'addresses' => Address::orderBy('zip')->orderBy('street_info')->get([
-                'id', 'street_info','street_complement', 'zip', 'city'
-            ]),
+            'addresses' => Address::get(['id', 'street_info','street_complement', 'zip', 'city']),
             'emails'    => Email::orderBy('address')->get(['id', 'address']),
             'phones'    => $this->getPhonesArray(),
             'roles'     => Role::orderBy('name')->get(['id', 'name'])
@@ -152,7 +150,7 @@ class DirectoryController extends Controller
         }]);
 
         return view('directory.admin.index')->with([
-            'addresses'         => Address::orderBy('zip')->orderBy('street_info')->get([
+            'addresses'         => Address::get([
                 'id', 'street_info', 'street_complement', 'zip', 'city'
             ]),
             'emails'            => Email::orderBy('address')->get(['id', 'address']),
