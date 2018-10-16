@@ -13,7 +13,7 @@ class AddFirstAndLastNameUniqueConstraint extends Migration
      */
     public function up()
     {
-        Schema::table('users', function(Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->unique(['first_name', 'last_name']);
         });
     }
@@ -25,7 +25,7 @@ class AddFirstAndLastNameUniqueConstraint extends Migration
      */
     public function down()
     {
-        Schema::table('users', function(Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropUnique('users_first_name_last_name_unique');
         });
     }

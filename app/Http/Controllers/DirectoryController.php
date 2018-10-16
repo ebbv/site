@@ -68,7 +68,7 @@ class DirectoryController extends Controller
     {
         $this->authorize('create', User::class);
         return view('directory.admin.index')->with([
-            'addresses' => Address::get(['id', 'street_info','street_complement', 'zip', 'city']),
+            'addresses' => Address::get(['id', 'street_info', 'street_complement', 'zip', 'city']),
             'emails'    => Email::get(['id', 'address']),
             'phones'    => $this->getPhonesArray(),
             'roles'     => Role::get(['id', 'name'])
@@ -286,7 +286,8 @@ class DirectoryController extends Controller
         return redirect()->route('directory.index');
     }
 
-    public function getPhonesArray() {
+    public function getPhonesArray()
+    {
         $phones = ['fixe' => [], 'portable' => []];
 
         foreach (Phone::orderBy('number')->get(['id', 'number', 'type']) as $phone) {
