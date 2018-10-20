@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFirstAndLastNameUniqueConstraint extends Migration
+class AddUniqueConstraintToNameColumnOnRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddFirstAndLastNameUniqueConstraint extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->unique(['first_name', 'last_name']);
+        Schema::table('roles', function (Blueprint $table) {
+            $table->unique('name');
         });
     }
 
@@ -25,8 +25,8 @@ class AddFirstAndLastNameUniqueConstraint extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropUnique(['first_name', 'last_name']);
+        Schema::table('roles', function (Blueprint $table) {
+            $table->dropUnique(['name']);
         });
     }
 }
