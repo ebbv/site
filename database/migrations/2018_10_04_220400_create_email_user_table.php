@@ -20,7 +20,7 @@ class CreateEmailUserTable extends Migration
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
             $table->timestamps();
-            $table->unique(['email_id', 'user_id', 'type']);
+            $table->unique(['user_id', 'type']);
             $table->foreign('email_id')->references('id')->on('emails')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');

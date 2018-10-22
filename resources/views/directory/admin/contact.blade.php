@@ -15,7 +15,7 @@
                        value="{{ array_search($key, $temp) }}">
               </p>
 @endforeach
-<?php $temp = isset($m) ? array_pluck($m->emails->toArray(), 'pivot.type', 'address') : [] ?>
+<?php $temp = isset($m) ? array_pluck($m->emails->toArray(), 'type', 'address') : [] ?>
 @foreach (['principal', 'secondaire'] as $key => $value)
               <p>
                 <input name="email[{{ $key }}][type]"  type="hidden" value="{{ $value }}">

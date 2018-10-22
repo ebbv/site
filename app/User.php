@@ -7,7 +7,14 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable, Trackable;
+    use Notifiable, RecordsActivity;
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -39,9 +46,7 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class)
-            ->withTimestamps()
-            ->withPivot('created_by', 'updated_by');
+        return $this->belongsToMany(Role::class);
     }
 
     public function messages()
@@ -61,10 +66,7 @@ class User extends Authenticatable
 
     public function emails()
     {
-        return $this->belongsToMany(Email::class)
-            ->withTimestamps()
-            ->withPivot('type', 'created_by', 'updated_by')
-            ->orderBy('type');
+        return $this->belongsToMany(Email::class)->withPivot('type')->orderBy('type');
     }
 
     public function address()
@@ -74,21 +76,28 @@ class User extends Authenticatable
 
     public function phones()
     {
-        return $this->belongsToMany(Phone::class)
-            ->withTimestamps()
-            ->withPivot('created_by', 'updated_by')
-            ->orderBy('type');
+        return $this->belongsToMany(Phone::class)->orderBy('type');
     }
 
     public function assign($relationship, $value, $extras = [])
     {
-        $relationship = $relationship.'s';
+        $model = 'App\\'.ucfirst($relationship).'User';
 
-        $extras = array_merge($extras, [
-            'created_by' => auth()->id() ?: 1,
-            'updated_by' => auth()->id() ?: 1
-        ]);
-
-        $this->$relationship()->attach($value, $extras);
+        if (is_array($value)) {
+            foreach ($value as $id) {
+                $model::firstOrCreate([
+                    $relationship.'_id' => $id,
+                    'user_id'           => $this->id
+                ]);
+            }
+        } else {
+            $model::firstOrCreate(array_merge(
+                [
+                    $relationship.'_id' => $value,
+                    'user_id'           => $this->id
+                ],
+                $extras
+            ));
+        }
     }
 }

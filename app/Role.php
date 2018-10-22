@@ -7,7 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    use Trackable;
+    use RecordsActivity;
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -29,14 +36,23 @@ class Role extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withTimestamps()->withPivot('created_by', 'updated_by');
+        return $this->belongsToMany(User::class);
     }
 
     public function assignTo($user)
     {
-        $this->users()->attach($user, [
-            'created_by' => auth()->id() ?: 1,
-            'updated_by' => auth()->id() ?: 1
-        ]);
+        if (is_array($user)) {
+            foreach ($user as $id) {
+                RoleUser::create([
+                    'role_id' => $this->id,
+                    'user_id' => $id['id']
+                ]);
+            }
+        } else {
+            RoleUser::create([
+                'role_id' => $this->id,
+                'user_id' => $user
+            ]);
+        }
     }
 }

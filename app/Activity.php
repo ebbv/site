@@ -4,10 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Phone extends Model
+class Activity extends Model
 {
-    use RecordsActivity;
-
     /**
      * Indicates if the model should be timestamped.
      *
@@ -21,19 +19,11 @@ class Phone extends Model
      * @var array
      */
     protected $fillable = [
-        'number', 'type'
+        'user_id', 'subject_id', 'subject_type', 'type', 'before', 'after'
     ];
 
-    public function users()
+    public function subject()
     {
-        return $this->belongsToMany(User::class);
-    }
-
-    public function assignTo($user)
-    {
-        PhoneUser::create([
-            'phone_id' => $this->id,
-            'user_id'  => $user
-        ]);
+        return $this->morphTo();
     }
 }

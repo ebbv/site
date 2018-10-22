@@ -7,7 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
 {
-    use Trackable;
+    use RecordsActivity;
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.

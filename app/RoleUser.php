@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Phone extends Model
+class RoleUser extends Model
 {
     use RecordsActivity;
 
@@ -16,24 +16,18 @@ class Phone extends Model
     public $timestamps = false;
 
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'role_user';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'number', 'type'
+        'role_id', 'user_id'
     ];
-
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
-
-    public function assignTo($user)
-    {
-        PhoneUser::create([
-            'phone_id' => $this->id,
-            'user_id'  => $user
-        ]);
-    }
 }
