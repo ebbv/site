@@ -39,8 +39,7 @@ class DirectoryController extends Controller
             'phones:phones.id,number,type'
         ])->whereHas('roles', function ($q) {
             $q->select('roles.id', 'name')->where('name', 'membre');
-        })->orderBy('last_name')->orderBy('first_name')
-        ->get(['users.id', 'first_name', 'last_name', 'address_id']));
+        })->get(['users.id', 'first_name', 'last_name', 'address_id']));
     }
 
     /**
