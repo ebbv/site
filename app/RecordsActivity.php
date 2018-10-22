@@ -29,6 +29,15 @@ trait RecordsActivity
                 ]);
             }
         });
+
+        static::deleted(function ($model) {
+            $model->activity()->create([
+                'user_id'   => auth()->id() ?? 1,
+                'type'      => 'deleted_'.strtolower(class_basename($model)),
+                'before'    => $model,
+                'after'     => ''
+            ]);
+        });
     }
 
     public function activity()

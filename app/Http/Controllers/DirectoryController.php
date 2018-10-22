@@ -14,6 +14,7 @@ use App\EmailUser;
 use App\Phone;
 use App\PhoneUser;
 use App\Role;
+use App\RoleUser;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -198,6 +199,16 @@ class DirectoryController extends Controller
         $user->update($user_info);
 
         if ($request->roles !== null) {
+            foreach ($user->roles as $role) {
+                if (! in_array($role->id, $request->roles)) {
+                    $oldRole = RoleUser::where('user_id', $user->id)
+                        ->where('role_id', $role->id)
+                        ->first();
+
+                    $oldRole->delete();
+                }
+            }
+
             foreach ($request->roles as $role) {
                 $user->assign('role', $role);
             }
@@ -207,6 +218,10 @@ class DirectoryController extends Controller
 
         foreach ($request->telephone as $key => $phone) {
             $oldPhoneId = array_search($key, $user_phones);
+
+            $temp = PhoneUser::where('user_id', $user->id)
+                ->where('phone_id', $oldPhoneId)
+                ->first();
 
             if ($phone['id'] === null) {
                 $newPhoneId = false;
@@ -220,10 +235,9 @@ class DirectoryController extends Controller
 
                 if ($oldPhoneId === false and $newPhoneId !== false) {
                     $user->assign('phone', $newPhoneId);
-                } elseif ($oldPhoneId === $newPhoneId) {
-                    $user->phones()->detach($oldPhoneId);
+                } elseif ($oldPhoneId === $newPhoneId and $newPhoneId !== false) {
+                    $temp->delete();
                 } elseif ($newPhoneId !== false) {
-                    $temp = PhoneUser::where('user_id', $user->id)->where('phone_id', $oldPhoneId)->first();
                     $temp->phone_id = $newPhoneId;
                     $temp->save();
                 }
@@ -235,7 +249,6 @@ class DirectoryController extends Controller
                 if ($oldPhoneId === false) {
                     $user->assign('phone', $phone['id']);
                 } else {
-                    $temp = PhoneUser::where('user_id', $user->id)->where('phone_id', $oldPhoneId)->first();
                     $temp->phone_id = $phone['id'];
                     $temp->save();
                 }
@@ -245,7 +258,9 @@ class DirectoryController extends Controller
         $user_emails = array_pluck($user->emails->toArray(), 'pivot.type', 'id');
 
         foreach ($request->email as $email) {
-            $temp = EmailUser::where('user_id', $user->id)->where('type', $email['type'])->first();
+            $temp = EmailUser::where('user_id', $user->id)
+                ->where('type', $email['type'])
+                ->first();
 
             if ($email['id'] === null) {
                 if ($email['address'] !== null) {
