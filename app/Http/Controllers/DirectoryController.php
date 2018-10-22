@@ -299,7 +299,7 @@ class DirectoryController extends Controller
     {
         $phones = ['fixe' => [], 'portable' => []];
 
-        foreach (Phone::orderBy('number')->get(['id', 'number', 'type']) as $phone) {
+        foreach (Phone::get(['id', 'number', 'type']) as $phone) {
             $phones[$phone->type][$phone->id] = $phone->number;
         }
 

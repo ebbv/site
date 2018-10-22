@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Phone extends Model
@@ -23,6 +24,15 @@ class Phone extends Model
     protected $fillable = [
         'number', 'type'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('sort', function (Builder $builder) {
+            $builder->orderBy('number');
+        });
+    }
 
     public function users()
     {
