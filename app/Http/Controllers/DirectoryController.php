@@ -34,15 +34,9 @@ class DirectoryController extends Controller
     public function index()
     {
         return view('directory.index')->withMembers(User::with([
-            'address' => function ($q) {
-                $q->select('id', 'street_info', 'street_complement', 'zip', 'city');
-            },
-            'emails' => function ($q) {
-                $q->select('emails.id', 'address');
-            },
-            'phones' => function ($q) {
-                $q->select('phones.id', 'number', 'type');
-            }
+            'address:id,street_info,street_complement,zip,city',
+            'emails:emails.id,address',
+            'phones:phones.id,number,type'
         ])->whereHas('roles', function ($q) {
             $q->select('roles.id', 'name')->where('name', 'membre');
         })->orderBy('last_name')->orderBy('first_name')
@@ -149,15 +143,12 @@ class DirectoryController extends Controller
     {
         $this->authorize('update', $user);
 
-        $m = $user->load(['address' => function ($q) {
-            $q->select('id', 'street_info', 'street_complement', 'zip', 'city');
-        }, 'emails' => function ($q) {
-            $q->select('emails.id', 'address', 'type');
-        }, 'phones' => function ($q) {
-            $q->select('phones.id', 'number', 'type');
-        }, 'roles' => function ($q) {
-            $q->select('roles.id', 'name');
-        }]);
+        $m = $user->load([
+            'address:id,street_info,street_complement,zip,city',
+            'emails:emails.id,address,type',
+            'phones:phones.id,number,type',
+            'roles:roles.id,name'
+        ]);
 
         return view('directory.admin.index')->with([
             'addresses'      => Address::get([
