@@ -1,6 +1,6 @@
 import { MDCCheckbox } from '@material/checkbox';
 import { MDCDrawer } from '@material/drawer';
-import { MDCIconToggle } from '@material/icon-toggle';
+import { MDCIconButtonToggle } from '@material/icon-button';
 import { MDCMenu } from '@material/menu';
 import { MDCRipple } from '@material/ripple';
 import { MDCSelect } from '@material/select';
@@ -24,15 +24,9 @@ if (menuButton) {
     menu.open = !menu.open;
   });
 
-  accountMenu.querySelectorAll('a').forEach(function (element) {
-    element.addEventListener('click', function (e) {
-      if (element.id == 'logout-button') {
-        e.preventDefault();
-        element.previousElementSibling.submit();
-      } else {
-        location.assign(element.href);
-      }
-    });
+  accountMenu.querySelector('#logout-button').addEventListener('click', function (e) {
+    e.preventDefault();
+    this.previousElementSibling.submit();
   });
 }
 
@@ -40,8 +34,8 @@ document.querySelectorAll('.mdc-button').forEach(function (element) {
   new MDCRipple(element);
 });
 
-document.querySelectorAll('.mdc-icon-toggle').forEach(function (element) {
-  new MDCIconToggle(element);
+document.querySelectorAll('.mdc-icon-button').forEach(function (element) {
+  new MDCIconButtonToggle(element);
 });
 
 document.querySelectorAll('.mdc-text-field').forEach(function (element) {

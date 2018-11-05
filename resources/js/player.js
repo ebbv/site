@@ -14,7 +14,7 @@ let player = {
     }
   },
   control : function (e) {
-    if (e.target.tagName === 'I') {
+    if (e.target.tagName === 'BUTTON') {
       let audio = e.target.parentNode.parentNode.querySelector('audio');
       if (audio.paused) {
         audio.play();

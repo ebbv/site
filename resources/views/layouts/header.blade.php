@@ -6,7 +6,7 @@
           <span class="mdc-top-app-bar__title mdc-top-app-bar__title--mini">EBBV</span>
         </section>
 @if (url()->current() !== route('login'))
-        <section class="mdc-menu-surface--anchor mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
 @if (Auth::check())
           <div id="account-menu-button">
             <span>{{ auth()->user()->fullname }}</span>
@@ -30,7 +30,7 @@
             </div>
           </div>
 @else
-          <a class="mdc-list-item" href="{{ route('login') }}" role="menuitem">
+          <a class="mdc-button mdc-button--raised" href="{{ route('login') }}">
             {{ __('nav.login.text') }}
           </a>
 @endif

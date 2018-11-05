@@ -18,13 +18,13 @@
             <div class="mdc-layout-grid__inner player js-player">
               <div class="mdc-layout-grid__cell
                           mdc-layout-grid__cell--span-1">
-                <i aria-pressed="false"
-                  class="material-icons mdc-icon-toggle"
-                  data-mdc-auto-init="MDCIconToggle"
-                  data-toggle-on='{"content": "pause", "cssClass": "audio-pause"}'
-                  data-toggle-off='{"content": "play_arrow", "cssClass": "audio-play"}'
-                  role="button">
-                </i>
+                <button aria-hidden="true"
+                        aria-label="Play and pause"
+                        aria-pressed="false"
+                        class="mdc-icon-button">
+                  <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">pause</i>
+                  <i class="material-icons mdc-icon-button__icon">play_arrow</i>
+                </button>
               </div>
               <div class="duration
                           mdc-layout-grid__cell

@@ -24,7 +24,8 @@
             <div class="mdc-layout-grid__cell
                         mdc-layout-grid__cell--span-3-tablet
                         mdc-layout-grid__cell--span-4-desktop">
-              <div class="mdc-select mdc-select--box">
+              <div class="mdc-select">
+                <i class="mdc-select__dropdown-icon"></i>
                 <select class="mdc-select__native-control" id="speaker" name="user_id">
                   <option disabled selected value=""></option>
 @foreach ($speakers as $s)
@@ -52,7 +53,8 @@
             <div class="mdc-layout-grid__cell
                         mdc-layout-grid__cell--span-2-tablet
                         mdc-layout-grid__cell--span-3-desktop">
-              <div class="mdc-select mdc-select--box">
+              <div class="mdc-select">
+                <i class="mdc-select__dropdown-icon"></i>
                 <select class="mdc-select__native-control" id="message-file" name="date">
                   <option disabled selected value=""></option>
 @foreach ($files as $f)

@@ -16,9 +16,9 @@
   padding-right: 0;
 }
 
-.error {
-  color: $mdc-text-field-error;
-  margin: 0 auto 20px auto;
+#login .error {
+  color: $mdc-theme-error;
+  margin: 20px auto;
   text-align: center;
   @include mdc-typography('caption');
 }
