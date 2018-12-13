@@ -46,13 +46,17 @@
                 </section>
 @can ('update', $member)
                 <div class="mdc-card__actions">
-                  <a href="{{ route('directory.edit', $member->id) }}">
-                    <i class="material-icons mdc-card__action mdc-card__action--button" role="button">edit</i>
+                  <a class="material-icons mdc-card__action mdc-card__action--icon mdc-icon-button"
+                     href="{{ route('directory.edit', $member->id) }}">
+                    edit
                   </a>
                   <form method="POST" action="{{ route('directory.destroy', $member->id) }}" accept-charset="utf-8">
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
-                    <i class="cancel material-icons mdc-card__action mdc-card__action--button" role="button">delete</i>
+                    <button class="cancel material-icons mdc-card__action mdc-card__action--icon mdc-icon-button"
+                            type="submit">
+                      delete
+                    </button>
                   </form>
                 </div>
 @endcan

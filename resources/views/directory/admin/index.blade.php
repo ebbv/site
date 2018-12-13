@@ -13,8 +13,8 @@
 @endcan
             @include('directory.admin.address')
             @include('directory.admin.contact')
-            <a href="{{ route('directory.index') }}">@lang('forms.cancel_button')</a>
-            <button type="submit">
+            <a class="mdc-button mdc-button--cancel mdc-button--raised" href="{{ route('directory.index') }}">@lang('forms.cancel_button')</a>
+            <button class="mdc-button mdc-button--raised" type="submit">
               {{ $editButtonText ?? __('forms.add_button') }}
             </button>
           </form>

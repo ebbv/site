@@ -22,3 +22,11 @@
 #directory-list hr {
   margin: 20px 0;
 }
+
+#directory-list .mdc-card__actions .mdc-icon-button {
+  @include mdc-icon-button-ink-color($mdc-theme-primary);
+}
+
+#directory-list .mdc-card__actions .cancel {
+  @include mdc-icon-button-ink-color($mdc-theme-error);
+}

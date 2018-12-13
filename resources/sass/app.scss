@@ -5,8 +5,10 @@
 
 @import '@material/button/mdc-button';
 @import '@material/card/mdc-card';
+@import "@material/checkbox/mdc-checkbox";
 @import '@material/drawer/mdc-drawer';
 @import '@material/fab/mdc-fab';
+@import "@material/form-field/mdc-form-field";
 @import '@material/icon-button/mdc-icon-button';
 @import '@material/layout-grid/mdc-layout-grid';
 @import '@material/linear-progress/mdc-linear-progress';
@@ -26,6 +28,7 @@
 @import 'layout/header';
 @import 'layout/footer';
 
+@import 'components/button';
 @import 'components/card';
 @import 'components/fab';
 @import 'components/pagination';
