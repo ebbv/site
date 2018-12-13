@@ -9,13 +9,13 @@
                   </option>
 @endforeach
                 </select>
-                <label class="mdc-floating-label">Choisir une adresse</label>
                 <div class="mdc-notched-outline">
-                  <svg>
-                    <path class="mdc-notched-outline__path"></path>
-                  </svg>
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label class="mdc-floating-label">Choisir une adresse</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
                 </div>
-                <div class="mdc-notched-outline__idle"></div>
               </div>
               <div class="mdc-text-field mdc-text-field--outlined">
                 <input class="mdc-text-field__input"
@@ -23,13 +23,13 @@
                        name="address[street_info]"
                        type="text"
                        value="{{ $m->address->street_info ?? '' }}">
-                <label class="mdc-floating-label">Adresse</label>
                 <div class="mdc-notched-outline">
-                  <svg>
-                    <path class="mdc-notched-outline__path"></path>
-                  </svg>
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label class="mdc-floating-label">Adresse</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
                 </div>
-                <div class="mdc-notched-outline__idle"></div>
               </div>
               <div class="mdc-text-field mdc-text-field--outlined">
                 <input class="mdc-text-field__input"
@@ -37,13 +37,13 @@
                        name="address[street_complement]"
                        type="text"
                        value="{{ $m->address->street_complement ?? '' }}">
-                <label class="mdc-floating-label">Complément</label>
                 <div class="mdc-notched-outline">
-                  <svg>
-                    <path class="mdc-notched-outline__path"></path>
-                  </svg>
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label class="mdc-floating-label">Complément</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
                 </div>
-                <div class="mdc-notched-outline__idle"></div>
               </div>
               <div class="mdc-text-field mdc-text-field--outlined">
                 <input class="mdc-text-field__input"
@@ -51,13 +51,13 @@
                        name="address[zip]"
                        type="number"
                        value="{{ $m->address->zip ?? '' }}">
-                <label class="mdc-floating-label">Code postal</label>
                 <div class="mdc-notched-outline">
-                  <svg>
-                    <path class="mdc-notched-outline__path"></path>
-                  </svg>
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label class="mdc-floating-label">Code postal</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
                 </div>
-                <div class="mdc-notched-outline__idle"></div>
               </div>
               <div class="mdc-text-field mdc-text-field--outlined">
                 <input class="mdc-text-field__input"
@@ -65,12 +65,12 @@
                        name="address[city]"
                        type="text"
                        value="{{ $m->address->city ?? '' }}">
-                <label class="mdc-floating-label">Ville</label>
                 <div class="mdc-notched-outline">
-                  <svg>
-                    <path class="mdc-notched-outline__path"></path>
-                  </svg>
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label class="mdc-floating-label">Ville</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
                 </div>
-                <div class="mdc-notched-outline__idle"></div>
               </div>
             </div>

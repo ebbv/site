@@ -24,15 +24,15 @@
                         name="email"
                         required
                         type="email">
-                  <label class="mdc-floating-label" for="email">
-                    E-mail
-                  </label>
                   <div class="mdc-notched-outline">
-                    <svg>
-                      <path class="mdc-notched-outline__path"/>
-                    </svg>
+                    <div class="mdc-notched-outline__leading"></div>
+                    <div class="mdc-notched-outline__notch">
+                      <label class="mdc-floating-label" for="email">
+                        E-mail
+                      </label>
+                    </div>
+                    <div class="mdc-notched-outline__trailing"></div>
                   </div>
-                  <div class="mdc-notched-outline__idle"></div>
                 </div>
                 <p class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg"
                   id="email-validation-msg">
@@ -40,9 +40,15 @@
                 </p>
                 <div class="mdc-text-field mdc-text-field--textarea">
                   <textarea class="mdc-text-field__input" id="body" name="body" rows="5"></textarea>
-                  <label class="mdc-floating-label" for="body">
-                    Question ou commentaire
-                  </label>
+                  <div class="mdc-notched-outline">
+                    <div class="mdc-notched-outline__leading"></div>
+                    <div class="mdc-notched-outline__notch">
+                      <label class="mdc-floating-label" for="body">
+                        Question ou commentaire
+                      </label>
+                    </div>
+                    <div class="mdc-notched-outline__trailing"></div>
+                  </div>
                 </div>
                 <button class="mdc-button mdc-button--raised"
                         type="submit"

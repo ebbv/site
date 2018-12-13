@@ -10,11 +10,12 @@
 @endforeach
                 </select>
                 <div class="mdc-notched-outline">
-                  <svg>
-                    <path class="mdc-notched-outline__path"></path>
-                  </svg>
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label class="mdc-floating-label">Choisir un numéro de téléphone</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
                 </div>
-                <div class="mdc-notched-outline__idle"></div>
               </div>
               <div class="mdc-text-field mdc-text-field--outlined">
                 <input class="mdc-text-field__input"
@@ -22,13 +23,13 @@
                        name="telephone[{{ $key }}][number]"
                        type="tel"
                        value="{{ array_search($key, $temp) }}">
-                <label class="mdc-floating-label" for="telephone[{{ $key }}]">Téléphone {{ $key }}</label>
                 <div class="mdc-notched-outline">
-                  <svg>
-                    <path class="mdc-notched-outline__path"></path>
-                  </svg>
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label class="mdc-floating-label" for="telephone[{{ $key }}]">Téléphone {{ $key }}</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
                 </div>
-                <div class="mdc-notched-outline__idle"></div>
               </div>
 @endforeach
 <?php $temp = isset($m) ? array_pluck($m->emails->toArray(), 'type', 'address') : [] ?>
@@ -43,11 +44,12 @@
 @endforeach
                 </select>
                 <div class="mdc-notched-outline">
-                  <svg>
-                    <path class="mdc-notched-outline__path"></path>
-                  </svg>
-                </div>
-                <div class="mdc-notched-outline__idle"></div>
+                    <div class="mdc-notched-outline__leading"></div>
+                    <div class="mdc-notched-outline__notch">
+                      <label class="mdc-floating-label">Choisir une adresse</label>
+                    </div>
+                    <div class="mdc-notched-outline__trailing"></div>
+                  </div>
               </div>
               <div class="mdc-text-field mdc-text-field--outlined">
                 <input class="mdc-text-field__input"
@@ -55,13 +57,13 @@
                        name="email[{{ $key }}][address]"
                        type="email"
                        value="{{ (array_search($value, $temp)) }}">
-                <label class="mdc-floating-label" for="email[{{ $value }}]">E-mail ({{ $value }})</label>
                 <div class="mdc-notched-outline">
-                  <svg>
-                    <path class="mdc-notched-outline__path"></path>
-                  </svg>
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label class="mdc-floating-label" for="email[{{ $value }}]">E-mail ({{ $value }})</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
                 </div>
-                <div class="mdc-notched-outline__idle"></div>
               </div>
 @endforeach
             </div>

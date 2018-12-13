@@ -21,15 +21,15 @@
                        required
                        type="text"
                        value="{{ old('username') }}">
-                <label class="mdc-floating-label mdc-floating-label--float-above" for="username">
-                  @lang('forms.username')
-                </label>
                 <div class="mdc-notched-outline">
-                  <svg>
-                    <path class="mdc-notched-outline__path"/>
-                  </svg>
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label class="mdc-floating-label mdc-floating-label--float-above" for="username">
+                      @lang('forms.username')
+                    </label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
                 </div>
-                <div class="mdc-notched-outline__idle"></div>
               </div>
               <p class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg"
                 id="username-validation-msg">
@@ -42,15 +42,15 @@
                        name="password"
                        required
                        type="password">
-                <label class="mdc-floating-label" for="password">
-                  @lang('forms.password')
-                </label>
                 <div class="mdc-notched-outline">
-                  <svg>
-                    <path class="mdc-notched-outline__path"/>
-                  </svg>
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label class="mdc-floating-label" for="password">
+                      @lang('forms.password')
+                    </label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
                 </div>
-                <div class="mdc-notched-outline__idle"></div>
               </div>
               <p class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg"
                 id="password-validation-msg">
