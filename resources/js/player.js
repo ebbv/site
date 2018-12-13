@@ -14,17 +14,15 @@ let player = {
     }
   },
   control : function (e) {
-    if (e.target.tagName === 'BUTTON') {
-      let audio = e.target.parentNode.parentNode.querySelector('audio');
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
-      audio.addEventListener('timeupdate', function () {
-        player.time(audio);
-      }, false);
+    let audio = e.target.parentNode.parentNode.querySelector('audio');
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
     }
+    audio.addEventListener('timeupdate', function () {
+      player.time(audio);
+    }, false);
   },
   time : function (audio) {
     let curtime   = parseInt(audio.currentTime, 10),
@@ -44,4 +42,7 @@ let player = {
 };
 
 player.init();
-document.getElementById('content').addEventListener('click', player.control, false);
+
+document.querySelectorAll('.js-player').forEach(function (element) {
+  element.addEventListener('click', player.control, false);
+});
