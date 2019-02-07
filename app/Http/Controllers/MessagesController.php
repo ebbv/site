@@ -161,10 +161,10 @@ class MessagesController extends Controller
     private function move_audio_files($oldFileName, $newFileName)
     {
         foreach (['mp3', 'ogg'] as $ext) {
-            $oldFileName = 'tmp/'.$oldFileName.'.'.$ext;
+            $tmpFilePath = 'tmp/'.$oldFileName.'.'.$ext;
 
-            if (Storage::exists($oldFileName)) {
-                Storage::move($oldFileName, 'audio/'.$newFileName.'.'.$ext);
+            if (Storage::exists($tmpFilePath)) {
+                Storage::move($tmpFilePath, 'audio/'.$newFileName.'.'.$ext);
             }
         }
     }
