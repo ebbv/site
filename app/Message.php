@@ -39,10 +39,6 @@ class Message extends Model
     {
         $formatted = strftime("%e %B, %Y", strtotime($this->date));
 
-        if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
-            return utf8_encode($formatted);
-        }
-
-        return $formatted;
+        return utf8_encode($formatted);
     }
 }
