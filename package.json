@@ -13,7 +13,7 @@
     "resolve-url-loader": "^2.3.1",
     "sass": "^1.17.0",
     "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.6.2"
+    "vue-template-compiler": "^2.6.3"
   },
   "homepage": "https://github.com/ebbv/site",
   "license": "GPL-3.0",
