@@ -15,14 +15,16 @@ let player = {
   },
   control : function (e) {
     let audio = e.target.parentNode.parentNode.querySelector('audio');
-    if (audio.paused) {
-      audio.play();
-    } else {
-      audio.pause();
+    if (audio !== null) {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+      audio.addEventListener('timeupdate', function () {
+        player.time(audio);
+      }, false);
     }
-    audio.addEventListener('timeupdate', function () {
-      player.time(audio);
-    }, false);
   },
   time : function (audio) {
     let curtime   = parseInt(audio.currentTime, 10),
