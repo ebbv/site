@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        setlocale(LC_TIME, 'fra', 'fr_FR', 'fr_FR.utf8');
+        setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
         view()->composer(config('app.theme'), function ($view) {
             $view->with('theme', str_replace('master', '', config('app.theme')));
         });
