@@ -20,7 +20,7 @@ class CreateActivitiesTable extends Migration
             $table->string('type');
             $table->text('before')->nullable()->default(null);
             $table->text('after');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

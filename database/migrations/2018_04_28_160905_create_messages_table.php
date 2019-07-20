@@ -20,12 +20,7 @@ class CreateMessagesTable extends Migration
             $table->string('passage');
             $table->string('url', 15);
             $table->date('date');
-            $table->unsignedInteger('created_by');
-            $table->unsignedInteger('updated_by');
-            $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

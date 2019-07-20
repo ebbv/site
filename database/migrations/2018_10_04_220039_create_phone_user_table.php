@@ -14,16 +14,12 @@ class CreatePhoneUserTable extends Migration
     public function up()
     {
         Schema::create('phone_user', function (Blueprint $table) {
+            $table->increments('id');
             $table->unsignedInteger('phone_id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('created_by');
-            $table->unsignedInteger('updated_by');
-            $table->timestamps();
             $table->unique(['phone_id', 'user_id']);
             $table->foreign('phone_id')->references('id')->on('phones')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

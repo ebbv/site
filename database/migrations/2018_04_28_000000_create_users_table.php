@@ -23,9 +23,6 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('address_id')->nullable();
             $table->string('password')->default('');
             $table->rememberToken();
-            $table->unsignedInteger('created_by');
-            $table->unsignedInteger('updated_by');
-            $table->timestamps();
             $table->foreign('address_id')->references('id')->on('addresses');
         });
     }

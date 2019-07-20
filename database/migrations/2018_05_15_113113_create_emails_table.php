@@ -16,11 +16,6 @@ class CreateEmailsTable extends Migration
         Schema::create('emails', function (Blueprint $table) {
             $table->increments('id');
             $table->string('address')->unique();
-            $table->unsignedInteger('created_by');
-            $table->unsignedInteger('updated_by');
-            $table->timestamps();
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -19,12 +19,7 @@ class CreateAddressesTable extends Migration
             $table->string('street_complement')->default('');
             $table->string('zip', 5);
             $table->string('city', 75);
-            $table->unsignedInteger('created_by');
-            $table->unsignedInteger('updated_by');
-            $table->timestamps();
             $table->unique(['street_info', 'street_complement', 'zip', 'city'], 'unique_address');
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -35,6 +30,7 @@ class CreateAddressesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('addresses');
     }
 }
