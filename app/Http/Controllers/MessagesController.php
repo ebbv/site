@@ -9,7 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Message;
-use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -66,9 +66,7 @@ class MessagesController extends Controller
         }
 
         return view('messages.create')->with([
-            'speakers'  => User::has('speaker')
-                ->orderBy('last_name')
-                ->get(['id', 'first_name', 'last_name']),
+            'speakers'  => Role::speaker()->users,
             'files'     => $files
         ]);
     }

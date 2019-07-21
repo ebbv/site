@@ -39,6 +39,11 @@ class Role extends Model
         return $this->belongsToMany(User::class);
     }
 
+    public function scopeSpeaker($query)
+    {
+        return $query->where('name', 'orateur')->first('id', 'name');
+    }
+
     public function assignTo($user)
     {
         if (is_array($user)) {

@@ -73,11 +73,6 @@ class User extends Authenticatable
         return $this->hasMany(Message::class);
     }
 
-    public function speaker()
-    {
-        return $this->roles()->where('name', 'orateur');
-    }
-
     public function getIsAdminAttribute()
     {
         return session('isAdmin');
