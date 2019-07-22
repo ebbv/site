@@ -113,7 +113,7 @@ class MessagesController extends Controller
     public function edit(Message $message)
     {
         $this->authorize('update', $message);
-        return view('messages.edit', compact('message'));
+        return view('messages.edit', compact('message'))->withSpeakers(Role::speaker()->users);
     }
 
     /**
@@ -133,6 +133,7 @@ class MessagesController extends Controller
             'passage'   => 'required'
         ]);
 
+        $message->user_id  = $request->user_id;
         $message->title     = $request->title;
         $message->passage   = $request->passage;
         $message->save();

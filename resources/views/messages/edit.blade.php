@@ -19,6 +19,16 @@
               </label>
               <div class="mdc-line-ripple"></div>
             </div>
+            <div class="mdc-select">
+              <i class="mdc-select__dropdown-icon"></i>
+              <select class="mdc-select__native-control" id="speaker" name="user_id">
+@foreach ($speakers as $s)
+                <option{{ ($message->user_id === $s->id) ? ' selected' : '' }} value="{{ $s->id }}">{{ $s->last_name }}, {{ $s->first_name }}</option>
+@endforeach
+              </select>
+              <label class="mdc-floating-label" for="speaker">Prédicateur</label>
+              <div class="mdc-line-ripple"></div>
+            </div>
             <div class="mdc-text-field">
               <input class="mdc-text-field__input"
                      id="message-passage"
