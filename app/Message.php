@@ -24,6 +24,13 @@ class Message extends Model
         'user_id', 'title', 'passage', 'url', 'date'
     ];
 
+    /**
+     * The audio format extensions that are acceptable
+     *
+     * @var array
+     */
+    const AUDIO_FORMATS = ['audio/mpeg' => '.mp3', 'audio/ogg' => '.ogg'];
+
     public function path()
     {
         return 'message/'. $this->id;

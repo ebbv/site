@@ -34,8 +34,9 @@
                           mdc-layout-grid__cell--align-middle"> <!-- vertical alignment -->
               </div>
               <audio buffered class="my-audio" preload="metadata">
-                <source src="{{ Storage::url('audio/'.$message->url) }}.ogg" type="audio/ogg">
-                <source src="{{ Storage::url('audio/'.$message->url) }}.mp3" type="audio/mpeg">
+@foreach (\App\Message::AUDIO_FORMATS as $type => $format)
+                <source src="{{ Storage::url('audio/'.$message->url).$format }}" type="{{ $type }}">
+@endforeach
               </audio>
               <div class="mdc-layout-grid__cell
                           mdc-layout-grid__cell--span-4-tablet

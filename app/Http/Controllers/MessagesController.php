@@ -58,10 +58,11 @@ class MessagesController extends Controller
     {
         $this->authorize('create', Message::class);
         $files = [];
+        $ext   = array_values(Message::AUDIO_FORMATS)[0];
 
         foreach ((Storage::files('tmp')) ?: [] as $file) {
-            if (strpos($file, '.mp3') !== false) {
-                $files[] = str_replace(['tmp/', '.mp3'], '', $file);
+            if (strpos($file, $ext) !== false) {
+                $files[] = str_replace(['tmp/', $ext], '', $file);
             }
         }
 
@@ -152,6 +153,10 @@ class MessagesController extends Controller
     {
         $this->authorize('delete', $message);
 
+        foreach(Message::AUDIO_FORMATS as $ext) {
+            Storage::delete('audio/'.$message->url.$ext);
+        }
+
         $message->delete();
 
         return redirect()->route('messages.index');
@@ -159,11 +164,11 @@ class MessagesController extends Controller
 
     private function move_audio_files($oldFileName, $newFileName)
     {
-        foreach (['mp3', 'ogg'] as $ext) {
-            $tmpFilePath = 'tmp/'.$oldFileName.'.'.$ext;
+        foreach (Message::AUDIO_FORMATS as $ext) {
+            $tmpFilePath = 'tmp/'.$oldFileName.$ext;
 
             if (Storage::exists($tmpFilePath)) {
-                Storage::move($tmpFilePath, 'audio/'.$newFileName.'.'.$ext);
+                Storage::move($tmpFilePath, 'audio/'.$newFileName.$ext);
             }
         }
     }
