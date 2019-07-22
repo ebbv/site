@@ -133,7 +133,7 @@ class MessagesController extends Controller
             'passage'   => 'required'
         ]);
 
-        $message->user_id  = $request->user_id;
+        $message->user_id   = $request->user_id;
         $message->title     = $request->title;
         $message->passage   = $request->passage;
         $message->save();
