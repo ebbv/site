@@ -153,7 +153,7 @@ class MessagesController extends Controller
     {
         $this->authorize('delete', $message);
 
-        foreach(Message::AUDIO_FORMATS as $ext) {
+        foreach (Message::AUDIO_FORMATS as $ext) {
             Storage::delete('audio/'.$message->url.$ext);
         }
 
