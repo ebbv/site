@@ -58,7 +58,7 @@ class MessagesController extends Controller
     {
         $this->authorize('create', Message::class);
         $files = [];
-        $ext   = array_values(Message::AUDIO_FORMATS)[0];
+        $ext   = collect(Message::AUDIO_FORMATS)->first();
 
         foreach ((Storage::files('tmp')) ?: [] as $file) {
             if (strpos($file, $ext) !== false) {
