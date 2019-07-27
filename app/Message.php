@@ -22,7 +22,7 @@ class Message extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'title', 'passage', 'url', 'date'
+        'user_id', 'title', 'passage', 'filename', 'date'
     ];
 
     /**
@@ -46,6 +46,7 @@ class Message extends Model
             }
 
             $model->attributes['slug'] = $slug;
+            $model->attributes['filename'] = str_random(15);
         });
     }
 

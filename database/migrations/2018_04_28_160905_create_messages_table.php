@@ -19,7 +19,7 @@ class CreateMessagesTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('passage');
-            $table->string('url', 15);
+            $table->string('filename', 15)->unique();
             $table->date('date');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

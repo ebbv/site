@@ -29,7 +29,7 @@ class MessagesController extends Controller
     public function index()
     {
         $messages = Message::with('speaker')
-            ->select('id', 'user_id', 'title', 'slug', 'passage', 'date', 'url')
+            ->select('id', 'user_id', 'title', 'slug', 'passage', 'date', 'filename')
             ->latest('date')
             ->paginate(5);
 
@@ -89,16 +89,13 @@ class MessagesController extends Controller
             'passage'   => 'required'
         ]);
 
-        $fileName = str_random(15);
-
         if ($message = Message::create([
             'user_id'   => $request->user_id,
             'title'     => $request->title,
             'passage'   => $request->passage,
-            'url'       => $fileName,
             'date'      => $request->date
         ])) {
-            $this->move_audio_files($request->date, $fileName);
+            $this->move_audio_files($request->date, $message->filename);
         }
 
         return redirect($message->path());
