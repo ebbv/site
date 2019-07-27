@@ -2,7 +2,7 @@
 
 @section('content')
           <form accept-charset="utf-8"
-                action="{{ route('message.store') }}"
+                action="{{ route('messages.store') }}"
                 class="mdc-layout-grid__inner"
                 id="add-message"
                 method="POST">

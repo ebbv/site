@@ -27,7 +27,7 @@
 {{ $messages->onEachSide(2)->links() }}
 
 @can ('create', App\Message::class)
-          <a href="{{ route('message.create') }}">
+          <a href="{{ route('messages.create') }}">
             <button aria-label="Add" class="material-icons mdc-fab">
               <span class="mdc-fab__icon">
                 add

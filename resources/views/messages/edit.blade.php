@@ -2,7 +2,7 @@
 
 @section('content')
           <form accept-charset="utf-8"
-                action="{{ route('message.update', $message->id) }}"
+                action="{{ route('messages.update', $message->slug) }}"
                 id="edit-message"
                 method="POST">
             @method('PATCH')
@@ -42,6 +42,7 @@
               </label>
               <div class="mdc-line-ripple"></div>
             </div>
+            <a class="mdc-button mdc-button--cancel mdc-button--raised" href="{{ $message->path() }}">@lang('forms.cancel_button')</a>
             <button class="mdc-button mdc-button--raised" type="submit">
               @lang('forms.edit_button')
             </button>

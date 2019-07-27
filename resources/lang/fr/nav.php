@@ -26,7 +26,7 @@ return [
         'url'  => 'déconnexion'
     ],
     'actions'   => [
-        'add'   => 'ajouter',
+        'add'   => 'créer',
         'edit'  => 'modifier'
     ]
 ];

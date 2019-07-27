@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Message extends Model
 {
@@ -31,9 +32,26 @@ class Message extends Model
      */
     const AUDIO_FORMATS = ['audio/mpeg' => '.mp3', 'audio/ogg' => '.ogg'];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $slug       = Str::slug($model->title);
+            $original   = $slug;
+            $count      = 2;
+
+            while (static::whereSlug($slug)->exists()) {
+                $slug = $original.'-'.$count++;
+            }
+
+            $model->attributes['slug'] = $slug;
+        });
+    }
+
     public function path()
     {
-        return 'message/'. $this->id;
+        return 'messages/'. $this->slug;
     }
 
     public function speaker()
@@ -51,5 +69,10 @@ class Message extends Model
         }
 
         return $formatted;
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

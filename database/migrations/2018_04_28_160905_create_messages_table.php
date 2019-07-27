@@ -17,6 +17,7 @@ class CreateMessagesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('title');
+            $table->string('slug')->unique();
             $table->string('passage');
             $table->string('url', 15);
             $table->date('date');

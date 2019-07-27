@@ -1,36 +1,10 @@
 <?php
 
-$add        = __('nav.actions.add');
-$edit       = __('nav.actions.edit');
 $directory  = __('nav.directory.url');
 
 Route::redirect('/', 'messages');
 
-
-Route::get('messages', 'MessagesController@index')
-    ->name('messages.index');
-
-Route::get('message/{message}', 'MessagesController@show')
-    ->name('message.show')
-    ->where('message', '[0-9]+');
-
-Route::get('message/'.$add, 'MessagesController@create')
-    ->name('message.create');
-
-Route::post('message', 'MessagesController@store')
-    ->name('message.store');
-
-Route::get('message/{message}/'.$edit, 'MessagesController@edit')
-    ->name('message.edit')
-    ->where('message', '[0-9]+');
-
-Route::match(['put', 'patch'], 'message/{message}', 'MessagesController@update')
-    ->name('message.update')
-    ->where('message', '[0-9]+');
-
-Route::delete('message/{message}', 'MessagesController@destroy')
-    ->name('message.destroy')
-    ->where('message', '[0-9]+');
+Route::resource('messages', 'MessagesController');
 
 
 Route::get('contact', 'ContactController@index')->name('contact.index');
@@ -42,13 +16,13 @@ Route::get(__('nav.beliefs.url'), 'BeliefsController@index')->name('beliefs.inde
 Route::get($directory, 'DirectoryController@index')
     ->name('directory.index');
 
-Route::get($directory.'/'.$add, 'DirectoryController@create')
+Route::get($directory.'/'.__('nav.actions.add'), 'DirectoryController@create')
     ->name('directory.create');
 
 Route::post($directory, 'DirectoryController@store')
     ->name('directory.store');
 
-Route::get($directory.'/{user}/'.$edit, 'DirectoryController@edit')
+Route::get($directory.'/{user}/'.__('nav.actions.edit'), 'DirectoryController@edit')
     ->name('directory.edit')
     ->where('user', '[0-9]+');
 

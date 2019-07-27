@@ -26,7 +26,7 @@ return [
         'url'  => 'logout'
     ],
     'actions'   => [
-        'add'   => 'add',
+        'add'   => 'create',
         'edit'  => 'edit'
     ]
 ];
