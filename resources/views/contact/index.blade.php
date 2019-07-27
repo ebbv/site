@@ -14,7 +14,8 @@
                         mdc-layout-grid__cell--span-5">
               <h3 id="telephone">Nous téléphoner <small>02.32.51.24.37</small></h3>
               <form accept-charset="utf-8" action="contact" id="contact-form" method="POST">
-                {{ csrf_field() }}
+                @csrf
+
                 <h3>Nous écrire</h3>
                 <div class="mdc-text-field mdc-text-field--outlined">
                   <input aria-controls="email-validation-msg"

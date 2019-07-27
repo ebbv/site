@@ -6,7 +6,8 @@
                 class="mdc-layout-grid__inner"
                 id="add-message"
                 method="POST">
-            {{ csrf_field() }}
+            @csrf
+
             <div class="mdc-layout-grid__cell
                         mdc-layout-grid__cell--span-5-tablet
                         mdc-layout-grid__cell--span-8-desktop

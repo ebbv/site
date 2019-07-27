@@ -5,8 +5,10 @@
                 action="{{ route('message.update', $message->id) }}"
                 id="edit-message"
                 method="POST">
-            {{ method_field('PATCH') }}
-            {{ csrf_field() }}
+            @method('PATCH')
+
+            @csrf
+
             <div class="mdc-text-field">
               <input autofocus
                      class="mdc-text-field__input"

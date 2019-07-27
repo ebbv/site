@@ -6,7 +6,8 @@
                 class="mdc-card"
                 id="login"
                 method="POST">
-            {{ csrf_field() }}
+            @csrf
+
 @foreach ($errors->all() as $error)
             <p class="error">{{ $error }}</p>
 @endforeach

@@ -5,8 +5,11 @@
                 action="{{ $route ?? route('directory.store') }}"
                 id="directory-form"
                 method="POST">
-            {{ (isset($editButtonText)) ? method_field('PATCH') : '' }}
-            {{ csrf_field() }}
+@isset ($editButtonText)
+            @method('PATCH');
+@endisset
+            @csrf
+
             @include('directory.admin.id')
 @can ('create', App\User::class)
             @include('directory.admin.roles')

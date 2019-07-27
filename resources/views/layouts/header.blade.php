@@ -22,7 +22,8 @@
                 Mes Infos ({{ auth()->user()->username }})
               </a>
               <form accept-charset="utf-8" action="{{ route('logout') }}" id="logout-form" method="POST">
-                {{ csrf_field() }}
+                @csrf
+
               </form>
               <a class="mdc-list-item" href="{{ route('logout') }}" id="logout-button" role="menuitem">
                 {{ __('nav.logout.text') }}

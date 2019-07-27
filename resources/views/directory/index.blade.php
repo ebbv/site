@@ -51,8 +51,10 @@
                     edit
                   </a>
                   <form method="POST" action="{{ route('directory.destroy', $member->id) }}" accept-charset="utf-8">
-                    {{ method_field('DELETE') }}
-                    {{ csrf_field() }}
+                    @method("DELETE")
+
+                    @csrf
+
                     <button class="cancel material-icons mdc-card__action mdc-card__action--icon mdc-icon-button"
                             type="submit">
                       delete
