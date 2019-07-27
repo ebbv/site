@@ -36,7 +36,8 @@ class Role extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)
+            ->select('users.id', 'first_name', 'last_name', 'username');
     }
 
     public function scopeSpeaker($query)
