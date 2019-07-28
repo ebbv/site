@@ -6,7 +6,7 @@
                 id="directory-form"
                 method="POST">
 @isset ($editButtonText)
-            @method('PATCH');
+            @method('PATCH')
 @endisset
             @csrf
 
