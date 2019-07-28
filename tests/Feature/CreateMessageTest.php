@@ -15,15 +15,15 @@ class CreateMessageTest extends TestCase
         $this->withExceptionHandling();
 
         // guests
-        $this->get(route('message.create'))
+        $this->get(route('messages.create'))
             ->assertRedirect(route('login'));
 
-        $this->post(route('message.store'))
+        $this->post(route('messages.store'))
             ->assertRedirect(route('login'));
 
         // signed in user without the proper credentials
         $this->signIn();
-        $this->get(route('message.create'))
+        $this->get(route('messages.create'))
             ->assertStatus(403);
     }
 
@@ -78,6 +78,6 @@ class CreateMessageTest extends TestCase
 
         $message = factory('App\Message')->make($overrides);
 
-        return $this->post(route('message.store'), $message->toArray());
+        return $this->post(route('messages.store'), $message->toArray());
     }
 }
