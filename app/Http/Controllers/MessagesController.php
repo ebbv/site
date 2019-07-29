@@ -29,7 +29,7 @@ class MessagesController extends Controller
     public function index()
     {
         $messages = Message::with('speaker')
-            ->select('id', 'user_id', 'title', 'slug', 'passage', 'date', 'filename')
+            ->select('user_id', 'title', 'slug', 'passage', 'date', 'filename')
             ->latest('date')
             ->paginate(5);
 
