@@ -86,7 +86,8 @@ class MessagesController extends Controller
         $this->validate($request, [
             'user_id'   => 'required|exists:users,id',
             'title'     => 'required',
-            'passage'   => 'required'
+            'passage'   => 'required',
+            'date'      => 'required'
         ]);
 
         if ($message = Message::create($request->toArray())) {

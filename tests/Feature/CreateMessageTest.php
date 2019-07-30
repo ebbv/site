@@ -75,6 +75,16 @@ class CreateMessageTest extends TestCase
             ->assertSessionHasErrors('passage');
     }
 
+    /** @test */
+    public function a_message_requires_a_date()
+    {
+        $this->withExceptionHandling();
+        $this->signInAdmin();
+
+        $this->publishMessage(['date' => null])
+            ->assertSessionHasErrors('date');
+    }
+
     protected function publishMessage($overrides = [])
     {
         $message = factory('App\Message')->make($overrides);
