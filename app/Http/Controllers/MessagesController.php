@@ -89,12 +89,7 @@ class MessagesController extends Controller
             'passage'   => 'required'
         ]);
 
-        if ($message = Message::create([
-            'user_id'   => $request->user_id,
-            'title'     => $request->title,
-            'passage'   => $request->passage,
-            'date'      => $request->date
-        ])) {
+        if ($message = Message::create($request->toArray())) {
             $this->move_audio_files($request->date, $message->filename);
         }
 
