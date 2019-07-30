@@ -45,6 +45,7 @@ class CreateMessageTest extends TestCase
     /** @test */
     public function a_message_requires_a_valid_user_id()
     {
+        $this->withExceptionHandling();
         $this->signInAdmin();
 
         $this->publishMessage(['user_id' => null])
@@ -57,6 +58,7 @@ class CreateMessageTest extends TestCase
     /** @test */
     public function a_message_requires_a_title()
     {
+        $this->withExceptionHandling();
         $this->signInAdmin();
 
         $this->publishMessage(['title' => null])
@@ -66,6 +68,7 @@ class CreateMessageTest extends TestCase
     /** @test */
     public function a_message_requires_a_passage()
     {
+        $this->withExceptionHandling();
         $this->signInAdmin();
 
         $this->publishMessage(['passage' => null])
@@ -74,8 +77,6 @@ class CreateMessageTest extends TestCase
 
     protected function publishMessage($overrides = [])
     {
-        $this->withExceptionHandling();
-
         $message = factory('App\Message')->make($overrides);
 
         return $this->post(route('messages.store'), $message->toArray());
