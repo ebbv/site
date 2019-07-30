@@ -24,6 +24,10 @@ main > div {
   margin: 0;
 }
 
+.error {
+  color: $mdc-theme-error;
+}
+
 .error-503 {
   text-align: center;
 }

@@ -83,7 +83,7 @@ class MessagesController extends Controller
     {
         $this->authorize('create', Message::class);
 
-        $this->validate($request, [
+        $request->validate([
             'user_id'   => 'required|exists:users,id',
             'title'     => 'required',
             'passage'   => 'required',
