@@ -9,6 +9,8 @@ Route::resource('messages', 'MessagesController');
 
 Route::get('contact', 'ContactController@index')->name('contact.index');
 
+Route::post('contact', 'ContactController@send');
+
 
 Route::get(__('nav.beliefs.url'), 'BeliefsController@index')->name('beliefs.index');
 

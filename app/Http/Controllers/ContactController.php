@@ -8,6 +8,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactForm;
+use Illuminate\Support\Facades\Mail;
+
 class ContactController extends Controller
 {
     /**
@@ -19,5 +22,12 @@ class ContactController extends Controller
     public function index()
     {
         return view('contact.index');
+    }
+
+    public function send()
+    {
+        Mail::to('pasteur@ebbv.fr')->send(new ContactForm());
+
+        return view('contact.thankYou');
     }
 }
