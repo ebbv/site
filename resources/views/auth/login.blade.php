@@ -63,5 +63,6 @@
                 @lang('forms.login_button')
               </button>
             </section>
+            <input name="previous" type="hidden" value="{{ url()->previous() }}"/>
           </form>
 @endsection

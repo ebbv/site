@@ -52,7 +52,7 @@ class Message extends Model
 
     public function path()
     {
-        return 'messages/'. $this->slug;
+        return config('user_prefered_locale').'/messages/'. $this->slug;
     }
 
     public function speaker()

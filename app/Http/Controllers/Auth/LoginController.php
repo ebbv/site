@@ -21,13 +21,6 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -37,8 +30,33 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * Where to redirect users after login.
+     *
+     * @return string
+     */
+    public function redirectTo()
+    {
+        return request()->input('previous');
+    }
+
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
     public function username()
     {
         return 'username';
+    }
+
+    /**
+     * The user has logged out of the application.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function loggedOut()
+    {
+        return redirect(config('user_prefered_locale', ''));
     }
 }

@@ -5,8 +5,13 @@
           <span class="mdc-top-app-bar__title mdc-top-app-bar__title--full">Eglise Biblique Baptiste de Vernon</span>
           <span class="mdc-top-app-bar__title mdc-top-app-bar__title--mini">EBBV</span>
         </section>
-@if (url()->current() !== route('login'))
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+@if (config('user_prefered_locale') === null)
+          <a class="mdc-button mdc-button--raised" href="en/messages">EN</a>
+@else
+          <a class="mdc-button mdc-button--raised" href="messages">FR</a>
+@endif
+@if (url()->current() !== route('login'))
 @if (Auth::check())
           <div id="account-menu-button">
             <span>{{ auth()->user()->fullname }}</span>
@@ -35,8 +40,8 @@
             {{ __('nav.login.text') }}
           </a>
 @endif
-        </section>
 @endif
+        </section>
       </div>
     </header>
 

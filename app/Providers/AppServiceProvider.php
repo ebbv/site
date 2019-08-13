@@ -15,9 +15,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
+        if (request()->segment(1) === 'en') {
+            setlocale(LC_TIME, 'en');
 
-        if (\App::isLocale('fr')) {
+            app()->setLocale('en');
+
+            config(['user_prefered_locale' => 'en']);
+        } else {
+            setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
+
             Route::resourceVerbs([
                 'create' => 'créer',
                 'edit'   => 'modifier'
