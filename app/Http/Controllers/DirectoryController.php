@@ -17,6 +17,7 @@ use App\Role;
 use App\RoleUser;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 
 class DirectoryController extends Controller
@@ -214,7 +215,7 @@ class DirectoryController extends Controller
             }
         }
 
-        $user_phones = array_pluck($user->phones->toArray(), 'type', 'id');
+        $user_phones = Arr::pluck($user->phones->toArray(), 'type', 'id');
 
         foreach ($request->telephone as $key => $phone) {
             $oldPhoneId = array_search($key, $user_phones);
@@ -255,7 +256,7 @@ class DirectoryController extends Controller
             }
         }
 
-        $user_emails = array_pluck($user->emails->toArray(), 'pivot.type', 'id');
+        $user_emails = Arr::pluck($user->emails->toArray(), 'pivot.type', 'id');
 
         foreach ($request->email as $email) {
             $temp = EmailUser::where('user_id', $user->id)

@@ -26,6 +26,13 @@ class Message extends Model
     ];
 
     /**
+     * The "type" of the primary key ID.
+     *
+     * @var string
+     */
+    protected $keyType = 'string';
+
+    /**
      * The audio format extensions that are acceptable
      *
      * @var array
@@ -46,7 +53,7 @@ class Message extends Model
             }
 
             $model->attributes['slug'] = $slug;
-            $model->attributes['filename'] = str_random(15);
+            $model->attributes['filename'] = Str::random(15);
         });
     }
 

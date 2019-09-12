@@ -1,5 +1,5 @@
             <div>
-<?php $temp = isset($m) ? array_pluck($m->phones->toArray(), 'type', 'number') : [] ?>
+<?php $temp = isset($m) ? \Illuminate\Support\Arr::pluck($m->phones->toArray(), 'type', 'number') : [] ?>
 @foreach ($phones as $key => $value)
               <div class="mdc-select mdc-select--outlined">
                 <i class="mdc-select__dropdown-icon"></i>
@@ -32,7 +32,7 @@
                 </div>
               </div>
 @endforeach
-<?php $temp = isset($m) ? array_pluck($m->emails->toArray(), 'type', 'address') : [] ?>
+<?php $temp = isset($m) ? \Illuminate\Support\Arr::pluck($m->emails->toArray(), 'type', 'address') : [] ?>
 @foreach (['principal', 'secondaire'] as $key => $value)
               <div class="mdc-select mdc-select--outlined">
                 <i class="mdc-select__dropdown-icon"></i>
