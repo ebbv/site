@@ -15,7 +15,7 @@ trait RecordsActivity
         });
 
         static::updating(function ($model) {
-            $changed = array_except($model->getDirty(), 'remember_token');
+            $changed = \Illuminate\Support\Arr::except($model->getDirty(), 'remember_token');
 
             if (! empty($changed)) {
                 $before = json_encode(array_intersect_key($model->fresh()->toArray(), $changed));
