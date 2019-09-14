@@ -87,8 +87,8 @@ class CreateMessageTest extends TestCase
 
     protected function publishMessage($overrides = [])
     {
-        $message = factory('App\Message')->make($overrides);
+        $message = factory('App\Message')->raw($overrides);
 
-        return $this->post(route('messages.store'), $message->toArray());
+        return $this->post(route('messages.store'), $message);
     }
 }
