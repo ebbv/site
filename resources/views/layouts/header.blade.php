@@ -6,11 +6,13 @@
           <span class="mdc-top-app-bar__title mdc-top-app-bar__title--mini">EBBV</span>
         </section>
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+          <!-- <div style="margin-right: 20px">
 @if (config('user_prefered_locale') === null)
-          <a class="mdc-button mdc-button--raised" href="en/messages">EN</a>
+            <a class="mdc-button mdc-button--raised" href="en/messages">EN</a>
 @else
-          <a class="mdc-button mdc-button--raised" href="messages">FR</a>
+            <a class="mdc-button mdc-button--raised" href="messages">FR</a>
 @endif
+          </div> -->
 @if (url()->current() !== route('login'))
 @if (Auth::check())
           <div id="account-menu-button">
