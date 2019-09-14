@@ -1,7 +1,7 @@
 <?php
 
-use Laravel\Telescope\Watchers;
 use Laravel\Telescope\Http\Middleware\Authorize;
+use Laravel\Telescope\Watchers;
 
 return [
 
@@ -92,11 +92,11 @@ return [
     */
 
     'ignore_paths' => [
-        //
+
     ],
 
     'ignore_commands' => [
-        //
+
     ],
 
     /*
