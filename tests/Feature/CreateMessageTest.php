@@ -12,8 +12,6 @@ class CreateMessageTest extends TestCase
     /** @test */
     public function unauthorized_users_may_not_create_messages()
     {
-        $this->withExceptionHandling();
-
         // guests
         $this->get(route('messages.create'))
             ->assertRedirect(route('login'));
@@ -36,7 +34,7 @@ class CreateMessageTest extends TestCase
 
         $this->publishMessage([
             'title'   => $title,
-            'user_id' => 1
+            'user_id' => auth()->user()->id
         ]);
 
         $this->assertDatabaseHas('messages', ['title' => $title]);
@@ -45,7 +43,6 @@ class CreateMessageTest extends TestCase
     /** @test */
     public function a_message_requires_a_valid_user_id()
     {
-        $this->withExceptionHandling();
         $this->signInAdmin();
 
         $this->publishMessage(['user_id' => null])
@@ -58,7 +55,6 @@ class CreateMessageTest extends TestCase
     /** @test */
     public function a_message_requires_a_title()
     {
-        $this->withExceptionHandling();
         $this->signInAdmin();
 
         $this->publishMessage(['title' => null])
@@ -68,7 +64,6 @@ class CreateMessageTest extends TestCase
     /** @test */
     public function a_message_requires_a_passage()
     {
-        $this->withExceptionHandling();
         $this->signInAdmin();
 
         $this->publishMessage(['passage' => null])
@@ -78,7 +73,6 @@ class CreateMessageTest extends TestCase
     /** @test */
     public function a_message_requires_a_date()
     {
-        $this->withExceptionHandling();
         $this->signInAdmin();
 
         $this->publishMessage(['date' => null])
