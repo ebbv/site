@@ -26,13 +26,6 @@ class Message extends Model
     ];
 
     /**
-     * The "type" of the primary key ID.
-     *
-     * @var string
-     */
-    protected $keyType = 'string';
-
-    /**
      * The audio format extensions that are acceptable
      *
      * @var array
