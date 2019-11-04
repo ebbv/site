@@ -15,7 +15,7 @@ let player = {
   },
   control : function (e) {
     let audio = e.target.parentNode.parentNode.parentNode.querySelector('audio');
-    if (audio !== null) {
+    if (audio !== null && e.target.closest('.playback-control')) {
       if (audio.paused) {
         audio.play();
       } else {

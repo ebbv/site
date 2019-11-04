@@ -21,7 +21,7 @@
                 <button aria-hidden="true"
                         aria-label="Play and pause"
                         aria-pressed="false"
-                        class="mdc-icon-button">
+                        class="playback-control mdc-icon-button">
                   <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">pause</i>
                   <i class="material-icons mdc-icon-button__icon">play_arrow</i>
                 </button>
@@ -52,6 +52,11 @@
                     <span class="mdc-linear-progress__bar-inner"></span>
                   </div>
                 </div>
+              </div>
+              <div>
+                <a class="mdc-icon-button" download="{{ $message->title.$format }}" href="{{ Storage::url('audio/'.$message->filename).$format }}">
+                  <i class="material-icons">get_app</i>
+                </a>
               </div>
             </div>
           </div>
