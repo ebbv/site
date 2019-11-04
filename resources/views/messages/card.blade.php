@@ -54,7 +54,7 @@
                 </div>
               </div>
               <div>
-                <a class="material-icons mdc-icon-button" download="{{ "{$message->title}.mp3" }}" href="{{ Storage::url('audio/'.$message->filename).'.mp3' }}">
+                <a class="material-icons mdc-icon-button" download="{{ "{$message->title}.mp3" }}" href="{{ route('messages.show', $message->id).'/download' }}">
                   get_app
                 </a>
               </div>
