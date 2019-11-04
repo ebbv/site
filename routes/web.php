@@ -9,12 +9,13 @@ Route::group(['prefix' => $lang], function () {
     $directory  = __('nav.directory.url');
 
     Route::get('messages/{message}/download', function (App\Message $message) {
-        $file = ltrim(Storage::url('audio/'.$message->filename.'.mp3'), '/');
+        $path = "audio/{$message->filename}.mp3";
+        $size = Storage::size($path);
         header('Content-Description: File Transfer');
-        header('Content-Disposition: attachment; filename="'.$message->title.'"');
+        header('Content-Disposition: attachment; filename="'.$message->title.'.mp3"');
         header('Content-Type: audio/mpeg');
-        header('Content-Length: '.filesize($file));
-        return readfile($file);
+        header('Content-Length: '.$size);
+        return readfile(ltrim(Storage::url($path), '/'));
     });
 
     Route::resource('messages', 'MessagesController');
