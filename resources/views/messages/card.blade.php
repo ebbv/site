@@ -54,7 +54,7 @@
                 </div>
               </div>
               <div>
-                <a class="material-icons mdc-icon-button" download="{{ "{$message->title}.mp3" }}" href="{{ route('messages.show', $message->id).'/download' }}">
+                <a class="material-icons mdc-icon-button" download="{{ "{$message->title}.mp3" }}" href="{{ route('messages.show', $message).'/download' }}">
                   get_app
                 </a>
               </div>

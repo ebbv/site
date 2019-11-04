@@ -8,8 +8,7 @@ Route::redirect($lang, $lang.'/messages');
 Route::group(['prefix' => $lang], function () {
     $directory  = __('nav.directory.url');
 
-    Route::get('messages/{message}/download', function ($message) {
-        $message = App\Message::find($message);
+    Route::get('messages/{message}/download', function (App\Message $message) {
         $file = ltrim(Storage::url('audio/'.$message->filename.'.mp3'), '/');
         header('Content-Description: File Transfer');
         header('Content-Disposition: attachment; filename="'.$message->title.'"');
