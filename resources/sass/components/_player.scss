@@ -3,7 +3,7 @@
 }
 
 .player .mdc-icon-button {
-  @include mdc-icon-button-size(48px, 48px, 6px);
+  @include mdc-icon-button-icon-size(48px, 48px, 6px);
   left: -6px;
 }
 
