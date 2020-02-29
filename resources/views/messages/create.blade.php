@@ -53,7 +53,7 @@
 @endforeach
                   </ul>
                 </div>
-                <input name="user_id" type="hidden" value="" />
+                <input name="user_id" type="hidden" />
               </div>
             </div>
             <div class="mdc-layout-grid__cell

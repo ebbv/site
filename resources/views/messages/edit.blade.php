@@ -37,7 +37,7 @@
 @endforeach
                 </ul>
               </div>
-              <input name="user_id" type="hidden" value="{{ $message->user_id }}" />
+              <input name="user_id" type="hidden" />
             </div>
             <div class="mdc-text-field">
               <input class="mdc-text-field__input"

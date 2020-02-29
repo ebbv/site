@@ -1,21 +1,26 @@
             <div>
               <div class="mdc-select mdc-select--outlined">
-                <i class="mdc-select__dropdown-icon"></i>
-                <select class="mdc-select__native-control" name="address[id]">
-                  <option></option>
-@foreach ($addresses as $address)
-                  <option {{ (isset($m->address) and $address->id == $m->address->id) ? 'selected ' : '' }}value="{{ $address->id }}">
-                    {{ $address->fullAddress }}
-                  </option>
-@endforeach
-                </select>
-                <div class="mdc-notched-outline">
-                  <div class="mdc-notched-outline__leading"></div>
-                  <div class="mdc-notched-outline__notch">
-                    <label class="mdc-floating-label">Choisir une adresse</label>
+                <div class="mdc-select__anchor">
+                  <i class="mdc-select__dropdown-icon"></i>
+                  <div class="mdc-select__selected-text"></div>
+                  <div class="mdc-notched-outline">
+                    <div class="mdc-notched-outline__leading"></div>
+                    <div class="mdc-notched-outline__notch">
+                      <span class="mdc-floating-label" id="outlined-select-label">Choisir une adresse</span>
+                    </div>
+                    <div class="mdc-notched-outline__trailing"></div>
                   </div>
-                  <div class="mdc-notched-outline__trailing"></div>
                 </div>
+                <div class="mdc-menu mdc-menu-surface mdc-select__menu">
+                  <ul class="mdc-list">
+@foreach ($addresses as $address)
+                  <li class="mdc-list-item{{ (isset($m->address) and $address->id == $m->address->id) ? ' mdc-list-item--selected' : '' }}" data-value="{{ $address->id }}">
+                    {{ $address->fullAddress }}
+                  </li>
+@endforeach
+                  </ul>
+                </div>
+                <input name="address[id]" type="hidden" />
               </div>
               <div class="mdc-text-field mdc-text-field--outlined">
                 <input class="mdc-text-field__input"
