@@ -101,7 +101,7 @@
 @endforeach
                   </ul>
                 </div>
-                <input name="date" type="hidden" value="" />
+                <input name="date" type="hidden" />
               </div>
             </div>
             <div class="mdc-layout-grid__cell
