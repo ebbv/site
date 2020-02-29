@@ -22,14 +22,22 @@
               <div class="mdc-line-ripple"></div>
             </div>
             <div class="mdc-select">
-              <i class="mdc-select__dropdown-icon"></i>
-              <select class="mdc-select__native-control" id="speaker" name="user_id">
+              <div class="mdc-select__anchor">
+                <i class="mdc-select__dropdown-icon"></i>
+                <div class="mdc-select__selected-text"></div>
+                <span class="mdc-floating-label">Prédicateur</span>
+                <div class="mdc-line-ripple"></div>
+              </div>
+              <div class="mdc-menu mdc-menu-surface mdc-select__menu">
+                <ul class="mdc-list">
 @foreach ($speakers as $s)
-                <option{{ ($message->user_id === $s->id) ? ' selected' : '' }} value="{{ $s->id }}">{{ $s->last_name }}, {{ $s->first_name }}</option>
+                  <li class="mdc-list-item{{ ($message->user_id === $s->id) ? ' mdc-list-item--selected' : '' }}" data-value="{{ $s->id }}">
+                    {{ $s->last_name }}, {{ $s->first_name }}
+                  </li>
 @endforeach
-              </select>
-              <label class="mdc-floating-label" for="speaker">Prédicateur</label>
-              <div class="mdc-line-ripple"></div>
+                </ul>
+              </div>
+              <input name="user_id" type="hidden" value="{{ $message->user_id }}" />
             </div>
             <div class="mdc-text-field">
               <input class="mdc-text-field__input"

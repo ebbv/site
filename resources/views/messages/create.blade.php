@@ -18,11 +18,11 @@
 @enderror
               <div class="mdc-text-field">
                 <input class="mdc-text-field__input"
-                      id="title"
-                      name="title"
-                      required
-                      type="text"
-                      value="{{ old('title') }}">
+                       id="title"
+                       name="title"
+                       required
+                       type="text"
+                       value="{{ old('title') }}">
                 <label class="mdc-floating-label" for="title">
                   Titre
                 </label>
@@ -37,18 +37,23 @@
                 Merci de bien vouloir choisir un orateur
               </div>
 @enderror
-              <div class="mdc-select">
-                <i class="mdc-select__dropdown-icon"></i>
-                <select class="mdc-select__native-control" id="speaker" name="user_id" required>
-                  <option disabled selected value=""></option>
+              <div class="mdc-select mdc-select--required">
+                <div class="mdc-select__anchor">
+                  <i class="mdc-select__dropdown-icon"></i>
+                  <div aria-required="true" class="mdc-select__selected-text"></div>
+                  <span class="mdc-floating-label">Prédicateur </span>
+                  <div class="mdc-line-ripple"></div>
+                </div>
+                <div class="mdc-menu mdc-menu-surface mdc-select__menu">
+                  <ul class="mdc-list">
 @foreach ($speakers as $s)
-                  <option {{ $s->id == old('user_id') ? 'selected ' : '' }}value="{{ $s->id }}">
-                    {{ $s->last_name }}, {{ $s->first_name }}
-                  </option>
+                    <li class="mdc-list-item" data-value="{{ $s->id }}">
+                      {{ $s->last_name }}, {{ $s->first_name }}
+                    </li>
 @endforeach
-                </select>
-                <label class="mdc-floating-label" for="speaker">Prédicateur</label>
-                <div class="mdc-line-ripple"></div>
+                  </ul>
+                </div>
+                <input name="user_id" type="hidden" value="" />
               </div>
             </div>
             <div class="mdc-layout-grid__cell
@@ -61,11 +66,11 @@
 @enderror
               <div class="mdc-text-field">
                 <input class="mdc-text-field__input"
-                        id="message-passage"
-                        name="passage"
-                        required
-                        type="text"
-                        value="{{ old('passage') }}">
+                       id="message-passage"
+                       name="passage"
+                       required
+                       type="text"
+                       value="{{ old('passage') }}">
                 <label class="mdc-floating-label" for="message-passage">
                   Passage
                 </label>
@@ -80,22 +85,29 @@
                 Merci de bien vouloir choisir un fichier
               </div>
 @enderror
-              <div class="mdc-select">
-                <i class="mdc-select__dropdown-icon"></i>
-                <select class="mdc-select__native-control" id="message-file" name="date" required>
-                  <option disabled selected value=""></option>
+              <div class="mdc-select mdc-select--required">
+                <div class="mdc-select__anchor">
+                  <i class="mdc-select__dropdown-icon"></i>
+                  <div aria-required="true" class="mdc-select__selected-text"></div>
+                  <span class="mdc-floating-label">Choisir un fichier </span>
+                  <div class="mdc-line-ripple"></div>
+                </div>
+                <div class="mdc-menu mdc-menu-surface mdc-select__menu">
+                  <ul class="mdc-list">
 @foreach ($files as $f)
-                  <option {{ $f == old('date') ? 'selected ' : '' }}value="{{ $f }}">{{ $f }}</option>
+                    <li class="mdc-list-item" data-value="{{ $f }}">
+                      {{ $f }}
+                    </li>
 @endforeach
-                </select>
-                <label class="mdc-floating-label" for="message-file">Choisir un fichier</label>
-                <div class="mdc-line-ripple"></div>
+                  </ul>
+                </div>
+                <input name="date" type="hidden" value="" />
               </div>
             </div>
             <div class="mdc-layout-grid__cell
                         mdc-layout-grid__cell--span-2-tablet
                         mdc-layout-grid__cell--span-2-desktop">
-              <button class="mdc-button mdc-button--raised" type="submit">
+              <button class="mdc-button mdc-button--raised" style="float: right; top: 35%" type="submit">
                 @lang('forms.add_button')
 
               </button>

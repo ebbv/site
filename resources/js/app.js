@@ -47,5 +47,9 @@ document.querySelectorAll('.mdc-checkbox').forEach(function (element) {
 });
 
 document.querySelectorAll('.mdc-select').forEach(function (element) {
-  new MDCSelect(element);
+  let select = new MDCSelect(element);
+
+  select.listen('MDCSelect:change', () => {
+    element.querySelector('input').setAttribute('value', select.value);
+  })
 });
