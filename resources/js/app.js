@@ -53,5 +53,5 @@ document.querySelectorAll('.mdc-select').forEach(function (element) {
 
   select.listen('MDCSelect:change', () => {
     element.querySelector('input').setAttribute('value', select.value);
-  })
+  });
 });
