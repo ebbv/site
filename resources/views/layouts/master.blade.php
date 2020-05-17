@@ -6,6 +6,7 @@
     <title>{{ config('app.prefix').'EBBV' }}</title>
     <meta name="description" content="Le site de l'Eglise Biblique Baptiste de Vernon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preload" href="fonts/vendor/material-design-icons/iconMaterialIcons-Regular.woff2?570eb83859dc23dd0eec423a49e147fe" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
   </head>
