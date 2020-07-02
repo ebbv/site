@@ -51,12 +51,12 @@
       <div class="mdc-drawer__content">
         <nav class="mdc-list">
 @foreach (['messages', 'contact', 'beliefs', 'directory'] as $uri)
-          <a aria-hidden="true"
-             class="mdc-list-item{{ (url()->current() == route($uri.'.index')) ? ' mdc-list-item--activated' : '' }}"
+          <a class="mdc-list-item{{ (url()->current() == route($uri.'.index')) ? ' mdc-list-item--activated' : '' }}"
              href="{{ route($uri.'.index') }}"
              id="{{ $uri }}-link"
              tabindex="0">
-            {{ __('nav.'.$uri.'.text') }}
+            <span class="mdc-list-item__ripple"></span>
+            <span class="mdc-list-item__text">{{ __('nav.'.$uri.'.text') }}</span>
           </a>
 @endforeach
         </nav>
