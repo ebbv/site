@@ -35,7 +35,7 @@ class Song extends Model
     public function scopeSearchByNum($q, $input)
     {
         return $q->whereHas('songbooks', function ($query) use ($input) {
-            return $query->where('songbook_id', $input['recueil'])->where('number', $input['num']);
+            return $query->where('songbook_id', $input['recueil'] ?? 1)->where('number', $input['num'] ?? null);
         });
     }
 }
