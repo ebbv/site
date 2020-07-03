@@ -19,7 +19,7 @@
   <div>
     <p>
       {{ $song->songbooks->first()->pivot->number }} : {{ $song->title }}</p>
-    <p>Ce chant a été chanté <strong>{{ $song->dates_count }}</strong> fois</p>
+    <p>Ce chant a été choisi <strong>{{ $song->dates_count }}</strong> fois</p>
     <ul>
 @foreach ($song->dates->pluck('date') as $date)
       <li>Le {{ strftime("%A %e %B, %Y", strtotime($date)) }}</li>
@@ -28,7 +28,7 @@
   </div>
 @empty
 @if (request()->filled('num'))
-  <p>Ce chant n'a pas encore été chanté</p>
+  <p>Ce chant n'a pas encore été choisi</p>
 @endif
 @endforelse
 </div>
