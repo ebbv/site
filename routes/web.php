@@ -28,6 +28,8 @@ Route::group(['prefix' => $lang], function () {
 
     Route::get(__('nav.beliefs.url'), 'BeliefsController@index')->name('beliefs.index');
 
+    Route::get('chants', 'SongsController@index')->name('songs.index');
+
 
     Route::get($directory, 'DirectoryController@index')
         ->name('directory.index');
