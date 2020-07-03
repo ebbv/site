@@ -15,7 +15,7 @@
     </select>
     <button type="submit">Rechercher</button>
   </form>
-@forelse ($songs as $song)
+@if ($song)
   <div>
     <p>
       {{ $song->songbooks->first()->pivot->number }} : {{ $song->title }}</p>
@@ -26,10 +26,8 @@
 @endforeach
     </ul>
   </div>
-@empty
-@if (request()->filled('num'))
+@elseif (request()->filled('num'))
   <p>Ce chant n'a pas encore été choisi</p>
 @endif
-@endforelse
 </div>
 @endsection

@@ -8,12 +8,12 @@ class SongsController extends Controller
 {
     public function index()
     {
-        $songs = Song::has('dates')
+        $song = Song::has('dates')
             ->searchByNum(request()->only(['num', 'recueil']))
             ->with(['dates', 'songbooks'])
             ->withCount('dates')
-            ->get();
+            ->first();
 
-        return view('songs.index', compact('songs'));
+        return view('songs.index', compact('song'));
     }
 }
