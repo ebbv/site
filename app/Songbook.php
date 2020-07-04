@@ -24,6 +24,9 @@ class Songbook extends Model
 
     public function songs()
     {
-        return $this->belongsToMany(Song::class)->using(SongSongbook::class)->withPivot('number');
+        return $this->belongsToMany(Song::class)
+            ->using(SongSongbook::class)
+            ->withPivot('number')
+            ->orderBy('number');
     }
 }
