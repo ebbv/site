@@ -17,6 +17,7 @@ class CreateDateSongTable extends Migration
             $table->id();
             $table->date('date');
             $table->foreignId('song_id')->constrained();
+            $table->unique(['date', 'song_id']);
         });
     }
 

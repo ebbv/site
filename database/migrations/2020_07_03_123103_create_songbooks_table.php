@@ -15,7 +15,7 @@ class CreateSongbooksTable extends Migration
     {
         Schema::create('songbooks', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->unique();
         });
     }
 

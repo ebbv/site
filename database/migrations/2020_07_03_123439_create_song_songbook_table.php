@@ -18,6 +18,7 @@ class CreateSongSongbookTable extends Migration
             $table->unsignedSmallInteger('number');
             $table->foreignId('song_id')->constrained();
             $table->foreignId('songbook_id')->constrained();
+            $table->unique(['number', 'song_id', 'songbook_id']);
         });
     }
 
