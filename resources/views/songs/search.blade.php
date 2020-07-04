@@ -13,7 +13,9 @@
         <span class="mdc-notched-outline__trailing"></span>
       </span>
     </label>
-    dans
+    <span style="margin: 0 1rem">
+      dans
+    </span>
     <div class="mdc-select mdc-select--outlined">
       <input type="hidden" name="recueil">
       <div class="mdc-select__anchor">
@@ -55,7 +57,7 @@
         </ul>
       </div>
     </div>
-    <button class="mdc-button mdc-button--raised" type="submit">
+    <button class="mdc-button mdc-button--raised" style="margin-left: 1rem" type="submit">
       <div class="mdc-button__ripple"></div>
       <span class="mdc-button__label">Rechercher</span>
     </button>
