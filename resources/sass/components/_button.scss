@@ -1,3 +1,7 @@
 .mdc-button--cancel {
   @include mdc-button-filled-accessible($mdc-theme-error);
 }
+
+#search-button, #add-button {
+  margin: 0 1rem;
+}

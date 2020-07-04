@@ -3,8 +3,8 @@
 @section('content')
 <div>
   <form accept-charset="utf-8" method="GET">
-    <label class="mdc-text-field mdc-text-field--outlined" style="width: 100px">
-      <input min="0" name="num" style="text-align: center" type="number" class="mdc-text-field__input" value="{{ request()->query('num') }}">
+    <label class="mdc-text-field mdc-text-field--outlined" id="song-number">
+      <input min="0" name="num" type="number" class="mdc-text-field__input" value="{{ request()->query('num') }}">
       <span class="mdc-notched-outline">
         <span class="mdc-notched-outline__leading"></span>
         <span class="mdc-notched-outline__notch">
@@ -13,7 +13,7 @@
         <span class="mdc-notched-outline__trailing"></span>
       </span>
     </label>
-    <span style="margin: 0 1rem">
+    <span class="divider-1-rem">
       dans
     </span>
     <div class="mdc-select mdc-select--outlined">
@@ -57,7 +57,7 @@
         </ul>
       </div>
     </div>
-    <button class="mdc-button mdc-button--raised" style="margin-left: 1rem" type="submit">
+    <button class="mdc-button mdc-button--raised" id="search-button" type="submit">
       <div class="mdc-button__ripple"></div>
       <span class="mdc-button__label">Rechercher</span>
     </button>

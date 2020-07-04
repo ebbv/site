@@ -2,3 +2,15 @@
   width: 100%;
   @include mdc-text-field-fill-color(#fff);
 }
+
+#song-number {
+  width: 100px;
+}
+
+#song-number input {
+  text-align: center;
+}
+
+#song-title-textbox {
+  width: 350px;
+}
