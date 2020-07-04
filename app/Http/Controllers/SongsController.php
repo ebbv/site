@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class SongsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['search']);
+    }
+
     public function create()
     {
         return view('songs.form');
@@ -14,7 +19,6 @@ class SongsController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
         $song = Song::firstOrCreate(['title' => $request->title]);
         $song->songbooks()->attach(1, ['number' => $request->number]);
 
