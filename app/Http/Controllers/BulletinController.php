@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 class BulletinController extends Controller
 {
-    public function index (int $year = null, string $month = null)
+    public function index ($year = null, $month = null)
     {
         $fileName = 'current';
 
