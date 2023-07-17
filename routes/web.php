@@ -1,5 +1,7 @@
 <?php
 
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+
 $lang = config('user_prefered_locale');
 
 Route::redirect('/', 'messages');
@@ -58,8 +60,21 @@ Route::group(['prefix' => $lang], function () {
         ->name('directory.destroy')
         ->where('user', '[0-9]+');
 
+    // Authentication...
+    if (config('fortify.views', true)) {
+        Route::get(__('nav.login.url'), [AuthenticatedSessionController::class, 'create'])
+            ->middleware(['guest:'.config('fortify.guard')])
+            ->name('login');
+    }
 
-    Route::get(__('nav.login.url'), 'Auth\LoginController@showLoginForm')->name('login');
-    Route::post(__('nav.login.url'), 'Auth\LoginController@login');
-    Route::post(__('nav.logout.url'), 'Auth\LoginController@logout')->name('logout');
+    $limiter = config('fortify.limiters.login');
+
+    Route::post(__('nav.login.url'), [AuthenticatedSessionController::class, 'store'])
+        ->middleware(array_filter([
+            'guest:'.config('fortify.guard'),
+            $limiter ? 'throttle:'.$limiter : null,
+        ]));
+
+    Route::post(__('nav.logout.url'), [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout');
 });

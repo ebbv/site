@@ -146,7 +146,7 @@ class DirectoryController extends Controller
 
         $m = $user->load([
             'address:id,street_info,street_complement,zip,city',
-            'emails:emails.id,address,type',
+            'emails:emails.id,address,email_user.type',
             'phones:phones.id,number,type',
             'roles:roles.id,name'
         ]);
