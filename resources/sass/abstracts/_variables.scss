@@ -4,6 +4,8 @@ $breakpoints: (
   'large': 840px,
 );
 
-$mdc-theme-primary: hsla(207, 90%, 54%, 1);
-$mdc-theme-secondary: hsla(340, 100%, 63%, 1);
-$mdc-theme-background: #fafafa;
+@use "@material/theme" with (
+  $background: #fafafa,
+  $primary: hsla(207, 90%, 54%, 1),
+  $secondary: hsla(340, 100%, 63%, 1),
+);

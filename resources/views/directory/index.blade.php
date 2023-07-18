@@ -20,11 +20,11 @@
                   </div>
 @endisset
 @if (count($member->phones) > 0)
-                  <hr class="mdc-list-divider" role="separator">
-                  <ul class="mdc-list mdc-list--dense mdc-list--non-interactive phones">
+                  <hr class="mdc-deprecated-list-divider" role="separator">
+                  <ul class="mdc-deprecated-list mdc-deprecated-list--dense mdc-deprecated-list--non-interactive phones">
 @foreach ($member->phones as $p)
-                    <li class="mdc-list-item">
-                      <i class="material-icons mdc-list-item__start-detail">
+                    <li class="mdc-deprecated-list-item">
+                      <i class="material-icons mdc-deprecated-list-item__start-detail">
                         {{ ($p->type == 'fixe') ? 'phone' : 'smartphone'}}
                       </i>
                       {{ $p->number }}
@@ -33,11 +33,11 @@
                   </ul>
 @endif
 @if (count($member->emails) > 0)
-                  <hr class="mdc-list-divider" role="separator">
-                  <ul class="emails mdc-list mdc-list--dense mdc-list--non-interactive">
+                  <hr class="mdc-deprecated-list-divider" role="separator">
+                  <ul class="emails mdc-deprecated-list mdc-deprecated-list--dense mdc-deprecated-list--non-interactive">
 @foreach ($member->emails as $e)
-                    <li class="mdc-list-item">
-                      <i class="material-icons mdc-list-item__start-detail">email</i>
+                    <li class="mdc-deprecated-list-item">
+                      <i class="material-icons mdc-deprecated-list-item__start-detail">email</i>
                       {{ $e->address }}
                     </li>
 @endforeach

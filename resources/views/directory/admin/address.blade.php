@@ -1,22 +1,47 @@
             <div>
               <div class="mdc-select mdc-select--outlined">
-                <div class="mdc-select__anchor">
-                  <i class="mdc-select__dropdown-icon"></i>
-                  <div class="mdc-select__selected-text"></div>
-                  <div class="mdc-notched-outline">
-                    <div class="mdc-notched-outline__leading"></div>
-                    <div class="mdc-notched-outline__notch">
-                      <span class="mdc-floating-label" id="outlined-select-label">Choisir une adresse</span>
-                    </div>
-                    <div class="mdc-notched-outline__trailing"></div>
-                  </div>
+                <div class="mdc-select__anchor" aria-labelledby="address-select-label">
+                  <span class="mdc-notched-outline">
+                    <span class="mdc-notched-outline__leading"></span>
+                    <span class="mdc-notched-outline__notch">
+                      <span id="address-select-label" class="mdc-floating-label">Choisir une adresse</span>
+                    </span>
+                    <span class="mdc-notched-outline__trailing"></span>
+                  </span>
+                  <span class="mdc-select__selected-text-container">
+                    <span id="address-selected-text" class="mdc-select__selected-text"></span>
+                  </span>
+                  <span class="mdc-select__dropdown-icon">
+                    <svg
+                        class="mdc-select__dropdown-icon-graphic"
+                        viewBox="7 10 10 5" focusable="false">
+                      <polygon
+                          class="mdc-select__dropdown-icon-inactive"
+                          stroke="none"
+                          fill-rule="evenodd"
+                          points="7 10 12 15 17 10">
+                      </polygon>
+                      <polygon
+                          class="mdc-select__dropdown-icon-active"
+                          stroke="none"
+                          fill-rule="evenodd"
+                          points="7 15 12 10 17 15">
+                      </polygon>
+                    </svg>
+                  </span>
                 </div>
                 <div class="mdc-menu mdc-menu-surface mdc-select__menu">
-                  <ul class="mdc-list">
+                  <ul class="mdc-deprecated-list">
+                    <li class="mdc-deprecated-list-item mdc-deprecated-list-item--selected" aria-selected="true" data-value="" role="option">
+                      <span class="mdc-deprecated-list-item__ripple"></span>
+                    </li>
 @foreach ($addresses as $address)
-                  <li class="mdc-list-item{{ (isset($m->address) and $address->id == $m->address->id) ? ' mdc-list-item--selected' : '' }}" data-value="{{ $address->id }}">
-                    {{ $address->fullAddress }}
-                  </li>
+                    <li class="mdc-deprecated-list-item" aria-selected="{{ (isset($m->address) and $address->id == $m->address->id) ? 'true' : 'false' }}" data-value="{{ $address->id }}" role="option">
+                      <span class="mdc-deprecated-list-item__ripple"></span>
+                      <span class="mdc-deprecated-list-item__text">
+                        {{ $address->fullAddress }}
+                      </span>
+                    </li>
 @endforeach
                   </ul>
                 </div>

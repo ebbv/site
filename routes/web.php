@@ -32,7 +32,8 @@ Route::group(['prefix' => $lang], function () {
 
     Route::get(__('nav.beliefs.url'), 'BeliefsController@index')->name('beliefs.index');
 
-    Route::resource('chants', 'SongsController');
+    Route::get('chants/ajouter', 'SongsController@create');
+    Route::post('chants', 'SongsController@store');
     Route::get('recherche-chants', 'SongsController@search');
 
     Route::get('cultes/ajouter', 'ServiceController@create');

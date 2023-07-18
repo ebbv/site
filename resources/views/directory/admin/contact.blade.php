@@ -2,22 +2,47 @@
 <?php $temp = isset($m) ? \Illuminate\Support\Arr::pluck($m->phones->toArray(), 'type', 'number') : [] ?>
 @foreach ($phones as $key => $value)
               <div class="mdc-select mdc-select--outlined">
-                <div class="mdc-select__anchor">
-                  <i class="mdc-select__dropdown-icon"></i>
-                  <div class="mdc-select__selected-text"></div>
-                  <div class="mdc-notched-outline">
-                    <div class="mdc-notched-outline__leading"></div>
-                    <div class="mdc-notched-outline__notch">
-                      <span class="mdc-floating-label" id="outlined-select-label">Choisir un numéro de téléphone</span>
-                    </div>
-                    <div class="mdc-notched-outline__trailing"></div>
-                  </div>
+                <div class="mdc-select__anchor" aria-labelledby="phone-{{ $key }}-select-label">
+                  <span class="mdc-notched-outline">
+                    <span class="mdc-notched-outline__leading"></span>
+                    <span class="mdc-notched-outline__notch">
+                      <span id="phone-{{ $key }}-select-label" class="mdc-floating-label">Choisir un numéro de téléphone</span>
+                    </span>
+                    <span class="mdc-notched-outline__trailing"></span>
+                  </span>
+                  <span class="mdc-select__selected-text-container">
+                    <span id="phone-{{ $key }}-selected-text" class="mdc-select__selected-text"></span>
+                  </span>
+                  <span class="mdc-select__dropdown-icon">
+                    <svg
+                        class="mdc-select__dropdown-icon-graphic"
+                        viewBox="7 10 10 5" focusable="false">
+                      <polygon
+                          class="mdc-select__dropdown-icon-inactive"
+                          stroke="none"
+                          fill-rule="evenodd"
+                          points="7 10 12 15 17 10">
+                      </polygon>
+                      <polygon
+                          class="mdc-select__dropdown-icon-active"
+                          stroke="none"
+                          fill-rule="evenodd"
+                          points="7 15 12 10 17 15">
+                      </polygon>
+                    </svg>
+                  </span>
                 </div>
                 <div class="mdc-menu mdc-menu-surface mdc-select__menu">
-                  <ul class="mdc-list">
+                  <ul class="mdc-deprecated-list">
+                    <li class="mdc-deprecated-list-item mdc-deprecated-list-item--selected" aria-selected="true" data-value="" role="option">
+                      <span class="mdc-deprecated-list-item__ripple"></span>
+                    </li>
 @foreach ($value as $id => $number)
-                    <li class="mdc-list-item{{ (array_search($key, $temp) === $number) ? ' mdc-list-item--selected' : '' }}" data-value="{{ $id }}">
-                      {{ $number }}
+                    <li class="mdc-deprecated-list-item" aria-selected="{{ (array_search($key, $temp) === $number) ? 'true' : 'false' }}" data-value="{{ $id }}" role="option">
+                      <span class="mdc-deprecated-list-item__ripple"></span>
+                      <span class="mdc-deprecated-list-item__text">
+                        {{ $number }}
+                      </span>
                     </li>
 @endforeach
                   </ul>
@@ -42,22 +67,47 @@
 <?php $temp = isset($m) ? \Illuminate\Support\Arr::pluck($m->emails->toArray(), 'type', 'address') : [] ?>
 @foreach (['principal', 'secondaire'] as $key => $value)
               <div class="mdc-select mdc-select--outlined">
-                <div class="mdc-select__anchor">
-                  <i class="mdc-select__dropdown-icon"></i>
-                  <div class="mdc-select__selected-text"></div>
-                  <div class="mdc-notched-outline">
-                    <div class="mdc-notched-outline__leading"></div>
-                    <div class="mdc-notched-outline__notch">
-                      <span class="mdc-floating-label" id="outlined-select-label">Choisir une adresse</span>
-                    </div>
-                    <div class="mdc-notched-outline__trailing"></div>
-                  </div>
+                <div class="mdc-select__anchor" aria-labelledby="email-{{ $key }}-select-label">
+                  <span class="mdc-notched-outline">
+                    <span class="mdc-notched-outline__leading"></span>
+                    <span class="mdc-notched-outline__notch">
+                      <span id="email-{{ $key }}-select-label" class="mdc-floating-label">Choisir une adresse</span>
+                    </span>
+                    <span class="mdc-notched-outline__trailing"></span>
+                  </span>
+                  <span class="mdc-select__selected-text-container">
+                    <span id="email-{{ $key }}-selected-text" class="mdc-select__selected-text"></span>
+                  </span>
+                  <span class="mdc-select__dropdown-icon">
+                    <svg
+                        class="mdc-select__dropdown-icon-graphic"
+                        viewBox="7 10 10 5" focusable="false">
+                      <polygon
+                          class="mdc-select__dropdown-icon-inactive"
+                          stroke="none"
+                          fill-rule="evenodd"
+                          points="7 10 12 15 17 10">
+                      </polygon>
+                      <polygon
+                          class="mdc-select__dropdown-icon-active"
+                          stroke="none"
+                          fill-rule="evenodd"
+                          points="7 15 12 10 17 15">
+                      </polygon>
+                    </svg>
+                  </span>
                 </div>
                 <div class="mdc-menu mdc-menu-surface mdc-select__menu">
-                  <ul class="mdc-list">
+                  <ul class="mdc-deprecated-list">
+                    <li class="mdc-deprecated-list-item mdc-deprecated-list-item--selected" aria-selected="true" data-value="" role="option">
+                      <span class="mdc-deprecated-list-item__ripple"></span>
+                    </li>
 @foreach ($emails as $email)
-                    <li class="mdc-list-item{{ (array_search($value, $temp) === $email->address) ? ' mdc-list-item--selected' : '' }}" data-value="{{ $email->id }}">
-                      {{ $email->address }}
+                    <li class="mdc-deprecated-list-item" aria-selected="{{ (array_search($value, $temp) === $email->address) ? 'true' : 'false' }}" data-value="{{ $id }}" role="option">
+                      <span class="mdc-deprecated-list-item__ripple"></span>
+                      <span class="mdc-deprecated-list-item__text">
+                        {{ $email->address }}
+                      </span>
                     </li>
 @endforeach
                   </ul>

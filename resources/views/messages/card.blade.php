@@ -22,6 +22,8 @@
                         aria-label="Play and pause"
                         aria-pressed="false"
                         class="playback-control mdc-icon-button">
+                  <div class="mdc-icon-button__ripple"></div>
+                  <span class="mdc-icon-button__focus-ring"></span>
                   <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">pause</i>
                   <i class="material-icons mdc-icon-button__icon">play_arrow</i>
                 </button>
@@ -55,6 +57,8 @@
               </div>
               <div>
                 <a class="material-icons mdc-icon-button" download="{{ "{$message->title}.mp3" }}" href="{{ route('messages.show', $message).'/download' }}">
+                  <div class="mdc-icon-button__ripple"></div>
+                  <span class="mdc-icon-button__focus-ring"></span>
                   get_app
                 </a>
               </div>

@@ -18,12 +18,21 @@
     </span>
     <div class="mdc-select mdc-select--outlined">
       <input type="hidden" name="recueil">
-      <div class="mdc-select__anchor">
-        <span class="mdc-select__selected-text"></span>
+      <div class="mdc-select__anchor" aria-labelledby="book-select-label">
+        <span class="mdc-notched-outline">
+          <span class="mdc-notched-outline__leading"></span>
+          <span class="mdc-notched-outline__notch">
+            <span id="book-select-label" class="mdc-floating-label">Recueil</span>
+          </span>
+          <span class="mdc-notched-outline__trailing"></span>
+        </span>
+        <span class="mdc-select__selected-text-container">
+          <span id="book-selected-text" class="mdc-select__selected-text"></span>
+        </span>
         <span class="mdc-select__dropdown-icon">
           <svg
               class="mdc-select__dropdown-icon-graphic"
-              viewBox="7 10 10 5">
+              viewBox="7 10 10 5" focusable="false">
             <polygon
                 class="mdc-select__dropdown-icon-inactive"
                 stroke="none"
@@ -38,20 +47,13 @@
             </polygon>
           </svg>
         </span>
-        <span class="mdc-notched-outline">
-          <span class="mdc-notched-outline__leading"></span>
-          <span class="mdc-notched-outline__notch">
-            <span class="mdc-floating-label">Recueil</span>
-          </span>
-          <span class="mdc-notched-outline__trailing"></span>
-        </span>
       </div>
       <div class="mdc-select__menu mdc-menu mdc-menu-surface" role="listbox">
-        <ul class="mdc-list">
+        <ul class="mdc-deprecated-list">
 @foreach (\App\Songbook::all() as $book)
-          <li aria-selected="true" class="mdc-list-item mdc-list-item--selected" data-value="{{ $book->id }}" role="option" tabindex="0">
-            <span class="mdc-list-item__ripple"></span>
-            <span class="mdc-list-item__text">{{ $book->title }}</span>
+          <li aria-selected="true" class="mdc-deprecated-list-item mdc-deprecated-list-item--selected" data-value="{{ $book->id }}" role="option" tabindex="0">
+            <span class="mdc-deprecated-list-item__ripple"></span>
+            <span class="mdc-deprecated-list-item__text">{{ $book->title }}</span>
           </li>
 @endforeach
         </ul>
