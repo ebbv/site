@@ -12,6 +12,6 @@ class BulletinController extends Controller
             $fileName = $year.'/'.$month;
         }
 
-        return response()->file('storage/bulletin/'.$fileName.'.pdf');
+        return view('bulletin.index', compact('fileName'));
     }
 }

@@ -5,6 +5,10 @@ return [
         'text' => 'Accueil',
         'url'  => 'messages'
     ],
+    'bulletin'  => [
+        'text' => 'Bulletin',
+        'url'  => 'bulletin'
+    ],
     'contact'   => [
         'text' => 'Contact',
         'url'  => 'contact'

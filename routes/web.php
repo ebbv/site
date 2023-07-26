@@ -7,7 +7,7 @@ $lang = config('user_prefered_locale');
 Route::redirect('/', 'messages');
 Route::redirect($lang, $lang.'/messages');
 
-Route::get('bulletin/{year?}/{month?}', 'BulletinController@index');
+Route::get('bulletin/{year?}/{month?}', 'BulletinController@index')->name('bulletin.index');
 
 Route::group(['prefix' => $lang], function () {
     $directory  = __('nav.directory.url');
