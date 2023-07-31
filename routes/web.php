@@ -9,6 +9,10 @@ Route::redirect($lang, $lang.'/messages');
 
 Route::get('bulletin/{year?}/{month?}', 'BulletinController@index')->name('bulletin.index');
 
+Route::get('déroulement', function () {
+    return Storage::response('déroulement.pdf');
+});
+
 Route::group(['prefix' => $lang], function () {
     $directory  = __('nav.directory.url');
 
