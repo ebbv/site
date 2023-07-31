@@ -24,7 +24,7 @@ class BulletinController extends Controller
         }
 
         if ($action == 'generate') {
-            return response()->file(Storage::path($filePath.'.pdf'));
+            return Storage::response($filePath.'.pdf');
         } elseif ($action == 'download') {
             return Storage::download($filePath.'.pdf');
         }
