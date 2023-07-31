@@ -2,16 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 class BulletinController extends Controller
 {
-    public function index ($year = null, $month = null)
+    public $root = 'bulletin';
+
+    public function index(Request $request, int $year = null, string $month = null)
     {
-        $fileName = 'current';
+        $action = $request->query('action');
+
+        $filePath = $this->root.'/current';
+
+        $url = $this->root;
 
         if ($year) {
-            $fileName = $year.'/'.$month;
+            $filePath = $this->root.'/'.($year.'/'.$month);
+
+            $url = $filePath;
         }
 
-        return view('bulletin.index', compact('fileName'));
+        if ($action == 'generate') {
+            return response()->file(Storage::path($filePath.'.pdf'));
+        } elseif ($action == 'download') {
+            return Storage::download($filePath.'.pdf');
+        }
+
+        return view('bulletin.index', compact('url'));
     }
 }
