@@ -11,8 +11,6 @@ class BulletinController extends Controller
 
     public function index(Request $request, int $year = null, string $month = null)
     {
-        $action = $request->query('action');
-
         $filePath = $this->root.'/current';
 
         $url = $this->root;
@@ -23,10 +21,8 @@ class BulletinController extends Controller
             $url = $filePath;
         }
 
-        if ($action == 'generate') {
+        if ($request->has('generate')) {
             return Storage::response($filePath.'.pdf');
-        } elseif ($action == 'download') {
-            return Storage::download($filePath.'.pdf');
         }
 
         return view('bulletin.index', compact('url'));
