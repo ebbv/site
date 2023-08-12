@@ -7,16 +7,16 @@ use Illuminate\Support\Facades\Storage;
 
 class BulletinController extends Controller
 {
-    public $root = 'bulletin';
-
     public function index(Request $request, int $year = null, string $month = null)
     {
-        $filePath = $this->root.'/current';
+        $root = 'bulletin';
 
-        $url = $this->root;
+        $filePath = $root.'/current';
+
+        $url = $root;
 
         if ($year) {
-            $filePath = $this->root.'/'.($year.'/'.$month);
+            $filePath = $root.'/'.$year.'/'.$month;
 
             $url = $filePath;
         }
