@@ -13,6 +13,8 @@ Route::get('déroulement', function () {
     return Storage::response('déroulement.pdf');
 });
 
+Route::view('lecture-biblique', 'bible-reading.index')->name('bible-reading.index');
+
 Route::group(['prefix' => $lang], function () {
     $directory  = __('nav.directory.url');
 

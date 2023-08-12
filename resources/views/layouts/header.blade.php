@@ -56,7 +56,7 @@
     <aside class="mdc-drawer mdc-drawer--modal" id="js-app-drawer">
       <div class="mdc-drawer__content">
         <nav class="mdc-deprecated-list">
-@foreach (['messages', 'bulletin', 'contact', 'beliefs', 'directory'] as $uri)
+@foreach (['messages', 'bulletin', 'contact', 'beliefs', 'bible-reading', 'directory'] as $uri)
           <a class="mdc-deprecated-list-item{{ (url()->current() == route($uri.'.index')) ? ' mdc-deprecated-list-item--activated' : '' }}"
              href="{{ route($uri.'.index') }}"
              id="{{ $uri }}-link"

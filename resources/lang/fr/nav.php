@@ -17,6 +17,10 @@ return [
         'text' => 'Croyances',
         'url'  => 'croyances'
     ],
+    'bible-reading'   => [
+        'text' => 'Lecture Biblique',
+        'url'  => 'lecture-biblique'
+    ],
     'directory' => [
         'text' => 'Annuaire',
         'url'  => 'annuaire'
