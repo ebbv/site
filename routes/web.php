@@ -20,12 +20,14 @@ Route::group(['prefix' => $lang], function () {
 
     Route::get('messages/{message}/download', function (App\Message $message) {
         $path = "audio/{$message->filename}.mp3";
-        $size = Storage::size($path);
-        header('Content-Description: File Transfer');
-        header('Content-Disposition: attachment; filename="'.$message->title.'.mp3"');
-        header('Content-Type: audio/mpeg');
-        header('Content-Length: '.$size);
-        return readfile(ltrim(Storage::url($path), '/'));
+
+        $headers = [
+            'Content-Description' => 'File Transfer',
+            'Content-Length' => Storage::size($path),
+            'Content-Type' => 'audio/mpeg'
+        ];
+
+        return Storage::download($path, $message->title.'.mp3', $headers);
     });
 
     Route::resource('messages', 'MessagesController');

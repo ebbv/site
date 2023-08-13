@@ -37,7 +37,7 @@
               </div>
               <audio buffered class="my-audio" preload="metadata">
 @foreach (\App\Message::AUDIO_FORMATS as $type => $format)
-                <source src="{{ Storage::url('audio/'.$message->filename).$format }}" type="{{ $type }}">
+                <source src="{{ Storage::temporaryUrl('audio/'.$message->filename.$format, now()->addMinutes(60)) }}" type="{{ $type }}">
 @endforeach
               </audio>
               <div class="mdc-layout-grid__cell
