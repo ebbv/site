@@ -2,11 +2,12 @@
 
 @php
 $passages = [
-  'Genèse 31', 'Genèse 32-33', 'Genèse 34-35', 'Genèse 36', 'Genèse 37', 'Genèse 38', 'Genèse 39-40',
-  'Genèse 41', 'Genèse 42', 'Genèse 43', 'Genèse 44-45', 'Genèse 46-47', 'Genèse 48-49', 'Genèse 50',
-  'Exode 1-2', 'Exode 3', 'Exode 4', 'Exode 5-6', 'Exode 7', 'Exode 8', 'Exode 9', 'Exode 10-11',
-  'Exode 12', 'Exode 13-14', 'Exode 15', 'Exode 16', 'Exode 17-18', 'Exode 19-20', 'Exode 21',
-  'Exode 22', 'Exode 23'
+  'Exode 24-25', 'Exode 26-27', 'Exode 28', 'Exode 29', 'Exode 30-31', 'Exode 32-33',
+  'Exode 34', 'Exode 35-36', 'Exode 37-38', 'Exode 39', 'Exode 40', 'Lévitique 1',
+  'Lévitique 2-3', 'Lévitique 4', 'Lévitique 5-6', 'Lévitique 7', 'Lévitique 8-9',
+  'Lévitique 10', 'Lévitique 11-12', 'Lévitique 13', 'Lévitique 14', 'Lévitique 15',
+  'Lévitique 16', 'Lévitique 17-18', 'Lévitique 19', 'Lévitique 20-21', 'Lévitique 22',
+  'Lévitique 23-24', 'Lévitique 25', 'Lévitique 26'
 ]
 @endphp
 
