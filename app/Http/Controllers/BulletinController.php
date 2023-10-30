@@ -22,7 +22,7 @@ class BulletinController extends Controller
         }
 
         if ($request->has('generate')) {
-            return Storage::response($filePath.'.pdf');
+            return Storage::response($filePath.'.jpg');
         }
 
         return view('bulletin.index', compact('url'));

@@ -17,5 +17,5 @@
     <div class="mdc-button__ripple"></div>
     <span class="mdc-button__label">mois en cours</span>
   </a>
-  <embed id="bulletin-iframe" type="application/pdf" src="{{ $url }}?generate"></embed>
+  <img alt="" id="bulletin-iframe" src="{{ $url }}?generate"></img>
 @endsection
