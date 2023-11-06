@@ -2,12 +2,12 @@
 
 @php
 $passages = [
-  'Lévitique 27', 'Nombres 1', 'Nombres 2', 'Nombres 3', 'Nombres 4', 'Nombres 5-6',
-  'Nombres 7', 'Nombres 8-9', 'Nombres 10', 'Nombres 11-12', 'Nombres 13-14',
-  'Nombres 15', 'Nombres 16-17', 'Nombres 18', 'Nombres 19-20', 'Nombres 21',
-  'Nombres 22', 'Nombres 23-24', 'Nombres 25-26', 'Nombres 27-28', 'Nombres 29-30',
-  'Nombres 31', 'Nombres 32', 'Nombres 33', 'Nombres 34', 'Nombres 35-36',
-  'Deutéronome 1', 'Deutéronome 2', 'Deutéronome 3', 'Deutéronome 4', 'Deutéronome 5'
+  'Deutéronome 6', 'Deutéronome 7', 'Deutéronome 8', 'Deutéronome 9', 'Deutéronome 10-11',
+  'Deutéronome 12-13', 'Deutéronome 14-15', 'Deutéronome 16-17', 'Deutéronome 18-19',
+  'Deutéronome 20-21', 'Deutéronome 22', 'Deutéronome 23', 'Deutéronome 24-25', 'Deutéronome 26-27',
+  'Deutéronome 28', 'Deutéronome 29-30', 'Deutéronome 31', 'Deutéronome 32', 'Deutéronome 33-34',
+  'Josué 1-2', 'Josué 3-4', 'Josué 5-6', 'Josué 7', 'Josué 8', 'Josué 9', 'Josué 10', 'Josué 11-12',
+  'Josué 13-14', 'Josué 15', 'Josué 16-17'
 ]
 @endphp
 
