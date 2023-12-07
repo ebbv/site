@@ -2,12 +2,11 @@
 
 @php
 $passages = [
-  'Deutéronome 6', 'Deutéronome 7', 'Deutéronome 8', 'Deutéronome 9', 'Deutéronome 10-11',
-  'Deutéronome 12-13', 'Deutéronome 14-15', 'Deutéronome 16-17', 'Deutéronome 18-19',
-  'Deutéronome 20-21', 'Deutéronome 22', 'Deutéronome 23', 'Deutéronome 24-25', 'Deutéronome 26-27',
-  'Deutéronome 28', 'Deutéronome 29-30', 'Deutéronome 31', 'Deutéronome 32', 'Deutéronome 33-34',
-  'Josué 1-2', 'Josué 3-4', 'Josué 5-6', 'Josué 7', 'Josué 8', 'Josué 9', 'Josué 10', 'Josué 11-12',
-  'Josué 13-14', 'Josué 15', 'Josué 16-17'
+  'Josué 18', 'Josué 19', 'Josué 20-21', 'Josué 22', 'Josué 23-24', 'Juges 1', 'Juges 2-3',
+  'Juges 4-5', 'Juges 6', 'Juges 7-8', 'Juges 9', 'Juges 10-11', 'Juges 12-13', 'Juges 14',
+  'Juges 15', 'Juges 16', 'Juges 17-18', 'Juges 19', 'Juges 20', 'Juges 21', 'Esaïe 9.1-6',
+  'Matthieu 1', 'Matthieu 2', 'Luc 1.1-22', 'Luc 1.23-56', 'Luc 1.57-80', 'Luc 2', 'Jean 1.1-18',
+  'Ruth 1', 'Ruth 2', 'Ruth 3-4'
 ]
 @endphp
 
