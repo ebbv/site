@@ -2,11 +2,11 @@
 
 @php
 $passages = [
-  'Josué 18', 'Josué 19', 'Josué 20-21', 'Josué 22', 'Josué 23-24', 'Juges 1', 'Juges 2-3',
-  'Juges 4-5', 'Juges 6', 'Juges 7-8', 'Juges 9', 'Juges 10-11', 'Juges 12-13', 'Juges 14',
-  'Juges 15', 'Juges 16', 'Juges 17-18', 'Juges 19', 'Juges 20', 'Juges 21', 'Esaïe 9.1-6',
-  'Matthieu 1', 'Matthieu 2', 'Luc 1.1-22', 'Luc 1.23-56', 'Luc 1.57-80', 'Luc 2', 'Jean 1.1-18',
-  'Ruth 1', 'Ruth 2', 'Ruth 3-4'
+  '1 Samuel 1', '1 Samuel 2', '1 Samuel 3-4', '1 Samuel 5-6', '1 Samuel 7-8', '1 Samuel 9', '1 Samuel 10-11',
+  '1 Samuel 12-13', '1 Samuel 14', '1 Samuel 15', '1 Samuel 16', '1 Samuel 17', '1 Samuel 18-19',
+  '1 Samuel 20', '1 Samuel 21-22', '1 Samuel 23-24', '1 Samuel 25', '1 Samuel 26-27', '1 Samuel 28-29',
+  '1 Samuel 30-31', '2 Samuel 1', '2 Samuel 2', '2 Samuel 3-4', '2 Samuel 5-6', '2 Samuel 7-8',
+  '2 Samuel 9-10', '2 Samuel 11', '2 Samuel 12', '2 Samuel 13', '2 Samuel 14', '2 Samuel 15'
 ]
 @endphp
 
