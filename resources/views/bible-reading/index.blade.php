@@ -2,10 +2,11 @@
 
 @php
 $passages = [
-  '2 Samuel 16-17', '2 Samuel 18', '2 Samuel 19', '2 Samuel 20', '2 Samuel 21', '2 Samuel 22', '2 Samuel 23',
-  '2 Samuel 24', '1 Rois 1', '1 Rois 2', '1 Rois 3-4', '1 Rois 5-6', '1 Rois 7', '1 Rois 8', '1 Rois 9-10',
-  '1 Rois 11', '1 Rois 12-13', '1 Rois 14', '1 Rois 15', '1 Rois 16-17', '1 Rois 18', '1 Rois 19-20', '1 Rois 21',
-  '1 Rois 22', '2 Rois 1-2', '2 Rois 3-4', '2 Rois 5-6', '2 Rois 7', '2 Rois 8'
+  '2 Rois 9', '2 Rois 10', '2 Rois 11-12', '2 Rois 13-14', '2 Rois 15-16', '2 Rois 17', '2 Rois 18', '2 Rois 19',
+  '2 Rois 20-21', '2 Rois 22', '2 Rois 23', '2 Rois 24-25', '1 Chroniques 1', '1 Chroniques 2', '1 Chroniques 3-4',
+  '1 Chroniques 5-6', '1 Chroniques 7', '1 Chroniques 8', '1 Chroniques 9', '1 Chroniques 10-11', '1 Chroniques 12-13',
+  '1 Chroniques 14-15', '1 Chroniques 16-17', '1 Chroniques 18-19', '1 Chroniques 20-21', '1 Chroniques 22-23',
+  '1 Chroniques 24-25', '1 Chroniques 26', '1 Chroniques 27', '1 Chroniques 28', '1 Chroniques 29'
 ]
 @endphp
 
