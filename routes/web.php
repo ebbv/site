@@ -10,7 +10,7 @@ Route::redirect($lang, $lang.'/messages');
 Route::get('bulletin/{year?}/{month?}', 'BulletinController@index')->name('bulletin.index');
 
 Route::get('déroulement', function () {
-    return Storage::response('déroulement.jpg');
+    return view('deroulement');
 });
 
 Route::view('lecture-biblique', 'bible-reading.index')->name('bible-reading.index');
