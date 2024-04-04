@@ -2,11 +2,11 @@
 
 @php
 $passages = [
-  '2 Rois 9', '2 Rois 10', '2 Rois 11-12', '2 Rois 13-14', '2 Rois 15-16', '2 Rois 17', '2 Rois 18', '2 Rois 19',
-  '2 Rois 20-21', '2 Rois 22', '2 Rois 23', '2 Rois 24-25', '1 Chroniques 1', '1 Chroniques 2', '1 Chroniques 3-4',
-  '1 Chroniques 5-6', '1 Chroniques 7', '1 Chroniques 8', '1 Chroniques 9', '1 Chroniques 10-11', '1 Chroniques 12-13',
-  '1 Chroniques 14-15', '1 Chroniques 16-17', '1 Chroniques 18-19', '1 Chroniques 20-21', '1 Chroniques 22-23',
-  '1 Chroniques 24-25', '1 Chroniques 26', '1 Chroniques 27', '1 Chroniques 28', '1 Chroniques 29'
+  '2 Chroniques 1-2', '2 Chroniques 3-4', '2 Chroniques 5-6', '2 Chroniques 7-8', '2 Chroniques 9-10', '2 Chroniques 11-12',
+  '2 Chroniques 13-14', '2 Chroniques 15-16', '2 Chroniques 17-18', '2 Chroniques 19-20', '2 Chroniques 21-22',
+  '2 Chroniques 23-24', '2 Chroniques 25', '2 Chroniques 26-27', '2 Chroniques 28', '2 Chroniques 29', '2 Chroniques 30-31',
+  '2 Chroniques 32-33', '2 Chroniques 34', '2 Chroniques 35-36', 'Esdras 1-2', 'Esdras 3-4', 'Esdras 5-6', 'Esdras 7-8',
+  'Esdras 9-10', 'Néhémie 1-2', 'Néhémie 3', 'Néhémie 4-5', 'Néhémie 6-7', 'Néhémie 8'
 ]
 @endphp
 
