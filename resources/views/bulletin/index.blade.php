@@ -49,6 +49,10 @@
     <div class="mdc-button__ripple"></div>
     <span class="mdc-button__label">juin</span>
   </a>
+  <a class="mdc-button mdc-button--raised" href="bulletin/2024/juillet">
+    <div class="mdc-button__ripple"></div>
+    <span class="mdc-button__label">juillet</span>
+  </a>
   <a class="mdc-button mdc-button--raised" href="bulletin">
     <div class="mdc-button__ripple"></div>
     <span class="mdc-button__label">mois en cours</span>
