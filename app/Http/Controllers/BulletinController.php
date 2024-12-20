@@ -9,22 +9,14 @@ class BulletinController extends Controller
 {
     public function index(Request $request, int $year = null, string $month = null)
     {
-        $root = 'bulletin';
+        $now = \Carbon\Carbon::now();
 
-        $filePath = $root.'/current';
-
-        $url = $root;
-
-        if ($year) {
-            $filePath = $root.'/'.$year.'/'.$month;
-
-            $url = $filePath;
-        }
+        $filePath = 'bulletin/'.($year ?? $now->year).'/'.($month ?? strtr($now->monthName, ['é' => 'e', 'û' => 'u']));
 
         if ($request->has('generate')) {
             return Storage::response($filePath.'.jpg');
         }
 
-        return view('bulletin.index', compact('url'));
+        return view('bulletin.index', ['url' => $filePath]);
     }
 }
