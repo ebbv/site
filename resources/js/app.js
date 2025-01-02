@@ -49,9 +49,9 @@ document.querySelectorAll('.mdc-checkbox').forEach(function (element) {
 document.querySelectorAll('.mdc-select').forEach(function (element) {
   let select = new MDCSelect(element);
 
-  element.querySelector('input').setAttribute('value', select.value);
-
   select.listen('MDCSelect:change', () => {
-    element.querySelector('input').setAttribute('value', select.value);
+    if (element.classList.contains('bulletin-select')) {
+      location.href = select.value;
+    }
   });
 });

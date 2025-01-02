@@ -13,10 +13,14 @@ class BulletinController extends Controller
 
         $filePath = 'bulletin/'.($year ?? $now->year).'/'.($month ?? strtr($now->monthName, ['é' => 'e', 'û' => 'u']));
 
+        if (Storage::missing($filePath.'.jpg')) {
+            return redirect()->route('bulletin.index');
+        }
+
         if ($request->has('generate')) {
             return Storage::response($filePath.'.jpg');
         }
 
-        return view('bulletin.index', ['url' => $filePath]);
+        return view('bulletin.index', ['url' => $filePath, 'now' => $now]);
     }
 }
