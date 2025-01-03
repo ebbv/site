@@ -1,9 +1,9 @@
 @extends(config('app.theme'))
 
 @section('content')
-  <div style="margin: 0 auto; max-width: 1118px">
+  <div id="bulletin-picker">
 @foreach (range(2023, $now->year) as $year)
-    <div class="mdc-select mdc-select--outlined bulletin-select" style="margin-right: 10px; margin-bottom: 15px; max-width: 360px">
+    <div class="mdc-select mdc-select--outlined bulletin-select">
       <div class="mdc-select__anchor" aria-labelledby="year-{{ $year }}">
         <span class="mdc-notched-outline">
           <span class="mdc-notched-outline__leading"></span>
