@@ -26,8 +26,12 @@ class ContactController extends Controller
 
     public function send()
     {
-        Mail::to('pasteur@ebbv.fr')->send(new ContactForm());
+        if (request()->input('bodyAnnex') == 'annex') {
+            Mail::to('pasteur@ebbv.fr')->send(new ContactForm());
 
-        return view('contact.thankYou');
+            return view('contact.thankYou');
+        } else {
+            return back()->withInput();
+        }
     }
 }

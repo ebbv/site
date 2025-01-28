@@ -24,7 +24,8 @@
                         id="email"
                         name="email"
                         required
-                        type="email">
+                        type="email"
+                        value="{{ old('email') }}">
                   <div class="mdc-notched-outline">
                     <div class="mdc-notched-outline__leading"></div>
                     <div class="mdc-notched-outline__notch">
@@ -40,7 +41,7 @@
                   Obligatoire
                 </p>
                 <div class="mdc-text-field mdc-text-field--textarea">
-                  <textarea class="mdc-text-field__input" id="body" name="body" rows="5"></textarea>
+                  <textarea class="mdc-text-field__input" id="body" name="body" required rows="5">{{ old('body') }}</textarea>
                   <div class="mdc-notched-outline">
                     <div class="mdc-notched-outline__leading"></div>
                     <div class="mdc-notched-outline__notch">
@@ -51,6 +52,7 @@
                     <div class="mdc-notched-outline__trailing"></div>
                   </div>
                 </div>
+                <input name="bodyAnnex" type="hidden" value="annex" />
                 <button class="mdc-button mdc-button--raised"
                         type="submit"
                         value="@lang('forms.send_button')">
