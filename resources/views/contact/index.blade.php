@@ -52,7 +52,7 @@
                     <div class="mdc-notched-outline__trailing"></div>
                   </div>
                 </div>
-                <input name="bodyAnnex" type="hidden" value="annex" />
+                <input id="username" name="username" value="{{ old('username') }}" />
                 <button class="mdc-button mdc-button--raised"
                         type="submit"
                         value="@lang('forms.send_button')">
