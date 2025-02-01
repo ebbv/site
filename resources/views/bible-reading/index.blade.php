@@ -1,11 +1,9 @@
 @extends(config('app.theme'))
 
 @php
-$passages = 'sophonie 3, aggee 1-2, zacharie 1-3, zacharie 4-7, zacharie 8-9, zacharie 10-12, zacharie 13-14,
-            malachie 1-2, malachie 3-4, matthieu 1-2, matthieu 3-4, matthieu 5, matthieu 6-7, matthieu 8,
-            matthieu 9, matthieu 10, matthieu 11, matthieu 12, matthieu 13, matthieu 14-15, matthieu 16-17,
-            matthieu 18, matthieu 19-20, matthieu 21, matthieu 22, matthieu 23, matthieu 24, matthieu 25,
-            matthieu 26, matthieu 27, matthieu 28'
+$passages = 'marc 1, marc 2-3, marc 4-5, marc 6, marc 7, marc 8, marc 9, marc 10-11, marc 12, marc 13,
+            marc 14, marc 15-16, luc 1, luc 2, luc 3, luc 4, luc 5, luc 6, luc 7, luc 8, luc 9, luc 10,
+            luc 11, luc 12, luc 13, luc 14-15, luc 16, luc 17-18'
 @endphp
 
 @section('content')
