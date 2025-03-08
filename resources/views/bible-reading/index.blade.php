@@ -1,9 +1,10 @@
 @extends(config('app.theme'))
 
 @php
-$passages = 'marc 1, marc 2-3, marc 4-5, marc 6, marc 7, marc 8, marc 9, marc 10-11, marc 12, marc 13,
-            marc 14, marc 15-16, luc 1, luc 2, luc 3, luc 4, luc 5, luc 6, luc 7, luc 8, luc 9, luc 10,
-            luc 11, luc 12, luc 13, luc 14-15, luc 16, luc 17-18'
+$passages = 'luc  19-20, luc 21, luc 22, luc 23, luc 24, jean 1-2, jean 3, jean 4, jean 5, jean 6,
+            jean 7-8, jean 9-10, jean 11, jean 12, jean 13-14, jean 15-16, jean 17-18, jean 19,
+            jean 20-21, actes 1-2, actes 3-4, actes 5-6, actes 7, actes 8-9, actes 10, actes 11-12,
+            actes 13, actes 14-15, actes 16, actes 17-18, actes 19'
 @endphp
 
 @section('content')
