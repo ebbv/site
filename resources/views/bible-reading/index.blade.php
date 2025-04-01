@@ -1,10 +1,11 @@
 @extends(config('app.theme'))
 
 @php
-$passages = 'luc  19-20, luc 21, luc 22, luc 23, luc 24, jean 1-2, jean 3, jean 4, jean 5, jean 6,
-            jean 7-8, jean 9-10, jean 11, jean 12, jean 13-14, jean 15-16, jean 17-18, jean 19,
-            jean 20-21, actes 1-2, actes 3-4, actes 5-6, actes 7, actes 8-9, actes 10, actes 11-12,
-            actes 13, actes 14-15, actes 16, actes 17-18, actes 19'
+$passages = 'actes 20, actes 21, actes 22-23, actes 24-25, actes 26-27, actes 28, romains 1-2, romains 3-4,
+            romains 5-6, romains 7-8, romains 9-10, romains 11-12, romains 13-14, romains 15-16, 1 corinthiens 1-2,
+            1 corinthiens 3-4, 1 corinthiens 5-6, 1 corinthiens 7-8, 1 corinthiens 9-10, 1 corinthiens 11,
+            1 corinthiens 12-13, 1 corinthiens 14, 1 corinthiens 15-16, 2 corinthiens 1-2, 2 corinthiens 3-4,
+            2 corinthiens 5-6, 2 corinthiens 7-8, 2 corinthiens 9-10, 2 corinthiens 11, 2 corinthiens 12-13'
 @endphp
 
 @section('content')
