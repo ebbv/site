@@ -1,10 +1,10 @@
 @extends(config('app.theme'))
 
 @php
-$passages = 'jacques 1, jacques 2, jacques 3, jacques 4, jacques 5, 1 pierre 1, 1 pierre 2, 1 pierre 3, 1 pierre 4-5,
-            2 pierre 1, 2 pierre 2, 2 pierre 3, 1 jean 1-2, 1 jean 3, 1 jean 4, 1 jean 5, 2 jean 1, 3 jean 1, jude 1,
-            apocalypse 1, apocalypse 2, apocalypse 3, apocalypse 4-5, apocalypse 6, apocalypse 7-8, apocalypse 9,
-            apocalypse 10-11, apocalypse 12, apocalypse 13, apocalypse 14'
+$passages = 'apocalypse 15-16, apocalypse 17, apocalypse 18, apocalypse 19, apocalypse 20, apocalypse 21, apocalypse 22,
+            genese 1, genese 2, genese 3, genese 4-5, genese 6, genese 7, genese 8-9, genese 10, genese 11, genese 12-13,
+            genese 14, genese 15-16, genese 17, genese 18, genese 19, genese 20-21, genese 22-23, genese 24, genese 25,
+            genese 26, genese 27, genese 28, genese 29, genese 30';
 @endphp
 
 @section('content')
