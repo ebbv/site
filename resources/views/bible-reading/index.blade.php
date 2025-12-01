@@ -1,10 +1,9 @@
 @extends(config('app.theme'))
 
 @php
-$passages = 'apocalypse 15-16, apocalypse 17, apocalypse 18, apocalypse 19, apocalypse 20, apocalypse 21, apocalypse 22,
-            genese 1, genese 2, genese 3, genese 4-5, genese 6, genese 7, genese 8-9, genese 10, genese 11, genese 12-13,
-            genese 14, genese 15-16, genese 17, genese 18, genese 19, genese 20-21, genese 22-23, genese 24, genese 25,
-            genese 26, genese 27, genese 28, genese 29, genese 30';
+$passages = 'josue 18, josue 19, josue 20-21, josue 22, josue 23-24, juges 1, juges 2-3, juges 4-5, juges 6, juges 7-8,
+            juges 9, juges 10-11, juges 12-13, juges 14, juges 15, juges 16, juges 17-18, juges 19, juges 20, juges 21,
+            esaie 9.1-6, matthieu 1, matthieu 2, luc 1.1-22, luc 1.23-56, luc 1.57-80, luc 2, jean 1.1-18, ruth 1, ruth 2, ruth 3-4';
 @endphp
 
 @section('content')
