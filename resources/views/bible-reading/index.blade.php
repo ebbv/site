@@ -1,10 +1,9 @@
 @extends(config('app.theme'))
 
 @php
-$passages = '1 samuel 1, 1 samuel 2, 1 samuel 3-4, 1 samuel 5-6, 1 samuel 7-8, 1 samuel 9, 1 samuel 10-11, 1 samuel 12-13,
-            1 samuel 14, 1 samuel 15, 1 samuel 16, 1 samuel 17, 1 samuel 18-19, 1 samuel 20, 1 samuel 21-22, 1 samuel 23-24,
-            1 samuel 25, 1 samuel 26-27, 1 samuel 28-29, 1 samuel 30-31, 2 samuel 1, 2 samuel 2, 2 samuel 3-4, 2 samuel 5-6,
-            2 samuel 7-8, 2 samuel 9-10, 2 samuel 11, 2 samuel 12, 2 samuel 13, 2 samuel 14, 2 samuel 15';
+$passages = '2 samuel 16-17, 2 samuel 18, 2 samuel 19, 2 samuel 20, 2 samuel 21, 2 samuel 22, 2 samuel 23, 2 samuel 24, 1 rois 1,
+             1 rois 2, 1 rois 3-4, 1 rois 5-6, 1 rois 7, 1 rois 8, 1 rois 9-10, 1 rois 11, 1 rois 12-13, 1 rois 14, 1 rois 15,
+             1 rois 16-17, 1 rois 18, 1 rois 19-20, 1 rois 21, 1 rois 22, 2 rois 1-2, 2 rois 3-4, 2 rois 5-6, 2 rois 7-8';
 @endphp
 
 @section('content')
