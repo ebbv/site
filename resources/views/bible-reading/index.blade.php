@@ -1,10 +1,10 @@
 @extends(config('app.theme'))
 
 @php
-$passages = '2 rois 9, 2 rois 10, 2 rois 11-12, 2 rois 13-14, 2 rois 15-16, 2 rois 17, 2 rois 18, 2 rois 19, 2 rois 20-21,
-             2 rois 22, 2 rois 23, 2 rois 24-25, 1 chroniques 1, 1 chroniques 2, 1 chroniques 3-4, 1 chroniques 5-6, 1 chroniques 7,
-             1 chroniques 8, 1 chroniques 9, 1 chroniques 10-11, 1 chroniques 12-13, 1 chroniques 14-15, 1 chroniques 16-17, 1 chroniques 18-19,
-             1 chroniques 20-21, 1 chroniques 22-23, 1 chroniques 24-25, 1 chroniques 26, 1 chroniques 27, 1 chroniques 28, 1 chroniques 29';
+$passages = '2 chroniques 1-2, 2 chroniques 3-4, 2 chroniques 5-6, 2 chroniques 7-8, 2 chroniques 9-10, 2 chroniques 11-12,
+             2 chroniques 13-14, 2 chroniques 15-16, 2 chroniques 17-18, 2 chroniques 19-20, 2 chroniques 21-22, 2 chroniques 23-24,
+             2 chroniques 25, 2 chroniques 26-27, 2 chroniques 28, 2 chroniques 29, 2 chroniques 30-31, 2 chroniques 32-33, 2 chroniques 34,
+             2 chroniques 35-36, esdras 1-2, esdras 3-4, esdras 5-6, esdras 7-8, esdras 9-10, nehemie 1-2, nehemie 3, nehemie 4-5, nehemie 6-7, nehemie 8';
 @endphp
 
 @section('content')
