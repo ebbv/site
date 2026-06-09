@@ -1,9 +1,10 @@
 @extends(config('app.theme'))
 
 @php
-$passages = 'nehemie 9, nehemie 10-11, nehemie 12-13, esther 1-2, esther 3-4, esther 5-7, esther 8-10, job 1-2, job 3-4, job 5-6,
-             job 7-8, job 9-10, job 11-13, job 14-15, job 16-18, job 19-20, job 21, job 22-23, job 24-26, job 27-28, job 29-30,
-             job 31-32, job 33, job 34-35, job 36--37, job 38, job 39-40, job 41-42, psaumes 1-5, psaumes 6-8, psaumes 9-11';
+$passages = 'psaumes 12-16, psaumes 17-18, psaumes 19-21, psaumes 22-24, psaumes 25-28, psaumes 29-30, psaumes 31-32, psaumes 33-34,
+             psaumes 35-36, psaumes 37-38, psaumes 39-41, psaumes 42-44, psaumes 45-48, psaumes 49-50, psaumes 51-54, psaumes 55-58,
+             psaumes 59-61, psaumes 62-66, psaumes 67-68, psaumes 69-70, psaumes 71-72, psaumes, psaumes 76-77, psaumes 78-79,
+             psaumes 80-83, psaumes 84-87, psaumes 88-89, psaumes 90-93, psaumes 94-96, psaumes 97-101';
 @endphp
 
 @section('content')
