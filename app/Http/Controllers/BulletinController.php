@@ -2,19 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class BulletinController extends Controller
 {
-    public function index(Request $request, int $year = null, string $month = null)
+    public function index(Request $request, int|null $year = null, string|null $month = null)
     {
-        $now = \Carbon\Carbon::now();
+        $now = Carbon::now()->startOfMonth();
 
-        $filePath = 'bulletin/'.($year ?? $now->year).'/'.($month ?? strtr($now->monthName, ['é' => 'e', 'û' => 'u']));
+        $selectedDate = Carbon::parseFromLocale(($year ?? $now->year).' '.($month ?? $now->monthName));
+
+        $filePath = 'bulletin/'.$selectedDate->year.'/'.strtr($selectedDate->monthName, ['é' => 'e', 'û' => 'u']);
 
         if (Storage::missing($filePath.'.jpg')) {
-            return redirect()->route('bulletin.index');
+            if ($selectedDate->eq($now)) {
+                $now->subMonth();
+            }
+
+            return redirect('bulletin/'.$now->year.'/'.$now->monthName);
         }
 
         if ($request->has('generate')) {
