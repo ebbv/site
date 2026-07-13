@@ -43,7 +43,7 @@
           @php $display = $now->year($year)->month(1)->addMonth($key)->isoFormat('MMMM');
           $link = url("bulletin/{$year}/{$display}") @endphp
 @if ($now->gt(now()->year(2023)->month(6)) AND $now->lt(now()))
-          <li class="mdc-deprecated-list-item {{ ($link == url()->current()) ? 'mdc-deprecated-list-item--selected' : '' }}" aria-selected="{{ ($link == url()->current()) ? 'true' : 'false' }}" data-value="{{ $link }}" role="option">
+          <li class="mdc-deprecated-list-item {{ ($link == urldecode(url()->current())) ? 'mdc-deprecated-list-item--selected' : '' }}" aria-selected="{{ ($link == urldecode(url()->current())) ? 'true' : 'false' }}" data-value="{{ $link }}" role="option">
             <span class="mdc-deprecated-list-item__ripple"></span>
             <span class="mdc-deprecated-list-item__text">
               {{ $display }}

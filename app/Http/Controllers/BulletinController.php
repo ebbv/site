@@ -28,6 +28,6 @@ class BulletinController extends Controller
             return Storage::response($filePath.'.jpg');
         }
 
-        return view('bulletin.index', ['url' => $filePath, 'now' => $now]);
+        return view('bulletin.index', ['url' => url("bulletin/{$selectedDate->year}/{$selectedDate->monthName}"), 'now' => $now]);
     }
 }
