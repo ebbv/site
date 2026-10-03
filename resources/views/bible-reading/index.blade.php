@@ -1,10 +1,10 @@
 @extends(config('app.theme'))
 
 @php
-$passages = 'esaie 25-27, esaie 28-29, esaie 30-31, esaie 32-33, esaie 34-35, esaie 36, esaie 37, esaie 38-39, esaie 40,
-             esaie 41-42, esaie 43, esaie 44, esaie 45-46, esaie 47-48, esaie 49-50, esaie 51-52, esaie 53-55, esaie 56-57,
-             esaie 58-59, esaie 60-61, esaie 62-64, esaie 65, esaie 66, jeremie 1-2, jeremie 3, jeremie 4, jeremie 5-6,
-             jeremie 7, jeremie 8, jeremie 9';
+$passages = 'jeremie 10, jeremie 11-12, jeremie 13, jeremie 14-15, jeremie 16, jeremie 17, jeremie 18-19, jeremie 20-21,
+             jeremie 22, jeremie 23, jeremie 24-25, jeremie 26, jeremie 27-28, jeremie 29, jeremie 30-31, jeremie 32,
+             jeremie 33, jeremie 34, jeremie 35, jeremie 36, jeremie 37, jeremie 38, jeremie 39-40, jeremie 41-42,
+             jeremie 43-44, jeremie 45-46, jeremie 47-48, jeremie 49, jeremie 50, jeremie 51, jeremie 52';
 @endphp
 
 @section('content')
